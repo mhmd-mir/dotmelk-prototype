@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>درخواست‌های موبایل</title>
+    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
+    <script defer src="../assets/prototype.js"></script>
+
+    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+    <script defer src="../assets/dotmelk-menu-pages.js"></script>
+  </head>
+  <body>
+    <div class="mobile-body">
+      <header class="mobile-topbar">
+        <button class="icon-btn" data-drawer-toggle aria-label="باز کردن منو">
+          ☰
+        </button>
+        <div class="mobile-title">درخواست‌ها</div>
+        <button class="icon-btn" data-toast="فیلترها در نسخه دمو نمایشی هستند">
+          ＋
+        </button>
+      </header>
+
+      <div class="drawer-backdrop" data-drawer-close></div>
+
+      <aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
+        <div class="drawer-head">
+          <div class="drawer-user">
+            <div class="avatar">م</div>
+            <div>
+              <strong>مهراد محمدی</strong>
+              <div class="small">کاربر فعال داتملک</div>
+            </div>
+          </div>
+          <button class="icon-btn" data-drawer-close aria-label="بستن منو">
+            ×
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
+          <button class="logout" onclick="location.href = 'logout.html'">
+            <span>⎋</span>خروج
+          </button>
+        </div>
+
+        <div class="drawer-version">
+          <span>Dotmelk</span>
+          <span>v1.0.0</span>
+        </div>
+      </aside>
+
+      <main class="mobile-content">
+        <div class="searchbox" style="margin: 0">⌕ جستجو در درخواست‌ها</div>
+        <div class="filter-row">
+          <span class="chip">خرید</span><span class="chip">اجاره</span
+          ><span class="chip">بودجه مشخص</span
+          ><span class="chip">نزدیک من</span>
+        </div>
+        <section class="mobile-list">
+          <article class="mobile-card">
+            <div
+              style="
+                display: flex;
+                gap: 6px;
+                margin-bottom: 8px;
+                overflow: auto;
+              "
+            >
+              <span class="badge primary">خرید</span
+              ><span class="badge success">بودجه مشخص</span>
+            </div>
+            <h2
+              style="
+                font-size: 16px;
+                line-height: 27px;
+                margin: 0 0 6px;
+                font-weight: 900;
+              "
+            >
+              خرید آپارتمان ۱۲۰ تا ۱۵۰ متر در سعادت‌آباد
+            </h2>
+            <strong
+              style="font-size: 20px; line-height: 32px; color: var(--primary)"
+              >۱۱ تا ۱۴ میلیارد</strong
+            >
+            <p class="small" style="margin: 4px 0 12px">
+              ۳ خواب، ترجیحاً نوساز، نزدیک بلوار دریا و میدان کاج.
+            </p>
+            <div class="amenities">
+              <span class="amenity">۳ خواب</span
+              ><span class="amenity">پارکینگ</span
+              ><span class="amenity">محدوده GIS</span>
+            </div>
+          </article>
+          <article class="mobile-card">
+            <div
+              style="
+                display: flex;
+                gap: 6px;
+                margin-bottom: 8px;
+                overflow: auto;
+              "
+            >
+              <span class="badge warning">رهن و اجاره</span
+              ><span class="badge neutral">خانواده</span>
+            </div>
+            <h2
+              style="
+                font-size: 16px;
+                line-height: 27px;
+                margin: 0 0 6px;
+                font-weight: 900;
+              "
+            >
+              اجاره آپارتمان نزدیک مدرسه و خدمات شهری
+            </h2>
+            <strong
+              style="font-size: 20px; line-height: 32px; color: var(--primary)"
+              >۱.۲ ودیعه + ۵۰</strong
+            >
+            <p class="small" style="margin: 4px 0 12px">
+              ۹۰ تا ۱۲۰ متر، دسترسی خوب، تحویل تا پایان ماه.
+            </p>
+            <div class="amenities">
+              <span class="amenity">۲ خواب</span
+              ><span class="amenity">آسانسور</span
+              ><span class="amenity">دسترسی مدرسه</span>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <nav class="mobile-bottom-nav">
+        <a href="map.html" class=""><span>⌖</span><span>نقشه</span></a
+        ><a href="requests.html" class="active"
+          ><span>□</span><span>درخواست</span></a
+        ><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a
+        ><a href="chat.html" class=""><span>◌</span><span>چت</span></a
+        ><a href="my-dotmelk.html" class=""><span>◫</span><span>من</span></a>
+      </nav>
+    </div>
+  </body>
+</html>

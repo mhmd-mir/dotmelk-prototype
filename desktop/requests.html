@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>درخواست‌های داتملک</title>
+    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
+    <script defer src="../assets/prototype.js"></script>
+
+    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+    <script defer src="../assets/dotmelk-menu-pages.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="ads.html">
+          <div class="logo-mark"></div>
+          <div>
+            <div class="brand-title">داتملک</div>
+            <div class="brand-subtitle">
+              نسخه وب پیشنهادی · جریان اصلی محصول
+            </div>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="map.html" class=""><span>⌖</span>نقشه</a
+          ><a href="requests.html" class="active"><span>□</span>درخواست‌ها</a
+          ><a href="ads.html" class=""><span>⌂</span>آگهی‌ها</a
+          ><a href="chat.html" class=""><span>◌</span>چت</a
+          ><a href="my-dotmelk.html" class=""><span>◫</span>داتملک من</a>
+        </nav>
+        <div class="top-actions">
+          <details class="more-menu">
+              <summary class="btn btn-outline">☰ بیشتر</summary>
+              <div class="more-panel">
+                <a href="account.html"><span>◫</span>حساب کاربری من</a>
+                <a href="guides.html"
+                  ><span>؟</span>راهنمای استفاده از نرم افزار</a
+                >
+                <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+                <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+                <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+                <a href="about.html"><span>●</span>درباره داتملک</a>
+                <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+                <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
+                <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+              </div>
+            </details>
+          <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو فعال نیست">
+            🔔
+          </button>
+          <button
+            class="btn btn-primary"
+            data-toast="ثبت آگهی در فاز بعدی طراحی می‌شود"
+          >
+            ＋ ثبت آگهی
+          </button>
+        </div>
+      </header>
+      <section class="page-head">
+        <div>
+          <h1>درخواست‌های ملکی</h1>
+          <p>
+            درخواست‌ها در داتملک یک جریان اصلی‌اند، نه فقط فرم تماس؛ متقاضی‌ها
+            با بودجه، محدوده و نیاز دقیق ثبت می‌شوند.
+          </p>
+        </div>
+        <div style="display: flex; gap: 8px">
+          <button class="btn btn-outline">نمایش روی نقشه</button
+          ><button class="btn btn-primary">ثبت درخواست</button>
+        </div>
+      </section>
+
+      <section class="requests-layout">
+        <aside class="card side-filter">
+          <div class="section-title">
+            <div>
+              <h2>فیلتر درخواست‌ها</h2>
+              <p>متقاضی‌های فعال بازار</p>
+            </div>
+          </div>
+          <div class="check-row"><span>خرید</span><strong>۱۲۴</strong></div>
+          <div class="check-row">
+            <span>رهن و اجاره</span><strong>۸۶</strong>
+          </div>
+          <div class="check-row">
+            <span>سعادت‌آباد</span><strong>۴۲</strong>
+          </div>
+          <div class="check-row">
+            <span>بودجه تأییدشده</span><strong>۳۱</strong>
+          </div>
+          <button class="btn btn-primary" style="width: 100%; margin-top: 8px">
+            ثبت درخواست جدید
+          </button>
+        </aside>
+        <section class="request-list">
+          <article class="request-card">
+            <div>
+              <div style="display: flex; gap: 8px; margin-bottom: 8px">
+                <span class="badge primary">درخواست خرید</span
+                ><span class="badge success">بودجه مشخص</span
+                ><span class="badge info">محدوده روی نقشه</span>
+              </div>
+              <h3>متقاضی خرید آپارتمان ۱۲۰ تا ۱۵۰ متر در سعادت‌آباد</h3>
+              <p>
+                ۳ خواب، ترجیحاً نوساز یا کم‌سن، دسترسی مناسب به بلوار دریا و
+                میدان کاج. بازدید سریع و تصمیم‌گیری جدی.
+              </p>
+              <div class="request-meta">
+                <span class="chip">۳ خواب</span><span class="chip">پارکینگ</span
+                ><span class="chip">طبقه میانی</span
+                ><span class="chip">تور مجازی مهم نیست</span>
+              </div>
+            </div>
+            <div class="request-price">
+              <strong>۱۱ تا ۱۴ میلیارد</strong><span>بودجه خرید</span>
+            </div>
+          </article>
+          <article class="request-card">
+            <div>
+              <div style="display: flex; gap: 8px; margin-bottom: 8px">
+                <span class="badge warning">رهن و اجاره</span
+                ><span class="badge neutral">خانواده</span>
+              </div>
+              <h3>درخواست اجاره آپارتمان ۹۰ تا ۱۲۰ متر نزدیک مدرسه</h3>
+              <p>
+                ترجیحاً فول امکانات، دسترسی به حمل‌ونقل و فضای سبز. تحویل حداکثر
+                تا پایان ماه.
+              </p>
+              <div class="request-meta">
+                <span class="chip">۲ خواب</span><span class="chip">آسانسور</span
+                ><span class="chip">محیط آرام</span
+                ><span class="chip">دسترسی مدرسه</span>
+              </div>
+            </div>
+            <div class="request-price">
+              <strong>۱.۲ ودیعه + ۵۰</strong><span>رهن و اجاره</span>
+            </div>
+          </article>
+          <article class="request-card">
+            <div>
+              <div style="display: flex; gap: 8px; margin-bottom: 8px">
+                <span class="badge primary">مشارکت</span
+                ><span class="badge orange">سرمایه‌گذار</span>
+              </div>
+              <h3>درخواست زمین یا ملک کلنگی برای مشارکت در منطقه ۲</h3>
+              <p>
+                مالک یا سازنده معتبر، پلاک مناسب، امکان بررسی سریع اسناد و
+                موقعیت GIS.
+              </p>
+              <div class="request-meta">
+                <span class="chip">کلنگی</span
+                ><span class="chip">بر خیابان</span
+                ><span class="chip">اسناد کامل</span
+                ><span class="chip">منطقه ۲</span>
+              </div>
+            </div>
+            <div class="request-price">
+              <strong>توافقی</strong><span>مشارکت ساخت</span>
+            </div>
+          </article>
+        </section>
+      </section>
+    </div>
+    <div class="prototype-ribbon">Dotmelk Main Flow · Desktop</div>
+  </body>
+</html>

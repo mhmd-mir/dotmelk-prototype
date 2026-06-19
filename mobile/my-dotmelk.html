@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>داتملک من موبایل</title>
+    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
+    <script defer src="../assets/prototype.js"></script>
+
+    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+    <script defer src="../assets/dotmelk-menu-pages.js"></script>
+  </head>
+  <body>
+    <div class="mobile-body">
+      <header class="mobile-topbar">
+        <button class="icon-btn" data-drawer-toggle aria-label="باز کردن منو">
+          ☰
+        </button>
+        <div class="mobile-title">داتملک من</div>
+        <button class="icon-btn" data-toast="فیلترها در نسخه دمو نمایشی هستند">
+          ⚙
+        </button>
+      </header>
+
+      <div class="drawer-backdrop" data-drawer-close></div>
+
+      <aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
+        <div class="drawer-head">
+          <div class="drawer-user">
+            <div class="avatar">م</div>
+            <div>
+              <strong>مهراد محمدی</strong>
+              <div class="small">کاربر فعال داتملک</div>
+            </div>
+          </div>
+          <button class="icon-btn" data-drawer-close aria-label="بستن منو">
+            ×
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
+          <button class="logout" onclick="location.href = 'logout.html'">
+            <span>⎋</span>خروج
+          </button>
+        </div>
+
+        <div class="drawer-version">
+          <span>Dotmelk</span>
+          <span>v1.0.0</span>
+        </div>
+      </aside>
+
+      <main class="mobile-content">
+        <section
+          class="mobile-card"
+          style="
+            background: linear-gradient(135deg, #fff, #f5f3ff);
+            border-color: var(--primary-border);
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 12px">
+            <div class="avatar">م</div>
+            <div>
+              <h1
+                style="
+                  font-size: 18px;
+                  line-height: 30px;
+                  margin: 0;
+                  font-weight: 900;
+                "
+              >
+                داتملک من
+              </h1>
+              <p class="small" style="margin: 0">فضای کاری کاربر و آژانس</p>
+            </div>
+          </div>
+        </section>
+        <section class="stats" style="grid-template-columns: repeat(2, 1fr)">
+          <div class="stat"><span>آگهی فعال</span><strong>۱۸</strong></div>
+          <div class="stat"><span>گفتگو</span><strong>۲۴</strong></div>
+          <div class="stat"><span>درخواست</span><strong>۷</strong></div>
+          <div class="stat"><span>اعتبار</span><strong>۲.۴M</strong></div>
+        </section>
+        <section class="mobile-card">
+          <div class="section-head">
+            <div>
+              <h2>کارهای امروز</h2>
+              <p>پیگیری‌های مهم</p>
+            </div>
+          </div>
+          <div class="task-list">
+            <div class="task">
+              <div>
+                <h3>پیگیری بازدید سعادت‌آباد</h3>
+                <p>امروز ساعت ۱۷</p>
+              </div>
+              <span class="badge primary">چت</span>
+            </div>
+            <div class="task">
+              <div>
+                <h3>تکمیل آگهی در انتظار انتشار</h3>
+                <p>افزودن تصویر و موقعیت</p>
+              </div>
+              <span class="badge warning">ویرایش</span>
+            </div>
+          </div>
+        </section>
+        <section class="mobile-card">
+          <div class="workspace-menu">
+            <a>⌂ آگهی‌های من</a><a>□ درخواست‌های من</a><a>♡ ذخیره‌شده‌ها</a
+            ><a>◷ جلسات</a><a>▣ قراردادها</a><a>کیف پول و اشتراک</a>
+          </div>
+        </section>
+      </main>
+
+      <nav class="mobile-bottom-nav">
+        <a href="map.html" class=""><span>⌖</span><span>نقشه</span></a
+        ><a href="requests.html" class=""><span>□</span><span>درخواست</span></a
+        ><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a
+        ><a href="chat.html" class=""><span>◌</span><span>چت</span></a
+        ><a href="my-dotmelk.html" class="active"
+          ><span>◫</span><span>من</span></a
+        >
+      </nav>
+    </div>
+  </body>
+</html>

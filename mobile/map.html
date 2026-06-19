@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>نقشه موبایل</title>
+    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
+    <script defer src="../assets/prototype.js"></script>
+
+    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+    <script defer src="../assets/dotmelk-menu-pages.js"></script>
+  </head>
+  <body>
+    <div class="mobile-body">
+      <header class="mobile-topbar">
+        <button class="icon-btn" data-drawer-toggle aria-label="باز کردن منو">
+          ☰
+        </button>
+        <div class="mobile-title">نقشه داتملک</div>
+        <button class="icon-btn" data-toast="فیلترها در نسخه دمو نمایشی هستند">
+          ☰
+        </button>
+      </header>
+
+      <div class="drawer-backdrop" data-drawer-close></div>
+
+      <aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
+        <div class="drawer-head">
+          <div class="drawer-user">
+            <div class="avatar">م</div>
+            <div>
+              <strong>مهراد محمدی</strong>
+              <div class="small">کاربر فعال داتملک</div>
+            </div>
+          </div>
+          <button class="icon-btn" data-drawer-close aria-label="بستن منو">
+            ×
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
+          <button class="logout" onclick="location.href = 'logout.html'">
+            <span>⎋</span>خروج
+          </button>
+        </div>
+
+        <div class="drawer-version">
+          <span>Dotmelk</span>
+          <span>v1.0.0</span>
+        </div>
+      </aside>
+
+      <section class="mobile-map">
+        <div class="map-canvas">
+          <span class="road r1"></span><span class="road r2"></span
+          ><span class="road r3"></span>
+          <span class="park"></span>
+          <span class="marker" style="right: 52%; top: 36%">⌂</span>
+          <span class="marker demand" style="right: 32%; top: 56%">□</span>
+          <span class="marker poi" style="right: 70%; top: 42%">●</span>
+          <div class="map-control" style="top: 14px; right: 14px">⌕ جستجو</div>
+          <div class="map-control" style="top: 14px; left: 14px">لایه‌ها</div>
+        </div>
+        <div class="bottom-sheet">
+          <div class="sheet-handle"></div>
+          <div class="section-title" style="margin-bottom: 10px">
+            <div>
+              <h2>نتایج این محدوده</h2>
+              <p>آگهی‌ها و درخواست‌های نزدیک</p>
+            </div>
+            <span class="badge primary">۳۲ نتیجه</span>
+          </div>
+          <article class="result-card" style="grid-template-columns: 76px 1fr">
+            <div class="visual-photo"></div>
+            <div>
+              <h3>۱۳۵ متر نوساز سعادت‌آباد</h3>
+              <strong>۱۲.۸ میلیارد</strong>
+              <p>۳ خواب · تور ۳۶۰</p>
+            </div>
+          </article>
+          <article class="result-card" style="grid-template-columns: 76px 1fr">
+            <div class="visual-photo teal"></div>
+            <div>
+              <h3>درخواست خرید در همین محله</h3>
+              <strong>بودجه ۱۴ میلیارد</strong>
+              <p>۱۲۰ تا ۱۵۰ متر</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <nav class="mobile-bottom-nav">
+        <a href="map.html" class="active"><span>⌖</span><span>نقشه</span></a
+        ><a href="requests.html" class=""><span>□</span><span>درخواست</span></a
+        ><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a
+        ><a href="chat.html" class=""><span>◌</span><span>چت</span></a
+        ><a href="my-dotmelk.html" class=""><span>◫</span><span>من</span></a>
+      </nav>
+    </div>
+  </body>
+</html>

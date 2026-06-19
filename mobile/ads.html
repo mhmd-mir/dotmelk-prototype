@@ -1,0 +1,1281 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dotmelk — آگهی‌ها / موبایل</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
+
+      :root {
+        --primary: #6d28d9;
+        --primary-hover: #5b21b6;
+        --primary-soft: #f5f3ff;
+        --primary-subtle: #ede9fe;
+        --primary-border: #c4b5fd;
+        --primary-fg: #ffffff;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --card: #ffffff;
+        --surface-muted: #f1f5f9;
+        --text: #0f172a;
+        --text-2: #475569;
+        --muted: #64748b;
+        --subtle: #94a3b8;
+        --border: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --success: #16a34a;
+        --success-soft: #dcfce7;
+        --success-text: #166534;
+        --warning: #d97706;
+        --warning-soft: #fef3c7;
+        --warning-text: #92400e;
+        --danger: #dc2626;
+        --danger-soft: #fee2e2;
+        --danger-text: #991b1b;
+        --info: #2563eb;
+        --info-soft: #dbeafe;
+        --info-text: #1e40af;
+        --teal: #0f766e;
+        --teal-soft: #ccfbf1;
+        --orange: #f97316;
+        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+        --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08);
+        --shadow-map: 0 12px 30px rgba(15, 23, 42, 0.16);
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        --radius-xl: 20px;
+        --radius-2xl: 24px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          "Vazirmatn",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        direction: rtl;
+        min-height: 100vh;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        border: 0;
+        cursor: pointer;
+        background: none;
+        color: inherit;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .app {
+        min-height: 100vh;
+        width: 100%;
+        background:
+          radial-gradient(
+            circle at 18% -10%,
+            rgba(109, 40, 217, 0.11),
+            transparent 34%
+          ),
+          linear-gradient(180deg, #ffffff 0, #f8fafc 230px, #f8fafc 100%);
+        padding-bottom: 92px;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(248, 250, 252, 0.88);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.78);
+        padding: 12px 16px 10px;
+      }
+      .topbar-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+      .logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #7c3aed, #5b21b6);
+        display: grid;
+        place-items: center;
+        color: white;
+        box-shadow: 0 12px 26px rgba(109, 40, 217, 0.22);
+        flex: 0 0 auto;
+      }
+      .logo:before {
+        content: "⌖";
+        font-size: 22px;
+        font-weight: 900;
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--muted);
+      }
+      .icon-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        display: grid;
+        place-items: center;
+        color: var(--text-2);
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        font-size: 20px;
+      }
+      .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .content {
+        padding: 14px 16px 0;
+        width: 100%;
+      }
+
+      .search-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 12px;
+        box-shadow: var(--shadow-sm);
+      }
+      .search-field {
+        height: 48px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 14px;
+        color: var(--muted);
+        transition: 0.15s ease-out;
+      }
+      .search-field:focus-within {
+        border-color: var(--primary-border);
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.16);
+      }
+      .search-field input {
+        border: 0;
+        outline: 0;
+        width: 100%;
+        background: transparent;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .search-field input::placeholder {
+        color: var(--subtle);
+      }
+      .quick-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .quick-btn {
+        height: 42px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 800;
+        transition: 0.15s ease-out;
+      }
+      .quick-btn.primary {
+        background: var(--primary);
+        color: white;
+      }
+      .quick-btn.soft {
+        background: var(--primary-soft);
+        color: var(--primary);
+        border: 1px solid var(--primary-border);
+      }
+      .quick-btn:active {
+        transform: scale(0.98);
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 12px 0 2px;
+        scrollbar-width: none;
+      }
+      .chips::-webkit-scrollbar {
+        display: none;
+      }
+      .chip {
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--text-2);
+        border-radius: 999px;
+        padding: 0 12px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .chip.active {
+        background: var(--primary-soft);
+        border-color: var(--primary-border);
+        color: var(--primary);
+      }
+
+      .summary-strip {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .summary-box {
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.94);
+        padding: 12px;
+        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+      }
+      .summary-box strong {
+        display: block;
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 900;
+        color: var(--text);
+      }
+      .summary-box span {
+        display: block;
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--muted);
+      }
+      .summary-box.map {
+        position: relative;
+        overflow: hidden;
+        background: #ecfdf5;
+        border-color: #a7f3d0;
+        color: #065f46;
+      }
+      .summary-box.map:before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        opacity: 0.55;
+        background:
+          linear-gradient(90deg, rgba(15, 118, 110, 0.16) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(15, 118, 110, 0.16) 1px, transparent 1px);
+        background-size: 30px 30px;
+        transform: rotate(-10deg);
+      }
+      .summary-box.map > * {
+        position: relative;
+      }
+
+      .active-filters {
+        margin-top: 12px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--surface);
+        padding: 12px;
+      }
+      .filter-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .filter-title h2 {
+        margin: 0;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 900;
+      }
+      .filter-title button {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--primary);
+      }
+      .filter-scroll {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .filter-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 18px 0 12px;
+      }
+      .section-head h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 900;
+        letter-spacing: -0.01em;
+      }
+      .section-head p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--muted);
+      }
+      .sort-pill {
+        height: 34px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 11px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--text-2);
+        white-space: nowrap;
+      }
+
+      .cards {
+        display: grid;
+        gap: 14px;
+      }
+      .property-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+        transition: 0.15s ease-out;
+      }
+      .property-card:active {
+        transform: scale(0.995);
+      }
+      .photo {
+        height: 190px;
+        position: relative;
+        overflow: hidden;
+        background: #dbeafe;
+      }
+      .photo.sale {
+        background: linear-gradient(
+          135deg,
+          #ddd6fe 0%,
+          #bfdbfe 50%,
+          #f8fafc 100%
+        );
+      }
+      .photo.rent {
+        background: linear-gradient(
+          135deg,
+          #ccfbf1 0%,
+          #dbeafe 50%,
+          #f8fafc 100%
+        );
+      }
+      .photo.presell {
+        background: linear-gradient(
+          135deg,
+          #fee2e2 0%,
+          #ede9fe 54%,
+          #f8fafc 100%
+        );
+      }
+      .photo.partnership {
+        background: linear-gradient(
+          135deg,
+          #fef3c7 0%,
+          #fed7aa 48%,
+          #f8fafc 100%
+        );
+      }
+      .photo:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, 0) 45%,
+          rgba(15, 23, 42, 0.55)
+        );
+        pointer-events: none;
+      }
+      .building {
+        position: absolute;
+        right: 28px;
+        left: 28px;
+        bottom: 18px;
+        height: 54%;
+        border-radius: 14px 14px 0 0;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0.58)
+        );
+        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+      }
+      .building:before {
+        content: "";
+        position: absolute;
+        inset: 14px 18px auto auto;
+        width: 36px;
+        height: 48px;
+        border-radius: 6px;
+        background: rgba(109, 40, 217, 0.14);
+        box-shadow:
+          -52px 0 rgba(109, 40, 217, 0.13),
+          -104px 0 rgba(109, 40, 217, 0.11),
+          0 62px rgba(15, 118, 110, 0.12),
+          -52px 62px rgba(15, 118, 110, 0.11),
+          -104px 62px rgba(15, 118, 110, 0.1);
+      }
+      .building:after {
+        content: "";
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 12px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.12);
+      }
+      .photo-top {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .photo-bottom {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        z-index: 2;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .media-badges {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 999px;
+        padding: 4px 9px;
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .badge.dark {
+        background: rgba(15, 23, 42, 0.72);
+        color: #fff;
+        backdrop-filter: blur(10px);
+      }
+      .badge.primary {
+        background: var(--primary-soft);
+        color: var(--primary);
+      }
+      .badge.info {
+        background: var(--info-soft);
+        color: var(--info-text);
+      }
+      .badge.warning {
+        background: var(--warning-soft);
+        color: var(--warning-text);
+      }
+      .badge.danger {
+        background: var(--danger-soft);
+        color: var(--danger-text);
+      }
+      .badge.success {
+        background: var(--success-soft);
+        color: var(--success-text);
+      }
+      .badge.glass {
+        background: rgba(255, 255, 255, 0.88);
+        color: var(--text);
+        backdrop-filter: blur(10px);
+      }
+      .save-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+        font-size: 20px;
+        color: var(--text-2);
+      }
+
+      .card-body {
+        padding: 14px 14px 13px;
+      }
+      .card-kicker {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .ad-type {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 900;
+        color: var(--primary);
+      }
+      .ad-type .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: currentColor;
+        display: inline-block;
+      }
+      .ad-time {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .card-title {
+        margin: 0;
+        font-size: 17px;
+        line-height: 28px;
+        font-weight: 900;
+        letter-spacing: -0.01em;
+        color: var(--text);
+      }
+      .price {
+        margin-top: 7px;
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: 900;
+        color: var(--text);
+      }
+      .price small {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 700;
+        margin-inline-start: 4px;
+      }
+      .location {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-2);
+        font-size: 13px;
+        line-height: 22px;
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .spec {
+        min-width: 0;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--surface-muted);
+        padding: 8px 6px;
+        text-align: center;
+      }
+      .spec strong {
+        display: block;
+        font-size: 13px;
+        line-height: 20px;
+        font-weight: 900;
+        color: var(--text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .spec span {
+        display: block;
+        font-size: 11px;
+        line-height: 18px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .insight-row {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        margin-top: 12px;
+        padding-bottom: 1px;
+        scrollbar-width: none;
+      }
+      .insight-row::-webkit-scrollbar {
+        display: none;
+      }
+      .insight {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 32px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--border);
+        font-size: 12px;
+        color: var(--text-2);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .insight.good {
+        background: var(--success-soft);
+        border-color: #bbf7d0;
+        color: var(--success-text);
+      }
+      .insight.map {
+        background: var(--primary-soft);
+        border-color: var(--primary-border);
+        color: var(--primary);
+      }
+
+      .card-footer {
+        margin-top: 13px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .agency {
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .agency-logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 13px;
+        background: var(--surface-muted);
+        display: grid;
+        place-items: center;
+        color: var(--primary);
+        font-weight: 900;
+        flex: 0 0 auto;
+        border: 1px solid var(--border);
+      }
+      .agency strong {
+        display: block;
+        font-size: 12px;
+        line-height: 19px;
+        font-weight: 900;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .agency span {
+        display: block;
+        font-size: 11px;
+        line-height: 18px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex: 0 0 auto;
+      }
+      .action-btn {
+        height: 36px;
+        border-radius: 13px;
+        border: 1px solid var(--border);
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 10px;
+        font-size: 12px;
+        font-weight: 900;
+        color: var(--text-2);
+        white-space: nowrap;
+      }
+      .action-btn.primary {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+      .action-icon {
+        width: 36px;
+        padding: 0;
+        font-size: 17px;
+      }
+
+      .notice-card {
+        margin-top: 14px;
+        border: 1px solid var(--primary-border);
+        background: var(--primary-soft);
+        border-radius: 22px;
+        padding: 14px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: var(--primary);
+      }
+      .notice-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 14px;
+        background: white;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 8px 18px rgba(109, 40, 217, 0.1);
+        flex: 0 0 auto;
+      }
+      .notice-card h3 {
+        margin: 0 0 4px;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 900;
+        color: var(--text);
+      }
+      .notice-card p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 22px;
+        color: var(--text-2);
+      }
+
+      .bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 30;
+        height: 72px;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(18px);
+        border-top: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-size: 10px;
+        font-weight: 900;
+        color: var(--muted);
+      }
+      .nav-item .nav-icon {
+        font-size: 19px;
+        line-height: 1;
+      }
+      .nav-item.active {
+        color: var(--primary);
+      }
+      .fab {
+        position: fixed;
+        left: 16px;
+        bottom: 88px;
+        z-index: 35;
+        width: 54px;
+        height: 54px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: linear-gradient(135deg, #7c3aed, #5b21b6);
+        box-shadow: 0 18px 40px rgba(109, 40, 217, 0.3);
+        font-size: 26px;
+        font-weight: 900;
+      }
+
+      @media (min-width: 720px) {
+        .content {
+          max-width: 980px;
+          margin: 0 auto;
+        }
+        .cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .photo {
+          height: 210px;
+        }
+        .bottom-nav {
+          max-width: 980px;
+          margin: 0 auto;
+          border-inline: 1px solid var(--border);
+        }
+        .fab {
+          left: calc(50% - 490px + 16px);
+        }
+      }
+      @media (max-width: 370px) {
+        .content {
+          padding-inline: 12px;
+        }
+        .topbar {
+          padding-inline: 12px;
+        }
+        .photo {
+          height: 170px;
+        }
+        .card-title {
+          font-size: 16px;
+          line-height: 26px;
+        }
+        .price {
+          font-size: 18px;
+        }
+        .spec-grid {
+          gap: 6px;
+        }
+        .action-btn:not(.primary) {
+          display: none;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+    <script defer src="../assets/dotmelk-menu-pages.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="topbar-row">
+          <button class="icon-btn" data-drawer-toggle aria-label="باز کردن منو">
+            ☰
+          </button>
+          <div class="brand">
+            <div class="logo"></div>
+            <div>
+              <h1>آگهی‌های داتملک</h1>
+              <p>بازار ملک، همراه با نقشه و داده‌های محیطی</p>
+            </div>
+          </div>
+          <div class="top-actions">
+            <button class="icon-btn" aria-label="اعلان‌ها">◷</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="drawer-backdrop" data-drawer-close></div>
+
+      <aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
+        <div class="drawer-head">
+          <div class="drawer-user">
+            <div class="avatar">م</div>
+            <div>
+              <strong>مهراد محمدی</strong>
+              <div class="small">کاربر فعال داتملک</div>
+            </div>
+          </div>
+          <button class="icon-btn" data-drawer-close aria-label="بستن منو">
+            ×
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
+          <button class="logout" onclick="location.href = 'logout.html'">
+            <span>⎋</span>خروج
+          </button>
+        </div>
+
+        <div class="drawer-version">
+          <span>Dotmelk</span>
+          <span>v1.0.0</span>
+        </div>
+      </aside>
+
+      <div class="content">
+        <section class="search-card" aria-label="جستجو و فیلتر آگهی‌ها">
+          <label class="search-field">
+            <span aria-hidden="true">⌕</span>
+            <input value="آپارتمان سعادت‌آباد" aria-label="جستجو در آگهی‌ها" />
+          </label>
+          <div class="quick-row">
+            <button class="quick-btn soft">☷ فیلترها · ۶ فعال</button>
+            <button class="quick-btn primary">⌖ نمایش روی نقشه</button>
+          </div>
+        </section>
+
+        <nav class="chips" aria-label="دسته‌بندی نوع آگهی">
+          <span class="chip active">همه آگهی‌ها</span>
+          <span class="chip">فروش</span>
+          <span class="chip">رهن و اجاره</span>
+          <span class="chip">پیش‌فروش</span>
+          <span class="chip">مشارکت</span>
+          <span class="chip">تور ۳۶۰</span>
+        </nav>
+
+        <section class="summary-strip">
+          <div class="summary-box">
+            <strong>۲۴۸ آگهی فعال</strong>
+            <span>در سعادت‌آباد و محدوده‌های اطراف</span>
+          </div>
+          <div class="summary-box map">
+            <strong>۳۶ تور ۳۶۰</strong>
+            <span>بازدید آنلاین قبل از تماس</span>
+          </div>
+        </section>
+
+        <section class="active-filters">
+          <div class="filter-title">
+            <h2>فیلترهای فعال</h2>
+            <button>پاک کردن</button>
+          </div>
+          <div class="filter-scroll">
+            <span class="chip active">تهران</span>
+            <span class="chip active">سعادت‌آباد</span>
+            <span class="chip active">۲ تا ۳ خواب</span>
+            <span class="chip active">عکس‌دار</span>
+            <span class="chip active">تور مجازی</span>
+          </div>
+        </section>
+
+        <div class="section-head">
+          <div>
+            <h2>جدیدترین آگهی‌ها</h2>
+            <p>مرتب‌سازی براساس جدیدترین و آگهی‌های ویژه</p>
+          </div>
+          <button class="sort-pill">جدیدترین ▾</button>
+        </div>
+
+        <section class="cards" aria-label="لیست آگهی‌ها">
+          <article class="property-card">
+            <div class="photo sale">
+              <span class="building"></span>
+              <div class="photo-top">
+                <span class="badge dark">کد ۵۴۲۱</span>
+                <button class="save-btn" aria-label="ذخیره آگهی">♡</button>
+              </div>
+              <div class="photo-bottom">
+                <div class="media-badges">
+                  <span class="badge primary">ویژه</span>
+                  <span class="badge info">ویدیو</span>
+                  <span class="badge glass">تور ۳۶۰</span>
+                </div>
+                <span class="badge dark">۸ عکس</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-kicker">
+                <span class="ad-type"
+                  ><span class="dot"></span> فروش آپارتمان</span
+                >
+                <span class="ad-time">امروز</span>
+              </div>
+              <h3 class="card-title">آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h3>
+              <div class="price">۱۲.۸ میلیارد <small>تومان</small></div>
+              <div class="location">⌖ سعادت‌آباد · نزدیک میدان کاج</div>
+              <div class="spec-grid">
+                <div class="spec"><strong>۱۳۵م</strong><span>متراژ</span></div>
+                <div class="spec"><strong>۳</strong><span>خواب</span></div>
+                <div class="spec"><strong>۴</strong><span>طبقه</span></div>
+                <div class="spec"><strong>۱۴۰۱</strong><span>ساخت</span></div>
+              </div>
+              <div class="insight-row">
+                <span class="insight good">مترو ۷ دقیقه</span>
+                <span class="insight">مدرسه ۴ دقیقه</span>
+                <span class="insight map">ارزیابی محیطی</span>
+              </div>
+              <div class="card-footer">
+                <div class="agency">
+                  <div class="agency-logo">آ</div>
+                  <div>
+                    <strong>آژانس آسمان</strong
+                    ><span>مشاور تاییدشده داتملک</span>
+                  </div>
+                </div>
+                <div class="actions">
+                  <button class="action-btn action-icon" aria-label="تماس">
+                    ☎
+                  </button>
+                  <button class="action-btn primary">چت</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="property-card">
+            <div class="photo rent">
+              <span class="building"></span>
+              <div class="photo-top">
+                <span class="badge dark">کد ۶۳۱۸</span>
+                <button class="save-btn" aria-label="ذخیره آگهی">♡</button>
+              </div>
+              <div class="photo-bottom">
+                <div class="media-badges">
+                  <span class="badge success">منتشر شده عمومی</span>
+                  <span class="badge glass">۱۲ عکس</span>
+                </div>
+                <span class="badge dark">آژانس</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-kicker">
+                <span class="ad-type" style="color: var(--teal)"
+                  ><span class="dot"></span> رهن و اجاره</span
+                >
+                <span class="ad-time">امروز</span>
+              </div>
+              <h3 class="card-title">واحد ۹۰ متری بازسازی‌شده در مرزداران</h3>
+              <div class="price">۷۰۰ رهن · ۲۵ اجاره <small>میلیون</small></div>
+              <div class="location">⌖ مرزداران · بلوار آریافر</div>
+              <div class="spec-grid">
+                <div class="spec"><strong>۹۰م</strong><span>متراژ</span></div>
+                <div class="spec"><strong>۲</strong><span>خواب</span></div>
+                <div class="spec"><strong>۱</strong><span>پارکینگ</span></div>
+                <div class="spec">
+                  <strong>بازسازی</strong><span>وضعیت</span>
+                </div>
+              </div>
+              <div class="insight-row">
+                <span class="insight good">دسترسی عالی</span>
+                <span class="insight">مرکز خرید ۶ دقیقه</span>
+                <span class="insight map">روی نقشه</span>
+              </div>
+              <div class="card-footer">
+                <div class="agency">
+                  <div class="agency-logo">خ</div>
+                  <div><strong>خانه نو</strong><span>پاسخ‌گویی سریع</span></div>
+                </div>
+                <div class="actions">
+                  <button class="action-btn action-icon" aria-label="تماس">
+                    ☎
+                  </button>
+                  <button class="action-btn primary">چت</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="property-card">
+            <div class="photo presell">
+              <span class="building"></span>
+              <div class="photo-top">
+                <span class="badge dark">کد ۷۰۳۴</span>
+                <button class="save-btn" aria-label="ذخیره آگهی">♡</button>
+              </div>
+              <div class="photo-bottom">
+                <div class="media-badges">
+                  <span class="badge warning">پیش‌فروش</span>
+                  <span class="badge primary">پروژه ویژه</span>
+                </div>
+                <span class="badge dark">۳ مرحله پرداخت</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-kicker">
+                <span class="ad-type"><span class="dot"></span> پیش‌فروش</span>
+                <span class="ad-time">دیروز</span>
+              </div>
+              <h3 class="card-title">
+                واحد ۱۱۰ متری در پروژه چیتگر با تحویل ۱۴۰۶
+              </h3>
+              <div class="price">۳.۲ میلیارد <small>پیش‌پرداخت</small></div>
+              <div class="location">⌖ چیتگر · منطقه ۲۲</div>
+              <div class="spec-grid">
+                <div class="spec"><strong>۱۱۰م</strong><span>متراژ</span></div>
+                <div class="spec"><strong>۲</strong><span>خواب</span></div>
+                <div class="spec"><strong>۱۴۰۶</strong><span>تحویل</span></div>
+                <div class="spec"><strong>قسطی</strong><span>پرداخت</span></div>
+              </div>
+              <div class="insight-row">
+                <span class="insight">نزدیک دریاچه</span>
+                <span class="insight good">دسترسی اتوبان</span>
+                <span class="insight map">محیط اطراف</span>
+              </div>
+              <div class="card-footer">
+                <div class="agency">
+                  <div class="agency-logo">آ</div>
+                  <div>
+                    <strong>گروه آرتا</strong><span>فایل پروژه‌ای</span>
+                  </div>
+                </div>
+                <div class="actions">
+                  <button class="action-btn action-icon" aria-label="تماس">
+                    ☎
+                  </button>
+                  <button class="action-btn primary">چت</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="property-card">
+            <div class="photo partnership">
+              <span class="building"></span>
+              <div class="photo-top">
+                <span class="badge dark">کد ۴۸۸۹</span>
+                <button class="save-btn" aria-label="ذخیره آگهی">♡</button>
+              </div>
+              <div class="photo-bottom">
+                <div class="media-badges">
+                  <span class="badge danger">فوری</span>
+                  <span class="badge primary">مشارکت</span>
+                </div>
+                <span class="badge dark">مالک حاضر</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-kicker">
+                <span class="ad-type" style="color: var(--warning)"
+                  ><span class="dot"></span> مشارکت در ساخت</span
+                >
+                <span class="ad-time">۲ روز پیش</span>
+              </div>
+              <h3 class="card-title">زمین ۴۲۰ متری مناسب ساخت در نیاوران</h3>
+              <div class="price">از ۴۵ میلیارد <small>ارزش ملک</small></div>
+              <div class="location">⌖ نیاوران · دسترسی عالی</div>
+              <div class="spec-grid">
+                <div class="spec"><strong>۴۲۰م</strong><span>زمین</span></div>
+                <div class="spec"><strong>۱۲م</strong><span>بر ملک</span></div>
+                <div class="spec"><strong>شمالی</strong><span>جهت</span></div>
+                <div class="spec"><strong>مجوز</strong><span>آماده</span></div>
+              </div>
+              <div class="insight-row">
+                <span class="insight good">لوکیشن ممتاز</span>
+                <span class="insight">عرض گذر مناسب</span>
+                <span class="insight map">تحلیل GIS</span>
+              </div>
+              <div class="card-footer">
+                <div class="agency">
+                  <div class="agency-logo">ش</div>
+                  <div>
+                    <strong>شمال شهر</strong><span>فایل مشارکت ویژه</span>
+                  </div>
+                </div>
+                <div class="actions">
+                  <button class="action-btn action-icon" aria-label="تماس">
+                    ☎
+                  </button>
+                  <button class="action-btn primary">چت</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="notice-card">
+          <div class="notice-icon">⌖</div>
+          <div>
+            <h3>جستجو را روی نقشه دقیق‌تر کن</h3>
+            <p>
+              با انتخاب محدوده روی نقشه، آگهی‌ها، درخواست‌ها و امکانات اطراف ملک
+              را هم‌زمان ببین.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <button class="fab" aria-label="ثبت آگهی جدید">＋</button>
+
+      <nav class="bottom-nav" aria-label="ناوبری اصلی داتملک">
+        <a class="nav-item" href="map.html"
+          ><span class="nav-icon">⌖</span><span>نقشه</span></a
+        >
+        <a class="nav-item" href="requests.html"
+          ><span class="nav-icon">□</span><span>درخواست‌ها</span></a
+        >
+        <a class="nav-item active" href="ads.html"
+          ><span class="nav-icon">⌂</span><span>آگهی‌ها</span></a
+        >
+        <a class="nav-item" href="chat.html"
+          ><span class="nav-icon">◌</span><span>چت</span></a
+        >
+        <a class="nav-item" href="my-dotmelk.html"
+          ><span class="nav-icon">◫</span><span>داتملک من</span></a
+        >
+      </nav>
+    </main>
+    <script>
+      document
+        .querySelectorAll(".ad-card, article, .property-card")
+        .forEach((el, i) => {
+          if (i < 3) el.style.cursor = "pointer";
+          if (i < 3)
+            el.addEventListener(
+              "click",
+              () => (location.href = "property-detail.html"),
+            );
+        });
+    </script>
+  </body>
+</html>

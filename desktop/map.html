@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>نقشه داتملک</title>
+    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
+    <script defer src="../assets/prototype.js"></script>
+
+    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+    <script defer src="../assets/dotmelk-menu-pages.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="ads.html">
+          <div class="logo-mark"></div>
+          <div>
+            <div class="brand-title">داتملک</div>
+            <div class="brand-subtitle">
+              نسخه وب پیشنهادی · جریان اصلی محصول
+            </div>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="map.html" class="active"><span>⌖</span>نقشه</a
+          ><a href="requests.html" class=""><span>□</span>درخواست‌ها</a
+          ><a href="ads.html" class=""><span>⌂</span>آگهی‌ها</a
+          ><a href="chat.html" class=""><span>◌</span>چت</a
+          ><a href="my-dotmelk.html" class=""><span>◫</span>داتملک من</a>
+        </nav>
+        <div class="top-actions">
+          <details class="more-menu">
+            <summary class="btn btn-outline">☰ بیشتر</summary>
+            <div class="more-panel">
+              <a href="account.html"><span>◫</span>حساب کاربری من</a>
+              <a href="guides.html"
+                ><span>؟</span>راهنمای استفاده از نرم افزار</a
+              >
+              <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+              <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+              <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+              <a href="about.html"><span>●</span>درباره داتملک</a>
+              <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+              <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
+              <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+            </div>
+          </details>
+          <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو فعال نیست">
+            🔔
+          </button>
+          <button
+            class="btn btn-primary"
+            data-toast="ثبت آگهی در فاز بعدی طراحی می‌شود"
+          >
+            ＋ ثبت آگهی
+          </button>
+        </div>
+      </header>
+      <section class="page-head">
+        <div>
+          <h1>نقشه و کشف مکانی</h1>
+          <p>
+            نمای GIS-first برای آگهی‌ها، درخواست‌ها، لایه‌ها و خدمات اطراف ملک
+          </p>
+        </div>
+        <div style="display: flex; gap: 8px">
+          <button class="btn btn-outline">لایه‌ها</button
+          ><button class="btn btn-primary">جستجو در محدوده</button>
+        </div>
+      </section>
+
+      <section class="map-layout">
+        <aside class="map-panel">
+          <div class="searchbox">⌕ جستجو در محله، آدرس، کد جام یا کسب‌وکار</div>
+          <div class="filter-row">
+            <span class="chip">فروش</span><span class="chip">رهن و اجاره</span
+            ><span class="chip">آپارتمان</span
+            ><span class="chip">تا ۱۵ میلیارد</span>
+          </div>
+          <div
+            class="card"
+            style="
+              padding: 14px;
+              margin-bottom: 12px;
+              background: var(--primary-soft);
+              border-color: var(--primary-border);
+            "
+          >
+            <strong style="display: block; font-size: 15px; margin-bottom: 4px"
+              >نمایش همزمان نقشه و فایل‌ها</strong
+            >
+            <p class="small" style="margin: 0; color: var(--text-2)">
+              آگهی، درخواست، کسب‌وکار و لایه‌های GIS در یک نمای کاربردی.
+            </p>
+          </div>
+          <article class="result-card">
+            <div class="visual-photo"></div>
+            <div>
+              <span class="badge primary">ویژه</span>
+              <h3>۱۳۵ متر نوساز در سعادت‌آباد</h3>
+              <strong>۱۲.۸ میلیارد</strong>
+              <p>۳ خواب · تور ۳۶۰ · ارزیابی محیطی</p>
+            </div>
+          </article>
+          <article class="result-card">
+            <div class="visual-photo teal"></div>
+            <div>
+              <span class="badge success">فایل آژانس</span>
+              <h3>۱۱۰ متر نزدیک بلوار دریا</h3>
+              <strong>۹.۴ میلیارد</strong>
+              <p>۲ خواب · پارکینگ · موقعیت تقریبی</p>
+            </div>
+          </article>
+          <article class="result-card">
+            <div class="visual-photo orange"></div>
+            <div>
+              <span class="badge warning">درخواست فعال</span>
+              <h3>متقاضی خرید در سعادت‌آباد</h3>
+              <strong>بودجه ۱۱ تا ۱۴ میلیارد</strong>
+              <p>آپارتمان ۱۲۰ تا ۱۵۰ متر</p>
+            </div>
+          </article>
+          <article class="result-card">
+            <div class="visual-photo red"></div>
+            <div>
+              <span class="badge info">POI</span>
+              <h3>خدمات اطراف ملک</h3>
+              <strong>۱۲ نقطه مهم</strong>
+              <p>مدرسه، درمان، خرید و حمل‌ونقل</p>
+            </div>
+          </article>
+        </aside>
+        <section class="map-canvas">
+          <span class="road r1"></span><span class="road r2"></span
+          ><span class="road r3"></span>
+          <span
+            class="park"
+            style="width: 150px; height: 90px; right: 80px; top: 66px"
+          ></span>
+          <span
+            class="park"
+            style="
+              width: 110px;
+              height: 78px;
+              left: 140px;
+              bottom: 86px;
+              background: rgba(249, 115, 22, 0.14);
+              border-color: rgba(249, 115, 22, 0.18);
+            "
+          ></span>
+          <span class="marker" style="right: 56%; top: 42%">⌂</span>
+          <span class="marker" style="right: 36%; top: 30%">⌂</span>
+          <span class="marker demand" style="right: 44%; top: 66%">□</span>
+          <span class="marker poi" style="right: 25%; top: 58%">●</span>
+          <span class="marker poi" style="right: 72%; top: 35%">●</span>
+          <span class="marker user" style="right: 68%; top: 68%">⌖</span>
+          <div class="map-control" style="top: 18px; right: 18px">
+            ⌕ جستجو روی نقشه
+          </div>
+          <div class="map-control" style="top: 18px; left: 18px">
+            لایه‌ها · محله · دسترسی · UTM
+          </div>
+          <div class="map-control" style="bottom: 18px; left: 18px">
+            موقعیت تقریبی برای حفظ حریم خصوصی
+          </div>
+          <div class="popup">
+            <span class="badge primary">آگهی منتخب</span>
+            <h3>فروش آپارتمان ۱۳۵ متری</h3>
+            <strong>۱۲.۸ میلیارد تومان</strong>
+            <p>سعادت‌آباد · ۳ خواب · طبقه ۴ · تور مجازی و ارزیابی محیطی</p>
+            <div style="display: flex; gap: 8px">
+              <a class="btn btn-primary" href="property-detail.html"
+                >مشاهده جزئیات</a
+              ><button class="btn btn-outline">ذخیره</button>
+            </div>
+          </div>
+          <div class="legend">
+            <span
+              ><i class="dot" style="background: var(--map-ad)"></i>آگهی
+              ملک</span
+            >
+            <span
+              ><i class="dot" style="background: var(--map-demand)"></i
+              >درخواست</span
+            >
+            <span
+              ><i class="dot" style="background: var(--map-poi)"></i>خدمات و
+              POI</span
+            >
+            <span
+              ><i class="dot" style="background: var(--map-user)"></i>موقعیت
+              کاربر</span
+            >
+          </div>
+        </section>
+      </section>
+    </div>
+    <div class="prototype-ribbon">Dotmelk Main Flow · Desktop</div>
+  </body>
+</html>

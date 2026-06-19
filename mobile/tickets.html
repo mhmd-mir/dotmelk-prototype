@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>پشتیبانی و تیکت ها</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<script defer src="../assets/dotmelk-menu-pages.js"></script>
+</head>
+<body>
+<div class="mobile-body">
+  <header class="mobile-topbar">
+    <button class="icon-btn" data-drawer-toggle>☰</button>
+    <div class="mobile-title">پشتیبانی و تیکت ها</div>
+    <a class="icon-btn" href="my-dotmelk.html">‹</a>
+  </header>
+  
+<div class="drawer-backdrop" data-drawer-close></div>
+<aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
+  <div class="drawer-head">
+    <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
+    <button class="icon-btn" data-drawer-close>×</button>
+  </div>
+  <div class="drawer-scroll">
+    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
+<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
+<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
+<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+<a class="" href="about.html"><span>●</span>درباره داتملک</a>
+<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
+<a class="active" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
+    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+  </div>
+  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+</aside>
+
+  <main class="mobile-content">
+<section class="ticket-layout">
+  <aside class="ticket-list">
+    <div style="padding:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px"><strong>تیکت‌های من</strong><a class="btn btn-primary" href="#new-ticket">＋ تیکت جدید</a></div>
+    <div class="ticket-item active"><div style="display:flex;justify-content:space-between;gap:8px"><h3>مشکل در ثبت موقعیت ملک</h3><span class="badge info">پاسخ داده شده</span></div><p>لطفاً موقعیت را از روی نقشه دوباره انتخاب کنید...</p><span class="small">۱۴۰۳/۰۸/۲۴</span></div>
+    <div class="ticket-item"><div style="display:flex;justify-content:space-between;gap:8px"><h3>درخواست بررسی آگهی</h3><span class="badge warning">در حال بررسی</span></div><p>آگهی شما در صف بررسی قرار دارد...</p><span class="small">۱۴۰۳/۰۸/۲۲</span></div>
+    <div class="ticket-item"><div style="display:flex;justify-content:space-between;gap:8px"><h3>سوال درباره اشتراک</h3><span class="badge danger">بسته شده</span></div><p>پاسخ نهایی ارسال شد.</p><span class="small">۱۴۰۳/۰۸/۲۰</span></div>
+  </aside>
+  <section class="ticket-chat">
+    <header class="ticket-head"><div><strong>مشکل در ثبت موقعیت ملک</strong><div class="small">وضعیت: پاسخ داده شده</div></div><span class="badge primary">Ticket Group</span></header>
+    <div class="messages">
+      <div class="msg me">سلام، هنگام ثبت آگهی، نقطه انتخاب‌شده روی نقشه ذخیره نمی‌شود.</div>
+      <div class="msg support">سلام. لطفاً ابتدا محدوده را جستجو کنید، سپس نقطه را روی نقشه انتخاب و ذخیره را بزنید. اگر خطا ادامه داشت، کد آگهی را ارسال کنید.</div>
+      <div class="msg me">کد آگهی DM-24891 است. مشکل بعد از انتخاب UTM رخ می‌دهد.</div>
+    </div>
+    <footer class="composer"><input placeholder="پیام جدید برای این تیکت..." /><button class="btn btn-primary">ارسال</button></footer>
+  </section>
+</section>
+<section class="mobile-card" id="new-ticket">
+  <div class="section-title"><div><h2>ایجاد تیکت جدید</h2><p>مطابق Flutter: عنوان درخواست و توضیحات تکمیلی الزامی هستند.</p></div></div>
+  <div class="form-grid">
+    <div class="field full"><label>عنوان درخواست</label><input placeholder="عنوان درخواست را اینجا وارد نمایید" /></div>
+    <div class="field full"><label>توضیحات تکمیلی</label><textarea placeholder="توضیحات تکمیلی را در رابطه با درخواست خود اینجا وارد نمایید"></textarea></div>
+  </div>
+  <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn btn-primary" data-toast="تیکت با موفقیت ایجاد شد">ارسال</button></div>
+</section>
+</main>
+  <nav class="mobile-bottom-nav"><a href="map.html" class=""><span>⌖</span><span>نقشه</span></a><a href="requests.html" class=""><span>□</span><span>درخواست</span></a><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a><a href="chat.html" class=""><span>◌</span><span>چت</span></a><a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a></nav>
+</div>
+</body>
+</html>
