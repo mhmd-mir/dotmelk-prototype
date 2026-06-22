@@ -3,41 +3,766 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>درخواست‌های موبایل</title>
-    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
-    <script defer src="../assets/prototype.js"></script>
+    <title>Dotmelk — درخواست‌ها / موبایل</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
+      :root {
+        --primary: #6d28d9;
+        --primary-hover: #5b21b6;
+        --primary-soft: #f5f3ff;
+        --primary-subtle: #ede9fe;
+        --primary-border: #c4b5fd;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --card: #ffffff;
+        --surface-muted: #f1f5f9;
+        --text: #0f172a;
+        --text-2: #475569;
+        --muted: #64748b;
+        --subtle: #94a3b8;
+        --border: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --success-soft: #dcfce7;
+        --success-text: #166534;
+        --warning-soft: #fef3c7;
+        --warning-text: #92400e;
+        --danger: #dc2626;
+        --danger-soft: #fee2e2;
+        --danger-text: #991b1b;
+        --info-soft: #dbeafe;
+        --info-text: #1e40af;
+        --pink-soft: #fce7f3;
+        --t-sale: #2563eb;
+        --t-rent: #16a34a;
+        --t-participation: #ea580c;
+        --t-presell: #dc2626;
+        --t-short: #0d9488;
+        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+        --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      body {
+        margin: 0;
+        font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        direction: rtl;
+        min-height: 100vh;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        border: 0;
+        cursor: pointer;
+        background: none;
+        color: inherit;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .app {
+        min-height: 100vh;
+        background: radial-gradient(circle at 18% -10%, rgba(109, 40, 217, 0.1), transparent 34%),
+          linear-gradient(180deg, #fff 0, #f8fafc 230px, #f8fafc 100%);
+        padding-bottom: 92px;
+      }
 
-    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+      /* topbar */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(248, 250, 252, 0.9);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.78);
+        padding: 12px 16px 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .topbar .title {
+        flex: 1;
+      }
+      .topbar h1 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 26px;
+      }
+      .topbar p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .icon-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        display: grid;
+        place-items: center;
+        color: var(--text-2);
+        font-size: 20px;
+        flex: 0 0 auto;
+      }
+
+      .content {
+        padding: 14px 16px 0;
+      }
+
+      /* search + quick */
+      .search-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 12px;
+        box-shadow: var(--shadow-sm);
+      }
+      .search-field {
+        height: 46px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 14px;
+        color: var(--muted);
+      }
+      .search-field input {
+        border: 0;
+        outline: 0;
+        width: 100%;
+        background: transparent;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .quick-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .quick-btn {
+        height: 42px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .quick-btn.primary {
+        background: var(--primary);
+        color: #fff;
+      }
+      .quick-btn.soft {
+        background: var(--primary-soft);
+        color: var(--primary);
+        border: 1px solid var(--primary-border);
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 12px 0 2px;
+        scrollbar-width: none;
+      }
+      .chips::-webkit-scrollbar {
+        display: none;
+      }
+      .chip {
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--text-2);
+        border-radius: 999px;
+        padding: 0 13px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .chip.active {
+        background: var(--primary-soft);
+        border-color: var(--primary-border);
+        color: var(--primary);
+      }
+
+      .active-filters {
+        margin-top: 12px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+        padding: 12px;
+      }
+      .af-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .af-head h2 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .af-head button {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--primary);
+      }
+      .af-scroll {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .af-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin: 18px 0 12px;
+      }
+      .section-head h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 900;
+      }
+      .section-head p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .sort-pill {
+        height: 32px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 11px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--text-2);
+        white-space: nowrap;
+      }
+
+      /* ===== request card (synced) ===== */
+      .req-list {
+        display: grid;
+        gap: 12px;
+      }
+      .req-card {
+        position: relative;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+        display: grid;
+        grid-template-columns: 5px 1fr;
+      }
+      .req-card:active {
+        transform: scale(0.995);
+      }
+      .type-rail {
+        width: 5px;
+      }
+      .type-rail.sale { background: var(--t-sale); }
+      .type-rail.rent { background: var(--t-rent); }
+      .type-rail.participation { background: var(--t-participation); }
+      .type-rail.presell { background: var(--t-presell); }
+      .type-rail.short { background: var(--t-short); }
+
+      .req-inner {
+        padding: 13px 14px;
+        min-width: 0;
+      }
+      .req-top {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 9px;
+      }
+      .type-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 900;
+        padding: 4px 9px;
+        border-radius: 999px;
+        color: #fff;
+      }
+      .type-tag.sale { background: var(--t-sale); }
+      .type-tag.rent { background: var(--t-rent); }
+      .type-tag.participation { background: var(--t-participation); }
+      .type-tag.presell { background: var(--t-presell); }
+      .type-tag.short { background: var(--t-short); }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 999px;
+        padding: 3px 9px;
+        font-size: 10px;
+        font-weight: 800;
+      }
+      .status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+      .status.public { background: var(--success-soft); color: var(--success-text); }
+      .status.folk { background: #dcfce7; color: #15803d; }
+      .status.agency { background: #d1fae5; color: #047857; }
+      .status.waiting { background: var(--info-soft); color: var(--info-text); }
+      .status.edit { background: var(--warning-soft); color: var(--warning-text); }
+      .status.archived { background: #ede9fe; color: #6d28d9; }
+      .status.rejected { background: var(--danger-soft); color: var(--danger-text); }
+      .status.deleted { background: var(--pink-soft); color: #9d174d; }
+      .status.expired { background: #fee2e2; color: #b91c1c; }
+      .badge-urgent {
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--danger-text);
+        background: var(--danger-soft);
+        padding: 3px 8px;
+        border-radius: 999px;
+      }
+      .badge-vip {
+        font-size: 10px;
+        font-weight: 800;
+        color: #7c2d12;
+        background: linear-gradient(135deg, #fde68a, #f59e0b);
+        padding: 3px 8px;
+        border-radius: 999px;
+      }
+
+      .req-main {
+        display: grid;
+        grid-template-columns: 1fr 84px;
+        gap: 12px;
+      }
+      .req-title {
+        font-size: 15px;
+        line-height: 24px;
+        font-weight: 900;
+        margin: 0 0 7px;
+      }
+      .req-amount {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 900;
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 4px 8px;
+      }
+      .req-amount .label {
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--muted);
+      }
+      .req-amount small {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+      .req-amount .agreed { color: var(--primary); }
+      .req-amount .sep { width: 1px; height: 14px; background: var(--border-strong); align-self: center; }
+      .req-range {
+        margin-top: 7px;
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--text-2);
+      }
+      .req-range b { color: var(--text); font-weight: 800; }
+      .thumb {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ede9fe, #dbeafe 60%, #f8fafc);
+        min-height: 84px;
+      }
+      .thumb.rent { background: linear-gradient(135deg, #d1fae5, #dbeafe 60%, #f8fafc); }
+      .thumb.participation { background: linear-gradient(135deg, #ffedd5, #fde68a 60%, #f8fafc); }
+      .thumb.presell { background: linear-gradient(135deg, #fee2e2, #ede9fe 60%, #f8fafc); }
+      .thumb.short { background: linear-gradient(135deg, #ccfbf1, #dbeafe 60%, #f8fafc); }
+      .thumb .ph {
+        position: absolute;
+        inset: auto 12px 10px 12px;
+        height: 44%;
+        border-radius: 6px 6px 0 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5));
+      }
+      .thumb .code {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: rgba(15, 23, 42, 0.72);
+        color: #fff;
+        font-size: 9px;
+        font-weight: 800;
+        padding: 2px 6px;
+        border-radius: 999px;
+      }
+      .thumb .media {
+        position: absolute;
+        bottom: 6px;
+        left: 6px;
+        width: 22px;
+        height: 22px;
+        border-radius: 7px;
+        background: rgba(15, 23, 42, 0.6);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+      }
+      .req-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 11px;
+        padding-top: 11px;
+        border-top: 1px solid var(--border);
+      }
+      .req-time {
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .req-actions {
+        display: flex;
+        gap: 6px;
+      }
+      .mini {
+        width: 34px;
+        height: 34px;
+        border-radius: 11px;
+        border: 1px solid var(--border);
+        background: #fff;
+        display: grid;
+        place-items: center;
+        color: var(--text-2);
+        font-size: 15px;
+      }
+      .mini.primary {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      /* fab + bottom nav */
+      .fab {
+        position: fixed;
+        left: 16px;
+        bottom: 88px;
+        z-index: 35;
+        width: 54px;
+        height: 54px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: linear-gradient(135deg, #7c3aed, #5b21b6);
+        box-shadow: 0 18px 40px rgba(109, 40, 217, 0.3);
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 30;
+        height: 72px;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(18px);
+        border-top: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-size: 10px;
+        font-weight: 900;
+        color: var(--muted);
+      }
+      .nav-item .nav-icon {
+        font-size: 19px;
+      }
+      .nav-item.active {
+        color: var(--primary);
+      }
+
+      /* ===== filter bottom sheet ===== */
+      .sheet-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.4);
+        z-index: 120;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.2s;
+      }
+      .sheet {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 130;
+        background: #fff;
+        border-radius: 26px 26px 0 0;
+        box-shadow: 0 -20px 50px rgba(15, 23, 42, 0.2);
+        transform: translateY(105%);
+        transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        max-height: 86vh;
+        display: flex;
+        flex-direction: column;
+      }
+      body.sheet-open .sheet-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      body.sheet-open .sheet {
+        transform: translateY(0);
+      }
+      .sheet-handle {
+        width: 44px;
+        height: 5px;
+        border-radius: 999px;
+        background: var(--border-strong);
+        margin: 10px auto 4px;
+      }
+      .sheet-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 18px 12px;
+        border-bottom: 1px solid var(--border);
+      }
+      .sheet-head h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 900;
+      }
+      .sheet-head button {
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--danger);
+      }
+      .sheet-body {
+        overflow: auto;
+        padding: 14px 18px;
+      }
+      .fgroup {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .flabel {
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .req-flag {
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--danger);
+        background: var(--danger-soft);
+        padding: 2px 7px;
+        border-radius: 999px;
+      }
+      .fvals {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .range-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .input-fake {
+        height: 42px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .switch-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-2);
+        padding: 8px 0;
+      }
+      .switch {
+        width: 40px;
+        height: 23px;
+        border-radius: 999px;
+        background: var(--border-strong);
+        position: relative;
+      }
+      .switch.on { background: var(--primary); }
+      .switch:before {
+        content: "";
+        position: absolute;
+        right: 3px;
+        top: 3px;
+        width: 17px;
+        height: 17px;
+        background: #fff;
+        border-radius: 999px;
+        transition: 0.15s;
+      }
+      .switch.on:before { right: 20px; }
+      .sheet-foot {
+        padding: 12px 18px calc(16px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--border);
+      }
+      .apply-btn {
+        height: 50px;
+        width: 100%;
+        border-radius: 16px;
+        background: var(--primary);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 900;
+      }
+
+      /* drawer (inlined) */
+      .small { font-size: 13px; line-height: 22px; color: var(--muted); }
+      .drawer-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.38);
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.2s ease-out;
+      }
+      .mobile-drawer {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: min(86vw, 360px);
+        background: #fff;
+        z-index: 110;
+        transform: translateX(105%);
+        transition: 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: -20px 0 50px rgba(15, 23, 42, 0.18);
+        display: flex;
+        flex-direction: column;
+      }
+      body.drawer-open .drawer-backdrop { opacity: 1; pointer-events: auto; }
+      body.drawer-open .mobile-drawer { transform: translateX(0); }
+      .drawer-head {
+        padding: 18px 16px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .drawer-user { display: flex; align-items: center; gap: 10px; }
+      .avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 19px;
+        background: linear-gradient(135deg, #7c3aed, #0f766e);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+      .drawer-scroll { padding: 10px; overflow: auto; }
+      .drawer-scroll a,
+      .drawer-scroll button {
+        height: 44px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+        width: 100%;
+        background: transparent;
+        border: 0;
+        text-align: right;
+        color: var(--text-2);
+        font-size: 13px;
+        font-weight: 850;
+      }
+      .drawer-scroll a:hover,
+      .drawer-scroll button:hover { background: var(--primary-soft); color: var(--primary); }
+      .drawer-scroll button.logout { color: var(--danger-text); }
+      .drawer-version {
+        margin-top: auto;
+        border-top: 1px solid var(--border);
+        padding: 12px 16px;
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
     <script defer src="../assets/dotmelk-menu-pages.js"></script>
   </head>
   <body>
-    <div class="mobile-body">
-      <header class="mobile-topbar">
-        <button class="icon-btn" data-drawer-toggle aria-label="باز کردن منو">
-          ☰
-        </button>
-        <div class="mobile-title">درخواست‌ها</div>
-        <button class="icon-btn" data-toast="فیلترها در نسخه دمو نمایشی هستند">
-          ＋
-        </button>
+    <main class="app">
+      <header class="topbar">
+        <button class="icon-btn" data-drawer-toggle aria-label="منو">☰</button>
+        <div class="title">
+          <h1>درخواست‌های ملکی</h1>
+          <p>نیاز متقاضی‌ها: بودجه، محدوده و نوع معامله</p>
+        </div>
+        <button class="icon-btn" aria-label="اعلان‌ها">◷</button>
       </header>
 
       <div class="drawer-backdrop" data-drawer-close></div>
-
-      <aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
+      <aside class="mobile-drawer">
         <div class="drawer-head">
           <div class="drawer-user">
             <div class="avatar">م</div>
-            <div>
-              <strong>مهراد محمدی</strong>
-              <div class="small">کاربر فعال داتملک</div>
-            </div>
+            <div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div>
           </div>
-          <button class="icon-btn" data-drawer-close aria-label="بستن منو">
-            ×
-          </button>
+          <button class="icon-btn" data-drawer-close aria-label="بستن">×</button>
         </div>
-
         <div class="drawer-scroll">
           <a href="account.html"><span>◫</span>حساب کاربری من</a>
           <a href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
@@ -47,106 +772,376 @@
           <a href="about.html"><span>●</span>درباره داتملک</a>
           <a href="contact.html"><span>☎</span>ارتباط با ما</a>
           <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-          <button class="logout" onclick="location.href = 'logout.html'">
-            <span>⎋</span>خروج
-          </button>
+          <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
         </div>
-
-        <div class="drawer-version">
-          <span>Dotmelk</span>
-          <span>v1.0.0</span>
-        </div>
+        <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
       </aside>
 
-      <main class="mobile-content">
-        <div class="searchbox" style="margin: 0">⌕ جستجو در درخواست‌ها</div>
-        <div class="filter-row">
-          <span class="chip">خرید</span><span class="chip">اجاره</span
-          ><span class="chip">بودجه مشخص</span
-          ><span class="chip">نزدیک من</span>
+      <div class="content">
+        <section class="search-card">
+          <label class="search-field">
+            <span aria-hidden="true">⌕</span>
+            <input value="متقاضی خرید سعادت‌آباد" aria-label="جستجو در درخواست‌ها" />
+          </label>
+          <div class="quick-row">
+            <button class="quick-btn soft" onclick="document.body.classList.add('sheet-open')">☷ فیلترها · ۲ فعال</button>
+            <button class="quick-btn primary">⌖ نمایش روی نقشه</button>
+          </div>
+        </section>
+
+        <nav class="chips" aria-label="نوع درخواست">
+          <span class="chip active">همه</span>
+          <span class="chip">خرید</span>
+          <span class="chip">رهن و اجاره</span>
+          <span class="chip">مشارکت</span>
+          <span class="chip">پیش‌فروش</span>
+          <span class="chip">اجاره کوتاه‌مدت</span>
+        </nav>
+
+        <section class="active-filters">
+          <div class="af-head">
+            <h2>فیلترهای فعال</h2>
+            <button>پاک کردن</button>
+          </div>
+          <div class="af-scroll">
+            <span class="chip active">تهران</span>
+            <span class="chip active">سعادت‌آباد</span>
+            <span class="chip active">آژانس من</span>
+          </div>
+        </section>
+
+        <div class="section-head">
+          <div>
+            <h2>درخواست‌های فعال</h2>
+            <p>۲۱۰ متقاضی فعال در محدوده تهران</p>
+          </div>
+          <button class="sort-pill">جدیدترین ▾</button>
         </div>
-        <section class="mobile-list">
-          <article class="mobile-card">
-            <div
-              style="
-                display: flex;
-                gap: 6px;
-                margin-bottom: 8px;
-                overflow: auto;
-              "
-            >
-              <span class="badge primary">خرید</span
-              ><span class="badge success">بودجه مشخص</span>
-            </div>
-            <h2
-              style="
-                font-size: 16px;
-                line-height: 27px;
-                margin: 0 0 6px;
-                font-weight: 900;
-              "
-            >
-              خرید آپارتمان ۱۲۰ تا ۱۵۰ متر در سعادت‌آباد
-            </h2>
-            <strong
-              style="font-size: 20px; line-height: 32px; color: var(--primary)"
-              >۱۱ تا ۱۴ میلیارد</strong
-            >
-            <p class="small" style="margin: 4px 0 12px">
-              ۳ خواب، ترجیحاً نوساز، نزدیک بلوار دریا و میدان کاج.
-            </p>
-            <div class="amenities">
-              <span class="amenity">۳ خواب</span
-              ><span class="amenity">پارکینگ</span
-              ><span class="amenity">محدوده GIS</span>
+
+        <section class="req-list">
+          <!-- 1) خرید · عمومی · فوری · تور -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail sale"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag sale">خرید</span>
+                <span class="status public"><span class="dot"></span>منتشر شده عمومی</span>
+                <span class="badge-urgent">فوری</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی خرید آپارتمان ۱۲۰ تا ۱۵۰ متر در سعادت‌آباد</h3>
+                  <div class="req-amount"><span class="label">بودجه:</span> تا ۱۴ میلیارد <small>تومان</small></div>
+                  <div class="req-range">⌖ <b>تهران، سعادت‌آباد</b> — محله کاج</div>
+                </div>
+                <div class="thumb"><span class="ph"></span><span class="code">۵۴۲۱</span><span class="media" title="تور مجازی">↻</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">امروز · آژانس آسمان</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+                </div>
+              </div>
             </div>
           </article>
-          <article class="mobile-card">
-            <div
-              style="
-                display: flex;
-                gap: 6px;
-                margin-bottom: 8px;
-                overflow: auto;
-              "
-            >
-              <span class="badge warning">رهن و اجاره</span
-              ><span class="badge neutral">خانواده</span>
+
+          <!-- 2) رهن و اجاره · املاک · VIP -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail rent"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag rent">رهن و اجاره</span>
+                <span class="status agency"><span class="dot"></span>منتشر شده املاک</span>
+                <span class="badge-vip">★ ویژه</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی رهن و اجاره ۹۰ تا ۱۲۰ متر نزدیک مدرسه</h3>
+                  <div class="req-amount"><span class="label">ودیعه:</span> تا ۸۰۰م <span class="sep"></span> <span class="label">اجاره:</span> تا ۳۵م</div>
+                  <div class="req-range">⌖ <b>تهران، مرزداران</b> — محله آریافر</div>
+                </div>
+                <div class="thumb rent"><span class="ph"></span><span class="code">۶۳۱۸</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">امروز · املاک خانه نو</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+                </div>
+              </div>
             </div>
-            <h2
-              style="
-                font-size: 16px;
-                line-height: 27px;
-                margin: 0 0 6px;
-                font-weight: 900;
-              "
-            >
-              اجاره آپارتمان نزدیک مدرسه و خدمات شهری
-            </h2>
-            <strong
-              style="font-size: 20px; line-height: 32px; color: var(--primary)"
-              >۱.۲ ودیعه + ۵۰</strong
-            >
-            <p class="small" style="margin: 4px 0 12px">
-              ۹۰ تا ۱۲۰ متر، دسترسی خوب، تحویل تا پایان ماه.
-            </p>
-            <div class="amenities">
-              <span class="amenity">۲ خواب</span
-              ><span class="amenity">آسانسور</span
-              ><span class="amenity">دسترسی مدرسه</span>
+          </article>
+
+          <!-- 3) رهن کامل · منقضی -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail rent"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag rent">رهن و اجاره</span>
+                <span class="status expired"><span class="dot"></span>منقضی شده</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی رهن کامل آپارتمان ۸۰ متری در ولنجک</h3>
+                  <div class="req-amount"><span class="agreed">رهن کامل</span> <span class="sep"></span> <span class="label">تا</span> ۱.۲ میلیارد <small>ودیعه</small></div>
+                  <div class="req-range">⌖ <b>تهران، ولنجک</b> — محله یمن</div>
+                </div>
+                <div class="thumb rent"><span class="ph"></span><span class="code">۶۹۰۲</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">۵ روز پیش · متقاضی شخصی</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="تماس" onclick="event.stopPropagation()">☎</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4) مشارکت · مردمی · توافقی -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail participation"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag participation">مشارکت</span>
+                <span class="status folk"><span class="dot"></span>منتشر شده مردمی</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">سرمایه‌گذار مشارکت در ساخت — کلنگی منطقه ۲</h3>
+                  <div class="req-amount"><span class="label">حداکثر سرمایه:</span> <span class="agreed">توافقی</span></div>
+                  <div class="req-range">⌖ <b>تهران، منطقه ۲</b> — سعادت‌آباد، شهرک غرب</div>
+                </div>
+                <div class="thumb participation"><span class="ph"></span><span class="code">۴۸۸۹</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">۲ روز پیش · گروه آرتا</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5) پیش‌فروش · در انتظار · ویدئو -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail presell"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag presell">پیش‌فروش</span>
+                <span class="status waiting"><span class="dot"></span>در انتظار انتشار</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی پیش‌خرید واحد ۱۰۰ تا ۱۳۰ متر در چیتگر</h3>
+                  <div class="req-amount"><span class="label">پیش‌پرداخت:</span> تا ۲ میلیارد <small>تومان</small></div>
+                  <div class="req-range">⌖ <b>تهران، چیتگر</b> — منطقه ۲۲</div>
+                </div>
+                <div class="thumb presell"><span class="ph"></span><span class="code">۷۰۳۴</span><span class="media" title="ویدئو">▷</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">دیروز · آژانس آسمان</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6) اجاره کوتاه‌مدت · عمومی -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail short"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag short">اجاره کوتاه‌مدت</span>
+                <span class="status public"><span class="dot"></span>منتشر شده عمومی</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی سوئیت مبله روزانه نزدیک مرکز همایش‌ها</h3>
+                  <div class="req-amount"><span class="label">اجاره شبانه:</span> تا ۳ میلیون <small>تومان</small></div>
+                  <div class="req-range">⌖ <b>تهران، ونک</b> — محله گاندی</div>
+                </div>
+                <div class="thumb short"><span class="ph"></span><span class="code">۸۱۱۵</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">امروز · متقاضی شخصی</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="تماس" onclick="event.stopPropagation()">☎</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7) خرید · نیاز به ویرایش · توافقی -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail sale"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag sale">خرید</span>
+                <span class="status edit"><span class="dot"></span>نیاز به ویرایش</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی خرید کلنگی برای بازسازی در امانیه</h3>
+                  <div class="req-amount"><span class="label">بودجه:</span> <span class="agreed">توافقی</span></div>
+                  <div class="req-range">⌖ <b>تهران، امانیه</b> — محله دروس</div>
+                </div>
+                <div class="thumb"><span class="ph"></span><span class="code">۵۲۷۰</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">۳ روز پیش · دفتر شمال شهر</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8) مشارکت · بایگانی -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail participation"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag participation">مشارکت</span>
+                <span class="status archived"><span class="dot"></span>بایگانی شده</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی مشارکت در ساخت ویلایی در لواسان</h3>
+                  <div class="req-amount"><span class="label">حداکثر سرمایه:</span> تا ۳۰ میلیارد <small>تومان</small></div>
+                  <div class="req-range">⌖ <b>لواسان</b> — محله ایگل</div>
+                </div>
+                <div class="thumb participation"><span class="ph"></span><span class="code">۴۱۰۲</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">هفته پیش · متقاضی شخصی</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9) پیش‌فروش · رد شده -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail presell"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag presell">پیش‌فروش</span>
+                <span class="status rejected"><span class="dot"></span>رد شده</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی پیش‌خرید برج‌باغ در منطقه ۱</h3>
+                  <div class="req-amount"><span class="label">پیش‌پرداخت:</span> تا ۵ میلیارد <small>تومان</small></div>
+                  <div class="req-range">⌖ <b>تهران، منطقه ۱</b> — زعفرانیه</div>
+                </div>
+                <div class="thumb presell"><span class="ph"></span><span class="code">۷۷۸۱</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">۴ روز پیش · گروه آرتا</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="نشان" onclick="event.stopPropagation()">♡</button>
+                  <button class="mini primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10) خرید · حذف شده -->
+          <article class="req-card" onclick="location.href='request-detail.html'">
+            <span class="type-rail sale"></span>
+            <div class="req-inner">
+              <div class="req-top">
+                <span class="type-tag sale">خرید</span>
+                <span class="status deleted"><span class="dot"></span>حذف شده</span>
+              </div>
+              <div class="req-main">
+                <div>
+                  <h3 class="req-title">متقاضی خرید واحد ۶۰ متری برای سرمایه‌گذاری</h3>
+                  <div class="req-amount"><span class="label">بودجه:</span> تا ۴ میلیارد <small>تومان</small></div>
+                  <div class="req-range">⌖ <b>تهران، نازی‌آباد</b> — بازار دوم</div>
+                </div>
+                <div class="thumb"><span class="ph"></span><span class="code">۳۳۵۰</span></div>
+              </div>
+              <div class="req-foot">
+                <span class="req-time">هفته پیش · متقاضی شخصی</span>
+                <div class="req-actions">
+                  <button class="mini" aria-label="بازیابی" onclick="event.stopPropagation()">↺</button>
+                </div>
+              </div>
             </div>
           </article>
         </section>
-      </main>
+      </div>
 
-      <nav class="mobile-bottom-nav">
-        <a href="map.html" class=""><span>⌖</span><span>نقشه</span></a
-        ><a href="requests.html" class="active"
-          ><span>□</span><span>درخواست</span></a
-        ><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a
-        ><a href="chat.html" class=""><span>◌</span><span>چت</span></a
-        ><a href="my-dotmelk.html" class=""><span>◫</span><span>من</span></a>
+      <button class="fab" aria-label="ثبت درخواست جدید">＋</button>
+
+      <nav class="bottom-nav" aria-label="ناوبری اصلی">
+        <a class="nav-item" href="map.html"><span class="nav-icon">⌖</span><span>نقشه</span></a>
+        <a class="nav-item active" href="requests.html"><span class="nav-icon">□</span><span>درخواست‌ها</span></a>
+        <a class="nav-item" href="ads.html"><span class="nav-icon">⌂</span><span>آگهی‌ها</span></a>
+        <a class="nav-item" href="chat.html"><span class="nav-icon">◌</span><span>چت</span></a>
+        <a class="nav-item" href="my-dotmelk.html"><span class="nav-icon">◫</span><span>داتملک من</span></a>
       </nav>
-    </div>
+
+      <!-- filter bottom sheet -->
+      <div class="sheet-backdrop" onclick="document.body.classList.remove('sheet-open')"></div>
+      <div class="sheet" role="dialog" aria-label="فیلتر درخواست‌ها">
+        <div class="sheet-handle"></div>
+        <div class="sheet-head">
+          <h3>فیلتر درخواست‌ها</h3>
+          <button onclick="document.body.classList.remove('sheet-open')">حذف فیلترها</button>
+        </div>
+        <div class="sheet-body">
+          <div class="fgroup">
+            <div class="flabel">محدوده‌ی درخواست <span class="req-flag">الزامی</span></div>
+            <div class="fvals">
+              <span class="chip active">تهران</span>
+              <span class="chip active">سعادت‌آباد</span>
+              <span class="chip">مرزداران</span>
+              <span class="chip">+ افزودن محدوده</span>
+            </div>
+          </div>
+          <div class="fgroup">
+            <div class="flabel">نوع درخواست</div>
+            <div class="fvals">
+              <span class="chip active">همه</span>
+              <span class="chip">خرید</span>
+              <span class="chip">رهن و اجاره</span>
+              <span class="chip">مشارکت</span>
+              <span class="chip">پیش‌فروش</span>
+              <span class="chip">اجاره کوتاه‌مدت</span>
+            </div>
+          </div>
+          <div class="fgroup">
+            <div class="flabel">مبلغ خرید (تومان)</div>
+            <div class="range-row"><div class="input-fake">از ۸ میلیارد</div><div class="input-fake">تا ۲۰ میلیارد</div></div>
+          </div>
+          <div class="fgroup">
+            <div class="flabel">مبلغ رهن (تومان)</div>
+            <div class="range-row"><div class="input-fake">از ۳۰۰ م</div><div class="input-fake">تا ۱.۵ میلیارد</div></div>
+          </div>
+          <div class="fgroup">
+            <div class="flabel">مبلغ اجاره (تومان)</div>
+            <div class="range-row"><div class="input-fake">از ۵ م</div><div class="input-fake">تا ۵۰ م</div></div>
+          </div>
+          <div class="fgroup" style="border-bottom: 0">
+            <div class="switch-row"><span>فقط نشان‌شده‌ها</span><span class="switch"></span></div>
+            <div class="switch-row"><span>فقط درخواست‌های آژانس من</span><span class="switch on"></span></div>
+          </div>
+        </div>
+        <div class="sheet-foot">
+          <button class="apply-btn" onclick="document.body.classList.remove('sheet-open')">اعمال فیلتر</button>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

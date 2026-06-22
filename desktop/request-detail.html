@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dotmelk — جزئیات درخواست / دسکتاپ</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
+      :root {
+        --primary: #6d28d9;
+        --primary-hover: #5b21b6;
+        --primary-soft: #f5f3ff;
+        --primary-subtle: #ede9fe;
+        --primary-border: #c4b5fd;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --surface-muted: #f1f5f9;
+        --text: #0f172a;
+        --text-2: #475569;
+        --muted: #64748b;
+        --subtle: #94a3b8;
+        --border: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --success: #16a34a;
+        --success-soft: #dcfce7;
+        --success-text: #166534;
+        --warning: #d97706;
+        --warning-soft: #fef3c7;
+        --warning-text: #92400e;
+        --danger: #dc2626;
+        --danger-soft: #fee2e2;
+        --danger-text: #991b1b;
+        --info: #2563eb;
+        --info-soft: #dbeafe;
+        --info-text: #1e40af;
+        --t-sale: #2563eb;
+        --radius-xl: 20px;
+        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+        --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08);
+        --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-width: 1180px;
+        font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        direction: rtl;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        border: 0;
+        cursor: pointer;
+        background: none;
+        color: inherit;
+        font: inherit;
+      }
+      .shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 18px 24px 60px;
+      }
+      /* top bar */
+      .topbar {
+        height: 64px;
+        background: rgba(255, 255, 255, 0.86);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 14px;
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 14px;
+        z-index: 30;
+      }
+      .back-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 13px;
+        border: 1px solid var(--border);
+        display: grid;
+        place-items: center;
+        color: var(--text-2);
+        font-size: 18px;
+      }
+      .back-btn:hover {
+        border-color: var(--primary-border);
+        color: var(--primary);
+      }
+      .topbar h1 {
+        font-size: 16px;
+        font-weight: 900;
+        margin: 0;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .crumb {
+        font-size: 12px;
+        color: var(--muted);
+        margin-inline-start: auto;
+      }
+      .btn {
+        height: 40px;
+        padding: 0 16px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+      .btn-soft {
+        background: var(--primary-soft);
+        color: var(--primary);
+        border: 1px solid var(--primary-border);
+      }
+      .btn-outline {
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 16px;
+        margin-top: 16px;
+        align-items: start;
+      }
+      .col {
+        display: grid;
+        gap: 16px;
+        min-width: 0;
+      }
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        box-shadow: var(--shadow-sm);
+      }
+      .pad {
+        padding: 18px;
+      }
+
+      /* gallery */
+      .gallery {
+        position: relative;
+        height: 380px;
+        border-radius: 22px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ede9fe 0%, #bfdbfe 55%, #f8fafc 100%);
+        border: 1px solid var(--border);
+      }
+      .gallery .ph {
+        position: absolute;
+        inset: auto 60px 0 60px;
+        height: 64%;
+        border-radius: 16px 16px 0 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5));
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+      }
+      .gallery .type-corner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--t-sale);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 8px 16px;
+        border-bottom-left-radius: 16px;
+      }
+      .gallery .watermark {
+        position: absolute;
+        bottom: 14px;
+        right: 16px;
+        color: rgba(109, 40, 217, 0.35);
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .gallery .media-fab {
+        position: absolute;
+        bottom: 14px;
+        left: 16px;
+        display: flex;
+        gap: 8px;
+      }
+      .media-fab span {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: rgba(109, 40, 217, 0.78);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 17px;
+        backdrop-filter: blur(6px);
+      }
+      .gallery .dots {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+      }
+      .gallery .dots i {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .gallery .dots i.on {
+        width: 18px;
+        background: #fff;
+      }
+      .from-strip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 16px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-2);
+      }
+
+      /* summary header */
+      .summary-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .type-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 900;
+        padding: 5px 12px;
+        border-radius: 999px;
+        color: #fff;
+        background: var(--t-sale);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .badge.danger {
+        background: var(--danger-soft);
+        color: var(--danger-text);
+      }
+      .badge.success {
+        background: var(--success-soft);
+        color: var(--success-text);
+      }
+      .summary-head h2 {
+        font-size: 21px;
+        line-height: 33px;
+        font-weight: 900;
+        margin: 12px 0 0;
+      }
+      .price-band {
+        margin-top: 14px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--primary-soft), #eef2ff);
+        border: 1px solid var(--primary-border);
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .price-band .item .k {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 800;
+      }
+      .price-band .item .v {
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--primary);
+        margin-top: 2px;
+      }
+      .price-band .item .v small {
+        font-size: 13px;
+        color: var(--text-2);
+        font-weight: 700;
+      }
+      .price-band .vsep {
+        width: 1px;
+        align-self: stretch;
+        background: var(--primary-border);
+      }
+      .meta-line {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        margin-top: 14px;
+        font-size: 13px;
+        color: var(--text-2);
+      }
+      .meta-line span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .meta-line b {
+        color: var(--text);
+        font-weight: 800;
+      }
+
+      /* top action quick bar */
+      .quick-actions {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .quick {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--surface);
+        padding: 12px 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--text-2);
+        transition: 0.15s;
+      }
+      .quick:hover {
+        border-color: var(--primary-border);
+        color: var(--primary);
+        background: var(--primary-soft);
+      }
+      .quick .ic {
+        width: 40px;
+        height: 40px;
+        border-radius: 13px;
+        background: var(--primary-soft);
+        color: var(--primary);
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+      }
+      .quick.on .ic {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      /* section title */
+      .sec-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 14px;
+        font-size: 16px;
+        font-weight: 900;
+      }
+      .sec-title .bar {
+        width: 4px;
+        height: 18px;
+        border-radius: 999px;
+        background: var(--primary);
+      }
+
+      /* dynamic property groups */
+      .group {
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+      .group > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        background: var(--primary-soft);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 900;
+        font-size: 14px;
+        color: var(--text);
+      }
+      .group > summary::-webkit-details-marker {
+        display: none;
+      }
+      .group > summary .chev {
+        color: var(--primary);
+        transition: 0.2s;
+      }
+      .group[open] > summary .chev {
+        transform: rotate(180deg);
+      }
+      .group .grid {
+        padding: 14px 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .attr {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 10px 12px;
+        background: var(--bg);
+      }
+      .attr .k {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+      .attr .v {
+        font-size: 14px;
+        color: var(--text);
+        font-weight: 800;
+        margin-top: 3px;
+      }
+      .attr.full {
+        grid-column: 1 / -1;
+      }
+      .attr .v.yes {
+        color: var(--success-text);
+      }
+      .attr .v.no {
+        color: var(--muted);
+      }
+      .chips-line {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 16px 14px;
+      }
+      .pill {
+        background: var(--surface-muted);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--text-2);
+      }
+
+      /* side cards */
+      .side {
+        position: sticky;
+        top: 92px;
+        display: grid;
+        gap: 16px;
+      }
+      .requester {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .ava {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #7c3aed, #0f766e);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 18px;
+        flex: 0 0 auto;
+      }
+      .requester .nm {
+        font-size: 15px;
+        font-weight: 900;
+      }
+      .requester .role {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .act-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .act {
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 14px;
+        font-size: 14px;
+        font-weight: 800;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        width: 100%;
+      }
+      .act .ic {
+        color: var(--primary);
+        font-size: 17px;
+      }
+      .act .arr {
+        margin-inline-start: auto;
+        color: var(--subtle);
+      }
+      .act:hover {
+        border-color: var(--primary-border);
+        background: var(--primary-soft);
+      }
+      .act.primary {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+      .act.primary .ic {
+        color: #fff;
+      }
+      .act.danger {
+        color: var(--danger-text);
+      }
+      .act.danger .ic {
+        color: var(--danger);
+      }
+      .agency-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+      }
+      .agency-logo {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        background: var(--surface-muted);
+        border: 1px solid var(--border);
+        display: grid;
+        place-items: center;
+        color: var(--primary);
+        font-weight: 900;
+        font-size: 18px;
+        flex: 0 0 auto;
+      }
+      .agency-row .nm {
+        font-size: 14px;
+        font-weight: 900;
+      }
+      .agency-row .lnk {
+        font-size: 12px;
+        color: var(--primary);
+        margin-top: 3px;
+        font-weight: 700;
+      }
+      .info-rows {
+        display: grid;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 9px 12px;
+      }
+      .info-row span {
+        color: var(--muted);
+        font-weight: 700;
+      }
+      .info-row b {
+        font-weight: 800;
+      }
+      h3.card-h {
+        margin: 0 0 12px;
+        font-size: 15px;
+        font-weight: 900;
+      }
+      .ribbon {
+        position: fixed;
+        left: 24px;
+        bottom: 24px;
+        background: rgba(15, 23, 42, 0.82);
+        color: #fff;
+        border-radius: 999px;
+        padding: 9px 13px;
+        font-size: 12px;
+        z-index: 60;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="back-btn" href="requests.html" aria-label="بازگشت">→</a>
+        <h1>متقاضی خرید آپارتمان ۱۲۰ تا ۱۵۰ متر در سعادت‌آباد</h1>
+        <span class="crumb">درخواست‌ها / جزئیات درخواست</span>
+      </header>
+
+      <main class="layout">
+        <!-- ===== MAIN COLUMN ===== -->
+        <div class="col">
+          <!-- gallery -->
+          <div class="panel" style="overflow: hidden; padding: 0">
+            <div class="gallery">
+              <span class="ph"></span>
+              <span class="type-corner">درخواست خرید</span>
+              <span class="watermark">داتملک</span>
+              <div class="media-fab">
+                <span title="تور مجازی ۳۶۰">↻</span>
+                <span title="ویدئو">▷</span>
+              </div>
+              <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="from-strip">
+              درخواست خرید ⟵ <b style="color: var(--primary)">از داتملک</b>
+            </div>
+          </div>
+
+          <!-- summary -->
+          <div class="panel pad">
+            <div class="summary-head">
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <span class="type-tag">● خرید</span>
+                <span class="badge success">منتشر شده عمومی</span>
+                <span class="badge danger">فوری</span>
+              </div>
+              <span style="font-size: 12px; color: var(--muted); font-weight: 700">کد درخواست: ۵۴۲۱</span>
+            </div>
+            <h2>متقاضی خرید آپارتمان ۱۲۰ تا ۱۵۰ متر در سعادت‌آباد</h2>
+
+            <div class="price-band">
+              <div class="item">
+                <div class="k">حداکثر بودجه‌ی خرید</div>
+                <div class="v">۱۴ میلیارد <small>تومان</small></div>
+              </div>
+              <div class="vsep"></div>
+              <div class="item">
+                <div class="k">پرداخت نقد اولیه</div>
+                <div class="v">۸ میلیارد <small>تومان</small></div>
+              </div>
+              <div class="vsep"></div>
+              <div class="item">
+                <div class="k">نحوه‌ی پرداخت</div>
+                <div class="v" style="font-size: 16px; color: var(--text)">نقد + اقساط</div>
+              </div>
+            </div>
+
+            <div class="meta-line">
+              <span>⌖ محدوده: <b>تهران، سعادت‌آباد — محله کاج</b></span>
+              <span>◷ تاریخ انتشار: <b>امروز</b></span>
+              <span>◫ ثبت‌کننده: <b>آژانس آسمان</b></span>
+            </div>
+          </div>
+
+          <!-- top quick actions (mark / share / visit / note) -->
+          <div class="panel pad">
+            <div class="quick-actions">
+              <button class="quick"><span class="ic">♡</span>نشان کردن</button>
+              <button class="quick"><span class="ic">↗</span>اشتراک‌گذاری</button>
+              <button class="quick"><span class="ic">▤</span>زمان بازدید</button>
+              <button class="quick"><span class="ic">✎</span>یادداشت</button>
+            </div>
+          </div>
+
+          <!-- dynamic property groups (the demand's desired specs) -->
+          <div class="panel pad">
+            <div class="sec-title"><span class="bar"></span>مشخصات نیاز متقاضی</div>
+
+            <details class="group" open>
+              <summary>مشخصات کلی <span class="chev">▾</span></summary>
+              <div class="grid">
+                <div class="attr"><div class="k">نوع ملک</div><div class="v">آپارتمان مسکونی</div></div>
+                <div class="attr"><div class="k">نوع معامله</div><div class="v">خرید</div></div>
+                <div class="attr"><div class="k">کاربری</div><div class="v">مسکونی</div></div>
+                <div class="attr"><div class="k">وضعیت سند</div><div class="v">تک‌برگ شش‌دانگ</div></div>
+              </div>
+            </details>
+
+            <details class="group" open>
+              <summary>ویژگی‌های مطلوب ملک <span class="chev">▾</span></summary>
+              <div class="chips-line">
+                <span class="pill">حداقل متراژ: ۱۲۰ متر</span>
+                <span class="pill">حداکثر متراژ: ۱۵۰ متر</span>
+                <span class="pill">تعداد خواب: ۳</span>
+                <span class="pill">حداکثر سن بنا: ۱۰ سال</span>
+                <span class="pill">طبقه: میانی</span>
+                <span class="pill">جهت: جنوبی</span>
+              </div>
+            </details>
+
+            <details class="group">
+              <summary>امکانات موردنیاز <span class="chev">▾</span></summary>
+              <div class="grid">
+                <div class="attr"><div class="k">پارکینگ</div><div class="v yes">دارد — الزامی</div></div>
+                <div class="attr"><div class="k">انباری</div><div class="v yes">دارد</div></div>
+                <div class="attr"><div class="k">آسانسور</div><div class="v yes">دارد</div></div>
+                <div class="attr"><div class="k">بالکن</div><div class="v no">مهم نیست</div></div>
+                <div class="attr"><div class="k">سیستم سرمایش</div><div class="v">کولر گازی / اسپلیت</div></div>
+                <div class="attr"><div class="k">سیستم گرمایش</div><div class="v">پکیج / شوفاژ</div></div>
+              </div>
+            </details>
+
+            <details class="group">
+              <summary>محدوده و موقعیت <span class="chev">▾</span></summary>
+              <div class="grid">
+                <div class="attr"><div class="k">استان</div><div class="v">تهران</div></div>
+                <div class="attr"><div class="k">شهر</div><div class="v">تهران</div></div>
+                <div class="attr"><div class="k">محله‌ی اصلی</div><div class="v">سعادت‌آباد</div></div>
+                <div class="attr"><div class="k">محله‌های موردقبول</div><div class="v">کاج، سرو، علامه</div></div>
+                <div class="attr full"><div class="k">دسترسی‌های مهم برای متقاضی</div><div class="v">نزدیک مترو، مدرسه‌ی غیرانتفاعی، بلوار اصلی</div></div>
+              </div>
+            </details>
+
+            <details class="group">
+              <summary>توضیحات متقاضی <span class="chev">▾</span></summary>
+              <div class="grid">
+                <div class="attr full">
+                  <div class="k">یادداشت متقاضی</div>
+                  <div class="v" style="font-weight: 600; line-height: 26px">
+                    خریدار جدی با بودجه‌ی آماده. ترجیح با نوساز یا کم‌سن، نور و
+                    نقشه‌ی خوب. آماده‌ی بازدید فوری و تصمیم‌گیری سریع است.
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- ===== SIDE COLUMN ===== -->
+        <aside class="side">
+          <!-- requester + main actions -->
+          <div class="panel pad">
+            <div class="requester">
+              <div class="ava">م.ر</div>
+              <div>
+                <div class="nm">متقاضی: محمد رضایی</div>
+                <div class="role">از طریق آژانس آسمان · پاسخ‌گویی سریع</div>
+              </div>
+            </div>
+            <div class="act-list">
+              <button class="act primary"><span class="ic">◌</span>شروع گفتگو با متقاضی<span class="arr">‹</span></button>
+              <button class="act"><span class="ic">☎</span>تماس با متقاضی<span class="arr">‹</span></button>
+              <button class="act"><span class="ic">✉</span>ارسال پیامک<span class="arr">‹</span></button>
+              <button class="act danger"><span class="ic">⚠</span>ثبت تخلف<span class="arr">‹</span></button>
+            </div>
+          </div>
+
+          <!-- agency -->
+          <div class="panel pad">
+            <div class="agency-row">
+              <div class="agency-logo">آ</div>
+              <div style="flex: 1">
+                <div class="nm">آژانس املاک آسمان</div>
+                <div class="lnk">مشاهده‌ی سایر درخواست‌های این آژانس ‹</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- request meta -->
+          <div class="panel pad">
+            <h3 class="card-h">خلاصه‌ی درخواست</h3>
+            <div class="info-rows">
+              <div class="info-row"><span>نوع درخواست</span><b style="color: var(--t-sale)">خرید</b></div>
+              <div class="info-row"><span>وضعیت</span><b style="color: var(--success-text)">منتشر شده عمومی</b></div>
+              <div class="info-row"><span>کد درخواست</span><b>۵۴۲۱</b></div>
+              <div class="info-row"><span>تاریخ ثبت</span><b>امروز</b></div>
+              <div class="info-row"><span>اعتبار درخواست</span><b>۳۰ روز</b></div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+    <div class="ribbon">Dotmelk · جزئیات درخواست (دسکتاپ)</div>
+  </body>
+</html>

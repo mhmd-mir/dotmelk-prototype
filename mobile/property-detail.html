@@ -3,975 +3,263 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dotmelk — جزئیات ملک / موبایل</title>
+    <title>Dotmelk — جزئیات آگهی / موبایل</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
-
       :root {
-        --primary: #6d28d9;
-        --primary-hover: #5b21b6;
-        --primary-soft: #f5f3ff;
-        --primary-subtle: #ede9fe;
-        --primary-border: #c4b5fd;
-        --primary-fg: #ffffff;
-        --bg: #f8fafc;
-        --surface: #ffffff;
-        --card: #ffffff;
-        --surface-muted: #f1f5f9;
-        --text: #0f172a;
-        --text-2: #475569;
-        --muted: #64748b;
-        --subtle: #94a3b8;
-        --border: #e2e8f0;
-        --border-strong: #cbd5e1;
-        --success: #16a34a;
-        --success-soft: #dcfce7;
-        --success-text: #166534;
-        --warning: #d97706;
-        --warning-soft: #fef3c7;
-        --warning-text: #92400e;
-        --danger: #dc2626;
-        --danger-soft: #fee2e2;
-        --danger-text: #991b1b;
-        --info: #2563eb;
-        --info-soft: #dbeafe;
-        --info-text: #1e40af;
-        --teal: #0f766e;
-        --teal-soft: #ccfbf1;
-        --orange: #f97316;
-        --orange-soft: #ffedd5;
-        --map-ad: #6d28d9;
-        --map-demand: #0f766e;
-        --map-poi: #f97316;
-        --map-selected: #f59e0b;
-        --map-user: #2563eb;
+        --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-border: #c4b5fd;
+        --bg: #f8fafc; --surface: #ffffff; --surface-muted: #f1f5f9; --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
+        --border: #e2e8f0; --border-strong: #cbd5e1; --success-soft: #dcfce7; --success-text: #166534;
+        --danger: #dc2626; --danger-soft: #fee2e2; --danger-text: #991b1b;
+        --t-sale: #2563eb;
         --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
-        --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08);
-        --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
-        --shadow-map: 0 12px 30px rgba(15, 23, 42, 0.16);
       }
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        font-family:
-          "Vazirmatn",
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        direction: rtl;
-        min-height: 100vh;
-      }
-      button,
-      input {
-        font: inherit;
-      }
-      button {
-        border: 0;
-        cursor: pointer;
-        background: none;
-        color: inherit;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      .app {
-        width: 100%;
-        min-height: 100vh;
-        background:
-          radial-gradient(
-            circle at 20% -6%,
-            rgba(109, 40, 217, 0.12),
-            transparent 32%
-          ),
-          linear-gradient(180deg, #fff 0, #f8fafc 260px, #f8fafc 100%);
-        padding-bottom: 96px;
-      }
-      .topbar {
-        height: 58px;
-        position: sticky;
-        top: 0;
-        z-index: 40;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 0 16px;
-        background: rgba(248, 250, 252, 0.88);
-        backdrop-filter: blur(18px);
-        border-bottom: 1px solid rgba(226, 232, 240, 0.78);
-      }
-      .topbar-title {
-        font-size: 14px;
-        font-weight: 900;
-        line-height: 22px;
-        max-width: 52%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .icon-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 14px;
-        border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.88);
-        display: grid;
-        place-items: center;
-        color: var(--text-2);
-        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
-      }
-      .actions {
-        display: flex;
-        gap: 8px;
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        border-radius: 999px;
-        padding: 4px 9px;
-        font-size: 12px;
-        line-height: 18px;
-        font-weight: 800;
-        white-space: nowrap;
-      }
-      .badge.primary {
-        background: var(--primary-soft);
-        color: var(--primary);
-      }
-      .badge.success {
-        background: var(--success-soft);
-        color: var(--success-text);
-      }
-      .badge.info {
-        background: var(--info-soft);
-        color: var(--info-text);
-      }
-      .badge.warning {
-        background: var(--warning-soft);
-        color: var(--warning-text);
-      }
-      .badge.orange {
-        background: var(--orange-soft);
-        color: #9a3412;
-      }
-      .badge.dark {
-        background: rgba(15, 23, 42, 0.72);
-        color: #fff;
-        backdrop-filter: blur(10px);
-      }
-      .hero-photo {
-        position: relative;
-        height: 300px;
-        margin: 0;
-        overflow: hidden;
-        background: linear-gradient(
-          135deg,
-          #ddd6fe 0%,
-          #bfdbfe 48%,
-          #f8fafc 100%
-        );
-        border-bottom: 1px solid var(--border);
-      }
-      .hero-photo:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(15, 23, 42, 0) 38%,
-          rgba(15, 23, 42, 0.58)
-        );
-        z-index: 1;
-      }
-      .building {
-        position: absolute;
-        inset: auto 24px 24px 24px;
-        height: 58%;
-        border-radius: 18px 18px 0 0;
-        opacity: 0.96;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.88),
-          rgba(255, 255, 255, 0.6)
-        );
-        box-shadow: 0 20px 55px rgba(15, 23, 42, 0.16);
-      }
-      .building:before,
-      .building:after {
-        content: "";
-        position: absolute;
-        background: rgba(109, 40, 217, 0.14);
-        border-radius: 7px;
-      }
-      .building:before {
-        inset: 22px 24px auto auto;
-        width: 42px;
-        height: 60px;
-        box-shadow:
-          -60px 0 rgba(109, 40, 217, 0.13),
-          -120px 0 rgba(109, 40, 217, 0.11),
-          0 80px rgba(15, 118, 110, 0.12),
-          -60px 80px rgba(15, 118, 110, 0.11),
-          -120px 80px rgba(15, 118, 110, 0.1);
-      }
-      .building:after {
-        left: 22px;
-        right: 22px;
-        bottom: 16px;
-        height: 10px;
-        background: rgba(15, 23, 42, 0.12);
-      }
-      .hero-badges {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        left: 14px;
-        z-index: 2;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      .hero-caption {
-        position: absolute;
-        right: 16px;
-        left: 16px;
-        bottom: 16px;
-        z-index: 2;
-        color: #fff;
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 12px;
-      }
-      .hero-caption strong {
-        font-size: 14px;
-        line-height: 22px;
-      }
-      .view-gallery {
-        height: 34px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.92);
-        color: var(--text);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 0 12px;
-        font-size: 12px;
-        font-weight: 900;
-      }
-      .content {
-        padding: 14px 16px 0;
-        display: grid;
-        gap: 12px;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        padding: 16px;
-        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
-      }
-      .summary-card {
-        border-color: var(--primary-border);
-        background: linear-gradient(135deg, #fff, #fff 62%, #f5f3ff);
-      }
-      .status-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        overflow: auto;
-        padding-bottom: 2px;
-        margin-bottom: 10px;
-        scrollbar-width: none;
-      }
-      .status-row::-webkit-scrollbar {
-        display: none;
-      }
-      .title {
-        font-size: 20px;
-        line-height: 32px;
-        font-weight: 900;
-        margin: 0 0 6px;
-        letter-spacing: -0.01em;
-      }
-      .location {
-        display: flex;
-        align-items: flex-start;
-        gap: 7px;
-        font-size: 13px;
-        line-height: 22px;
-        color: var(--text-2);
-      }
-      .price-label {
-        font-size: 12px;
-        color: var(--muted);
-        font-weight: 800;
-        margin-top: 14px;
-      }
-      .price {
-        font-size: 24px;
-        line-height: 36px;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-        margin-top: 2px;
-      }
-      .price-sub {
-        font-size: 13px;
-        line-height: 22px;
-        color: var(--text-2);
-        margin-top: 2px;
-      }
-      .quick-actions {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        margin-top: 14px;
-      }
-      .qa {
-        height: 42px;
-        border-radius: 14px;
-        border: 1px solid var(--border);
-        background: var(--surface);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        font-size: 13px;
-        font-weight: 900;
-        color: var(--text-2);
-      }
-      .qa.primary {
-        background: var(--primary-soft);
-        border-color: var(--primary-border);
-        color: var(--primary);
-      }
-      .facts {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-      }
-      .fact {
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        background: var(--surface);
-        padding: 12px 8px;
-        text-align: center;
-      }
-      .fact .i {
-        width: 32px;
-        height: 32px;
-        border-radius: 13px;
-        background: var(--primary-soft);
-        color: var(--primary);
-        display: grid;
-        place-items: center;
-        margin: 0 auto 7px;
-        font-weight: 900;
-      }
-      .fact strong {
-        font-size: 17px;
-        font-weight: 900;
-        display: block;
-        line-height: 24px;
-      }
-      .fact span {
-        font-size: 12px;
-        color: var(--muted);
-        font-weight: 700;
-      }
-      .section-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        margin-bottom: 12px;
-      }
-      .section-head h2 {
-        font-size: 17px;
-        line-height: 28px;
-        font-weight: 900;
-        margin: 0;
-      }
-      .section-head p {
-        font-size: 12px;
-        line-height: 20px;
-        color: var(--muted);
-        margin: 2px 0 0;
-      }
-      .desc {
-        font-size: 14px;
-        line-height: 28px;
-        color: var(--text-2);
-        margin: 0;
-      }
-      .spec-list {
-        display: grid;
-        gap: 8px;
-      }
-      .spec {
-        min-height: 44px;
-        border: 1px solid var(--border);
-        border-radius: 15px;
-        background: var(--surface);
-        padding: 10px 12px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-      }
-      .spec span {
-        font-size: 12px;
-        color: var(--muted);
-        font-weight: 700;
-      }
-      .spec strong {
-        font-size: 13px;
-        color: var(--text);
-        font-weight: 900;
-        text-align: left;
-      }
-      .amenities {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .amenity {
-        height: 34px;
-        border-radius: 999px;
-        background: var(--surface-muted);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 0 11px;
-        font-size: 13px;
-        font-weight: 800;
-        color: var(--text-2);
-      }
-      .agent {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
-      .avatar {
-        width: 54px;
-        height: 54px;
-        border-radius: 20px;
-        background: linear-gradient(135deg, #7c3aed, #0f766e);
-        color: #fff;
-        display: grid;
-        place-items: center;
-        font-size: 18px;
-        font-weight: 900;
-        box-shadow: 0 12px 30px rgba(109, 40, 217, 0.18);
-      }
-      .agent h3 {
-        font-size: 15px;
-        margin: 0;
-        font-weight: 900;
-      }
-      .agent p {
-        font-size: 12px;
-        line-height: 20px;
-        color: var(--muted);
-        margin: 3px 0 0;
-      }
-      .agent-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-top: 12px;
-      }
-      .btn {
-        height: 44px;
-        border-radius: 14px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        font-weight: 900;
-        font-size: 14px;
-      }
-      .btn-primary {
-        background: var(--primary);
-        color: #fff;
-      }
-      .btn-outline {
-        border: 1px solid var(--border);
-        background: var(--surface);
-        color: var(--text);
-      }
-      .map-canvas {
-        position: relative;
-        overflow: hidden;
-        background: #eef6f4;
-        border: 1px solid var(--border);
-        isolation: isolate;
-        height: 245px;
-        border-radius: 20px;
-      }
-      .map-canvas:before {
-        content: "";
-        position: absolute;
-        inset: -20%;
-        background:
-          linear-gradient(90deg, rgba(15, 118, 110, 0.12) 1px, transparent 1px),
-          linear-gradient(0deg, rgba(15, 118, 110, 0.12) 1px, transparent 1px);
-        background-size: 38px 38px;
-        transform: rotate(-8deg);
-        opacity: 0.7;
-      }
-      .road {
-        position: absolute;
-        background: #fff;
-        border: 1px solid rgba(203, 213, 225, 0.65);
-        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-        border-radius: 999px;
-      }
-      .road.r1 {
-        width: 120%;
-        height: 24px;
-        right: -10%;
-        top: 36%;
-        transform: rotate(-13deg);
-      }
-      .road.r2 {
-        width: 120%;
-        height: 20px;
-        right: -8%;
-        top: 65%;
-        transform: rotate(18deg);
-      }
-      .road.r3 {
-        width: 24px;
-        height: 120%;
-        right: 44%;
-        top: -10%;
-        transform: rotate(8deg);
-      }
-      .park {
-        position: absolute;
-        border-radius: 24px;
-        background: rgba(22, 163, 74, 0.16);
-        border: 1px solid rgba(22, 163, 74, 0.18);
-        width: 86px;
-        height: 58px;
-        right: 28px;
-        top: 24px;
-      }
-      .marker {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 999px;
-        background: var(--map-ad);
-        color: white;
-        display: grid;
-        place-items: center;
-        font-size: 16px;
-        font-weight: 900;
-        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
-        border: 3px solid white;
-        z-index: 2;
-        right: 50%;
-        top: 42%;
-      }
-      .marker:after {
-        content: "";
-        position: absolute;
-        bottom: -8px;
-        width: 14px;
-        height: 14px;
-        background: inherit;
-        transform: rotate(45deg);
-        border-radius: 3px;
-        z-index: -1;
-      }
-      .map-control {
-        position: absolute;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(12px);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        box-shadow: var(--shadow-sm);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 8px 10px;
-        font-size: 12px;
-        font-weight: 900;
-        color: var(--text-2);
-        z-index: 4;
-      }
-      .map-data {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-top: 10px;
-      }
-      .map-data .spec {
-        display: block;
-        min-height: auto;
-      }
-      .map-data .spec span,
-      .map-data .spec strong {
-        display: block;
-        text-align: right;
-      }
-      .map-data .spec strong {
-        margin-top: 4px;
-      }
-      .env-list {
-        display: grid;
-        gap: 8px;
-      }
-      .env {
-        border: 1px solid var(--border);
-        border-radius: 17px;
-        background: var(--surface);
-        padding: 12px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .env .bubble {
-        width: 40px;
-        height: 40px;
-        border-radius: 15px;
-        display: grid;
-        place-items: center;
-        font-size: 12px;
-        font-weight: 900;
-        flex: 0 0 auto;
-      }
-      .env.transport .bubble {
-        background: #ccfbf1;
-        color: #0f766e;
-      }
-      .env.school .bubble {
-        background: #dbeafe;
-        color: #1e40af;
-      }
-      .env.health .bubble {
-        background: #fee2e2;
-        color: #991b1b;
-      }
-      .env.shop .bubble {
-        background: #ffedd5;
-        color: #9a3412;
-      }
-      .env h3 {
-        font-size: 13px;
-        line-height: 22px;
-        margin: 0;
-        font-weight: 900;
-      }
-      .env p {
-        font-size: 12px;
-        line-height: 20px;
-        color: var(--muted);
-        margin: 2px 0 0;
-      }
-      .bottom-bar {
-        position: fixed;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 60;
-        padding: 10px 16px 14px;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(18px);
-        border-top: 1px solid var(--border);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        box-shadow: 0 -12px 30px rgba(15, 23, 42, 0.08);
-      }
-      .prototype {
-        position: fixed;
-        left: 12px;
-        bottom: 84px;
-        background: rgba(15, 23, 42, 0.78);
-        color: #fff;
-        border-radius: 999px;
-        padding: 7px 10px;
-        font-size: 11px;
-        z-index: 70;
-      }
-      @media (min-width: 760px) {
-        .content {
-          grid-template-columns: 1.1fr 0.9fr;
-          align-items: start;
-          padding-inline: 24px;
-        }
-        .summary-card,
-        .hero-photo {
-          grid-column: 1/-1;
-        }
-        .hero-photo {
-          height: 360px;
-        }
-        .bottom-bar {
-          right: 50%;
-          left: 24px;
-          border-radius: 22px 22px 0 0;
-        }
-      }
-    </style>
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; overflow-x: hidden; }
+      body { margin: 0; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); direction: rtl; min-height: 100vh; }
+      button { border: 0; cursor: pointer; background: none; color: inherit; font: inherit; }
+      a { text-decoration: none; color: inherit; }
+      .app { min-height: 100vh; padding-bottom: 84px; }
 
-    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
-    <script defer src="../assets/dotmelk-menu-pages.js"></script>
+      .topbar { position: sticky; top: 0; z-index: 20; height: 58px; display: flex; align-items: center; gap: 10px; padding: 0 14px; background: rgba(248, 250, 252, 0.92); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(226, 232, 240, 0.78); }
+      .back, .ic { width: 40px; height: 40px; border-radius: 13px; border: 1px solid var(--border); background: #fff; display: grid; place-items: center; color: var(--text-2); font-size: 18px; flex: 0 0 auto; }
+      .topbar h1 { margin: 0; font-size: 15px; font-weight: 900; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .ic.on { color: var(--danger); border-color: var(--danger-soft); background: var(--danger-soft); }
+
+      .content { padding: 14px 16px 0; display: grid; gap: 14px; }
+      .gallery { position: relative; height: 240px; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #ddd6fe 0%, #bfdbfe 55%, #f8fafc 100%); border: 1px solid var(--border); }
+      .gallery .ph { position: absolute; inset: auto 40px 0 40px; height: 62%; border-radius: 14px 14px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5)); box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14); }
+      .gallery .type-corner { position: absolute; top: 0; right: 0; background: var(--t-sale); color: #fff; font-size: 12px; font-weight: 800; padding: 6px 13px; border-bottom-left-radius: 14px; }
+      .gallery .code-badge { position: absolute; top: 10px; left: 10px; background: rgba(15, 23, 42, 0.72); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 999px; }
+      .gallery .media-fab { position: absolute; bottom: 12px; left: 12px; display: flex; gap: 8px; }
+      .media-fab span { width: 36px; height: 36px; border-radius: 11px; background: rgba(109, 40, 217, 0.78); color: #fff; display: grid; place-items: center; font-size: 15px; }
+      .gallery .dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; }
+      .gallery .dots i { width: 6px; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, 0.7); }
+      .gallery .dots i.on { width: 16px; background: #fff; }
+      .gallery .from-strip { position: absolute; bottom: 0; right: 0; left: 0; padding: 8px 14px; font-size: 11px; font-weight: 700; color: #fff; background: linear-gradient(0deg, rgba(15, 23, 42, 0.55), transparent); }
+
+      .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 15px; box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03); }
+      .row-badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+      .type-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 999px; color: #fff; background: var(--t-sale); }
+      .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 3px 9px; font-size: 11px; font-weight: 800; }
+      .badge.success { background: var(--success-soft); color: var(--success-text); }
+      .badge.danger { background: var(--danger-soft); color: var(--danger-text); }
+      .code-x { margin-inline-start: auto; font-size: 11px; color: var(--muted); font-weight: 700; }
+      .title { font-size: 18px; line-height: 28px; font-weight: 900; margin: 12px 0 0; }
+      .price-band { margin-top: 12px; border-radius: 14px; background: linear-gradient(135deg, var(--primary-soft), #eef2ff); border: 1px solid var(--primary-border); padding: 12px 14px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+      .price-band .k { font-size: 11px; color: var(--muted); font-weight: 800; }
+      .price-band .v { font-size: 19px; font-weight: 900; color: var(--primary); margin-top: 2px; }
+      .price-band .v small { font-size: 12px; color: var(--text-2); font-weight: 700; }
+      .price-band .vsep { width: 1px; align-self: stretch; background: var(--primary-border); }
+      .meta { margin-top: 12px; display: grid; gap: 8px; }
+      .meta div { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); }
+      .meta b { color: var(--text); font-weight: 800; }
+
+      .quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .quick { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); padding: 11px 4px; display: flex; flex-direction: column; align-items: center; gap: 7px; font-size: 11px; font-weight: 800; color: var(--text-2); }
+      .quick .qic { width: 38px; height: 38px; border-radius: 12px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 17px; }
+
+      .sec-title { display: flex; align-items: center; gap: 8px; margin: 4px 0 2px; font-size: 16px; font-weight: 900; }
+      .sec-title .bar { width: 4px; height: 18px; border-radius: 999px; background: var(--primary); }
+
+      .group { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: #fff; }
+      .group > summary { list-style: none; cursor: pointer; padding: 13px 14px; background: var(--primary-soft); display: flex; align-items: center; justify-content: space-between; font-weight: 900; font-size: 14px; }
+      .group > summary::-webkit-details-marker { display: none; }
+      .group > summary .chev { color: var(--primary); transition: 0.2s; }
+      .group[open] > summary .chev { transform: rotate(180deg); }
+      .group .body { padding: 12px 14px; display: grid; gap: 10px; }
+      .attr { border: 1px solid var(--border); border-radius: 13px; padding: 9px 12px; background: var(--bg); }
+      .attr .k { font-size: 11px; color: var(--muted); font-weight: 700; }
+      .attr .v { font-size: 14px; font-weight: 800; margin-top: 3px; }
+      .attr .v.yes { color: var(--success-text); } .attr .v.no { color: var(--muted); }
+      .chips-line { display: flex; flex-wrap: wrap; gap: 7px; padding: 12px 14px; }
+      .pill { background: var(--surface-muted); border-radius: 999px; padding: 6px 11px; font-size: 12px; font-weight: 800; color: var(--text-2); }
+
+      /* ارزیابی محیطی */
+      .assess { border: 1px solid var(--primary-border); border-radius: 18px; overflow: hidden; background: #fff; }
+      .assess-head { padding: 14px; background: linear-gradient(135deg, var(--primary-soft), #eef2ff); display: flex; align-items: center; gap: 10px; }
+      .assess-head .badge-gis { width: 36px; height: 36px; border-radius: 11px; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 17px; flex: 0 0 auto; }
+      .assess-head h3 { margin: 0; font-size: 15px; font-weight: 900; }
+      .assess-head p { margin: 2px 0 0; font-size: 11px; color: var(--text-2); line-height: 17px; }
+      .assess-map { position: relative; height: 170px; background: #eef6f4; overflow: hidden; }
+      .assess-map:before { content: ""; position: absolute; inset: -20%; background: linear-gradient(90deg, rgba(15,118,110,.12) 1px, transparent 1px), linear-gradient(0deg, rgba(15,118,110,.12) 1px, transparent 1px); background-size: 32px 32px; transform: rotate(-8deg); }
+      .assess-map .prop { position: absolute; top: 48%; right: 46%; width: 32px; height: 32px; border-radius: 999px; background: var(--t-sale); border: 3px solid #fff; color: #fff; display: grid; place-items: center; font-size: 14px; font-weight: 900; box-shadow: 0 8px 18px rgba(15,23,42,.25); z-index: 2; }
+      .assess-map .poi { position: absolute; width: 26px; height: 26px; border-radius: 999px; background: #fff; border: 2px solid var(--primary-border); display: grid; place-items: center; font-size: 12px; }
+      .cat-tabs { display: flex; gap: 7px; padding: 12px 14px 0; overflow-x: auto; scrollbar-width: none; }
+      .cat-tabs::-webkit-scrollbar { display: none; }
+      .cat { height: 30px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--border); background: #fff; font-size: 12px; font-weight: 800; color: var(--text-2); white-space: nowrap; }
+      .cat.active { background: var(--primary-soft); border-color: var(--primary-border); color: var(--primary); }
+      .access-list { padding: 12px 14px 14px; display: grid; gap: 8px; }
+      .access { border: 1px solid var(--border); border-radius: 13px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; }
+      .access .ai { width: 34px; height: 34px; border-radius: 10px; background: var(--surface-muted); color: var(--primary); display: grid; place-items: center; font-size: 16px; flex: 0 0 auto; }
+      .access .info { flex: 1; min-width: 0; }
+      .access .at { font-size: 13px; font-weight: 800; }
+      .access .times { display: flex; gap: 10px; font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 2px; }
+      .access .dist { font-size: 13px; font-weight: 900; color: var(--text); flex: 0 0 auto; }
+
+      .agency { display: flex; align-items: center; gap: 12px; }
+      .agency-logo { width: 50px; height: 50px; border-radius: 14px; background: var(--surface-muted); border: 1px solid var(--border); display: grid; place-items: center; color: var(--primary); font-weight: 900; font-size: 18px; flex: 0 0 auto; }
+      .agency .nm { font-size: 14px; font-weight: 900; }
+      .agency .lnk { font-size: 12px; color: var(--primary); margin-top: 3px; font-weight: 700; }
+      .act-list { display: grid; }
+      .act-row { display: flex; align-items: center; gap: 10px; padding: 13px 4px; font-size: 14px; font-weight: 700; border-top: 1px solid var(--border); }
+      .act-row:first-child { border-top: 0; }
+      .act-row .aic { color: var(--primary); font-size: 17px; }
+      .act-row .arr { margin-inline-start: auto; color: var(--subtle); }
+      .act-row.danger { color: var(--danger-text); } .act-row.danger .aic { color: var(--danger); }
+
+      .bottom-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); border-top: 1px solid var(--border); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: 46px 46px 1fr; gap: 10px; }
+      .cta-ic { height: 50px; border-radius: 15px; border: 1px solid var(--border); background: #fff; display: grid; place-items: center; color: var(--text-2); font-size: 19px; }
+      .cta-main { height: 50px; border-radius: 15px; background: var(--primary); color: #fff; font-size: 15px; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    </style>
   </head>
   <body>
-    <div class="app">
+    <main class="app">
       <header class="topbar">
-        <button class="icon-btn" aria-label="بازگشت">‹</button>
-        <div class="topbar-title">جزئیات آگهی ملک</div>
-        <div class="actions">
-          <button class="icon-btn" aria-label="ذخیره">♡</button>
-          <button class="icon-btn" aria-label="اشتراک‌گذاری">↗</button>
-        </div>
+        <a class="back" href="ads.html" aria-label="بازگشت">→</a>
+        <h1>آپارتمان ۱۳۵ متری در سعادت‌آباد</h1>
+        <button class="ic" aria-label="اشتراک‌گذاری">↗</button>
+        <button class="ic" onclick="this.classList.toggle('on')" aria-label="نشان کردن">♡</button>
       </header>
 
-      <section class="hero-photo">
-        <div class="building"></div>
-        <div class="hero-badges">
-          <span class="badge dark">۱۲ تصویر</span>
-          <span class="badge dark">ویدیو · تور ۳۶۰</span>
+      <div class="content">
+        <div class="gallery">
+          <span class="ph"></span>
+          <span class="type-corner">فروش</span>
+          <span class="code-badge">کد ۵۴۲۱</span>
+          <div class="media-fab"><span title="تور مجازی">↻</span><span title="ویدئو">▷</span></div>
+          <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <div class="from-strip">فروش / مسکونی / آپارتمان ⟵ از داتملک</div>
         </div>
-        <div class="hero-caption">
-          <strong>نمای اصلی واحد و نورگیری پذیرایی</strong>
-          <span class="view-gallery">مشاهده گالری</span>
-        </div>
-      </section>
 
-      <main class="content">
-        <section class="card summary-card">
-          <div class="status-row">
-            <span class="badge success">منتشر شده</span>
-            <span class="badge primary">ویژه</span>
-            <span class="badge info">تور ۳۶۰</span>
-            <span class="badge orange">ارزیابی محیطی</span>
-          </div>
-          <h1 class="title">فروش آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h1>
-          <div class="location">
-            ⌖ <span>تهران، سعادت‌آباد، نزدیک میدان کاج · موقعیت تقریبی</span>
-          </div>
-          <div class="price-label">قیمت فروش</div>
-          <div class="price">۱۲.۸ میلیارد تومان</div>
-          <div class="price-sub">
-            ۹۴.۸ میلیون هر متر · قابل مذاکره · کد آگهی DM-24891
-          </div>
-          <div class="quick-actions">
-            <button class="qa primary">⌖ نقشه</button>
-            <button class="qa">♡ ذخیره</button>
-            <button class="qa">↗ ارسال</button>
-          </div>
-        </section>
-
-        <section class="facts">
-          <div class="fact">
-            <span class="i">م</span><strong>۱۳۵</strong><span>متر</span>
-          </div>
-          <div class="fact">
-            <span class="i">خ</span><strong>۳</strong><span>خواب</span>
-          </div>
-          <div class="fact">
-            <span class="i">ط</span><strong>۴</strong><span>طبقه</span>
-          </div>
-          <div class="fact">
-            <span class="i">س</span><strong>۱۴۰۱</strong><span>ساخت</span>
-          </div>
-          <div class="fact">
-            <span class="i">پ</span><strong>۱</strong><span>پارکینگ</span>
-          </div>
-          <div class="fact">
-            <span class="i">ج</span><strong>شمالی</strong><span>جهت</span>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="section-head">
-            <div>
-              <h2>اطلاعات آژانس و تماس</h2>
-              <p>تعاملات در داتملک قابل پیگیری است</p>
-            </div>
-          </div>
-          <div class="agent">
-            <div class="avatar">آ</div>
-            <div>
-              <h3>آرمان رضایی</h3>
-              <p>آژانس املاک آسمان · فایل تأییدشده</p>
-            </div>
-          </div>
-          <div class="agent-actions">
-            <button class="btn btn-primary">شروع گفتگو</button>
-            <button class="btn btn-outline">تماس</button>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="section-head">
-            <div>
-              <h2>خلاصه آگهی</h2>
-              <p>توضیح ثبت‌شده برای ملک</p>
-            </div>
-          </div>
-          <p class="desc">
-            واحدی خوش‌نقشه و نورگیر در یکی از خیابان‌های آرام سعادت‌آباد.
-            ساختمان ۷ طبقه، لابی مرتب، آسانسور، پارکینگ اختصاصی، انباری و دسترسی
-            مناسب به مراکز خرید و مسیرهای اصلی. موقعیت روی نقشه به‌صورت تقریبی
-            نمایش داده شده تا حریم خصوصی مالک حفظ شود.
-          </p>
-        </section>
-
-        <section class="card">
-          <div class="section-head">
-            <div>
-              <h2>مشخصات ملک</h2>
-              <p>اطلاعات کلیدی آگهی</p>
-            </div>
-          </div>
-          <div class="spec-list">
-            <div class="spec"><span>نوع معامله</span><strong>فروش</strong></div>
-            <div class="spec">
-              <span>نوع ملک</span><strong>آپارتمان مسکونی</strong>
-            </div>
-            <div class="spec"><span>نوع سند</span><strong>تک‌برگ</strong></div>
-            <div class="spec">
-              <span>وضعیت سکونت</span><strong>تخلیه، آماده بازدید</strong>
-            </div>
-            <div class="spec">
-              <span>تعداد واحد در طبقه</span><strong>۲ واحد</strong>
-            </div>
-            <div class="spec">
-              <span>سیستم گرمایش</span><strong>پکیج</strong>
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="section-head">
-            <div>
-              <h2>امکانات</h2>
-              <p>ثبت‌شده در فرم آگهی</p>
-            </div>
-          </div>
-          <div class="amenities">
-            <span class="amenity">✓ آسانسور</span
-            ><span class="amenity">✓ پارکینگ</span
-            ><span class="amenity">✓ انباری</span
-            ><span class="amenity">✓ بالکن</span
-            ><span class="amenity">✓ لابی</span
-            ><span class="amenity">✓ نگهبانی</span
-            ><span class="amenity">✓ ویدیو</span
-            ><span class="amenity">✓ تور ۳۶۰</span>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="section-head">
-            <div>
-              <h2>موقعیت و GIS</h2>
-              <p>نمایش تقریبی ملک و اطلاعات مکانی</p>
-            </div>
-          </div>
-          <div class="map-canvas">
-            <span class="road r1"></span><span class="road r2"></span
-            ><span class="road r3"></span>
-            <span class="park"></span>
-            <span class="marker">⌂</span>
-            <div class="map-control" style="top: 12px; right: 12px">
-              لایه‌ها
-            </div>
-            <div class="map-control" style="bottom: 12px; left: 12px">
-              موقعیت تقریبی
-            </div>
-          </div>
-          <div class="map-data">
-            <div class="spec"><span>محله</span><strong>سعادت‌آباد</strong></div>
-            <div class="spec">
-              <span>کد جام</span><strong>JAM-39-24891</strong>
-            </div>
-            <div class="spec"><span>UTM</span><strong>39N</strong></div>
-            <div class="spec">
-              <span>نمایش مکان</span><strong>تقریبی</strong>
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="section-head">
-            <div>
-              <h2>ارزیابی محیطی</h2>
-              <p>امتیاز کل ۸.۷ از ۱۰</p>
-            </div>
-            <span class="badge primary">فعال</span>
-          </div>
-          <div class="env-list">
-            <div class="env transport">
-              <span class="bubble">مسیر</span>
-              <div>
-                <h3>حمل‌ونقل</h3>
-                <p>۶ دقیقه تا ایستگاه تاکسی و مسیر اصلی</p>
-              </div>
-            </div>
-            <div class="env school">
-              <span class="bubble">آموزش</span>
-              <div>
-                <h3>آموزش</h3>
-                <p>۳ مرکز آموزشی در شعاع ۸۰۰ متر</p>
-              </div>
-            </div>
-            <div class="env health">
-              <span class="bubble">درمان</span>
-              <div>
-                <h3>درمان</h3>
-                <p>داروخانه و کلینیک نزدیک</p>
-              </div>
-            </div>
-            <div class="env shop">
-              <span class="bubble">خرید</span>
-              <div>
-                <h3>خرید و خدمات</h3>
-                <p>دسترسی سریع به مرکز خرید و خدمات روزمره</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="section-head">
-            <div>
-              <h2>اعتماد و وضعیت</h2>
-              <p>اطلاعات قابل بررسی برای کاربر</p>
-            </div>
-          </div>
-          <div class="amenities">
+        <div class="card">
+          <div class="row-badges">
+            <span class="type-tag">● فروش</span>
             <span class="badge success">منتشر شده عمومی</span>
-            <span class="badge primary">آژانس تأییدشده</span>
-            <span class="badge info">موقعیت GIS</span>
-            <span class="badge warning">قابل مذاکره</span>
+            <span class="badge danger">فوری</span>
+            <span class="code-x">امروز · آژانس آسمان</span>
           </div>
-        </section>
-      </main>
+          <h2 class="title">آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h2>
+          <div class="price-band">
+            <div><div class="k">مبلغ کل</div><div class="v">۱۲٫۸ میلیارد <small>تومان</small></div></div>
+            <div class="vsep"></div>
+            <div><div class="k">قیمت هر متر</div><div class="v" style="font-size: 15px">۹۴٫۸ م <small>تومان</small></div></div>
+          </div>
+          <div class="meta">
+            <div>⌖ محدوده: <b>تهران، سعادت‌آباد — محله کاج</b></div>
+            <div>◷ تاریخ انتشار: <b>امروز</b></div>
+          </div>
+        </div>
 
-      <div class="bottom-bar">
-        <button class="btn btn-outline">تماس</button>
-        <button class="btn btn-primary">شروع گفتگو</button>
+        <div class="card">
+          <div class="quick-actions">
+            <button class="quick"><span class="qic">⎙</span>پرینت</button>
+            <button class="quick"><span class="qic">↗</span>اشتراک</button>
+            <button class="quick"><span class="qic">▤</span>بازدید</button>
+            <button class="quick"><span class="qic">✎</span>یادداشت</button>
+          </div>
+        </div>
+
+        <div class="sec-title"><span class="bar"></span>مشخصات ملک</div>
+
+        <details class="group" open>
+          <summary>اطلاعات کلی <span class="chev">▾</span></summary>
+          <div class="body">
+            <div class="attr"><div class="k">نوع ملک</div><div class="v">آپارتمان مسکونی</div></div>
+            <div class="attr"><div class="k">نوع معامله</div><div class="v">فروش</div></div>
+            <div class="attr"><div class="k">نوع سند</div><div class="v">تک‌برگ شش‌دانگ</div></div>
+            <div class="attr"><div class="k">وضعیت</div><div class="v">نوساز</div></div>
+          </div>
+        </details>
+
+        <details class="group" open>
+          <summary>متراژ و مشخصات ساختمان <span class="chev">▾</span></summary>
+          <div class="chips-line">
+            <span class="pill">زیربنا: ۱۳۵ متر</span>
+            <span class="pill">خواب: ۳</span>
+            <span class="pill">طبقه: ۴ از ۷</span>
+            <span class="pill">واحد در طبقه: ۲</span>
+            <span class="pill">سال ساخت: ۱۴۰۱</span>
+            <span class="pill">جهت: جنوبی</span>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>امکانات <span class="chev">▾</span></summary>
+          <div class="body">
+            <div class="attr"><div class="k">پارکینگ</div><div class="v yes">دارد</div></div>
+            <div class="attr"><div class="k">انباری</div><div class="v yes">دارد</div></div>
+            <div class="attr"><div class="k">آسانسور</div><div class="v yes">دارد</div></div>
+            <div class="attr"><div class="k">بالکن</div><div class="v yes">دارد</div></div>
+          </div>
+        </details>
+
+        <details class="group">
+          <summary>تأسیسات و توضیحات <span class="chev">▾</span></summary>
+          <div class="body">
+            <div class="attr"><div class="k">گرمایش / سرمایش</div><div class="v">پکیج / کولر گازی</div></div>
+            <div class="attr"><div class="k">کف‌پوش / دیوارپوش</div><div class="v">سرامیک و پارکت / رنگ</div></div>
+            <div class="attr"><div class="k">توضیحات</div><div class="v" style="font-weight: 600; line-height: 25px">نوساز با نورگیر عالی و نقشه‌ی دو کله، نزدیک بلوار دریا و میدان کاج. تحویل فوری.</div></div>
+          </div>
+        </details>
+
+        <!-- ارزیابی محیطی -->
+        <div class="assess">
+          <div class="assess-head">
+            <span class="badge-gis">◎</span>
+            <div>
+              <h3>ارزیابی محیطی ملک</h3>
+              <p>امکانات اطراف ملک با فاصله و زمان پیاده/خودرو — برتری GIS داتملک.</p>
+            </div>
+          </div>
+          <div class="assess-map">
+            <span class="prop">⌂</span>
+            <span class="poi" style="top: 28%; right: 30%">Ⓜ</span>
+            <span class="poi" style="top: 66%; right: 34%">✎</span>
+            <span class="poi" style="top: 36%; right: 66%">＋</span>
+            <span class="poi" style="top: 72%; right: 60%">▦</span>
+          </div>
+          <div class="cat-tabs">
+            <span class="cat active">همه</span>
+            <span class="cat">حمل‌ونقل</span>
+            <span class="cat">آموزشی</span>
+            <span class="cat">درمانی</span>
+            <span class="cat">خرید</span>
+            <span class="cat">اصناف داتملک</span>
+          </div>
+          <div class="access-list">
+            <div class="access"><span class="ai">Ⓜ</span><div class="info"><div class="at">ایستگاه مترو سعادت‌آباد</div><div class="times"><span>🚶 ۶ دقیقه</span><span>🚗 &lt;۱ دقیقه</span></div></div><span class="dist">۴۵۰م</span></div>
+            <div class="access"><span class="ai">✎</span><div class="info"><div class="at">مدرسه‌ی غیرانتفاعی نور</div><div class="times"><span>🚶 ۴ دقیقه</span><span>🚗 &lt;۱ دقیقه</span></div></div><span class="dist">۳۲۰م</span></div>
+            <div class="access"><span class="ai">＋</span><div class="info"><div class="at">درمانگاه شبانه‌روزی کاج</div><div class="times"><span>🚶 ۹ دقیقه</span><span>🚗 ۱ دقیقه</span></div></div><span class="dist">۶۸۰م</span></div>
+            <div class="access"><span class="ai">▦</span><div class="info"><div class="at">مرکز خرید تیراژه</div><div class="times"><span>🚶 ۷ دقیقه</span><span>🚗 ۱ دقیقه</span></div></div><span class="dist">۵۲۰م</span></div>
+            <div class="access"><span class="ai">☾</span><div class="info"><div class="at">مسجد جامع سعادت‌آباد</div><div class="times"><span>🚶 ۳ دقیقه</span><span>🚗 &lt;۱ دقیقه</span></div></div><span class="dist">۲۱۰م</span></div>
+            <div class="access"><span class="ai">▤</span><div class="info"><div class="at">نانوایی بربری (صنف داتملک)</div><div class="times"><span>🚶 ۲ دقیقه</span><span>🚗 &lt;۱ دقیقه</span></div></div><span class="dist">۱۵۰م</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="agency">
+            <div class="agency-logo">آ</div>
+            <div style="flex: 1">
+              <div class="nm">آژانس املاک آسمان</div>
+              <div class="lnk">مشاهده‌ی سایر آگهی‌های این آژانس ‹</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 4px 14px">
+          <div class="act-list">
+            <div class="act-row"><span class="aic">✉</span>ارسال پیامک به آگهی‌دهنده<span class="arr">‹</span></div>
+            <div class="act-row danger"><span class="aic">⚠</span>ثبت تخلف<span class="arr">‹</span></div>
+          </div>
+        </div>
       </div>
-      <div class="prototype">Static HTML Preview · Detail Mobile</div>
-    </div>
+
+      <div class="bottom-cta">
+        <button class="cta-ic" aria-label="نشان کردن">♡</button>
+        <button class="cta-ic" aria-label="تماس با آگهی‌دهنده">☎</button>
+        <button class="cta-main">◌ شروع گفتگو با آگهی‌دهنده</button>
+      </div>
+    </main>
   </body>
 </html>

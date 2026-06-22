@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dotmelk — ثبت آگهی / موبایل</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
+      :root {
+        --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-border: #c4b5fd;
+        --bg: #f8fafc; --surface: #ffffff; --surface-muted: #f1f5f9; --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
+        --border: #e2e8f0; --border-strong: #cbd5e1; --success: #16a34a; --success-soft: #dcfce7; --success-text: #166534;
+        --danger: #dc2626; --danger-soft: #fee2e2;
+        --t-sale: #2563eb; --t-rent: #16a34a; --t-participation: #ea580c; --t-presell: #dc2626; --t-short: #0d9488;
+        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; overflow-x: hidden; }
+      body { margin: 0; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); direction: rtl; min-height: 100vh; }
+      a { text-decoration: none; color: inherit; }
+      button, input, select, textarea { font: inherit; }
+      button { border: 0; cursor: pointer; background: none; color: inherit; }
+      .app { min-height: 100vh; padding-bottom: 92px; }
+
+      .topbar { position: sticky; top: 0; z-index: 20; height: 58px; display: flex; align-items: center; gap: 10px; padding: 0 14px; background: rgba(248, 250, 252, 0.92); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(226, 232, 240, 0.78); }
+      .back { width: 40px; height: 40px; border-radius: 13px; border: 1px solid var(--border); background: #fff; display: grid; place-items: center; color: var(--text-2); font-size: 18px; flex: 0 0 auto; }
+      .topbar .tt { flex: 1; }
+      .topbar h1 { margin: 0; font-size: 15px; font-weight: 900; }
+      .topbar .sub { font-size: 11px; color: var(--muted); }
+
+      /* compact stepper */
+      .pbar { padding: 12px 16px 0; }
+      .pbar .dots { display: flex; gap: 6px; }
+      .pbar .dots i { flex: 1; height: 5px; border-radius: 999px; background: var(--border); transition: 0.2s; }
+      .pbar .dots i.on { background: var(--primary); }
+      .pbar .meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; font-weight: 800; color: var(--muted); }
+      .pbar .meta b { color: var(--text); }
+
+      .content { padding: 14px 16px 0; }
+      .step-head { margin-bottom: 12px; }
+      .step-head h2 { font-size: 19px; font-weight: 900; margin: 0 0 3px; }
+      .step-head p { font-size: 12px; color: var(--muted); margin: 0; }
+
+      /* selection cards */
+      .pick-list { display: grid; gap: 10px; }
+      .pick { border: 1.5px solid var(--border); border-radius: 18px; padding: 14px; background: var(--surface); display: flex; align-items: center; gap: 12px; position: relative; }
+      .pick:active { transform: scale(0.995); }
+      .pick.selected { border-color: var(--primary); background: var(--primary-soft); }
+      .pick .ic { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; font-size: 21px; color: #fff; flex: 0 0 auto; }
+      .pick h3 { margin: 0; font-size: 15px; font-weight: 900; }
+      .pick p { margin: 2px 0 0; font-size: 12px; color: var(--muted); }
+      .pick .check { margin-inline-start: auto; width: 24px; height: 24px; border-radius: 999px; border: 2px solid var(--border-strong); display: grid; place-items: center; font-size: 13px; color: transparent; flex: 0 0 auto; }
+      .pick.selected .check { background: var(--primary); border-color: var(--primary); color: #fff; }
+      .ic.sale { background: var(--t-sale); } .ic.rent { background: var(--t-rent); } .ic.participation { background: var(--t-participation); }
+      .ic.presell { background: var(--t-presell); } .ic.short { background: var(--t-short); } .ic.use { background: linear-gradient(135deg,#7c3aed,#5b21b6); }
+
+      /* form */
+      .fsection { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; margin-bottom: 12px; }
+      .fsection > summary { list-style: none; cursor: pointer; padding: 14px 15px; display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 15px; }
+      .fsection > summary::-webkit-details-marker { display: none; }
+      .fsection > summary .st { width: 20px; height: 20px; border-radius: 999px; background: var(--success); color: #fff; display: grid; place-items: center; font-size: 11px; flex: 0 0 auto; }
+      .fsection > summary .st.empty { background: transparent; border: 2px solid var(--border-strong); color: transparent; }
+      .fsection > summary .chev { margin-inline-start: auto; color: var(--primary); transition: 0.2s; }
+      .fsection[open] > summary .chev { transform: rotate(180deg); }
+      .fsection .body { padding: 4px 15px 16px; display: grid; gap: 12px; }
+      .field { display: grid; gap: 6px; }
+      .field label { font-size: 12px; font-weight: 800; color: var(--text-2); }
+      .field .req { color: var(--danger); }
+      .field input, .field select, .field textarea { height: 46px; border: 1px solid var(--border); border-radius: 13px; background: #fff; padding: 0 13px; outline: 0; color: var(--text); font-size: 14px; width: 100%; }
+      .field textarea { height: auto; min-height: 92px; padding: 12px 13px; resize: vertical; line-height: 25px; }
+      .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--primary-border); box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1); }
+      .field .hint { font-size: 11px; color: var(--subtle); }
+      .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .price-wrap { position: relative; }
+      .price-wrap input { padding-left: 52px; }
+      .price-wrap .unit { position: absolute; left: 12px; top: 0; height: 46px; display: flex; align-items: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+      .swf { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border); border-radius: 13px; padding: 11px 13px; font-size: 13px; font-weight: 700; color: var(--text-2); }
+      .swf .sw { width: 40px; height: 23px; border-radius: 999px; background: var(--border-strong); position: relative; flex: 0 0 auto; }
+      .swf .sw:before { content: ""; position: absolute; right: 3px; top: 3px; width: 17px; height: 17px; background: #fff; border-radius: 999px; transition: 0.15s; }
+      .swf.on { border-color: var(--primary-border); background: var(--primary-soft); color: var(--primary); }
+      .swf.on .sw { background: var(--primary); }
+      .swf.on .sw:before { right: 20px; }
+      .swgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .dropzone { border: 1.5px dashed var(--border-strong); border-radius: 14px; background: var(--bg); padding: 18px; text-align: center; color: var(--muted); }
+      .dropzone .big { font-size: 26px; }
+      .thumbs { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+      .thumbs .t { width: 64px; height: 64px; border-radius: 11px; background: linear-gradient(135deg, #ddd6fe, #bfdbfe); border: 1px solid var(--border); position: relative; }
+      .thumbs .t.cover:after { content: "کاور"; position: absolute; bottom: 3px; right: 3px; left: 3px; text-align: center; font-size: 8px; font-weight: 800; color: #fff; background: rgba(109, 40, 217, 0.85); border-radius: 5px; }
+      .map-pick { height: 170px; border-radius: 13px; overflow: hidden; position: relative; background: #eef6f4; border: 1px solid var(--border); }
+      .map-pick:before { content: ""; position: absolute; inset: -20%; background: linear-gradient(90deg, rgba(15,118,110,.12) 1px, transparent 1px), linear-gradient(0deg, rgba(15,118,110,.12) 1px, transparent 1px); background-size: 30px 30px; transform: rotate(-8deg); }
+      .map-pick .pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -100%); font-size: 28px; color: var(--primary); }
+
+      /* sticky footer */
+      .foot { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(16px); border-top: 1px solid var(--border); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); }
+      .foot .prog { margin-bottom: 10px; }
+      .foot .prog .top { display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; margin-bottom: 5px; }
+      .foot .prog .track { height: 7px; border-radius: 999px; background: var(--surface-muted); overflow: hidden; }
+      .foot .prog .fill { height: 100%; width: 35%; background: linear-gradient(90deg, var(--success), #22c55e); }
+      .foot .btns { display: grid; grid-template-columns: 46px 1fr; gap: 10px; }
+      .foot.sel .btns { grid-template-columns: 1fr; }
+      .btn { height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 900; }
+      .btn-primary { background: var(--primary); color: #fff; }
+      .btn-primary[disabled] { opacity: 0.5; pointer-events: none; }
+      .btn-icon { height: 50px; border-radius: 15px; border: 1px solid var(--border); background: #fff; display: grid; place-items: center; color: var(--text-2); font-size: 18px; }
+
+      .hide { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <button class="back" id="backBtn" onclick="back()" aria-label="بازگشت">→</button>
+        <div class="tt">
+          <h1>ثبت آگهی جدید</h1>
+          <div class="sub" id="crumb">نوع معامله را انتخاب کن</div>
+        </div>
+      </header>
+
+      <div class="pbar">
+        <div class="dots"><i class="on" id="d1"></i><i id="d2"></i><i id="d3"></i><i id="d4"></i></div>
+        <div class="meta"><span id="stepName">نوع معامله</span><span>مرحله <b id="stepNo">۱</b> از ۴</span></div>
+      </div>
+
+      <div class="content">
+        <!-- STEP 1 -->
+        <section class="step-pane" data-pane="1">
+          <div class="step-head"><h2>نوع معامله</h2><p>نوع آگهی ملکی خود را انتخاب کن.</p></div>
+          <div class="pick-list">
+            <div class="pick" onclick="pickType(this,'فروش')"><div class="ic sale">₪</div><div><h3>فروش</h3><p>عرضه‌ی ملک برای فروش کامل</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickType(this,'رهن و اجاره')"><div class="ic rent">⌂</div><div><h3>رهن و اجاره</h3><p>ودیعه و اجاره‌ی ماهانه</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickType(this,'مشارکت')"><div class="ic participation">⚎</div><div><h3>مشارکت در ساخت</h3><p>مالک + سازنده‌ی سرمایه‌گذار</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickType(this,'پیش‌فروش')"><div class="ic presell">◳</div><div><h3>پیش‌فروش</h3><p>فروش پیش از تکمیل پروژه</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickType(this,'اجاره کوتاه‌مدت')"><div class="ic short">◷</div><div><h3>اجاره کوتاه‌مدت</h3><p>اجاره‌ی روزانه و مبله</p></div><span class="check">✓</span></div>
+          </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="step-pane hide" data-pane="2">
+          <div class="step-head"><h2>کاربری ملک</h2><p>کاربری ملک معاملاتی را انتخاب کن.</p></div>
+          <div class="pick-list">
+            <div class="pick" onclick="pickUse(this,'مسکونی')"><div class="ic use">⌂</div><div><h3>مسکونی</h3><p>آپارتمان، ویلایی، خانه</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickUse(this,'تجاری')"><div class="ic use">▤</div><div><h3>تجاری</h3><p>مغازه، بازار، تجاری</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickUse(this,'اداری')"><div class="ic use">▦</div><div><h3>اداری</h3><p>دفتر کار، شرکت</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickUse(this,'صنعتی')"><div class="ic use">⚙</div><div><h3>صنعتی</h3><p>کارگاه، سوله، انبار</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickUse(this,'کشاورزی')"><div class="ic use">❧</div><div><h3>کشاورزی و زمین</h3><p>باغ، زمین، مزرعه</p></div><span class="check">✓</span></div>
+          </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="step-pane hide" data-pane="3">
+          <div class="step-head"><h2>نوع ملک</h2><p>دقیق‌ترین نوع ملک را انتخاب کن.</p></div>
+          <div class="pick-list">
+            <div class="pick" onclick="pickProp(this,'آپارتمان')"><div class="ic use">⌂</div><div><h3>آپارتمان</h3><p>واحد مسکونی در مجتمع</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickProp(this,'ویلایی / خانه')"><div class="ic use">⌂</div><div><h3>ویلایی / خانه</h3><p>تک‌واحدی، حیاط‌دار</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickProp(this,'زمین')"><div class="ic use">▱</div><div><h3>زمین</h3><p>قطعه زمین مسکونی</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickProp(this,'کلنگی')"><div class="ic use">▤</div><div><h3>کلنگی</h3><p>قابل تخریب و بازسازی</p></div><span class="check">✓</span></div>
+            <div class="pick" onclick="pickProp(this,'پنت‌هاوس')"><div class="ic use">◳</div><div><h3>پنت‌هاوس</h3><p>واحد لوکس طبقه آخر</p></div><span class="check">✓</span></div>
+          </div>
+        </section>
+
+        <!-- STEP 4: FORM -->
+        <section class="step-pane hide" data-pane="4">
+          <div class="step-head"><h2>مشخصات آگهی</h2><p>هر بخش را باز کن و کامل کن. هرچه کامل‌تر، بازدید بیشتر.</p></div>
+
+          <details class="fsection" open>
+            <summary><span class="st">✓</span>اطلاعات کلی<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="field"><label>عنوان آگهی <span class="req">*</span></label><input value="آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد" maxlength="60" /><span class="hint">حداکثر ۶۰ کاراکتر</span></div>
+              <div class="field"><label>نوع سند <span class="req">*</span></label><select><option>تک‌برگ شش‌دانگ</option><option>منگوله‌دار</option><option>قولنامه‌ای</option></select></div>
+              <div class="field"><label>وضعیت ملک</label><select><option>نوساز</option><option>بازسازی‌شده</option><option>قدیمی‌ساز</option></select></div>
+            </div>
+          </details>
+
+          <details class="fsection">
+            <summary><span class="st">✓</span>موقعیت مکانی<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="map-pick"><div class="pin">⌖</div></div>
+              <div class="row2"><div class="field"><label>شهر</label><select><option>تهران</option></select></div><div class="field"><label>محله</label><select><option>سعادت‌آباد</option><option>کاج</option></select></div></div>
+              <div class="swf on" onclick="toggleSw(this)"><span>نمایش موقعیت دقیق روی نقشه</span><span class="sw"></span></div>
+              <div class="swf on" onclick="toggleSw(this)"><span>امکان گفتگو (چت) فعال باشد</span><span class="sw"></span></div>
+            </div>
+          </details>
+
+          <details class="fsection">
+            <summary><span class="st">✓</span>متراژ و قیمت<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="field"><label>مساحت زیربنا (متر) <span class="req">*</span></label><input value="۱۳۵" inputmode="numeric" /></div>
+              <div class="field"><label>مبلغ کل <span class="req">*</span></label><div class="price-wrap"><input value="۱۲٬۸۰۰٬۰۰۰٬۰۰۰" inputmode="numeric" /><span class="unit">تومان</span></div></div>
+              <div class="swf on" onclick="toggleSw(this)"><span>قابل مذاکره</span><span class="sw"></span></div>
+              <div class="swf" onclick="toggleSw(this)"><span>قیمت توافقی (بدون مبلغ)</span><span class="sw"></span></div>
+            </div>
+          </details>
+
+          <details class="fsection">
+            <summary><span class="st empty">✓</span>مشخصات ساختمان<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="row2"><div class="field"><label>سال ساخت</label><input value="۱۴۰۱" maxlength="4" inputmode="numeric" /></div><div class="field"><label>تعداد خواب</label><input value="۳" inputmode="numeric" /></div></div>
+              <div class="row2"><div class="field"><label>طبقه‌ی واحد</label><input value="۴" inputmode="numeric" /></div><div class="field"><label>کل طبقات</label><input value="۷" inputmode="numeric" /></div></div>
+              <div class="field"><label>جهت ساختمان</label><select><option>جنوبی</option><option>شمالی</option><option>شرقی</option><option>غربی</option></select></div>
+            </div>
+          </details>
+
+          <details class="fsection">
+            <summary><span class="st empty">✓</span>امکانات<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="swgrid">
+                <div class="swf on" onclick="toggleSw(this)"><span>پارکینگ</span><span class="sw"></span></div>
+                <div class="swf on" onclick="toggleSw(this)"><span>انباری</span><span class="sw"></span></div>
+                <div class="swf on" onclick="toggleSw(this)"><span>آسانسور</span><span class="sw"></span></div>
+                <div class="swf" onclick="toggleSw(this)"><span>بالکن</span><span class="sw"></span></div>
+                <div class="swf" onclick="toggleSw(this)"><span>روف‌گاردن</span><span class="sw"></span></div>
+                <div class="swf" onclick="toggleSw(this)"><span>استخر</span><span class="sw"></span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="fsection">
+            <summary><span class="st empty">✓</span>تأسیسات و پوشش<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="row2"><div class="field"><label>گرمایش</label><select><option>پکیج</option><option>شوفاژ</option><option>از کف</option></select></div><div class="field"><label>سرمایش</label><select><option>کولر گازی</option><option>اسپلیت</option><option>چیلر</option></select></div></div>
+              <div class="row2"><div class="field"><label>کف‌پوش</label><select><option>سرامیک</option><option>پارکت</option><option>سنگ</option></select></div><div class="field"><label>دیوارپوش</label><select><option>رنگ</option><option>کاغذ دیواری</option></select></div></div>
+            </div>
+          </details>
+
+          <details class="fsection">
+            <summary><span class="st empty">✓</span>رسانه و تصاویر<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="dropzone"><div class="big">⬆</div><div style="font-weight:800;margin-top:5px">افزودن تصاویر ملک</div><div style="font-size:11px;margin-top:3px">اولین تصویر، کاور آگهی است</div></div>
+              <div class="thumbs"><div class="t cover"></div><div class="t"></div><div class="t"></div></div>
+              <div class="field"><label>لینک ویدئو</label><input placeholder="https://…" /></div>
+              <div class="field"><label>لینک تور مجازی ۳۶۰</label><input placeholder="https://…" /></div>
+            </div>
+          </details>
+
+          <details class="fsection">
+            <summary><span class="st empty">✓</span>اطلاعات تماس و توضیحات<span class="chev">▾</span></summary>
+            <div class="body">
+              <div class="field"><label>نام مالک</label><input placeholder="نام و نام خانوادگی" /></div>
+              <div class="field"><label>موبایل مالک</label><input placeholder="۰۹…" inputmode="numeric" maxlength="11" /></div>
+              <div class="field"><label>توضیحات تکمیلی</label><textarea placeholder="نورگیر عالی، دو کله، نزدیک مترو…"></textarea></div>
+            </div>
+          </details>
+        </section>
+      </div>
+
+      <!-- sticky footer -->
+      <div class="foot sel" id="foot">
+        <div class="prog hide" id="prog">
+          <div class="top"><span>میزان تکمیل اطلاعات</span><span style="color: var(--success)">۳۵٪</span></div>
+          <div class="track"><div class="fill"></div></div>
+        </div>
+        <div class="btns" id="footBtns">
+          <button class="btn btn-primary" id="nextBtn" disabled onclick="next()">مرحله بعد ›</button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let state = { type: null, use: null, prop: null, step: 1 };
+      const names = { 1: 'نوع معامله', 2: 'کاربری ملک', 3: 'نوع ملک', 4: 'مشخصات آگهی' };
+      const fa = { 1: '۱', 2: '۲', 3: '۳', 4: '۴' };
+      function pick(el, key, val) {
+        el.parentElement.querySelectorAll('.pick').forEach(p => p.classList.remove('selected'));
+        el.classList.add('selected');
+        state[key] = val;
+        document.getElementById('nextBtn').removeAttribute('disabled');
+        updateCrumb();
+      }
+      function pickType(el, v) { pick(el, 'type', v); }
+      function pickUse(el, v) { pick(el, 'use', v); }
+      function pickProp(el, v) { pick(el, 'prop', v); }
+      function updateCrumb() {
+        const parts = [state.type, state.use, state.prop].filter(Boolean);
+        document.getElementById('crumb').textContent = parts.length ? parts.join(' / ') : 'نوع معامله را انتخاب کن';
+      }
+      function render() {
+        document.querySelectorAll('.step-pane').forEach(p => p.classList.add('hide'));
+        document.querySelector('[data-pane="' + state.step + '"]').classList.remove('hide');
+        for (let i = 1; i <= 4; i++) document.getElementById('d' + i).classList.toggle('on', i <= state.step);
+        document.getElementById('stepName').textContent = names[state.step];
+        document.getElementById('stepNo').textContent = fa[state.step];
+        const foot = document.getElementById('foot'), prog = document.getElementById('prog'), btns = document.getElementById('footBtns');
+        if (state.step === 4) {
+          foot.classList.remove('sel'); prog.classList.remove('hide');
+          btns.innerHTML = '<button class="btn-icon" onclick="prev()">‹</button><button class="btn btn-primary" onclick="alert(\'پیش‌نمایش دمو: آگهی ذخیره شد ✓\')">ثبت و انتشار آگهی</button>';
+        } else {
+          foot.classList.add('sel'); prog.classList.add('hide');
+          const sel = state.step === 1 ? state.type : state.step === 2 ? state.use : state.prop;
+          btns.innerHTML = '<button class="btn btn-primary" id="nextBtn" ' + (sel ? '' : 'disabled') + ' onclick="next()">' + (state.step === 3 ? 'ساخت فرم آگهی ›' : 'مرحله بعد ›') + '</button>';
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      function next() { if (state.step < 4) { state.step++; render(); } }
+      function prev() { if (state.step > 1) { state.step--; render(); } }
+      function back() { if (state.step > 1) prev(); else location.href = 'ads.html'; }
+      function toggleSw(el) { el.classList.toggle('on'); }
+    </script>
+  </body>
+</html>

@@ -121,7 +121,7 @@ a{text-decoration:none;color:inherit}
 .prototype-ribbon{position:fixed;left:24px;bottom:24px;background:rgba(15,23,42,.82);color:#fff;border-radius:999px;padding:9px 13px;font-size:12px;box-shadow:var(--shadow-md);z-index:80}
 
 /* Mobile */
-.mobile-body{min-height:100vh;background:linear-gradient(180deg,#fff 0,#F8FAFC 260px,#F8FAFC 100%);padding-bottom:82px}
+.mobile-body{min-height:100vh;background:linear-gradient(180deg,#fff 0,#F8FAFC 260px,#F8FAFC 100%);padding-bottom:82px;overflow-x:hidden}
 .mobile-topbar{height:58px;position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 16px;background:rgba(248,250,252,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(226,232,240,.78)}
 .mobile-title{font-size:15px;font-weight:900;line-height:24px}
 .mobile-content{padding:14px 16px 0;display:grid;gap:12px}
