@@ -1,135 +1,745 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>داتملک من موبایل</title>
-    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
-    <script defer src="../assets/prototype.js"></script>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>داتملک من · موبایل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --primary:#6D28D9;--primary-hover:#5B21B6;--primary-soft:#F5F3FF;--primary-subtle:#EDE9FE;--primary-border:#C4B5FD;
+      --bg:#F8FAFC;--surface:#fff;--surface-muted:#F1F5F9;--text:#0F172A;--text-2:#475569;--muted:#64748B;--subtle:#94A3B8;--border:#E2E8F0;--border-strong:#CBD5E1;
+      --success:#16A34A;--success-soft:#DCFCE7;--success-text:#166534;--warning:#D97706;--warning-soft:#FEF3C7;--warning-text:#92400E;--danger:#DC2626;--danger-soft:#FEE2E2;--danger-text:#991B1B;--info:#2563EB;--info-soft:#DBEAFE;--info-text:#1E40AF;
+      --teal:#0F766E;--teal-soft:#CCFBF1;--orange:#F97316;--orange-soft:#FFEDD5;
+      --shadow-sm:0 4px 12px rgba(15,23,42,.06);--shadow-md:0 10px 24px rgba(15,23,42,.08);--shadow-lg:0 20px 45px rgba(15,23,42,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{overflow-x:hidden}
+    body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--bg);color:var(--text);direction:rtl;font-size:14px;min-height:100vh;padding-bottom:82px}
+    button,input{font:inherit;border:0;cursor:pointer;background:transparent}
+    a{text-decoration:none;color:inherit}
 
-    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
-    <script defer src="../assets/dotmelk-menu-pages.js"></script>
-  </head>
-  <body>
-    <div class="mobile-body">
-      <header class="mobile-topbar">
-        <button class="icon-btn" data-drawer-toggle aria-label="باز کردن منو">
-          ☰
-        </button>
-        <div class="mobile-title">داتملک من</div>
-        <button class="icon-btn" data-toast="فیلترها در نسخه دمو نمایشی هستند">
-          ⚙
-        </button>
-      </header>
+    /* Shared */
+    .badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:800;white-space:nowrap}
+    .badge.primary{background:var(--primary-soft);color:var(--primary)}
+    .badge.success{background:var(--success-soft);color:var(--success-text)}
+    .badge.warning{background:var(--warning-soft);color:var(--warning-text)}
+    .badge.danger{background:var(--danger-soft);color:var(--danger-text)}
+    .badge.info{background:var(--info-soft);color:var(--info-text)}
+    .badge.neutral{background:var(--surface-muted);color:var(--text-2)}
+    .badge.teal{background:var(--teal-soft);color:var(--teal)}
+    .icon-btn{width:40px;height:40px;border-radius:13px;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center;color:var(--text-2);flex-shrink:0}
 
-      <div class="drawer-backdrop" data-drawer-close></div>
+    /* Topbar */
+    .topbar{height:58px;position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 16px;background:rgba(248,250,252,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(226,232,240,.8)}
+    .topbar-title{font-size:16px;font-weight:900}
 
-      <aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
-        <div class="drawer-head">
-          <div class="drawer-user">
-            <div class="avatar">م</div>
-            <div>
-              <strong>مهراد محمدی</strong>
-              <div class="small">کاربر فعال داتملک</div>
-            </div>
-          </div>
-          <button class="icon-btn" data-drawer-close aria-label="بستن منو">
-            ×
-          </button>
-        </div>
+    /* Drawer */
+    .drawer-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.35);z-index:100;backdrop-filter:blur(2px)}
+    body.drawer-open .drawer-backdrop{display:block}
+    .mobile-drawer{position:fixed;top:0;right:0;bottom:0;width:82vw;max-width:300px;background:var(--surface);z-index:110;transform:translateX(105%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--border)}
+    body.drawer-open .mobile-drawer{transform:translateX(0)}
+    .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--border)}
+    .drawer-user{display:flex;align-items:center;gap:10px}
+    .drawer-av{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#7C3AED,#5B21B6);display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px}
+    .drawer-user strong{font-size:14px;font-weight:900;display:block}
+    .drawer-user .sub{font-size:12px;color:var(--muted);margin-top:1px}
+    .drawer-scroll{flex:1;overflow-y:auto;padding:8px}
+    .drawer-scroll a,.drawer-scroll button{height:44px;border-radius:14px;display:flex;align-items:center;gap:10px;padding:0 12px;color:var(--text-2);font-size:13px;font-weight:800;width:100%;background:transparent;border:0}
+    .drawer-scroll a:hover,.drawer-scroll button:hover{background:var(--surface-muted);color:var(--text)}
+    .drawer-scroll a span,.drawer-scroll button span:first-child{width:20px;text-align:center;opacity:.6;font-size:15px}
+    .drawer-scroll .logout{color:var(--danger)}
+    .drawer-version{padding:12px 16px;font-size:11px;color:var(--subtle);display:flex;justify-content:space-between;border-top:1px solid var(--border)}
 
-        <div class="drawer-scroll">
-          <a href="account.html"><span>◫</span>حساب کاربری من</a>
-          <a href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
-          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-          <a href="about.html"><span>●</span>درباره داتملک</a>
-          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
-          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-          <button class="logout" onclick="location.href = 'logout.html'">
-            <span>⎋</span>خروج
-          </button>
-        </div>
+    /* Bottom nav */
+    .bottom-nav{position:fixed;bottom:0;right:0;left:0;z-index:70;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 8px 10px;box-shadow:0 -12px 30px rgba(15,23,42,.08)}
+    .bottom-nav a{height:50px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;color:var(--muted);font-weight:800}
+    .bottom-nav a.active{background:var(--primary-soft);color:var(--primary)}
+    .bottom-nav a span:first-child{font-size:17px}
 
-        <div class="drawer-version">
-          <span>Dotmelk</span>
-          <span>v1.0.0</span>
-        </div>
-      </aside>
+    /* ══ SCREEN: DASHBOARD (default) ══ */
+    .content{padding:0 16px}
 
-      <main class="mobile-content">
-        <section
-          class="mobile-card"
-          style="
-            background: linear-gradient(135deg, #fff, #f5f3ff);
-            border-color: var(--primary-border);
-          "
-        >
-          <div style="display: flex; align-items: center; gap: 12px">
-            <div class="avatar">م</div>
-            <div>
-              <h1
-                style="
-                  font-size: 18px;
-                  line-height: 30px;
-                  margin: 0;
-                  font-weight: 900;
-                "
-              >
-                داتملک من
-              </h1>
-              <p class="small" style="margin: 0">فضای کاری کاربر و آژانس</p>
-            </div>
-          </div>
-        </section>
-        <section class="stats" style="grid-template-columns: repeat(2, 1fr)">
-          <div class="stat"><span>آگهی فعال</span><strong>۱۸</strong></div>
-          <div class="stat"><span>گفتگو</span><strong>۲۴</strong></div>
-          <div class="stat"><span>درخواست</span><strong>۷</strong></div>
-          <div class="stat"><span>اعتبار</span><strong>۲.۴M</strong></div>
-        </section>
-        <section class="mobile-card">
-          <div class="section-head">
-            <div>
-              <h2>کارهای امروز</h2>
-              <p>پیگیری‌های مهم</p>
-            </div>
-          </div>
-          <div class="task-list">
-            <div class="task">
-              <div>
-                <h3>پیگیری بازدید سعادت‌آباد</h3>
-                <p>امروز ساعت ۱۷</p>
-              </div>
-              <span class="badge primary">چت</span>
-            </div>
-            <div class="task">
-              <div>
-                <h3>تکمیل آگهی در انتظار انتشار</h3>
-                <p>افزودن تصویر و موقعیت</p>
-              </div>
-              <span class="badge warning">ویرایش</span>
-            </div>
-          </div>
-        </section>
-        <section class="mobile-card">
-          <div class="workspace-menu">
-            <a>⌂ آگهی‌های من</a><a>□ درخواست‌های من</a><a>♡ ذخیره‌شده‌ها</a
-            ><a>◷ جلسات</a><a>▣ قراردادها</a><a>کیف پول و اشتراک</a>
-          </div>
-        </section>
-      </main>
+    /* Hero user card */
+    .hero-card{margin:14px 0 12px;background:linear-gradient(135deg,var(--primary),#8B5CF6);border-radius:24px;padding:18px;color:#fff;position:relative;overflow:hidden}
+    .hero-card::before{content:'';position:absolute;top:-20px;left:-20px;width:120px;height:120px;border-radius:999px;background:rgba(255,255,255,.08)}
+    .hero-inner{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+    .hero-av{width:52px;height:52px;border-radius:18px;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:20px;font-weight:900;flex-shrink:0;backdrop-filter:blur(8px)}
+    .hero-name{font-size:17px;font-weight:900;line-height:26px}
+    .hero-role{font-size:12px;opacity:.8;margin-top:1px}
+    .hero-meta{display:flex;align-items:center;gap:8px;margin-top:14px;position:relative;z-index:1}
+    .sub-pill{height:26px;padding:0 10px;border-radius:999px;background:rgba(255,255,255,.22);color:#fff;font-size:11px;font-weight:900;display:inline-flex;align-items:center;gap:5px;backdrop-filter:blur(8px)}
+    .wallet-chip{height:26px;padding:0 10px;border-radius:999px;background:rgba(255,255,255,.15);color:#fff;font-size:11px;font-weight:800;display:inline-flex;align-items:center;gap:4px}
 
-      <nav class="mobile-bottom-nav">
-        <a href="map.html" class=""><span>⌖</span><span>نقشه</span></a
-        ><a href="requests.html" class=""><span>□</span><span>درخواست</span></a
-        ><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a
-        ><a href="chat.html" class=""><span>◌</span><span>چت</span></a
-        ><a href="my-dotmelk.html" class="active"
-          ><span>◫</span><span>من</span></a
-        >
-      </nav>
+    /* Stats 2x2 */
+    .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+    .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:14px;box-shadow:var(--shadow-sm)}
+    .stat-icon{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:16px;margin-bottom:8px}
+    .stat-value{font-size:24px;font-weight:900;line-height:1.1;letter-spacing:-.02em}
+    .stat-label{font-size:11px;color:var(--muted);font-weight:800;margin-top:4px}
+    .stat-trend{font-size:11px;font-weight:900;margin-top:3px}
+    .trend-up{color:var(--success)}
+    .trend-down{color:var(--danger)}
+
+    /* Section cards */
+    .section-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow-sm);margin-bottom:12px}
+    .sc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .sc-title{font-size:14px;font-weight:900}
+    .sc-link{font-size:12px;color:var(--primary);font-weight:800}
+
+    /* Task items */
+    .task-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+    .task-item:last-child{border-bottom:none;padding-bottom:0}
+    .task-dot{width:8px;height:8px;border-radius:999px;flex-shrink:0}
+    .task-text{flex:1;min-width:0}
+    .task-title{font-size:13px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .task-meta{font-size:11px;color:var(--muted);margin-top:1px}
+
+    /* Quick menu grid */
+    .quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+    .quick-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.12s;box-shadow:var(--shadow-sm)}
+    .quick-card:active{background:var(--primary-soft);border-color:var(--primary-border)}
+    .quick-icon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+    .quick-label{font-size:13px;font-weight:900;line-height:20px}
+    .quick-count{font-size:11px;color:var(--muted);font-weight:800;margin-top:1px}
+
+    /* Meeting mini */
+    .meeting-mini{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+    .meeting-mini:last-child{border-bottom:none;padding-bottom:0}
+    .meeting-date{width:42px;height:42px;border-radius:13px;background:var(--primary-soft);border:1px solid var(--primary-border);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+    .meeting-day{font-size:16px;font-weight:900;color:var(--primary);line-height:1}
+    .meeting-mon{font-size:9px;color:var(--muted);font-weight:800}
+    .meeting-body{flex:1;min-width:0}
+    .meeting-title{font-size:12px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .meeting-time{font-size:11px;color:var(--muted);margin-top:1px}
+
+    /* Sub-screen overlay */
+    .sub-screen{position:fixed;inset:0;z-index:80;background:var(--bg);display:none;flex-direction:column;overflow-y:auto;padding-bottom:82px}
+    .sub-screen.open{display:flex}
+    .sub-topbar{height:58px;display:flex;align-items:center;gap:10px;padding:0 14px;background:rgba(248,250,252,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);flex-shrink:0;position:sticky;top:0;z-index:10}
+    .back-btn{width:38px;height:38px;border-radius:13px;border:1px solid var(--border);display:grid;place-items:center;color:var(--text-2);font-size:18px;flex-shrink:0;background:var(--surface)}
+    .sub-title{font-size:15px;font-weight:900;flex:1}
+    .sub-content{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:12px}
+
+    /* Ad row in sub-screen */
+    .ad-row{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:12px 14px;display:flex;gap:10px;align-items:center}
+    .ad-thumb{width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,#DDD6FE,#BFDBFE);flex-shrink:0;position:relative;overflow:hidden}
+    .ad-thumb::after{content:'⌂';position:absolute;inset:0;display:grid;place-items:center;font-size:18px;opacity:.3}
+    .ad-thumb.req{background:linear-gradient(135deg,#CCFBF1,#DBEAFE)}
+    .ad-thumb.req::after{content:'□'}
+    .ad-body{flex:1;min-width:0}
+    .ad-code{font-size:10px;color:var(--subtle);font-weight:800}
+    .ad-title{font-size:12px;font-weight:900;line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ad-price{font-size:12px;color:var(--primary);font-weight:900;margin-top:2px}
+
+    /* Wallet sub-screen */
+    .wallet-hero{background:linear-gradient(135deg,var(--primary),#8B5CF6);border-radius:22px;padding:20px;color:#fff;position:relative;overflow:hidden}
+    .wallet-hero::before{content:'';position:absolute;top:-20px;left:-20px;width:100px;height:100px;border-radius:999px;background:rgba(255,255,255,.08)}
+    .wallet-label{font-size:12px;opacity:.8;font-weight:800;margin-bottom:5px;position:relative;z-index:1}
+    .wallet-amount-big{font-size:28px;font-weight:900;position:relative;z-index:1}
+    .wallet-unit{font-size:13px;opacity:.75;font-weight:700;margin-right:4px}
+    .wallet-btns{display:flex;gap:8px;margin-top:14px;position:relative;z-index:1}
+    .wallet-btn{height:34px;padding:0 12px;border-radius:10px;font-size:12px;font-weight:900;background:rgba(255,255,255,.2);color:#fff;display:flex;align-items:center;gap:5px;backdrop-filter:blur(8px)}
+    .tx-item{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+    .tx-icon{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:15px;flex-shrink:0}
+    .tx-body{flex:1;min-width:0}
+    .tx-name{font-size:12px;font-weight:900}
+    .tx-date{font-size:10px;color:var(--muted);margin-top:1px}
+    .tx-amount{font-size:13px;font-weight:900;white-space:nowrap}
+    .tx-credit{color:var(--success)}
+    .tx-debit{color:var(--danger)}
+
+    /* Plan card */
+    .plan-card{border:1px solid var(--border);border-radius:18px;padding:16px;background:var(--surface);position:relative}
+    .plan-card.current{border-color:var(--primary-border);background:var(--primary-soft)}
+    .current-tag{display:inline-block;background:var(--primary);color:#fff;font-size:10px;font-weight:900;padding:2px 10px;border-radius:999px;margin-bottom:8px}
+    .plan-name{font-size:15px;font-weight:900;margin-bottom:2px}
+    .plan-price{font-size:20px;font-weight:900;color:var(--primary)}
+    .plan-features{margin:10px 0;display:grid;gap:5px}
+    .plan-feat{font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px}
+    .plan-feat.locked{color:var(--subtle)}
+
+    /* Contract row */
+    .contract-row{border:1px solid var(--border);border-radius:16px;background:var(--surface);padding:12px 14px;display:flex;align-items:center;gap:10px}
+    .contract-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:16px;flex-shrink:0}
+
+    /* Toast */
+    .toast-demo{position:fixed;left:16px;right:16px;bottom:90px;z-index:9999;background:rgba(15,23,42,.88);color:#fff;padding:11px 16px;border-radius:16px;box-shadow:var(--shadow-lg);font-size:13px;font-weight:700;text-align:center}
+  </style>
+</head>
+<body>
+
+<!-- ══ Topbar ══ -->
+<header class="topbar">
+  <button class="icon-btn" data-drawer-toggle>☰</button>
+  <div class="topbar-title">داتملک من</div>
+  <button class="icon-btn" data-toast="تنظیمات در نسخه دمو">⚙</button>
+</header>
+
+<!-- Drawer -->
+<div class="drawer-backdrop" data-drawer-close></div>
+<aside class="mobile-drawer">
+  <div class="drawer-head">
+    <div class="drawer-user">
+      <div class="drawer-av">م</div>
+      <div>
+        <strong>مهراد محمدی</strong>
+        <div class="sub">مشاور · آژانس آسمان</div>
+      </div>
     </div>
-  </body>
+    <button class="icon-btn" data-drawer-close>×</button>
+  </div>
+  <div class="drawer-scroll">
+    <a href="account.html"><span>◫</span>حساب کاربری من</a>
+    <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+    <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+    <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+    <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+    <a href="about.html"><span>●</span>درباره داتملک</a>
+    <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+    <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+  </div>
+  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+</aside>
+
+<!-- ══ Main dashboard ══ -->
+<div class="content">
+
+  <!-- Hero card -->
+  <div class="hero-card">
+    <div class="hero-inner">
+      <div class="hero-av">م</div>
+      <div>
+        <div class="hero-name">مهراد محمدی</div>
+        <div class="hero-role">مشاور · آژانس آسمان</div>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <span class="sub-pill">★ Pro · تا ۱۵ شهریور</span>
+      <span class="wallet-chip">💰 ۲.۴M تومان</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon" style="background:var(--primary-soft)">⌂</div>
+      <div class="stat-value">۱۸</div>
+      <div class="stat-label">آگهی فعال</div>
+      <div class="stat-trend trend-up">↑ ۲ این ماه</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:var(--teal-soft)">□</div>
+      <div class="stat-value">۷</div>
+      <div class="stat-label">درخواست فعال</div>
+      <div class="stat-trend trend-up">↑ ۱ هفته جاری</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:var(--info-soft)">◌</div>
+      <div class="stat-value">۲۴</div>
+      <div class="stat-label">گفتگوی باز</div>
+      <div class="stat-trend" style="color:var(--primary);font-weight:900">۵ پیام جدید</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:var(--warning-soft)">📅</div>
+      <div class="stat-value">۳</div>
+      <div class="stat-label">جلسه پیش رو</div>
+      <div class="stat-trend" style="color:var(--warning);font-weight:900">امروز ۱ جلسه</div>
+    </div>
+  </div>
+
+  <!-- Quick menu -->
+  <div class="quick-grid">
+    <div class="quick-card" data-sub="sub-my-ads">
+      <div class="quick-icon" style="background:var(--primary-soft)">⌂</div>
+      <div>
+        <div class="quick-label">آگهی‌های من</div>
+        <div class="quick-count">۱۸ فعال · ۱ نیاز به ویرایش</div>
+      </div>
+    </div>
+    <div class="quick-card" data-sub="sub-my-requests">
+      <div class="quick-icon" style="background:var(--teal-soft)">□</div>
+      <div>
+        <div class="quick-label">درخواست‌ها</div>
+        <div class="quick-count">۷ درخواست فعال</div>
+      </div>
+    </div>
+    <div class="quick-card" data-sub="sub-meetings">
+      <div class="quick-icon" style="background:var(--warning-soft)">📅</div>
+      <div>
+        <div class="quick-label">جلسات</div>
+        <div class="quick-count">۳ جلسه پیش رو</div>
+      </div>
+    </div>
+    <div class="quick-card" data-sub="sub-contracts">
+      <div class="quick-icon" style="background:var(--info-soft)">📄</div>
+      <div>
+        <div class="quick-label">قراردادها</div>
+        <div class="quick-count">۱ در حال تنظیم</div>
+      </div>
+    </div>
+    <div class="quick-card" data-sub="sub-saved">
+      <div class="quick-icon" style="background:var(--danger-soft)">♡</div>
+      <div>
+        <div class="quick-label">ذخیره‌شده‌ها</div>
+        <div class="quick-count">۱۲ مورد</div>
+      </div>
+    </div>
+    <div class="quick-card" data-sub="sub-wallet">
+      <div class="quick-icon" style="background:var(--success-soft)">💰</div>
+      <div>
+        <div class="quick-label">کیف پول</div>
+        <div class="quick-count">موجودی: ۲.۴M تومان</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Today's tasks -->
+  <div class="section-card">
+    <div class="sc-head">
+      <div class="sc-title">کارهای امروز</div>
+      <a href="#" class="sc-link" data-toast="لیست کامل کارها">همه ←</a>
+    </div>
+    <div class="task-item">
+      <div class="task-dot" style="background:var(--warning)"></div>
+      <div class="task-text">
+        <div class="task-title">بازدید آپارتمان سعادت‌آباد</div>
+        <div class="task-meta">امروز ساعت ۱۷ · آرمان رضایی</div>
+      </div>
+      <span class="badge warning">بازدید</span>
+    </div>
+    <div class="task-item">
+      <div class="task-dot" style="background:var(--danger)"></div>
+      <div class="task-text">
+        <div class="task-title">تکمیل آگهی DM-33107</div>
+        <div class="task-meta">تصویر و موقعیت اضافه نشده</div>
+      </div>
+      <span class="badge danger">ویرایش</span>
+    </div>
+    <div class="task-item">
+      <div class="task-dot" style="background:var(--primary)"></div>
+      <div class="task-text">
+        <div class="task-title">پیدا کردن فایل برای RQ-11042</div>
+        <div class="task-meta">بودجه تا ۱۵ میلیارد · سعادت‌آباد</div>
+      </div>
+      <span class="badge primary">درخواست</span>
+    </div>
+  </div>
+
+  <!-- Upcoming meetings -->
+  <div class="section-card">
+    <div class="sc-head">
+      <div class="sc-title">جلسات پیش رو</div>
+      <span class="sc-link" data-sub="sub-meetings" style="cursor:pointer">همه ←</span>
+    </div>
+    <div class="meeting-mini">
+      <div class="meeting-date"><div class="meeting-day">۳</div><div class="meeting-mon">خرداد</div></div>
+      <div class="meeting-body">
+        <div class="meeting-title">بازدید آپارتمان سعادت‌آباد</div>
+        <div class="meeting-time">ساعت ۱۷:۰۰ · آرمان رضایی</div>
+      </div>
+      <span class="badge warning">امروز</span>
+    </div>
+    <div class="meeting-mini">
+      <div class="meeting-date" style="background:var(--info-soft);border:1px solid #BFDBFE"><div class="meeting-day" style="color:var(--info)">۶</div><div class="meeting-mon">خرداد</div></div>
+      <div class="meeting-body">
+        <div class="meeting-title">جلسه مشارکت لواسان</div>
+        <div class="meeting-time">ساعت ۱۰:۰۰ · آقای نوری</div>
+      </div>
+      <span class="badge info">کار</span>
+    </div>
+    <div class="meeting-mini">
+      <div class="meeting-date" style="background:var(--success-soft);border:1px solid #BBF7D0"><div class="meeting-day" style="color:var(--success)">۸</div><div class="meeting-mon">خرداد</div></div>
+      <div class="meeting-body">
+        <div class="meeting-title">بازدید ویلا لواسان</div>
+        <div class="meeting-time">ساعت ۱۵:۰۰ · خانم احمدی</div>
+      </div>
+      <span class="badge success">بازدید</span>
+    </div>
+  </div>
+
+  <!-- Subscription banner -->
+  <div class="section-card" style="background:var(--primary-soft);border-color:var(--primary-border);cursor:pointer" data-sub="sub-subscription">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#8B5CF6);display:grid;place-items:center;color:#fff;font-size:18px;flex-shrink:0">★</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:900;color:var(--primary)">اشتراک Pro فعال</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">تا ۱۵ شهریور ۱۴۰۴ · برای ارتقا به آژانس کلیک کنید</div>
+      </div>
+      <span style="font-size:18px;color:var(--primary)">←</span>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- ══ SUB-SCREEN: آگهی‌های من ══ -->
+<div class="sub-screen" id="sub-my-ads">
+  <div class="sub-topbar">
+    <button class="back-btn" data-back>→</button>
+    <div class="sub-title">آگهی‌های من</div>
+    <a href="add-advertise.html" class="icon-btn" style="font-size:18px;text-decoration:none">＋</a>
+  </div>
+  <div class="sub-content">
+    <div class="ad-row">
+      <div class="ad-thumb"></div>
+      <div class="ad-body">
+        <div class="ad-code">DM-24891</div>
+        <div class="ad-title">فروش آپارتمان ۱۳۵ متری · سعادت‌آباد</div>
+        <div class="ad-price">۱۲.۸ میلیارد</div>
+      </div>
+      <span class="badge success">منتشر</span>
+    </div>
+    <div class="ad-row">
+      <div class="ad-thumb"></div>
+      <div class="ad-body">
+        <div class="ad-code">DM-31245</div>
+        <div class="ad-title">اجاره ویلا ۳۵۰ متری · لواسان</div>
+        <div class="ad-price">۲۵ میلیون/ماه</div>
+      </div>
+      <span class="badge success">منتشر</span>
+    </div>
+    <div class="ad-row">
+      <div class="ad-thumb"></div>
+      <div class="ad-body">
+        <div class="ad-code">DM-28830</div>
+        <div class="ad-title">اجاره آپارتمان ۹۰ متری · پونک</div>
+        <div class="ad-price">۱۸ میلیون/ماه</div>
+      </div>
+      <span class="badge success">منتشر</span>
+    </div>
+    <div class="ad-row" style="border-color:var(--danger-soft);background:rgba(254,226,226,.15)">
+      <div class="ad-thumb" style="background:linear-gradient(135deg,#FEE2E2,#DDD6FE)"></div>
+      <div class="ad-body">
+        <div class="ad-code">DM-33107</div>
+        <div class="ad-title">فروش زمین ۴۵۰ متری · شهریار</div>
+        <div class="ad-price" style="color:var(--danger)">تصویر اضافه نشده</div>
+      </div>
+      <span class="badge danger">ویرایش</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUB-SCREEN: درخواست‌های من ══ -->
+<div class="sub-screen" id="sub-my-requests">
+  <div class="sub-topbar">
+    <button class="back-btn" data-back>→</button>
+    <div class="sub-title">درخواست‌های من</div>
+    <a href="requests.html" class="icon-btn" style="font-size:18px;text-decoration:none">＋</a>
+  </div>
+  <div class="sub-content">
+    <div class="ad-row">
+      <div class="ad-thumb req"></div>
+      <div class="ad-body">
+        <div class="ad-code">RQ-11042</div>
+        <div class="ad-title">خرید آپارتمان · سعادت‌آباد</div>
+        <div class="ad-price">تا ۱۵ میلیارد · ۳ پیشنهاد</div>
+      </div>
+      <span class="badge primary">خرید</span>
+    </div>
+    <div class="ad-row">
+      <div class="ad-thumb req"></div>
+      <div class="ad-body">
+        <div class="ad-code">RQ-10987</div>
+        <div class="ad-title">خرید زمین · شهریار</div>
+        <div class="ad-price">تا ۸ میلیارد</div>
+      </div>
+      <span class="badge primary">خرید</span>
+    </div>
+    <div class="ad-row">
+      <div class="ad-thumb req" style="background:linear-gradient(135deg,#FEF3C7,#FFEDD5)"></div>
+      <div class="ad-body">
+        <div class="ad-code">RQ-10456</div>
+        <div class="ad-title">اجاره کوتاه‌مدت · کیش</div>
+        <div class="ad-price">تا ۵ میلیون/شب</div>
+      </div>
+      <span class="badge warning">اجاره</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUB-SCREEN: جلسات ══ -->
+<div class="sub-screen" id="sub-meetings">
+  <div class="sub-topbar">
+    <button class="back-btn" data-back>→</button>
+    <div class="sub-title">جلسات</div>
+    <button class="icon-btn" data-toast="ثبت جلسه جدید">＋</button>
+  </div>
+  <div class="sub-content">
+    <div class="ad-row" style="align-items:flex-start;gap:10px">
+      <div class="meeting-date" style="width:46px;height:46px;border-radius:13px;background:var(--warning-soft);border:1px solid #FDE68A">
+        <div class="meeting-day" style="color:var(--warning);font-size:17px">۳</div>
+        <div class="meeting-mon">خرداد</div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-title">بازدید آپارتمان سعادت‌آباد</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">ساعت ۱۷:۰۰ · آرمان رضایی · DM-24891</div>
+      </div>
+      <span class="badge warning">بازدید</span>
+    </div>
+    <div class="ad-row" style="align-items:flex-start;gap:10px">
+      <div class="meeting-date" style="width:46px;height:46px;border-radius:13px;background:var(--info-soft);border:1px solid #BFDBFE">
+        <div class="meeting-day" style="color:var(--info);font-size:17px">۶</div>
+        <div class="meeting-mon">خرداد</div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-title">جلسه مشارکت ساختمانی لواسان</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">ساعت ۱۰:۰۰ · آقای نوری</div>
+      </div>
+      <span class="badge info">کار</span>
+    </div>
+    <div class="ad-row" style="align-items:flex-start;gap:10px">
+      <div class="meeting-date" style="width:46px;height:46px;border-radius:13px;background:var(--success-soft);border:1px solid #BBF7D0">
+        <div class="meeting-day" style="color:var(--success);font-size:17px">۸</div>
+        <div class="meeting-mon">خرداد</div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-title">بازدید ویلا لواسان</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">ساعت ۱۵:۰۰ · خانم احمدی · DM-31245</div>
+      </div>
+      <span class="badge success">بازدید</span>
+    </div>
+    <div class="ad-row" style="opacity:.6;align-items:flex-start;gap:10px">
+      <div class="meeting-date" style="width:46px;height:46px;border-radius:13px;background:var(--surface-muted);border:1px solid var(--border)">
+        <div class="meeting-day" style="color:var(--muted);font-size:17px">۲۸</div>
+        <div class="meeting-mon">اردیبهشت</div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-title">بازدید آپارتمان پونک</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">ساعت ۱۶:۰۰ · خانم موسوی</div>
+      </div>
+      <span class="badge neutral">گذشته</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUB-SCREEN: قراردادها ══ -->
+<div class="sub-screen" id="sub-contracts">
+  <div class="sub-topbar">
+    <button class="back-btn" data-back>→</button>
+    <div class="sub-title">قراردادها</div>
+    <button class="icon-btn" data-toast="ثبت قرارداد جدید">＋</button>
+  </div>
+  <div class="sub-content">
+    <div class="contract-row">
+      <div class="contract-icon" style="background:var(--teal-soft)">📋</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:900">قرارداد اجاره · فریده موسوی</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">DM-28830 · ۱۸ میلیون/ماه</div>
+        <div style="margin-top:5px;display:flex;gap:5px">
+          <span class="badge teal">اجاره</span>
+          <span class="badge success">تنظیم‌شده</span>
+        </div>
+      </div>
+    </div>
+    <div class="contract-row" style="border-color:var(--warning-soft);background:rgba(254,243,199,.2)">
+      <div class="contract-icon" style="background:var(--warning-soft)">📝</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:900">قرارداد مشارکت · آقای نوری</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">زمین لواسان · ۵۵/۴۵</div>
+        <div style="margin-top:5px;display:flex;gap:5px">
+          <span class="badge warning">مشارکت</span>
+          <span class="badge warning">در حال تنظیم</span>
+        </div>
+      </div>
+    </div>
+    <div class="contract-row" style="opacity:.65">
+      <div class="contract-icon" style="background:var(--success-soft)">✅</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:900">قرارداد فروش · آرمان رضایی</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">۸.۵ میلیارد · ۱۵ اردیبهشت</div>
+        <div style="margin-top:5px;display:flex;gap:5px">
+          <span class="badge primary">فروش</span>
+          <span class="badge success">تکمیل‌شده</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUB-SCREEN: ذخیره‌شده‌ها ══ -->
+<div class="sub-screen" id="sub-saved">
+  <div class="sub-topbar">
+    <button class="back-btn" data-back>→</button>
+    <div class="sub-title">ذخیره‌شده‌ها</div>
+  </div>
+  <div class="sub-content">
+    <div class="ad-row">
+      <div class="ad-thumb" style="background:linear-gradient(135deg,#DDD6FE,#BFDBFE)"></div>
+      <div class="ad-body">
+        <div class="ad-title">پنت‌هاوس ۲۲۰ متری · الهیه</div>
+        <div class="ad-price">۳۲ میلیارد تومان</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">۴ خواب · تراس · پارکینگ</div>
+      </div>
+      <span style="font-size:18px;color:var(--danger)">♥</span>
+    </div>
+    <div class="ad-row">
+      <div class="ad-thumb" style="background:linear-gradient(135deg,#CCFBF1,#DBEAFE)"></div>
+      <div class="ad-body">
+        <div class="ad-title">ویلا ۴۵۰ متری · شمال</div>
+        <div class="ad-price">۴۵ میلیون/شب</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">۵ خواب · استخر · ساحل</div>
+      </div>
+      <span style="font-size:18px;color:var(--danger)">♥</span>
+    </div>
+    <div class="ad-row">
+      <div class="ad-thumb" style="background:linear-gradient(135deg,#FEF3C7,#FFEDD5)"></div>
+      <div class="ad-body">
+        <div class="ad-title">مغازه ۸۵ متری · ولیعصر</div>
+        <div class="ad-price">۱۲.۵ میلیارد تومان</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">پیش‌فروش · موقعیت عالی</div>
+      </div>
+      <span style="font-size:18px;color:var(--danger)">♥</span>
+    </div>
+    <div class="ad-row">
+      <div class="ad-thumb req"></div>
+      <div class="ad-body">
+        <div class="ad-title">درخواست رهن · نیاوران</div>
+        <div class="ad-price" style="color:var(--teal)">تا ۸۰۰ میلیون رهن</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">۲ خواب · مستقل</div>
+      </div>
+      <span style="font-size:18px;color:var(--teal)">♥</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUB-SCREEN: کیف پول ══ -->
+<div class="sub-screen" id="sub-wallet">
+  <div class="sub-topbar">
+    <button class="back-btn" data-back>→</button>
+    <div class="sub-title">کیف پول</div>
+  </div>
+  <div class="sub-content">
+    <div class="wallet-hero">
+      <div class="wallet-label">موجودی کیف پول آژانس آسمان</div>
+      <div class="wallet-amount-big"><span class="wallet-unit">تومان</span>۲٬۴۰۰٬۰۰۰</div>
+      <div class="wallet-btns">
+        <button class="wallet-btn" data-toast="شارژ کیف پول">＋ افزایش</button>
+        <button class="wallet-btn" data-toast="انتقال اعتبار">↔ انتقال</button>
+      </div>
+    </div>
+    <div style="font-size:13px;font-weight:900;color:var(--text-2);margin:4px 0 8px">آخرین تراکنش‌ها</div>
+    <div style="display:grid;gap:8px">
+      <div class="tx-item">
+        <div class="tx-icon" style="background:var(--success-soft)">⬇</div>
+        <div class="tx-body"><div class="tx-name">شارژ از درگاه بانکی</div><div class="tx-date">۳۰ اردیبهشت ۱۴۰۴</div></div>
+        <div class="tx-amount tx-credit">＋۲٬۰۰۰٬۰۰۰</div>
+      </div>
+      <div class="tx-item">
+        <div class="tx-icon" style="background:var(--danger-soft)">⬆</div>
+        <div class="tx-body"><div class="tx-name">ثبت آگهی DM-33107</div><div class="tx-date">۲۸ اردیبهشت ۱۴۰۴</div></div>
+        <div class="tx-amount tx-debit">−۳۰۰٬۰۰۰</div>
+      </div>
+      <div class="tx-item">
+        <div class="tx-icon" style="background:var(--danger-soft)">⬆</div>
+        <div class="tx-body"><div class="tx-name">تمدید اشتراک Pro</div><div class="tx-date">۱۵ اردیبهشت ۱۴۰۴</div></div>
+        <div class="tx-amount tx-debit">−۱٬۸۰۰٬۰۰۰</div>
+      </div>
+      <div class="tx-item">
+        <div class="tx-icon" style="background:var(--success-soft)">⬇</div>
+        <div class="tx-body"><div class="tx-name">شارژ از درگاه بانکی</div><div class="tx-date">۱۴ اردیبهشت ۱۴۰۴</div></div>
+        <div class="tx-amount tx-credit">＋۵٬۰۰۰٬۰۰۰</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUB-SCREEN: اشتراک ══ -->
+<div class="sub-screen" id="sub-subscription">
+  <div class="sub-topbar">
+    <button class="back-btn" data-back>→</button>
+    <div class="sub-title">اشتراک</div>
+  </div>
+  <div class="sub-content">
+    <div class="plan-card current">
+      <div class="current-tag">طرح فعلی</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">۶۰۰٬۰۰۰ <span style="font-size:11px;color:var(--muted);font-weight:700">تومان/ماه</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">تا ۱۵ شهریور ۱۴۰۴</div>
+      <div class="plan-features">
+        <div class="plan-feat">✓ آگهی نامحدود</div>
+        <div class="plan-feat">✓ نقشه داتملک PRO</div>
+        <div class="plan-feat">✓ ارزیابی محیطی ملک</div>
+        <div class="plan-feat">✓ قرارداد و جلسات</div>
+        <div class="plan-feat locked">✗ مدیریت پرسنل</div>
+      </div>
+      <button class="btn-primary" style="width:100%;height:42px;border-radius:14px;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;background:var(--primary);color:#fff;margin-top:4px" data-toast="تمدید اشتراک Pro">تمدید اشتراک</button>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name" style="color:var(--orange)">آژانس</div>
+      <div class="plan-price" style="color:var(--orange)">۱٬۸۰۰٬۰۰۰ <span style="font-size:11px;color:var(--muted);font-weight:700">تومان/ماه</span></div>
+      <div class="plan-features">
+        <div class="plan-feat">✓ همه امکانات Pro</div>
+        <div class="plan-feat">✓ مدیریت پرسنل</div>
+        <div class="plan-feat">✓ کیف پول آژانس</div>
+        <div class="plan-feat">✓ داشبورد تیمی</div>
+        <div class="plan-feat">✓ گزارش عملکرد</div>
+        <div class="plan-feat">✓ پشتیبانی اختصاصی</div>
+      </div>
+      <button style="width:100%;height:42px;border-radius:14px;font-size:13px;font-weight:900;border:1px solid var(--orange);color:var(--orange);background:transparent;display:flex;align-items:center;justify-content:center;margin-top:4px" data-toast="ارتقا به طرح آژانس">ارتقا به آژانس</button>
+    </div>
+    <div class="plan-card" style="opacity:.7">
+      <div class="plan-name" style="color:var(--muted)">رایگان</div>
+      <div class="plan-price" style="color:var(--muted)">رایگان</div>
+      <div class="plan-features">
+        <div class="plan-feat">✓ ۳ آگهی فعال</div>
+        <div class="plan-feat">✓ جستجوی پایه</div>
+        <div class="plan-feat locked">✗ نقشه داتملک</div>
+        <div class="plan-feat locked">✗ قراردادها</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom nav -->
+<nav class="bottom-nav">
+  <a href="map.html"><span>⌖</span><span>نقشه</span></a>
+  <a href="requests.html"><span>□</span><span>درخواست</span></a>
+  <a href="ads.html"><span>⌂</span><span>آگهی</span></a>
+  <a href="chat.html"><span>◌</span><span>چت</span></a>
+  <a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a>
+</nav>
+
+<script>
+(function(){
+  /* Toast */
+  function toast(msg){
+    const old=document.querySelector('.toast-demo');if(old)old.remove();
+    const el=document.createElement('div');el.className='toast-demo';el.textContent=msg;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),2400);
+  }
+
+  /* Drawer */
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-drawer-toggle]')){document.body.classList.toggle('drawer-open');return;}
+    if(e.target.closest('[data-drawer-close]')){document.body.classList.remove('drawer-open');return;}
+    const t=e.target.closest('[data-toast]');if(t){toast(t.getAttribute('data-toast'));return;}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('drawer-open');});
+
+  /* Sub-screen open */
+  document.querySelectorAll('[data-sub]').forEach(el=>{
+    el.addEventListener('click',function(e){
+      const id=this.dataset.sub;
+      const screen=document.getElementById(id);
+      if(screen){
+        screen.classList.add('open');
+        document.body.style.overflow='hidden';
+        screen.scrollTop=0;
+      }
+    });
+  });
+
+  /* Sub-screen back */
+  document.querySelectorAll('[data-back]').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      const screen=this.closest('.sub-screen');
+      if(screen){screen.classList.remove('open');document.body.style.overflow='';}
+    });
+  });
+})();
+</script>
+</body>
 </html>

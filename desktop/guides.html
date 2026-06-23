@@ -1,66 +1,150 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>راهنمای استفاده از نرم افزار</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>راهنمای استفاده · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+.guide-search{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:16px}
+.guide-search input{flex:1;border:0;outline:none;font-size:14px;font-weight:700;color:var(--text);background:transparent}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{padding:6px 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:900;cursor:pointer;transition:all .15s}
+.chip.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.guide-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.guide-card-v{border:1px solid var(--border);border-radius:20px;background:#fff;overflow:hidden;transition:box-shadow .15s}
+.guide-card-v:hover{box-shadow:0 8px 24px rgba(109,40,217,.1);transform:translateY(-2px)}
+.guide-thumb-v{height:96px;display:flex;align-items:center;justify-content:center;font-size:38px;position:relative}
+.guide-cat-badge{position:absolute;top:8px;right:8px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.9);font-size:10px;font-weight:900;backdrop-filter:blur(6px)}
+.guide-body-v{padding:14px 14px 16px}
+.guide-body-v h3{font-size:14px;font-weight:900;margin-bottom:5px;line-height:20px}
+.guide-body-v p{font-size:12px;color:var(--muted);line-height:18px;margin-bottom:12px}
+.guide-foot{display:flex;align-items:center;justify-content:space-between}
+.guide-dur{font-size:11px;font-weight:800;color:var(--subtle)}
+</style>
 </head>
 <body>
 <div class="shell">
   <header class="topbar">
-    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و صفحات پشتیبانی</div></div></a>
+    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و پشتیبانی</div></div></a>
     <nav class="nav"><a href="map.html"><span>⌖</span>نقشه</a><a href="requests.html"><span>□</span>درخواست‌ها</a><a href="ads.html"><span>⌂</span>آگهی‌ها</a><a href="chat.html"><span>◌</span>چت</a><a href="my-dotmelk.html"><span>◫</span>داتملک من</a></nav>
     <div class="top-actions">
-<details class="more-menu">
-  <summary class="btn btn-outline">☰ بیشتر</summary>
-  <div class="more-panel">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="active" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
-  </div>
-</details>
-<button class="btn btn-primary" data-toast="ثبت آگهی نمایشی است">＋ ثبت آگهی</button></div>
+      <details class="more-menu">
+        <summary class="btn btn-outline">☰ بیشتر</summary>
+        <div class="more-panel">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a class="active" href="guides.html"><span>؟</span>راهنمای استفاده</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+          <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+        </div>
+      </details>
+      <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو">🔔</button>
+      <a href="add-advertise.html" class="btn btn-primary">＋ ثبت آگهی</a>
+    </div>
   </header>
+
   <section class="page-head">
-    <div><h1>راهنمای استفاده از نرم افزار</h1><p>لیست راهنماهای ویدیویی و محتوای آموزشی نرم‌افزار.</p></div>
-    <div style="display:flex;gap:8px"><a class="btn btn-outline" href="my-dotmelk.html">بازگشت به داتملک من</a></div>
+    <div><h1>راهنمای استفاده</h1><p>راهنماهای گام‌به‌گام برای بهره‌گیری کامل از امکانات داتملک</p></div>
+    <a class="btn btn-outline" href="my-dotmelk.html">← داتملک من</a>
   </section>
+
   <main class="layout">
     <aside class="card side-nav">
-      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
+      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
       <nav class="menu-list">
-        <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="active" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-        <a class="logout" href="logout.html"><span>⎋</span>خروج</a>
+        <a href="account.html"><span>◫</span>حساب کاربری</a>
+        <a class="active" href="guides.html"><span>؟</span>راهنمای استفاده</a>
+        <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+        <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+        <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+        <a href="about.html"><span>●</span>درباره داتملک</a>
+        <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+        <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+        <a class="logout" href="logout.html"><span>⎋</span>خروج از حساب</a>
       </nav>
     </aside>
+
     <section class="content">
-<section class="card">
-  <div class="section-title"><div><h2>ویدیوها و راهنمای استفاده</h2><p>در Flutter هر راهنما شامل title، description، url و thumbnail است و با کلیک وارد صفحه ویدیو می‌شود.</p></div><span class="badge info">Software Guides API</span></div>
-  <div class="guide-grid">
-    <article class="guide-card"><div class="guide-thumb"></div><div class="guide-card-body"><h3>ثبت و مدیریت آگهی</h3><p>راهنمای ثبت آگهی، تکمیل مشخصات، افزودن تصویر، و مدیریت وضعیت انتشار.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-    <article class="guide-card"><div class="guide-thumb" style="background:linear-gradient(135deg,#CCFBF1,#DBEAFE)"></div><div class="guide-card-body"><h3>جستجو روی نقشه و لایه‌ها</h3><p>آشنایی با موقعیت تقریبی، لایه‌های مکانی، UTM و ارزیابی محیطی.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-    <article class="guide-card"><div class="guide-thumb" style="background:linear-gradient(135deg,#FEF3C7,#EDE9FE)"></div><div class="guide-card-body"><h3>ثبت درخواست ملکی</h3><p>نحوه ثبت نیاز، محدوده جغرافیایی، بودجه و پیگیری درخواست‌ها.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-    <article class="guide-card"><div class="guide-thumb" style="background:linear-gradient(135deg,#FEE2E2,#DDD6FE)"></div><div class="guide-card-body"><h3>گفتگو، تیکت و پشتیبانی</h3><p>مدیریت پیام‌ها، ارسال تیکت و پیگیری پاسخ پشتیبانی.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-  </div>
-</section>
-</section>
+      <div class="guide-search"><span style="font-size:18px;color:var(--muted)">🔍</span><input placeholder="جستجو در راهنماها…"/></div>
+      <div class="chips">
+        <button class="chip active">همه</button>
+        <button class="chip">آگهی‌ها</button>
+        <button class="chip">نقشه GIS</button>
+        <button class="chip">درخواست‌ها</button>
+        <button class="chip">اشتراک</button>
+        <button class="chip">فضای کاری</button>
+      </div>
+
+      <div class="guide-grid-3">
+        <div class="guide-card-v">
+          <div class="guide-thumb-v" style="background:linear-gradient(135deg,#EDE9FE,#C4B5FD)">⌖<span class="guide-cat-badge">نقشه GIS</span></div>
+          <div class="guide-body-v">
+            <h3>کار با نقشه هوشمند</h3>
+            <p>لایه‌های GIS، فیلترهای مکانی و ابزار رسم ناحیه برای جستجوی دقیق ملک.</p>
+            <div class="guide-foot"><span class="guide-dur">⏱ ۵ دقیقه</span><button class="btn btn-soft" style="height:30px;font-size:12px" data-toast="راهنما در دست اقدام">مشاهده</button></div>
+          </div>
+        </div>
+
+        <div class="guide-card-v">
+          <div class="guide-thumb-v" style="background:linear-gradient(135deg,#ECFDF5,#A7F3D0)">⌂<span class="guide-cat-badge">آگهی‌ها</span></div>
+          <div class="guide-body-v">
+            <h3>ثبت آگهی حرفه‌ای</h3>
+            <p>از تکمیل اطلاعات ملک و بارگذاری تصویر تا انتشار آگهی در کمتر از ۵ دقیقه.</p>
+            <div class="guide-foot"><span class="guide-dur">⏱ ۴ دقیقه</span><button class="btn btn-soft" style="height:30px;font-size:12px" data-toast="راهنما در دست اقدام">مشاهده</button></div>
+          </div>
+        </div>
+
+        <div class="guide-card-v">
+          <div class="guide-thumb-v" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA)">□<span class="guide-cat-badge">درخواست‌ها</span></div>
+          <div class="guide-body-v">
+            <h3>ثبت درخواست ملکی</h3>
+            <p>فرم درخواست را تکمیل کنید تا مشاوران پیشنهادهای هدفمند ارسال کنند.</p>
+            <div class="guide-foot"><span class="guide-dur">⏱ ۳ دقیقه</span><button class="btn btn-soft" style="height:30px;font-size:12px" data-toast="راهنما در دست اقدام">مشاهده</button></div>
+          </div>
+        </div>
+
+        <div class="guide-card-v">
+          <div class="guide-thumb-v" style="background:linear-gradient(135deg,#F0F9FF,#BAE6FD)">◫<span class="guide-cat-badge">فضای کاری</span></div>
+          <div class="guide-body-v">
+            <h3>مدیریت تیم و آژانس</h3>
+            <p>دعوت اعضا، تعریف نقش‌ها و رصد فعالیت آژانس در داشبورد.</p>
+            <div class="guide-foot"><span class="guide-dur">⏱ ۶ دقیقه</span><button class="btn btn-soft" style="height:30px;font-size:12px" data-toast="راهنما در دست اقدام">مشاهده</button></div>
+          </div>
+        </div>
+
+        <div class="guide-card-v">
+          <div class="guide-thumb-v" style="background:linear-gradient(135deg,#FFF1F2,#FECDD3)">◌<span class="guide-cat-badge">چت</span></div>
+          <div class="guide-body-v">
+            <h3>ارتباط با مشتریان</h3>
+            <p>پیام‌رسان داخلی، ارسال موقعیت، برنامه‌ریزی بازدید و مدیریت مکالمات.</p>
+            <div class="guide-foot"><span class="guide-dur">⏱ ۴ دقیقه</span><button class="btn btn-soft" style="height:30px;font-size:12px" data-toast="راهنما در دست اقدام">مشاهده</button></div>
+          </div>
+        </div>
+
+        <div class="guide-card-v">
+          <div class="guide-thumb-v" style="background:linear-gradient(135deg,#F5F3FF,#DDD6FE)">⭐<span class="guide-cat-badge">اشتراک</span></div>
+          <div class="guide-body-v">
+            <h3>اشتراک Pro و آژانس</h3>
+            <p>مقایسه پلن‌ها، فعال‌سازی Pro و امکانات انحصاری.</p>
+            <div class="guide-foot"><span class="guide-dur">⏱ ۳ دقیقه</span><button class="btn btn-soft" style="height:30px;font-size:12px" data-toast="راهنما در دست اقدام">مشاهده</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-card" style="margin-top:18px;border-radius:18px">
+        <h2>نیاز به راهنمایی بیشتر دارید؟</h2>
+        <p>تیم پشتیبانی داتملک آماده پاسخگویی به سوالات شماست. تیکت ثبت کنید تا کارشناسان ما پاسخ دهند.</p>
+        <a href="tickets.html" class="btn btn-primary" style="margin-top:12px;display:inline-flex">ثبت تیکت پشتیبانی</a>
+      </div>
+    </section>
   </main>
 </div>
-<div class="prototype-ribbon">Dotmelk Menu Pages · Desktop</div>
+<div class="prototype-ribbon">Dotmelk · Desktop · راهنمای استفاده</div>
 </body>
 </html>

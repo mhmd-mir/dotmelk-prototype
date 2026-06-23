@@ -1,56 +1,136 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>سوالات متداول</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>سوالات متداول · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+.faq-search{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:16px}
+.faq-search input{flex:1;border:0;outline:none;font-size:14px;font-weight:700;color:var(--text);background:transparent}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{padding:6px 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:900;cursor:pointer;transition:all .15s}
+.chip.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.faq-group-label{font-size:12px;font-weight:900;color:var(--subtle);letter-spacing:.04em;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+.faq-group-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.no-ans{display:flex;align-items:center;justify-content:center;padding:32px;text-align:center;color:var(--muted);font-size:13px;gap:10px;flex-direction:column;background:var(--surface-muted);border-radius:16px}
+</style>
 </head>
 <body>
 <div class="shell">
   <header class="topbar">
-    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و صفحات پشتیبانی</div></div></a>
+    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و پشتیبانی</div></div></a>
     <nav class="nav"><a href="map.html"><span>⌖</span>نقشه</a><a href="requests.html"><span>□</span>درخواست‌ها</a><a href="ads.html"><span>⌂</span>آگهی‌ها</a><a href="chat.html"><span>◌</span>چت</a><a href="my-dotmelk.html"><span>◫</span>داتملک من</a></nav>
     <div class="top-actions">
-<details class="more-menu">
-  <summary class="btn btn-outline">☰ بیشتر</summary>
-  <div class="more-panel">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="active" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
-  </div>
-</details>
-<button class="btn btn-primary" data-toast="ثبت آگهی نمایشی است">＋ ثبت آگهی</button></div>
+      <details class="more-menu">
+        <summary class="btn btn-outline">☰ بیشتر</summary>
+        <div class="more-panel">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a class="active" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+          <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+        </div>
+      </details>
+      <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو">🔔</button>
+      <a href="add-advertise.html" class="btn btn-primary">＋ ثبت آگهی</a>
+    </div>
   </header>
+
   <section class="page-head">
-    <div><h1>سوالات متداول</h1><p>سوال‌ها و جواب‌ها به‌صورت آکاردئونی مطابق ساختار Flutter.</p></div>
-    <div style="display:flex;gap:8px"><a class="btn btn-outline" href="my-dotmelk.html">بازگشت به داتملک من</a></div>
+    <div><h1>سوالات متداول</h1><p>پاسخ سریع به سوالات رایج درباره داتملک</p></div>
+    <a class="btn btn-outline" href="my-dotmelk.html">← داتملک من</a>
   </section>
+
   <main class="layout">
     <aside class="card side-nav">
-      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
+      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
       <nav class="menu-list">
-        <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="active" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-        <a class="logout" href="logout.html"><span>⎋</span>خروج</a>
+        <a href="account.html"><span>◫</span>حساب کاربری</a>
+        <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+        <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+        <a class="active" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+        <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+        <a href="about.html"><span>●</span>درباره داتملک</a>
+        <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+        <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+        <a class="logout" href="logout.html"><span>⎋</span>خروج از حساب</a>
       </nav>
     </aside>
-    <section class="content"><section class="card"><div class="section-title"><div><h2>سوالات متداول</h2><p>مطابق Flutter: لیست سوال/جواب با ExpansionPanel.</p></div><span class="badge info">FAQ API</span></div><div class="faq-list"><div class="accordion open"><button data-accordion-button><span>چطور آگهی ثبت کنم؟</span><span>⌄</span></button><div class="answer">از بخش آگهی‌ها یا داتملک من وارد ثبت آگهی شوید، نوع معامله و ملک را انتخاب کنید، اطلاعات پویا را تکمیل کنید و در پایان موقعیت و تصاویر را ثبت کنید.</div></div><div class="accordion "><button data-accordion-button><span>چرا موقعیت بعضی ملک‌ها دقیق نیست؟</span><span>⌄</span></button><div class="answer">برای حفظ حریم خصوصی مالک یا مشاور، داتملک می‌تواند موقعیت ملک را به‌صورت تقریبی نمایش دهد. موقعیت دقیق‌تر بعد از تعامل معتبر قابل ارائه است.</div></div><div class="accordion "><button data-accordion-button><span>درخواست ملکی چه تفاوتی با آگهی دارد؟</span><span>⌄</span></button><div class="answer">درخواست نشان‌دهنده نیاز کاربر یا مشتری است؛ مثل خرید، اجاره یا مشارکت با محدوده، بودجه و ویژگی‌های موردنظر.</div></div><div class="accordion "><button data-accordion-button><span>چطور با پشتیبانی ارتباط بگیرم؟</span><span>⌄</span></button><div class="answer">از بخش پشتیبانی و تیکت‌ها می‌توانید درخواست جدید ایجاد کنید یا وضعیت تیکت‌های قبلی را دنبال کنید.</div></div><div class="accordion "><button data-accordion-button><span>چطور قوانین یا راهنماها به‌روزرسانی می‌شوند؟</span><span>⌄</span></button><div class="answer">در Flutter این محتواها از سرور دریافت می‌شوند، بنابراین تیم محتوا می‌تواند بدون انتشار نسخه جدید اپ، آن‌ها را به‌روزرسانی کند.</div></div></div></section></section>
+
+    <section class="content">
+      <div class="faq-search"><span style="font-size:18px;color:var(--muted)">🔍</span><input placeholder="جستجو در سوالات…"/></div>
+      <div class="chips">
+        <button class="chip active">همه</button>
+        <button class="chip">آگهی‌ها</button>
+        <button class="chip">نقشه</button>
+        <button class="chip">اشتراک</button>
+        <button class="chip">پشتیبانی</button>
+        <button class="chip">حساب کاربری</button>
+      </div>
+
+      <div class="card">
+        <div class="faq-group-label">آگهی‌ها</div>
+        <div class="faq-list">
+          <div class="accordion open">
+            <button data-accordion-button><span>چطور آگهی ثبت کنم؟</span><span>⌄</span></button>
+            <div class="answer">از بخش «ثبت آگهی» در نوار بالا یا داشبورد داتملک من وارد فرم ثبت شوید. نوع معامله (فروش، اجاره، مشارکت) و نوع ملک را انتخاب کنید، اطلاعات پویا را تکمیل و در پایان موقعیت روی نقشه و تصاویر را ثبت کنید.</div>
+          </div>
+          <div class="accordion">
+            <button data-accordion-button><span>چرا آگهی من در وضعیت «نیاز به ویرایش» قرار گرفت؟</span><span>⌄</span></button>
+            <div class="answer">تیم بررسی داتملک آگهی شما را بررسی کرده و نیاز به تکمیل یا اصلاح اطلاعات دارد. وضعیت آگهی را در بخش «آگهی‌های من» ببینید و پیغام بررسی را مطالعه کنید. پس از اصلاح و ذخیره، آگهی دوباره وارد صف بررسی می‌شود.</div>
+          </div>
+          <div class="accordion">
+            <button data-accordion-button><span>آیا می‌توانم چند ملک را هم‌زمان آگهی کنم؟</span><span>⌄</span></button>
+            <div class="answer">بله. در اشتراک رایگان تا ۵ آگهی هم‌زمان، در اشتراک Pro تا ۵۰ آگهی و در اشتراک آژانس بدون محدودیت می‌توانید آگهی فعال داشته باشید.</div>
+          </div>
+        </div>
+
+        <div class="faq-group-label">نقشه و موقعیت</div>
+        <div class="faq-list">
+          <div class="accordion">
+            <button data-accordion-button><span>چرا موقعیت بعضی ملک‌ها دقیق نیست؟</span><span>⌄</span></button>
+            <div class="answer">برای حفظ حریم خصوصی مالک یا مشاور، داتملک می‌تواند موقعیت ملک را به‌صورت تقریبی (در شعاع ۱۰۰ تا ۵۰۰ متر) نمایش دهد. موقعیت دقیق پس از برقراری ارتباط مستقیم از طریق چت قابل دریافت است.</div>
+          </div>
+          <div class="accordion">
+            <button data-accordion-button><span>لایه‌های نقشه چه اطلاعاتی نشان می‌دهند؟</span><span>⌄</span></button>
+            <div class="answer">داتملک چندین لایه GIS ارائه می‌دهد: لایه آگهی‌های فروش و اجاره، لایه درخواست‌های فعال، لایه محدوده‌های شهری، لایه اطلاعات محیطی (مدارس، بیمارستان، متروها) و لایه ارزیابی قیمت منطقه.</div>
+          </div>
+        </div>
+
+        <div class="faq-group-label">اشتراک</div>
+        <div class="faq-list">
+          <div class="accordion">
+            <button data-accordion-button><span>تفاوت اشتراک Pro و آژانس چیست؟</span><span>⌄</span></button>
+            <div class="answer">اشتراک Pro برای مشاوران فردی طراحی شده و شامل آگهی نامحدود، نشان Pro، داشبورد پیشرفته و دسترسی به تحلیل‌های بازار است. اشتراک آژانس علاوه بر همه امکانات Pro، مدیریت تیم، پروفایل آژانس، گزارش‌های گروهی و اولویت نمایش آگهی را در بر می‌گیرد.</div>
+          </div>
+          <div class="accordion">
+            <button data-accordion-button><span>آیا می‌توانم اشتراک را لغو کنم؟</span><span>⌄</span></button>
+            <div class="answer">بله. می‌توانید از بخش «اشتراک» در داتملک من اشتراک خود را در هر زمان لغو کنید. دسترسی تا پایان دوره اشتراک برقرار است و تمدید خودکار انجام نمی‌شود.</div>
+          </div>
+        </div>
+
+        <div class="faq-group-label">پشتیبانی</div>
+        <div class="faq-list">
+          <div class="accordion">
+            <button data-accordion-button><span>چطور با پشتیبانی ارتباط بگیرم؟</span><span>⌄</span></button>
+            <div class="answer">از بخش «پشتیبانی و تیکت‌ها» می‌توانید تیکت جدید ثبت کنید. تیم پشتیبانی داتملک در روزهای کاری بین ۸ تا ۱۸ پاسخگو است. برای مسائل فوری می‌توانید از ارتباط تلفنی یا تلگرام استفاده کنید.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+          <p style="font-size:13px;color:var(--muted);margin:0">جوابتان را پیدا نکردید؟</p>
+          <a href="tickets.html" class="btn btn-primary" style="height:36px;font-size:13px">ثبت تیکت پشتیبانی</a>
+        </div>
+      </div>
+    </section>
   </main>
 </div>
-<div class="prototype-ribbon">Dotmelk Menu Pages · Desktop</div>
+<div class="prototype-ribbon">Dotmelk · Desktop · سوالات متداول</div>
 </body>
 </html>

@@ -1,159 +1,950 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>داتملک من</title>
-    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
-    <script defer src="../assets/prototype.js"></script>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>داتملک من · داتملک</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --primary:#6D28D9;--primary-hover:#5B21B6;--primary-soft:#F5F3FF;--primary-subtle:#EDE9FE;--primary-border:#C4B5FD;
+      --bg:#F8FAFC;--surface:#fff;--card:#fff;--surface-muted:#F1F5F9;--text:#0F172A;--text-2:#475569;--muted:#64748B;--subtle:#94A3B8;--border:#E2E8F0;--border-strong:#CBD5E1;
+      --success:#16A34A;--success-soft:#DCFCE7;--success-text:#166534;--warning:#D97706;--warning-soft:#FEF3C7;--warning-text:#92400E;--danger:#DC2626;--danger-soft:#FEE2E2;--danger-text:#991B1B;--info:#2563EB;--info-soft:#DBEAFE;--info-text:#1E40AF;
+      --teal:#0F766E;--teal-soft:#CCFBF1;--orange:#F97316;--orange-soft:#FFEDD5;
+      --shadow-sm:0 4px 12px rgba(15,23,42,.06);--shadow-md:0 10px 24px rgba(15,23,42,.08);--shadow-lg:0 20px 45px rgba(15,23,42,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--bg);color:var(--text);direction:rtl;font-size:14px;min-height:100vh}
+    button,input,select,textarea{font:inherit;border:0;cursor:pointer}
+    a{text-decoration:none;color:inherit}
 
-    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
-    <script defer src="../assets/dotmelk-menu-pages.js"></script>
-  </head>
-  <body>
-    <div class="shell">
-      <header class="topbar">
-        <a class="brand" href="ads.html">
-          <div class="logo-mark"></div>
-          <div>
-            <div class="brand-title">داتملک</div>
-            <div class="brand-subtitle">
-              نسخه وب پیشنهادی · جریان اصلی محصول
-            </div>
-          </div>
-        </a>
-        <nav class="nav">
-          <a href="map.html" class=""><span>⌖</span>نقشه</a
-          ><a href="requests.html" class=""><span>□</span>درخواست‌ها</a
-          ><a href="ads.html" class=""><span>⌂</span>آگهی‌ها</a
-          ><a href="chat.html" class=""><span>◌</span>چت</a
-          ><a href="my-dotmelk.html" class="active"><span>◫</span>داتملک من</a>
-        </nav>
-        <div class="top-actions">
-          <details class="more-menu">
-              <summary class="btn btn-outline">☰ بیشتر</summary>
-              <div class="more-panel">
-                <a href="account.html"><span>◫</span>حساب کاربری من</a>
-                <a href="guides.html"
-                  ><span>؟</span>راهنمای استفاده از نرم افزار</a
-                >
-                <a href="rules.html"><span>§</span>قوانین و مقررات</a>
-                <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-                <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-                <a href="about.html"><span>●</span>درباره داتملک</a>
-                <a href="contact.html"><span>☎</span>ارتباط با ما</a>
-                <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-                <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
-              </div>
-            </details>
-          <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو فعال نیست">
-            🔔
-          </button>
-          <button
-            class="btn btn-primary"
-            data-toast="ثبت آگهی در فاز بعدی طراحی می‌شود"
-          >
-            ＋ ثبت آگهی
-          </button>
-        </div>
-      </header>
-      <section class="page-head">
-        <div>
-          <h1>داتملک من</h1>
-          <p>
-            داشبورد کاری برای آگهی‌ها، درخواست‌ها، گفتگوها، یادداشت‌ها، جلسات و
-            اشتراک.
-          </p>
-        </div>
-        <div style="display: flex; gap: 8px">
-          <button class="btn btn-outline">کیف پول</button
-          ><button class="btn btn-primary">ارتقای اشتراک</button>
-        </div>
-      </section>
+    /* Shell */
+    .shell{max-width:1440px;margin:0 auto;padding:18px 24px 48px}
 
-      <section class="dashboard-grid">
-        <aside class="card workspace-sidebar">
-          <div class="section-title">
-            <div>
-              <h2>داتملک من</h2>
-              <p>فضای کاری کاربر و آژانس</p>
-            </div>
-          </div>
-          <nav class="workspace-menu">
-            <a class="active">◫ داشبورد</a><a>⌂ آگهی‌های من</a
-            ><a>□ درخواست‌های من</a><a>♡ ذخیره‌شده‌ها</a><a>◷ جلسات</a
-            ><a>▣ قراردادها</a><a>کیف پول</a><a>اشتراک</a>
-          </nav>
-        </aside>
-        <main class="workspace-main">
-          <section class="stats">
-            <div class="stat"><span>آگهی فعال</span><strong>۱۸</strong></div>
-            <div class="stat"><span>درخواست فعال</span><strong>۷</strong></div>
-            <div class="stat"><span>گفتگوی باز</span><strong>۲۴</strong></div>
-            <div class="stat">
-              <span>اعتبار کیف پول</span><strong>۲.۴M</strong>
-            </div>
-          </section>
-          <section class="card">
-            <div class="section-title">
-              <div>
-                <h2>کارهای امروز</h2>
-                <p>وظایف و پیگیری‌های مهم</p>
-              </div>
-              <span class="badge primary">Workspace</span>
-            </div>
-            <div class="task-list">
-              <div class="task">
-                <div>
-                  <h3>پیگیری بازدید آپارتمان سعادت‌آباد</h3>
-                  <p>گفتگو با آرمان رضایی · امروز ساعت ۱۷</p>
-                </div>
-                <button class="btn btn-outline">مشاهده</button>
-              </div>
-              <div class="task">
-                <div>
-                  <h3>تکمیل اطلاعات آگهی در انتظار انتشار</h3>
-                  <p>افزودن تصویر و موقعیت روی نقشه</p>
-                </div>
-                <button class="btn btn-soft">تکمیل</button>
-              </div>
-              <div class="task">
-                <div>
-                  <h3>بررسی درخواست خرید با بودجه ۱۴ میلیارد</h3>
-                  <p>۳ فایل مشابه در منطقه پیدا شده است</p>
-                </div>
-                <button class="btn btn-primary">مچ کردن فایل</button>
-              </div>
-            </div>
-          </section>
-          <section class="card">
-            <div class="section-title">
-              <div>
-                <h2>عملکرد فایل‌ها</h2>
-                <p>نمای سریع از آگهی‌ها، چت و بازدید</p>
-              </div>
-            </div>
-            <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 12px;
-              "
-            >
-              <div class="stat">
-                <span>بازدید آگهی‌ها</span><strong>۱,۲۴۸</strong>
-              </div>
-              <div class="stat">
-                <span>درخواست تماس</span><strong>۳۶</strong>
-              </div>
-              <div class="stat">
-                <span>بازدید حضوری</span><strong>۹</strong>
-              </div>
-            </div>
-          </section>
-        </main>
-      </section>
+    /* Topbar */
+    .topbar{height:72px;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:24px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;box-shadow:var(--shadow-sm);position:sticky;top:14px;z-index:50}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo-mark{width:36px;height:36px;border-radius:14px;background:linear-gradient(135deg,#7C3AED,#5B21B6);display:grid;place-items:center;color:#fff;box-shadow:0 10px 25px rgba(109,40,217,.20)}
+    .logo-mark::before{content:'⌖';font-size:19px;font-weight:900}
+    .brand-title{font-size:18px;font-weight:900;letter-spacing:-.01em}
+    .brand-subtitle{font-size:12px;color:var(--muted);margin-top:1px}
+    .nav{display:flex;align-items:center;gap:4px;background:var(--surface-muted);border-radius:999px;padding:4px}
+    .nav a{height:36px;padding:0 14px;border-radius:999px;display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:13px;font-weight:800}
+    .nav a.active{background:var(--surface);color:var(--primary);box-shadow:0 3px 10px rgba(15,23,42,.06)}
+    .top-actions{display:flex;align-items:center;gap:8px}
+    .btn{height:40px;padding:0 16px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:14px;transition:.15s;white-space:nowrap;cursor:pointer}
+    .btn:active{transform:scale(.98)}
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{background:var(--primary-hover)}
+    .btn-soft{background:var(--primary-soft);color:var(--primary)}
+    .btn-soft:hover{background:var(--primary-subtle)}
+    .btn-outline{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+    .btn-outline:hover{border-color:var(--primary-border);color:var(--primary)}
+    .btn-ghost{background:transparent;color:var(--text-2)}
+    .btn-danger{background:var(--danger-soft);color:var(--danger-text)}
+    .icon-btn{width:42px;height:42px;border-radius:14px;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center;color:var(--text-2);transition:.15s}
+    .icon-btn:hover{border-color:var(--primary-border);color:var(--primary);box-shadow:var(--shadow-sm)}
+    .more-menu{position:relative}
+    .more-menu summary{list-style:none;cursor:pointer}
+    .more-menu summary::-webkit-details-marker{display:none}
+    .more-panel{position:absolute;left:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-lg);padding:8px;min-width:220px;z-index:200;display:grid;gap:2px}
+    .more-panel a{height:40px;border-radius:12px;display:flex;align-items:center;gap:10px;padding:0 12px;color:var(--text-2);font-size:13px;font-weight:800}
+    .more-panel a:hover{background:var(--surface-muted);color:var(--text)}
+    .more-panel a.danger{color:var(--danger)}
+    .more-panel a.danger:hover{background:var(--danger-soft)}
+    .more-panel span{width:20px;text-align:center;opacity:.65;font-size:15px}
+
+    /* Badges */
+    .badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 10px;font-size:12px;line-height:18px;font-weight:800;white-space:nowrap}
+    .badge.primary{background:var(--primary-soft);color:var(--primary)}
+    .badge.success{background:var(--success-soft);color:var(--success-text)}
+    .badge.warning{background:var(--warning-soft);color:var(--warning-text)}
+    .badge.danger{background:var(--danger-soft);color:var(--danger-text)}
+    .badge.info{background:var(--info-soft);color:var(--info-text)}
+    .badge.neutral{background:var(--surface-muted);color:var(--text-2)}
+    .badge.orange{background:var(--orange-soft);color:#9A3412}
+    .badge.teal{background:var(--teal-soft);color:var(--teal)}
+
+    /* Card */
+    .card{border:1px solid var(--border);background:var(--card);border-radius:22px;padding:20px;box-shadow:var(--shadow-sm)}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+    .section-title h2{font-size:16px;line-height:28px;margin:0;font-weight:900}
+    .section-title p{margin:2px 0 0;color:var(--muted);font-size:12px}
+
+    /* Page head */
+    .page-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:24px 4px 20px}
+    .page-head h1{font-size:26px;line-height:40px;font-weight:900;letter-spacing:-.01em}
+    .page-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+    /* Layout */
+    .workspace-layout{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
+
+    /* Sidebar */
+    .sidebar{position:sticky;top:104px}
+    .user-card{background:linear-gradient(135deg,var(--primary-soft),rgba(255,255,255,.6));border:1px solid var(--primary-border);border-radius:22px;padding:18px;margin-bottom:10px}
+    .user-av{width:52px;height:52px;border-radius:18px;background:linear-gradient(135deg,#7C3AED,#5B21B6);display:grid;place-items:center;color:#fff;font-weight:900;font-size:18px;margin-bottom:12px;box-shadow:0 8px 20px rgba(109,40,217,.22)}
+    .user-name{font-size:15px;font-weight:900;line-height:24px}
+    .user-role{font-size:12px;color:var(--muted);margin:2px 0 10px}
+    .user-sub{display:flex;align-items:center;gap:8px}
+    .sub-pill{height:26px;padding:0 10px;border-radius:999px;background:linear-gradient(135deg,var(--primary),#8B5CF6);color:#fff;font-size:11px;font-weight:900;display:inline-flex;align-items:center;gap:5px}
+    .wallet-row{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--text-2);font-weight:800}
+    .wallet-amount{color:var(--success);font-weight:900}
+    .menu-card{border:1px solid var(--border);border-radius:22px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow-sm)}
+    .menu-item{height:44px;display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--text-2);font-size:13px;font-weight:800;cursor:pointer;transition:.12s;border:0;background:transparent;width:100%;text-align:right}
+    .menu-item .mi-icon{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-size:14px;flex-shrink:0;transition:.12s}
+    .menu-item:hover{background:var(--surface-muted);color:var(--text)}
+    .menu-item.active{background:var(--primary-soft);color:var(--primary)}
+    .menu-item.active .mi-icon{background:var(--primary);color:#fff}
+    .menu-item:not(.active) .mi-icon{background:var(--surface-muted)}
+    .menu-sep{height:1px;background:var(--border);margin:4px 12px}
+    .menu-badge{margin-right:auto;background:var(--primary-soft);color:var(--primary);border-radius:999px;padding:2px 8px;font-size:11px;font-weight:900}
+    .menu-badge.warn{background:var(--warning-soft);color:var(--warning-text)}
+
+    /* Stats row */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    .stat-card{border:1px solid var(--border);border-radius:20px;background:var(--surface);padding:16px 18px;box-shadow:var(--shadow-sm)}
+    .stat-label{font-size:12px;color:var(--muted);font-weight:800;display:flex;align-items:center;gap:6px}
+    .stat-icon{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-size:14px}
+    .stat-value{font-size:26px;line-height:38px;font-weight:900;margin-top:6px;letter-spacing:-.02em}
+    .stat-sub{font-size:11px;color:var(--muted);margin-top:2px}
+    .stat-up{color:var(--success);font-weight:900}
+    .stat-down{color:var(--danger);font-weight:900}
+
+    /* Sections (JS-toggled) */
+    .section{display:none;flex-direction:column;gap:16px}
+    .section.active{display:flex}
+
+    /* Task list */
+    .task-list{display:grid;gap:10px}
+    .task-item{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:14px 16px;display:flex;align-items:center;gap:14px;transition:.15s}
+    .task-item:hover{border-color:var(--primary-border);box-shadow:var(--shadow-sm)}
+    .task-dot{width:10px;height:10px;border-radius:999px;flex-shrink:0}
+    .task-body{flex:1;min-width:0}
+    .task-title{font-size:13px;font-weight:900;line-height:22px}
+    .task-meta{font-size:12px;color:var(--muted);margin-top:2px}
+    .task-actions{display:flex;gap:6px;flex-shrink:0}
+
+    /* Ad list */
+    .ad-list{display:grid;gap:10px}
+    .ad-row{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:14px 16px;display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;transition:.15s}
+    .ad-row:hover{border-color:var(--primary-border);box-shadow:var(--shadow-sm);cursor:pointer}
+    .ad-thumb{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#DDD6FE,#BFDBFE);flex-shrink:0;position:relative;overflow:hidden}
+    .ad-thumb::after{content:'⌂';position:absolute;inset:0;display:grid;place-items:center;font-size:20px;opacity:.35}
+    .ad-thumb.req{background:linear-gradient(135deg,#CCFBF1,#DBEAFE)}
+    .ad-thumb.req::after{content:'□'}
+    .ad-thumb.saved{background:linear-gradient(135deg,#FEF3C7,#FFEDD5)}
+    .ad-thumb.saved::after{content:'♡'}
+    .ad-code{font-size:11px;color:var(--subtle);font-weight:800;margin-bottom:3px}
+    .ad-title{font-size:13px;font-weight:900;line-height:22px}
+    .ad-meta{display:flex;align-items:center;gap:8px;margin-top:4px;flex-wrap:wrap}
+    .ad-meta span{font-size:12px;color:var(--text-2)}
+    .ad-meta .sep{color:var(--border-strong)}
+    .ad-actions{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+
+    /* Filter bar */
+    .filter-bar{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+    .filter-chip{height:32px;padding:0 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-size:12px;font-weight:800;cursor:pointer;transition:.12s;display:inline-flex;align-items:center;gap:5px}
+    .filter-chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .filter-chip:not(.active):hover{border-color:var(--primary-border);color:var(--primary)}
+
+    /* Meeting list */
+    .meeting-list{display:grid;gap:10px}
+    .meeting-card{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:14px 16px;display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;transition:.15s}
+    .meeting-card:hover{border-color:var(--primary-border);box-shadow:var(--shadow-sm)}
+    .meeting-date-box{width:56px;height:56px;border-radius:16px;background:var(--primary-soft);display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--primary-border);flex-shrink:0}
+    .meeting-day{font-size:20px;font-weight:900;color:var(--primary);line-height:1}
+    .meeting-month{font-size:10px;color:var(--muted);font-weight:800;margin-top:2px}
+
+    /* Contract list */
+    .contract-card{border:1px solid var(--border);border-radius:18px;background:var(--surface);padding:16px;display:flex;align-items:center;gap:14px;transition:.15s}
+    .contract-card:hover{border-color:var(--primary-border);box-shadow:var(--shadow-sm)}
+    .contract-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:20px;flex-shrink:0}
+
+    /* Wallet */
+    .wallet-hero{background:linear-gradient(135deg,var(--primary),#8B5CF6,#6D28D9);border-radius:22px;padding:24px;color:#fff;position:relative;overflow:hidden;margin-bottom:4px}
+    .wallet-hero::before{content:'';position:absolute;top:-30px;left:-30px;width:160px;height:160px;border-radius:999px;background:rgba(255,255,255,.07)}
+    .wallet-hero::after{content:'';position:absolute;bottom:-20px;right:-20px;width:100px;height:100px;border-radius:999px;background:rgba(255,255,255,.05)}
+    .wallet-label{font-size:12px;opacity:.8;font-weight:800;margin-bottom:6px;position:relative;z-index:1}
+    .wallet-amount-big{font-size:32px;font-weight:900;line-height:1.1;position:relative;z-index:1}
+    .wallet-unit{font-size:14px;opacity:.75;font-weight:700;margin-right:6px}
+    .wallet-actions{display:flex;gap:8px;margin-top:16px;position:relative;z-index:1}
+    .wallet-btn{height:36px;padding:0 14px;border-radius:10px;font-size:13px;font-weight:900;border:0;cursor:pointer;display:flex;align-items:center;gap:6px}
+    .wallet-btn.white{background:rgba(255,255,255,.2);color:#fff;backdrop-filter:blur(8px)}
+    .wallet-btn.white:hover{background:rgba(255,255,255,.3)}
+    .tx-list{display:grid;gap:8px}
+    .tx-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+    .tx-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:16px;flex-shrink:0}
+    .tx-body{flex:1;min-width:0}
+    .tx-title{font-size:13px;font-weight:900;line-height:22px}
+    .tx-date{font-size:11px;color:var(--muted);margin-top:1px}
+    .tx-amount{font-size:14px;font-weight:900;white-space:nowrap}
+    .tx-amount.credit{color:var(--success)}
+    .tx-amount.debit{color:var(--danger)}
+
+    /* Subscription */
+    .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .plan-card{border:1px solid var(--border);border-radius:20px;padding:18px;text-align:center;position:relative;transition:.15s}
+    .plan-card.current{border-color:var(--primary-border);background:var(--primary-soft)}
+    .plan-card:hover:not(.current){border-color:var(--primary-border);box-shadow:var(--shadow-sm)}
+    .plan-name{font-size:14px;font-weight:900;margin-bottom:4px}
+    .plan-price{font-size:22px;font-weight:900;color:var(--primary);line-height:1.2;margin:10px 0 4px}
+    .plan-unit{font-size:11px;color:var(--muted)}
+    .plan-features{text-align:right;margin:14px 0;display:grid;gap:6px}
+    .plan-feature{font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px}
+    .plan-feature::before{content:'✓';color:var(--success);font-weight:900;flex-shrink:0}
+    .plan-feature.locked{color:var(--subtle)}
+    .plan-feature.locked::before{content:'✗';color:var(--border-strong)}
+    .current-tag{position:absolute;top:-1px;right:50%;transform:translateX(50%);background:var(--primary);color:#fff;font-size:11px;font-weight:900;padding:3px 12px;border-radius:0 0 10px 10px}
+
+    /* Performance */
+    .perf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .perf-card{border:1px solid var(--border);border-radius:16px;background:var(--surface);padding:14px;text-align:center}
+    .perf-value{font-size:22px;font-weight:900;color:var(--primary);line-height:1.2;margin-bottom:4px}
+    .perf-label{font-size:11px;color:var(--muted);font-weight:800}
+
+    /* Saved grid */
+    .saved-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .saved-card{border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--surface);transition:.15s;cursor:pointer}
+    .saved-card:hover{border-color:var(--primary-border);box-shadow:var(--shadow-sm)}
+    .saved-thumb{height:110px;background:linear-gradient(135deg,#DDD6FE,#BFDBFE);position:relative}
+    .saved-thumb.teal{background:linear-gradient(135deg,#CCFBF1,#DBEAFE)}
+    .saved-thumb.orange{background:linear-gradient(135deg,#FEF3C7,#FFEDD5)}
+    .saved-thumb-icon{position:absolute;inset:0;display:grid;place-items:center;font-size:28px;opacity:.3}
+    .saved-heart{position:absolute;top:8px;left:8px;width:30px;height:30px;border-radius:999px;background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:14px;color:var(--danger)}
+    .saved-body{padding:12px}
+    .saved-title{font-size:13px;font-weight:900;line-height:22px;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .saved-price{font-size:14px;font-weight:900;color:var(--primary)}
+    .saved-meta{font-size:11px;color:var(--muted);margin-top:3px}
+
+    /* Prototype ribbon */
+    .prototype-ribbon{position:fixed;left:24px;bottom:24px;background:rgba(15,23,42,.82);color:#fff;border-radius:999px;padding:9px 13px;font-size:12px;box-shadow:var(--shadow-md);z-index:80;pointer-events:none}
+    .toast-demo{position:fixed;left:20px;bottom:20px;z-index:9999;background:rgba(15,23,42,.88);color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 10px 24px rgba(15,23,42,.18);font-size:13px}
+
+    /* Divider */
+    .divider{height:1px;background:var(--border);margin:4px 0}
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a class="brand" href="ads.html">
+      <div class="logo-mark"></div>
+      <div>
+        <div class="brand-title">داتملک</div>
+        <div class="brand-subtitle">نسخه وب پیشنهادی · جریان اصلی محصول</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="map.html"><span>⌖</span>نقشه</a>
+      <a href="requests.html"><span>□</span>درخواست‌ها</a>
+      <a href="ads.html"><span>⌂</span>آگهی‌ها</a>
+      <a href="chat.html"><span>◌</span>چت</a>
+      <a href="my-dotmelk.html" class="active"><span>◫</span>داتملک من</a>
+    </nav>
+    <div class="top-actions">
+      <details class="more-menu">
+        <summary class="btn btn-outline">☰ بیشتر</summary>
+        <div class="more-panel">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+          <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+        </div>
+      </details>
+      <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو فعال نیست">🔔</button>
+      <a href="add-advertise.html" class="btn btn-primary">＋ ثبت آگهی</a>
     </div>
-    <div class="prototype-ribbon">Dotmelk Main Flow · Desktop</div>
-  </body>
+  </header>
+
+  <!-- Page head -->
+  <div class="page-head">
+    <div>
+      <h1>داتملک من</h1>
+      <p>فضای کاری شخصی و آژانسی — آگهی‌ها، درخواست‌ها، جلسات، قراردادها، کیف پول</p>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-outline" data-section="wallet">💰 کیف پول</button>
+      <button class="btn btn-primary" data-section="subscription">⬆ ارتقای اشتراک</button>
+    </div>
+  </div>
+
+  <!-- Layout -->
+  <div class="workspace-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- User card -->
+      <div class="user-card">
+        <div class="user-av">م</div>
+        <div class="user-name">مهراد محمدی</div>
+        <div class="user-role">مشاور · آژانس آسمان</div>
+        <div class="user-sub">
+          <span class="sub-pill">★ Pro</span>
+          <span style="font-size:11px;color:var(--muted);font-weight:800">تا ۱۵ شهریور</span>
+        </div>
+        <div class="wallet-row">
+          <span>💰 موجودی:</span>
+          <span class="wallet-amount">۲,۴۰۰,۰۰۰ تومان</span>
+        </div>
+      </div>
+
+      <!-- Menu -->
+      <div class="menu-card">
+        <button class="menu-item active" data-section="dashboard"><span class="mi-icon">◫</span>داشبورد</button>
+        <div class="menu-sep"></div>
+        <button class="menu-item" data-section="my-ads"><span class="mi-icon">⌂</span>آگهی‌های من<span class="menu-badge">۱۸</span></button>
+        <button class="menu-item" data-section="my-requests"><span class="mi-icon">□</span>درخواست‌های من<span class="menu-badge">۷</span></button>
+        <button class="menu-item" data-section="saved"><span class="mi-icon">♡</span>ذخیره‌شده‌ها<span class="menu-badge">۱۲</span></button>
+        <div class="menu-sep"></div>
+        <button class="menu-item" data-section="meetings"><span class="mi-icon">📅</span>جلسات<span class="menu-badge warn">۳</span></button>
+        <button class="menu-item" data-section="contracts"><span class="mi-icon">📄</span>قراردادها</button>
+        <div class="menu-sep"></div>
+        <button class="menu-item" data-section="wallet"><span class="mi-icon">💰</span>کیف پول</button>
+        <button class="menu-item" data-section="subscription"><span class="mi-icon">★</span>اشتراک</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main id="main-content">
+
+      <!-- ══ داشبورد ══ -->
+      <div class="section active" id="sec-dashboard">
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label"><span class="stat-icon" style="background:var(--primary-soft)">⌂</span>آگهی فعال</div>
+            <div class="stat-value">۱۸</div>
+            <div class="stat-sub"><span class="stat-up">↑ ۲</span> نسبت به ماه قبل</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span class="stat-icon" style="background:var(--teal-soft)">□</span>درخواست فعال</div>
+            <div class="stat-value">۷</div>
+            <div class="stat-sub"><span class="stat-up">↑ ۱</span> هفته جاری</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span class="stat-icon" style="background:var(--info-soft)">◌</span>گفتگوی باز</div>
+            <div class="stat-value">۲۴</div>
+            <div class="stat-sub"><span class="stat-up">↑ ۵</span> پیام خوانده‌نشده</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span class="stat-icon" style="background:var(--success-soft)">💰</span>موجودی کیف پول</div>
+            <div class="stat-value" style="font-size:20px">۲.۴M</div>
+            <div class="stat-sub" style="color:var(--muted)">تومان</div>
+          </div>
+        </div>
+
+        <!-- Tasks -->
+        <div class="card">
+          <div class="section-title">
+            <div><h2>کارهای امروز</h2><p>وظایف و پیگیری‌های مهم</p></div>
+            <span class="badge primary">Workspace</span>
+          </div>
+          <div class="task-list">
+            <div class="task-item">
+              <div class="task-dot" style="background:var(--warning)"></div>
+              <div class="task-body">
+                <div class="task-title">پیگیری بازدید آپارتمان سعادت‌آباد</div>
+                <div class="task-meta">گفتگو با آرمان رضایی · امروز ساعت ۱۷ · کد DM-24891</div>
+              </div>
+              <div class="task-actions">
+                <span class="badge warning">بازدید</span>
+                <a href="chat.html" class="btn btn-outline" style="height:34px;font-size:12px">باز کردن چت</a>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-dot" style="background:var(--danger)"></div>
+              <div class="task-body">
+                <div class="task-title">تکمیل اطلاعات آگهی در انتظار انتشار</div>
+                <div class="task-meta">کد DM-33107 · افزودن تصویر و موقعیت روی نقشه</div>
+              </div>
+              <div class="task-actions">
+                <span class="badge danger">نیاز به ویرایش</span>
+                <button class="btn btn-soft" style="height:34px;font-size:12px" data-toast="ویرایش آگهی">تکمیل آگهی</button>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-dot" style="background:var(--primary)"></div>
+              <div class="task-body">
+                <div class="task-title">بررسی درخواست خرید با بودجه ۱۵ میلیارد</div>
+                <div class="task-meta">کد RQ-11042 · ۳ فایل مشابه در منطقه پیدا شده</div>
+              </div>
+              <div class="task-actions">
+                <span class="badge primary">درخواست</span>
+                <a href="ads.html" class="btn btn-primary" style="height:34px;font-size:12px">پیدا کردن فایل</a>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-dot" style="background:var(--success)"></div>
+              <div class="task-body">
+                <div class="task-title">تنظیم قرارداد اجاره با فریده موسوی</div>
+                <div class="task-meta">کد DM-28830 · مبلغ: ۱۸ میلیون در ماه</div>
+              </div>
+              <div class="task-actions">
+                <span class="badge success">قرارداد</span>
+                <button class="btn btn-outline" style="height:34px;font-size:12px" data-section="contracts">مشاهده</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance -->
+        <div class="card">
+          <div class="section-title">
+            <div><h2>عملکرد این ماه</h2><p>آمار بازدید، تماس و فروش آگهی‌ها</p></div>
+            <button class="btn btn-ghost" style="height:34px;font-size:12px" data-toast="گزارش کامل در نسخه دمو">گزارش کامل ←</button>
+          </div>
+          <div class="perf-grid">
+            <div class="perf-card"><div class="perf-value">۱٬۲۴۸</div><div class="perf-label">بازدید آگهی‌ها</div></div>
+            <div class="perf-card"><div class="perf-value">۳۶</div><div class="perf-label">درخواست تماس</div></div>
+            <div class="perf-card"><div class="perf-value">۹</div><div class="perf-label">بازدید حضوری</div></div>
+            <div class="perf-card"><div class="perf-value" style="color:var(--success)">۲۵٪</div><div class="perf-label">نرخ تبدیل</div></div>
+          </div>
+        </div>
+
+        <!-- Upcoming meetings -->
+        <div class="card">
+          <div class="section-title">
+            <div><h2>جلسات پیش رو</h2><p>بازدیدها و کارهای هفته</p></div>
+            <button class="btn btn-ghost" style="height:34px;font-size:12px" data-section="meetings">همه جلسات ←</button>
+          </div>
+          <div class="meeting-list">
+            <div class="meeting-card">
+              <div class="meeting-date-box"><div class="meeting-day">۳</div><div class="meeting-month">خرداد</div></div>
+              <div>
+                <div style="font-size:13px;font-weight:900;line-height:22px">بازدید آپارتمان سعادت‌آباد</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:2px">ساعت ۱۷:۰۰ · با آرمان رضایی · کد DM-24891</div>
+              </div>
+              <span class="badge warning">بازدید</span>
+            </div>
+            <div class="meeting-card">
+              <div class="meeting-date-box" style="background:var(--info-soft);border-color:#BFDBFE"><div class="meeting-day" style="color:var(--info)">۶</div><div class="meeting-month">خرداد</div></div>
+              <div>
+                <div style="font-size:13px;font-weight:900;line-height:22px">جلسه مشارکت ساختمانی لواسان</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:2px">ساعت ۱۰:۰۰ · مالک آقای نوری</div>
+              </div>
+              <span class="badge info">کار</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ آگهی‌های من ══ -->
+      <div class="section" id="sec-my-ads">
+        <div class="card">
+          <div class="section-title">
+            <div><h2>آگهی‌های من</h2><p>۱۸ آگهی فعال · ۱ نیاز به ویرایش</p></div>
+            <a href="add-advertise.html" class="btn btn-primary" style="height:36px;font-size:13px">＋ ثبت آگهی جدید</a>
+          </div>
+          <div class="filter-bar" id="ad-filter">
+            <button class="filter-chip active" data-filter="all">همه ۱۹</button>
+            <button class="filter-chip" data-filter="published">منتشرشده ۱۸</button>
+            <button class="filter-chip" data-filter="pending">در انتظار ۱</button>
+            <button class="filter-chip" data-filter="need-edit">نیاز به ویرایش ۱</button>
+            <button class="filter-chip" data-filter="expired">منقضی</button>
+            <button class="filter-chip" data-filter="archived">بایگانی</button>
+          </div>
+          <div class="ad-list">
+            <div class="ad-row">
+              <div class="ad-thumb"></div>
+              <div>
+                <div class="ad-code">DM-24891</div>
+                <div class="ad-title">فروش آپارتمان ۱۳۵ متری · سعادت‌آباد</div>
+                <div class="ad-meta">
+                  <span>۱۲.۸ میلیارد</span><span class="sep">·</span>
+                  <span>۳ خواب</span><span class="sep">·</span>
+                  <span>۱,۲۴۸ بازدید</span>
+                </div>
+              </div>
+              <div class="ad-actions">
+                <span class="badge success">منتشرشده عمومی</span>
+                <div style="display:flex;gap:6px">
+                  <a href="property-detail.html" class="btn btn-ghost" style="height:32px;font-size:12px">مشاهده</a>
+                  <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="ویرایش آگهی">ویرایش</button>
+                </div>
+              </div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-thumb"></div>
+              <div>
+                <div class="ad-code">DM-31245</div>
+                <div class="ad-title">اجاره ویلا ۳۵۰ متری · لواسان</div>
+                <div class="ad-meta">
+                  <span>۲۵ میلیون/ماه</span><span class="sep">·</span>
+                  <span>۴ خواب</span><span class="sep">·</span>
+                  <span>۸۴۵ بازدید</span>
+                </div>
+              </div>
+              <div class="ad-actions">
+                <span class="badge success">منتشرشده عمومی</span>
+                <div style="display:flex;gap:6px">
+                  <a href="property-detail.html" class="btn btn-ghost" style="height:32px;font-size:12px">مشاهده</a>
+                  <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="ویرایش آگهی">ویرایش</button>
+                </div>
+              </div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-thumb"></div>
+              <div>
+                <div class="ad-code">DM-28830</div>
+                <div class="ad-title">اجاره آپارتمان ۹۰ متری · پونک</div>
+                <div class="ad-meta">
+                  <span>۱۸ میلیون/ماه</span><span class="sep">·</span>
+                  <span>۲ خواب</span><span class="sep">·</span>
+                  <span>۵۳۲ بازدید</span>
+                </div>
+              </div>
+              <div class="ad-actions">
+                <span class="badge success">منتشرشده عمومی</span>
+                <div style="display:flex;gap:6px">
+                  <a href="property-detail.html" class="btn btn-ghost" style="height:32px;font-size:12px">مشاهده</a>
+                  <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="ویرایش آگهی">ویرایش</button>
+                </div>
+              </div>
+            </div>
+            <div class="ad-row" style="border-color:var(--danger-soft);background:rgba(254,226,226,.18)">
+              <div class="ad-thumb" style="background:linear-gradient(135deg,#FEE2E2,#DDD6FE)"></div>
+              <div>
+                <div class="ad-code">DM-33107</div>
+                <div class="ad-title">فروش زمین ۴۵۰ متری · شهریار</div>
+                <div class="ad-meta">
+                  <span>۵ میلیارد</span><span class="sep">·</span>
+                  <span>سند تک‌برگ</span><span class="sep">·</span>
+                  <span>تصویر اضافه نشده</span>
+                </div>
+              </div>
+              <div class="ad-actions">
+                <span class="badge danger">نیاز به ویرایش</span>
+                <div style="display:flex;gap:6px">
+                  <button class="btn btn-danger" style="height:32px;font-size:12px" data-toast="ویرایش آگهی">تکمیل کنید</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ درخواست‌های من ══ -->
+      <div class="section" id="sec-my-requests">
+        <div class="card">
+          <div class="section-title">
+            <div><h2>درخواست‌های من</h2><p>۷ درخواست فعال</p></div>
+            <a href="requests.html" class="btn btn-primary" style="height:36px;font-size:13px">＋ درخواست جدید</a>
+          </div>
+          <div class="filter-bar">
+            <button class="filter-chip active">همه ۷</button>
+            <button class="filter-chip">فعال ۶</button>
+            <button class="filter-chip">بایگانی ۱</button>
+          </div>
+          <div class="ad-list">
+            <div class="ad-row">
+              <div class="ad-thumb req"></div>
+              <div>
+                <div class="ad-code">RQ-11042</div>
+                <div class="ad-title">خرید آپارتمان · سعادت‌آباد</div>
+                <div class="ad-meta"><span>بودجه تا ۱۵ میلیارد</span><span class="sep">·</span><span>۳ خواب</span><span class="sep">·</span><span>۳ پیشنهاد جدید</span></div>
+              </div>
+              <div class="ad-actions">
+                <span class="badge primary">خرید · فعال</span>
+                <div style="display:flex;gap:6px">
+                  <a href="request-detail.html" class="btn btn-outline" style="height:32px;font-size:12px">جزئیات</a>
+                </div>
+              </div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-thumb req"></div>
+              <div>
+                <div class="ad-code">RQ-10987</div>
+                <div class="ad-title">خرید زمین · شهریار</div>
+                <div class="ad-meta"><span>بودجه تا ۸ میلیارد</span><span class="sep">·</span><span>حداقل ۳۰۰ متر</span></div>
+              </div>
+              <div class="ad-actions">
+                <span class="badge primary">خرید · فعال</span>
+                <div style="display:flex;gap:6px">
+                  <a href="request-detail.html" class="btn btn-outline" style="height:32px;font-size:12px">جزئیات</a>
+                </div>
+              </div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-thumb req" style="background:linear-gradient(135deg,#FEF3C7,#FFEDD5)"></div>
+              <div>
+                <div class="ad-code">RQ-10456</div>
+                <div class="ad-title">اجاره کوتاه‌مدت · کیش</div>
+                <div class="ad-meta"><span>تا ۵ میلیون/شب</span><span class="sep">·</span><span>۲ هفته</span></div>
+              </div>
+              <div class="ad-actions">
+                <span class="badge orange">اجاره کوتاه‌مدت · فعال</span>
+                <div style="display:flex;gap:6px">
+                  <a href="request-detail.html" class="btn btn-outline" style="height:32px;font-size:12px">جزئیات</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ ذخیره‌شده‌ها ══ -->
+      <div class="section" id="sec-saved">
+        <div class="card">
+          <div class="section-title">
+            <div><h2>ذخیره‌شده‌ها</h2><p>۱۲ مورد نشان‌شده</p></div>
+            <button class="btn btn-ghost" style="height:34px;font-size:12px" data-toast="مرتب‌سازی">↕ مرتب‌سازی</button>
+          </div>
+          <div class="filter-bar">
+            <button class="filter-chip active">همه ۱۲</button>
+            <button class="filter-chip">آگهی ۸</button>
+            <button class="filter-chip">درخواست ۴</button>
+          </div>
+          <div class="saved-grid">
+            <div class="saved-card">
+              <div class="saved-thumb"><div class="saved-thumb-icon">⌂</div><div class="saved-heart">♥</div></div>
+              <div class="saved-body">
+                <div class="saved-title">پنت‌هاوس ۲۲۰ متری · الهیه</div>
+                <div class="saved-price">۳۲ میلیارد تومان</div>
+                <div class="saved-meta">۴ خواب · تراس · پارکینگ</div>
+              </div>
+            </div>
+            <div class="saved-card">
+              <div class="saved-thumb teal"><div class="saved-thumb-icon">⌂</div><div class="saved-heart">♥</div></div>
+              <div class="saved-body">
+                <div class="saved-title">ویلا ۴۵۰ متری · شمال</div>
+                <div class="saved-price">۴۵ میلیون/شب</div>
+                <div class="saved-meta">۵ خواب · استخر · ساحل</div>
+              </div>
+            </div>
+            <div class="saved-card">
+              <div class="saved-thumb orange"><div class="saved-thumb-icon">⌂</div><div class="saved-heart">♥</div></div>
+              <div class="saved-body">
+                <div class="saved-title">مغازه ۸۵ متری · ولیعصر</div>
+                <div class="saved-price">۱۲.۵ میلیارد تومان</div>
+                <div class="saved-meta">پیش‌فروش · موقعیت عالی</div>
+              </div>
+            </div>
+            <div class="saved-card">
+              <div class="saved-thumb"><div class="saved-thumb-icon">□</div><div class="saved-heart" style="color:var(--teal)">♥</div></div>
+              <div class="saved-body">
+                <div class="saved-title">درخواست رهن آپارتمان · نیاوران</div>
+                <div class="saved-price">تا ۸۰۰ میلیون رهن</div>
+                <div class="saved-meta">۲ خواب · مستقل</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ جلسات ══ -->
+      <div class="section" id="sec-meetings">
+        <div class="card">
+          <div class="section-title">
+            <div><h2>جلسات</h2><p>بازدیدها و جلسات کاری</p></div>
+            <button class="btn btn-primary" style="height:36px;font-size:13px" data-toast="ثبت جلسه جدید">＋ جلسه جدید</button>
+          </div>
+          <div class="filter-bar">
+            <button class="filter-chip active">همه</button>
+            <button class="filter-chip">بازدید</button>
+            <button class="filter-chip">کار</button>
+            <button class="filter-chip">آینده</button>
+            <button class="filter-chip">گذشته</button>
+          </div>
+          <div class="meeting-list">
+            <div class="meeting-card">
+              <div class="meeting-date-box"><div class="meeting-day">۳</div><div class="meeting-month">خرداد</div></div>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:900;line-height:22px">بازدید آپارتمان سعادت‌آباد</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px">ساعت ۱۷:۰۰ · آرمان رضایی · کد DM-24891</div>
+                <div style="margin-top:6px;display:flex;gap:6px;align-items:center">
+                  <span class="badge warning" style="font-size:11px">بازدید</span>
+                  <span style="font-size:11px;color:var(--primary);font-weight:800">• امروز</span>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <button class="btn btn-soft" style="height:32px;font-size:12px" data-toast="یادآوری تنظیم شد">⏰ یادآور</button>
+                <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="ویرایش جلسه">ویرایش</button>
+              </div>
+            </div>
+            <div class="meeting-card">
+              <div class="meeting-date-box" style="background:var(--info-soft);border-color:#BFDBFE"><div class="meeting-day" style="color:var(--info)">۶</div><div class="meeting-month">خرداد</div></div>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:900;line-height:22px">جلسه مشارکت ساختمانی لواسان</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px">ساعت ۱۰:۰۰ · آقای نوری · مالک زمین</div>
+                <div style="margin-top:6px;display:flex;gap:6px;align-items:center">
+                  <span class="badge info" style="font-size:11px">کار</span>
+                  <span style="font-size:11px;color:var(--muted);font-weight:800">• ۳ روز دیگر</span>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <button class="btn btn-soft" style="height:32px;font-size:12px" data-toast="یادآوری تنظیم شد">⏰ یادآور</button>
+                <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="ویرایش جلسه">ویرایش</button>
+              </div>
+            </div>
+            <div class="meeting-card">
+              <div class="meeting-date-box" style="background:var(--success-soft);border-color:#BBF7D0"><div class="meeting-day" style="color:var(--success)">۸</div><div class="meeting-month">خرداد</div></div>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:900;line-height:22px">بازدید ویلا لواسان با مشتری جدید</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px">ساعت ۱۵:۰۰ · خانم احمدی · کد DM-31245</div>
+                <div style="margin-top:6px;display:flex;gap:6px;align-items:center">
+                  <span class="badge success" style="font-size:11px">بازدید</span>
+                  <span style="font-size:11px;color:var(--muted);font-weight:800">• ۵ روز دیگر</span>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <button class="btn btn-soft" style="height:32px;font-size:12px" data-toast="یادآوری تنظیم شد">⏰ یادآور</button>
+                <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="ویرایش جلسه">ویرایش</button>
+              </div>
+            </div>
+            <!-- Past meeting -->
+            <div class="meeting-card" style="opacity:.65">
+              <div class="meeting-date-box" style="background:var(--surface-muted);border-color:var(--border)"><div class="meeting-day" style="color:var(--muted)">۲۸</div><div class="meeting-month">اردیبهشت</div></div>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:900;line-height:22px">بازدید آپارتمان پونک</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px">ساعت ۱۶:۰۰ · خانم موسوی · کد DM-28830</div>
+                <div style="margin-top:6px">
+                  <span class="badge neutral" style="font-size:11px">گذشته</span>
+                </div>
+              </div>
+              <button class="btn btn-ghost" style="height:32px;font-size:12px" data-toast="حذف جلسه">حذف</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ قراردادها ══ -->
+      <div class="section" id="sec-contracts">
+        <div class="card">
+          <div class="section-title">
+            <div><h2>قراردادها</h2><p>فروش، مشارکت، اجاره</p></div>
+            <button class="btn btn-primary" style="height:36px;font-size:13px" data-toast="ثبت قرارداد جدید">＋ قرارداد جدید</button>
+          </div>
+          <div class="filter-bar">
+            <button class="filter-chip active">همه</button>
+            <button class="filter-chip">فروش</button>
+            <button class="filter-chip">مشارکت</button>
+            <button class="filter-chip">اجاره</button>
+          </div>
+          <div style="display:grid;gap:10px">
+            <div class="contract-card">
+              <div class="contract-icon" style="background:var(--primary-soft)">📋</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:900;line-height:22px">قرارداد اجاره · فریده موسوی</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px">آپارتمان پونک DM-28830 · ۱۸ میلیون/ماه · شروع ۱ تیر ۱۴۰۴</div>
+                <div style="margin-top:6px;display:flex;gap:6px">
+                  <span class="badge teal">اجاره</span>
+                  <span class="badge success">تنظیم‌شده</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="دانلود قرارداد">⬇ دانلود</button>
+                <button class="btn btn-ghost" style="height:32px;font-size:12px" data-toast="ویرایش قرارداد">ویرایش</button>
+              </div>
+            </div>
+            <div class="contract-card" style="border-color:var(--warning-soft);background:rgba(254,243,199,.2)">
+              <div class="contract-icon" style="background:var(--warning-soft)">📝</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:900;line-height:22px">قرارداد مشارکت ساختمانی · آقای نوری</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px">زمین لواسان · مشارکت ۵۵/۴۵ · در حال تنظیم</div>
+                <div style="margin-top:6px;display:flex;gap:6px">
+                  <span class="badge warning">مشارکت</span>
+                  <span class="badge warning">در حال تنظیم</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px">
+                <button class="btn btn-soft" style="height:32px;font-size:12px" data-toast="تکمیل قرارداد">تکمیل</button>
+              </div>
+            </div>
+            <div class="contract-card" style="opacity:.65">
+              <div class="contract-icon" style="background:var(--success-soft)">✅</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:900;line-height:22px">قرارداد فروش · آرمان رضایی</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px">آپارتمان ۱۰۵ متری · ۸.۵ میلیارد · ۱۵ اردیبهشت ۱۴۰۴</div>
+                <div style="margin-top:6px;display:flex;gap:6px">
+                  <span class="badge primary">فروش</span>
+                  <span class="badge success">تکمیل‌شده</span>
+                </div>
+              </div>
+              <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="دانلود قرارداد">⬇ دانلود</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ کیف پول ══ -->
+      <div class="section" id="sec-wallet">
+        <div class="wallet-hero">
+          <div class="wallet-label">موجودی کیف پول آژانس آسمان</div>
+          <div class="wallet-amount-big"><span class="wallet-unit">تومان</span>۲٬۴۰۰٬۰۰۰</div>
+          <div class="wallet-actions">
+            <button class="wallet-btn white" data-toast="شارژ کیف پول">＋ افزایش موجودی</button>
+            <button class="wallet-btn white" data-toast="انتقال اعتبار">↔ انتقال</button>
+            <button class="wallet-btn white" data-toast="گزارش تراکنش‌ها">📊 گزارش</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title">
+            <div><h2>آخرین تراکنش‌ها</h2><p>تاریخچه واریز و برداشت</p></div>
+          </div>
+          <div class="tx-list">
+            <div class="tx-item">
+              <div class="tx-icon" style="background:var(--success-soft)">⬇</div>
+              <div class="tx-body"><div class="tx-title">شارژ از طریق درگاه بانکی</div><div class="tx-date">۳۰ اردیبهشت ۱۴۰۴ · ساعت ۱۴:۲۲</div></div>
+              <div class="tx-amount credit">＋ ۲,۰۰۰,۰۰۰</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon" style="background:var(--danger-soft)">⬆</div>
+              <div class="tx-body"><div class="tx-title">کسر هزینه ثبت آگهی DM-33107</div><div class="tx-date">۲۸ اردیبهشت ۱۴۰۴ · ساعت ۱۰:۱۵</div></div>
+              <div class="tx-amount debit">− ۳۰۰,۰۰۰</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon" style="background:var(--danger-soft)">⬆</div>
+              <div class="tx-body"><div class="tx-title">تمدید اشتراک Pro — ۳ ماهه</div><div class="tx-date">۱۵ اردیبهشت ۱۴۰۴ · ساعت ۰۹:۰۰</div></div>
+              <div class="tx-amount debit">− ۱,۸۰۰,۰۰۰</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon" style="background:var(--success-soft)">⬇</div>
+              <div class="tx-body"><div class="tx-title">شارژ از طریق درگاه بانکی</div><div class="tx-date">۱۴ اردیبهشت ۱۴۰۴ · ساعت ۱۸:۴۰</div></div>
+              <div class="tx-amount credit">＋ ۵,۰۰۰,۰۰۰</div>
+            </div>
+            <div class="tx-item">
+              <div class="tx-icon" style="background:var(--danger-soft)">⬆</div>
+              <div class="tx-body"><div class="tx-title">کسر هزینه ثبت آگهی DM-31245</div><div class="tx-date">۲ اردیبهشت ۱۴۰۴ · ساعت ۱۶:۵۰</div></div>
+              <div class="tx-amount debit">− ۳۰۰,۰۰۰</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ اشتراک ══ -->
+      <div class="section" id="sec-subscription">
+        <div class="card">
+          <div class="section-title">
+            <div><h2>طرح اشتراک</h2><p>اشتراک فعلی: <strong style="color:var(--primary)">Pro</strong> · تا ۱۵ شهریور ۱۴۰۴</p></div>
+            <button class="btn btn-ghost" style="height:34px;font-size:12px" data-toast="مقایسه طرح‌ها">مقایسه کامل ←</button>
+          </div>
+          <div class="plan-grid">
+            <div class="plan-card">
+              <div class="plan-name">رایگان</div>
+              <div class="plan-price">۰</div>
+              <div class="plan-unit">تومان / ماه</div>
+              <div class="plan-features">
+                <div class="plan-feature">۳ آگهی فعال</div>
+                <div class="plan-feature">جستجوی پایه</div>
+                <div class="plan-feature locked">نقشه داتملک</div>
+                <div class="plan-feature locked">ارزیابی محیطی</div>
+                <div class="plan-feature locked">قراردادها</div>
+                <div class="plan-feature locked">جلسات</div>
+              </div>
+              <button class="btn btn-outline" style="width:100%;height:38px;font-size:13px" data-toast="طرح رایگان فعال است">انتخاب</button>
+            </div>
+            <div class="plan-card current">
+              <div class="current-tag">طرح فعلی</div>
+              <div class="plan-name">Pro</div>
+              <div class="plan-price">۶۰۰٬۰۰۰</div>
+              <div class="plan-unit">تومان / ماه</div>
+              <div class="plan-features">
+                <div class="plan-feature">آگهی نامحدود</div>
+                <div class="plan-feature">نقشه داتملک (PRO)</div>
+                <div class="plan-feature">ارزیابی محیطی</div>
+                <div class="plan-feature">قراردادها و جلسات</div>
+                <div class="plan-feature">کد نوسازی</div>
+                <div class="plan-feature locked">پرسنل آژانس</div>
+              </div>
+              <button class="btn btn-primary" style="width:100%;height:38px;font-size:13px" data-toast="تمدید اشتراک Pro">تمدید اشتراک</button>
+            </div>
+            <div class="plan-card">
+              <div class="plan-name" style="color:var(--orange)">آژانس</div>
+              <div class="plan-price" style="color:var(--orange)">۱٬۸۰۰٬۰۰۰</div>
+              <div class="plan-unit">تومان / ماه</div>
+              <div class="plan-features">
+                <div class="plan-feature">همه امکانات Pro</div>
+                <div class="plan-feature">مدیریت پرسنل</div>
+                <div class="plan-feature">کیف پول آژانس</div>
+                <div class="plan-feature">داشبورد تیمی</div>
+                <div class="plan-feature">گزارش عملکرد</div>
+                <div class="plan-feature">پشتیبانی اختصاصی</div>
+              </div>
+              <button class="btn btn-outline" style="width:100%;height:38px;font-size:13px;border-color:var(--orange);color:var(--orange)" data-toast="ارتقا به طرح آژانس">ارتقا به آژانس</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title"><div><h2>وضعیت قابلیت‌ها</h2><p>دسترسی‌های فعال اشتراک Pro</p></div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="padding:10px 14px;border:1px solid var(--success-soft);border-radius:14px;background:rgba(22,163,74,.04);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800">
+              <span style="color:var(--success)">✓</span>نقشه داتملک PRO
+            </div>
+            <div style="padding:10px 14px;border:1px solid var(--success-soft);border-radius:14px;background:rgba(22,163,74,.04);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800">
+              <span style="color:var(--success)">✓</span>ارزیابی محیطی ملک
+            </div>
+            <div style="padding:10px 14px;border:1px solid var(--success-soft);border-radius:14px;background:rgba(22,163,74,.04);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800">
+              <span style="color:var(--success)">✓</span>کد نوسازی (نقشه)
+            </div>
+            <div style="padding:10px 14px;border:1px solid var(--success-soft);border-radius:14px;background:rgba(22,163,74,.04);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800">
+              <span style="color:var(--success)">✓</span>قراردادها و جلسات
+            </div>
+            <div style="padding:10px 14px;border:1px solid var(--success-soft);border-radius:14px;background:rgba(22,163,74,.04);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800">
+              <span style="color:var(--success)">✓</span>چاپ آگهی
+            </div>
+            <div style="padding:10px 14px;border:1px solid var(--border);border-radius:14px;background:var(--surface-muted);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:var(--muted)">
+              <span>✗</span>مدیریت پرسنل (آژانس)
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="prototype-ribbon">Dotmelk · Desktop · داتملک من</div>
+
+<script>
+(function(){
+  /* Toast */
+  function toast(msg){
+    const old=document.querySelector('.toast-demo');if(old)old.remove();
+    const el=document.createElement('div');el.className='toast-demo';el.textContent=msg;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),2500);
+  }
+
+  /* Section switching */
+  const sectionMap={
+    'dashboard':'sec-dashboard','my-ads':'sec-my-ads','my-requests':'sec-my-requests',
+    'saved':'sec-saved','meetings':'sec-meetings','contracts':'sec-contracts',
+    'wallet':'sec-wallet','subscription':'sec-subscription'
+  };
+
+  function switchSection(key){
+    const id=sectionMap[key];if(!id)return;
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.menu-item').forEach(m=>{
+      m.classList.toggle('active',m.dataset.section===key);
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  /* Menu click */
+  document.querySelectorAll('[data-section]').forEach(el=>{
+    el.addEventListener('click',function(e){
+      e.preventDefault();
+      const key=this.dataset.section;
+      if(sectionMap[key]) switchSection(key);
+    });
+  });
+
+  /* Global click: toast */
+  document.addEventListener('click',function(e){
+    const t=e.target.closest('[data-toast]');
+    if(t){toast(t.getAttribute('data-toast'));return;}
+  });
+})();
+</script>
+</body>
 </html>

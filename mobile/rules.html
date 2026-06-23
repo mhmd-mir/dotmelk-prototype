@@ -1,11 +1,23 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>قوانین و مقررات</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>قوانین و مقررات · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+html,body,.mobile-body{overflow-x:hidden}
+.rules-toc-m{background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border:1px solid var(--primary-border);border-radius:16px;padding:14px;margin-bottom:14px}
+.rules-toc-m h3{font-size:12px;font-weight:900;color:var(--primary);margin-bottom:8px}
+.rules-toc-m ol{padding-right:14px;margin:0}
+.rules-toc-m li{font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:5px}
+.rule-sec{border:1px solid var(--border);border-radius:16px;background:#fff;padding:14px;margin-bottom:10px}
+.rule-sec h2{font-size:14px;font-weight:900;color:var(--primary);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.rule-sec h2 span{width:24px;height:24px;border-radius:8px;background:var(--primary-soft);display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0}
+.rule-sec p{font-size:13px;line-height:23px;color:var(--text-2);margin-bottom:8px}
+.rule-sec p:last-child{margin-bottom:0}
+</style>
 </head>
 <body>
 <div class="mobile-body">
@@ -14,40 +26,80 @@
     <div class="mobile-title">قوانین و مقررات</div>
     <a class="icon-btn" href="my-dotmelk.html">‹</a>
   </header>
-  
-<div class="drawer-backdrop" data-drawer-close></div>
-<aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
-  <div class="drawer-head">
-    <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
-    <button class="icon-btn" data-drawer-close>×</button>
-  </div>
-  <div class="drawer-scroll">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="active" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
-  </div>
-  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
-</aside>
+
+  <div class="drawer-backdrop" data-drawer-close></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-head">
+      <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
+      <button class="icon-btn" data-drawer-close>×</button>
+    </div>
+    <div class="drawer-scroll">
+      <a href="account.html"><span>◫</span>حساب کاربری</a>
+      <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+      <a class="active" href="rules.html"><span>§</span>قوانین و مقررات</a>
+      <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+      <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+      <a href="about.html"><span>●</span>درباره داتملک</a>
+      <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+      <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+      <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+    </div>
+    <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+  </aside>
 
   <main class="mobile-content">
-<section class="card doc-card">
-  <div class="section-title"><div><h2>قوانین و مقررات</h2><p>در Flutter متن قوانین از API public_content/rules دریافت و به‌صورت متن بلند نمایش داده می‌شود.</p></div><span class="badge primary">Server Content</span></div>
-  <p>این صفحه برای نمایش متن رسمی قوانین و مقررات داتملک طراحی شده است. در محصول واقعی، متن این بخش از سرور دریافت می‌شود و باید بدون تغییر محتوایی نمایش داده شود.</p>
-  <h2>چارچوب استفاده از خدمات</h2>
-  <p>کاربر مسئول صحت اطلاعاتی است که در آگهی، درخواست، حساب کاربری، پیام‌ها و فرم‌های پشتیبانی وارد می‌کند. اطلاعات مکانی، فایل‌های تصویری و محتوای آگهی باید با واقعیت ملک و قوانین انتشار داتملک هماهنگ باشند.</p>
-  <h2>حریم خصوصی و موقعیت مکانی</h2>
-  <p>نمایش موقعیت ملک می‌تواند به‌صورت تقریبی انجام شود تا حریم خصوصی مالک و مشاور حفظ شود. ارائه اطلاعات دقیق‌تر باید در مسیرهای امن مثل چت، تماس یا هماهنگی بازدید انجام شود.</p>
-  <h2>گزارش تخلف و پشتیبانی</h2>
-  <p>کاربر می‌تواند محتوای نامعتبر، آگهی مشکوک یا مشکل نرم‌افزاری را از مسیرهای پشتیبانی و تیکت پیگیری کند.</p>
-</section>
-</main>
-  <nav class="mobile-bottom-nav"><a href="map.html" class=""><span>⌖</span><span>نقشه</span></a><a href="requests.html" class=""><span>□</span><span>درخواست</span></a><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a><a href="chat.html" class=""><span>◌</span><span>چت</span></a><a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a></nav>
+    <div class="rules-toc-m">
+      <h3>§ فهرست مطالب</h3>
+      <ol>
+        <li>شرایط کلی استفاده</li>
+        <li>مسئولیت‌های کاربر</li>
+        <li>قوانین انتشار آگهی</li>
+        <li>حریم خصوصی و داده‌های مکانی</li>
+        <li>قوانین مالی و اشتراک</li>
+      </ol>
+    </div>
+
+    <div class="rule-sec">
+      <h2><span>۱</span>شرایط کلی استفاده</h2>
+      <p>با ثبت‌نام در داتملک، کاربر می‌پذیرد که از امکانات این پلتفرم تنها برای فعالیت‌های قانونی حوزه معاملات ملکی استفاده کند.</p>
+      <p>داتملک حق تعلیق یا حذف حساب را در صورت نقض قوانین محفوظ می‌دارد.</p>
+    </div>
+
+    <div class="rule-sec">
+      <h2><span>۲</span>مسئولیت‌های کاربر</h2>
+      <p>کاربر مسئول صحت تمام اطلاعاتی است که در پروفایل، آگهی، درخواست و پیام‌ها وارد می‌کند.</p>
+      <p>ارائه اطلاعات نادرست یا گمراه‌کننده تخلف محسوب می‌شود.</p>
+    </div>
+
+    <div class="rule-sec">
+      <h2><span>۳</span>قوانین انتشار آگهی</h2>
+      <p>هر آگهی باید اطلاعات واقعی، قیمت عادلانه و تصاویر متعلق به همان ملک را در برگیرد.</p>
+      <p>تکراری‌سازی آگهی یا استفاده از تصاویر ملک‌های دیگر ممنوع است.</p>
+    </div>
+
+    <div class="rule-sec">
+      <h2><span>۴</span>حریم خصوصی و داده‌های مکانی</h2>
+      <p>داتملک اطلاعات موقعیت را تنها با اجازه صریح کاربر جمع‌آوری می‌کند و به اشخاص ثالث فروخته نمی‌شود.</p>
+      <p>ارائه اطلاعات تماس دقیق باید از طریق چت داخلی امن انجام شود.</p>
+    </div>
+
+    <div class="rule-sec">
+      <h2><span>۵</span>قوانین مالی و اشتراک</h2>
+      <p>هزینه اشتراک در زمان ثبت‌نام مشخص است. در صورت تغییر قیمت، ۱۴ روز قبل اطلاع‌رسانی می‌شود.</p>
+    </div>
+
+    <div style="font-size:11px;color:var(--muted);text-align:center;padding:10px 0">
+      آخرین بازنگری: خرداد ۱۴۰۴
+    </div>
+  </main>
+
+  <nav class="mobile-bottom-nav">
+    <a href="map.html"><span>⌖</span><span>نقشه</span></a>
+    <a href="requests.html"><span>□</span><span>درخواست</span></a>
+    <a href="ads.html"><span>⌂</span><span>آگهی</span></a>
+    <a href="chat.html"><span>◌</span><span>چت</span></a>
+    <a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a>
+  </nav>
 </div>
 </body>
 </html>

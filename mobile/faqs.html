@@ -1,11 +1,21 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>سوالات متداول</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>سوالات متداول · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+html,body,.mobile-body{overflow-x:hidden}
+.cat-chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}
+.cat-chips::-webkit-scrollbar{display:none}
+.cchip{padding:6px 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:900;white-space:nowrap;cursor:pointer}
+.cchip.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.faq-search{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:12px}
+.faq-search input{flex:1;border:0;outline:none;font-size:14px;font-weight:700;color:var(--text);background:transparent}
+.grp-label{font-size:11px;font-weight:900;color:var(--subtle);margin:14px 0 8px;letter-spacing:.04em}
+</style>
 </head>
 <body>
 <div class="mobile-body">
@@ -14,29 +24,92 @@
     <div class="mobile-title">سوالات متداول</div>
     <a class="icon-btn" href="my-dotmelk.html">‹</a>
   </header>
-  
-<div class="drawer-backdrop" data-drawer-close></div>
-<aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
-  <div class="drawer-head">
-    <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
-    <button class="icon-btn" data-drawer-close>×</button>
-  </div>
-  <div class="drawer-scroll">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="active" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
-  </div>
-  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
-</aside>
 
-  <main class="mobile-content"><section class="mobile-card"><div class="section-title"><div><h2>سوالات متداول</h2><p>مطابق Flutter: لیست سوال/جواب با ExpansionPanel.</p></div><span class="badge info">FAQ API</span></div><div class="faq-list"><div class="accordion open"><button data-accordion-button><span>چطور آگهی ثبت کنم؟</span><span>⌄</span></button><div class="answer">از بخش آگهی‌ها یا داتملک من وارد ثبت آگهی شوید، نوع معامله و ملک را انتخاب کنید، اطلاعات پویا را تکمیل کنید و در پایان موقعیت و تصاویر را ثبت کنید.</div></div><div class="accordion "><button data-accordion-button><span>چرا موقعیت بعضی ملک‌ها دقیق نیست؟</span><span>⌄</span></button><div class="answer">برای حفظ حریم خصوصی مالک یا مشاور، داتملک می‌تواند موقعیت ملک را به‌صورت تقریبی نمایش دهد. موقعیت دقیق‌تر بعد از تعامل معتبر قابل ارائه است.</div></div><div class="accordion "><button data-accordion-button><span>درخواست ملکی چه تفاوتی با آگهی دارد؟</span><span>⌄</span></button><div class="answer">درخواست نشان‌دهنده نیاز کاربر یا مشتری است؛ مثل خرید، اجاره یا مشارکت با محدوده، بودجه و ویژگی‌های موردنظر.</div></div><div class="accordion "><button data-accordion-button><span>چطور با پشتیبانی ارتباط بگیرم؟</span><span>⌄</span></button><div class="answer">از بخش پشتیبانی و تیکت‌ها می‌توانید درخواست جدید ایجاد کنید یا وضعیت تیکت‌های قبلی را دنبال کنید.</div></div><div class="accordion "><button data-accordion-button><span>چطور قوانین یا راهنماها به‌روزرسانی می‌شوند؟</span><span>⌄</span></button><div class="answer">در Flutter این محتواها از سرور دریافت می‌شوند، بنابراین تیم محتوا می‌تواند بدون انتشار نسخه جدید اپ، آن‌ها را به‌روزرسانی کند.</div></div></div></section></main>
-  <nav class="mobile-bottom-nav"><a href="map.html" class=""><span>⌖</span><span>نقشه</span></a><a href="requests.html" class=""><span>□</span><span>درخواست</span></a><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a><a href="chat.html" class=""><span>◌</span><span>چت</span></a><a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a></nav>
+  <div class="drawer-backdrop" data-drawer-close></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-head">
+      <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
+      <button class="icon-btn" data-drawer-close>×</button>
+    </div>
+    <div class="drawer-scroll">
+      <a href="account.html"><span>◫</span>حساب کاربری</a>
+      <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+      <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+      <a class="active" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+      <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+      <a href="about.html"><span>●</span>درباره داتملک</a>
+      <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+      <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+      <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+    </div>
+    <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+  </aside>
+
+  <main class="mobile-content">
+    <div class="faq-search"><span style="font-size:16px;color:var(--muted)">🔍</span><input placeholder="جستجو…"/></div>
+    <div class="cat-chips">
+      <button class="cchip active">همه</button>
+      <button class="cchip">آگهی</button>
+      <button class="cchip">نقشه</button>
+      <button class="cchip">اشتراک</button>
+      <button class="cchip">پشتیبانی</button>
+    </div>
+
+    <div class="mobile-card" style="padding:0">
+      <div class="grp-label" style="padding:14px 14px 0">آگهی‌ها</div>
+      <div class="faq-list" style="padding:0 8px 8px">
+        <div class="accordion open">
+          <button data-accordion-button><span>چطور آگهی ثبت کنم؟</span><span>⌄</span></button>
+          <div class="answer">از بخش «ثبت آگهی» در نوار بالا وارد فرم شوید. نوع معامله و ملک را انتخاب و اطلاعات را تکمیل کنید.</div>
+        </div>
+        <div class="accordion">
+          <button data-accordion-button><span>چرا آگهی در وضعیت «نیاز به ویرایش» است؟</span><span>⌄</span></button>
+          <div class="answer">تیم بررسی اطلاعات شما را بررسی کرده و نیاز به تکمیل دارد. پیغام بررسی را در بخش «آگهی‌های من» ببینید.</div>
+        </div>
+        <div class="accordion">
+          <button data-accordion-button><span>محدودیت تعداد آگهی چیست؟</span><span>⌄</span></button>
+          <div class="answer">در اشتراک رایگان ۵ آگهی، Pro تا ۵۰ آگهی و آژانس بدون محدودیت.</div>
+        </div>
+      </div>
+
+      <div class="grp-label" style="padding:0 14px">نقشه و موقعیت</div>
+      <div class="faq-list" style="padding:0 8px 8px">
+        <div class="accordion">
+          <button data-accordion-button><span>چرا موقعیت بعضی ملک‌ها دقیق نیست؟</span><span>⌄</span></button>
+          <div class="answer">برای حفظ حریم خصوصی، موقعیت ملک تقریبی نشان داده می‌شود. موقعیت دقیق از طریق چت قابل دریافت است.</div>
+        </div>
+        <div class="accordion">
+          <button data-accordion-button><span>لایه‌های نقشه چه اطلاعاتی دارند؟</span><span>⌄</span></button>
+          <div class="answer">لایه آگهی‌ها، درخواست‌های فعال، محدوده‌های شهری، اطلاعات محیطی و ارزیابی قیمت منطقه.</div>
+        </div>
+      </div>
+
+      <div class="grp-label" style="padding:0 14px">اشتراک</div>
+      <div class="faq-list" style="padding:0 8px 8px">
+        <div class="accordion">
+          <button data-accordion-button><span>تفاوت Pro و آژانس چیست؟</span><span>⌄</span></button>
+          <div class="answer">Pro برای مشاوران فردی است. آژانس علاوه بر امکانات Pro، مدیریت تیم و گزارش‌های گروهی دارد.</div>
+        </div>
+        <div class="accordion">
+          <button data-accordion-button><span>چطور با پشتیبانی ارتباط بگیرم؟</span><span>⌄</span></button>
+          <div class="answer">از بخش «پشتیبانی و تیکت‌ها» تیکت جدید ثبت کنید. در روزهای کاری ۸ تا ۱۸ پاسخگو هستیم.</div>
+        </div>
+      </div>
+
+      <div style="padding:14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px">
+        <p style="font-size:12px;color:var(--muted);margin:0;flex:1">جوابتان را پیدا نکردید؟</p>
+        <a href="tickets.html" class="btn btn-primary" style="height:36px;font-size:12px">ثبت تیکت</a>
+      </div>
+    </div>
+  </main>
+
+  <nav class="mobile-bottom-nav">
+    <a href="map.html"><span>⌖</span><span>نقشه</span></a>
+    <a href="requests.html"><span>□</span><span>درخواست</span></a>
+    <a href="ads.html"><span>⌂</span><span>آگهی</span></a>
+    <a href="chat.html"><span>◌</span><span>چت</span></a>
+    <a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a>
+  </nav>
 </div>
 </body>
 </html>

@@ -1,11 +1,23 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>نظرات و پیشنهادات</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>نظرات و پیشنهادات · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+html,body,.mobile-body{overflow-x:hidden}
+.type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px}
+.type-btn{border:1.5px solid var(--border);background:#fff;border-radius:14px;padding:12px 8px;cursor:pointer;text-align:center;transition:all .15s}
+.type-btn.active{border-color:var(--primary);background:var(--primary-soft)}
+.type-btn .type-icon{font-size:22px;margin-bottom:5px}
+.type-btn .type-label{font-size:12px;font-weight:900;color:var(--text-2);display:block}
+.type-btn.active .type-label{color:var(--primary)}
+.stars{display:flex;gap:8px;margin-bottom:18px;justify-content:center}
+.star{font-size:32px;cursor:pointer;color:var(--border-strong);transition:.15s}
+.star.lit{color:#F59E0B}
+</style>
 </head>
 <body>
 <div class="mobile-body">
@@ -14,46 +26,75 @@
     <div class="mobile-title">نظرات و پیشنهادات</div>
     <a class="icon-btn" href="my-dotmelk.html">‹</a>
   </header>
-  
-<div class="drawer-backdrop" data-drawer-close></div>
-<aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
-  <div class="drawer-head">
-    <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
-    <button class="icon-btn" data-drawer-close>×</button>
-  </div>
-  <div class="drawer-scroll">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="active" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
-  </div>
-  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
-</aside>
+
+  <div class="drawer-backdrop" data-drawer-close></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-head">
+      <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
+      <button class="icon-btn" data-drawer-close>×</button>
+    </div>
+    <div class="drawer-scroll">
+      <a href="account.html"><span>◫</span>حساب کاربری</a>
+      <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+      <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+      <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+      <a class="active" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+      <a href="about.html"><span>●</span>درباره داتملک</a>
+      <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+      <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+      <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+    </div>
+    <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+  </aside>
 
   <main class="mobile-content">
-<section class="mobile-card soft">
-  <div class="section-title"><div><h2>ثبت نظر و پیشنهاد</h2><p>مطابق Flutter: عنوان و متن ایده‌ها، نظرات و انتقادات با اعتبارسنجی الزامی.</p></div><span class="badge primary">Feedback</span></div>
-  <div class="form-grid">
-    <div class="field full"><label>عنوان</label><input placeholder="عنوان را ایجاد نمایید" /></div>
-    <div class="field full"><label>ایده‌ها، نظرات و انتقادات</label><textarea placeholder="ایده‌ها، نظرات و انتقادات را درباره داتملک اینجا بنویسید"></textarea></div>
-  </div>
-  <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn btn-primary" data-toast="نظر و پیشنهاد شما با موفقیت ثبت شد">ارسال</button></div>
-</section>
-<section class="mobile-card">
-  <div class="section-title"><div><h2>راهنمای ارسال بازخورد</h2><p>بازخوردهای دقیق‌تر سریع‌تر قابل بررسی هستند.</p></div></div>
-  <div class="info-list">
-    <div class="info-row"><span>مشکل UI یا تجربه کاربری</span><strong>صفحه و مسیر را بنویسید</strong></div>
-    <div class="info-row"><span>خطای عملکردی</span><strong>مرحله رخداد را توضیح دهید</strong></div>
-    <div class="info-row"><span>پیشنهاد محصول</span><strong>نیاز کاربر را بیان کنید</strong></div>
-  </div>
-</section>
-</main>
-  <nav class="mobile-bottom-nav"><a href="map.html" class=""><span>⌖</span><span>نقشه</span></a><a href="requests.html" class=""><span>□</span><span>درخواست</span></a><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a><a href="chat.html" class=""><span>◌</span><span>چت</span></a><a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a></nav>
+    <div class="mobile-card soft">
+      <div style="font-size:13px;font-weight:900;color:var(--text-2);margin-bottom:10px">نوع بازخورد</div>
+      <div class="type-grid">
+        <button class="type-btn active"><div class="type-icon">💡</div><span class="type-label">پیشنهاد</span></button>
+        <button class="type-btn"><div class="type-icon">📢</div><span class="type-label">انتقاد</span></button>
+        <button class="type-btn"><div class="type-icon">🐛</div><span class="type-label">خطای نرم‌افزار</span></button>
+        <button class="type-btn"><div class="type-icon">⭐</div><span class="type-label">تجربه مثبت</span></button>
+      </div>
+
+      <div style="font-size:13px;font-weight:900;color:var(--text-2);margin-bottom:10px;text-align:center">امتیاز تجربه</div>
+      <div class="stars" id="stars">
+        <span class="star lit" data-v="1">★</span>
+        <span class="star lit" data-v="2">★</span>
+        <span class="star lit" data-v="3">★</span>
+        <span class="star lit" data-v="4">★</span>
+        <span class="star" data-v="5">★</span>
+      </div>
+
+      <div class="form-grid">
+        <div class="field full"><label>عنوان</label><input placeholder="موضوع بازخورد را بنویسید"/></div>
+        <div class="field full"><label>توضیحات</label><textarea rows="5" placeholder="جزئیات بیشتری بنویسید…"></textarea></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%;height:44px;margin-top:14px;font-size:14px" data-toast="نظر شما با موفقیت ثبت شد — سپاسگزاریم">ارسال بازخورد</button>
+    </div>
+
+    <div class="mobile-card">
+      <div style="font-size:12px;font-weight:900;color:var(--text-2);margin-bottom:10px">💡 راهنمای بازخورد بهتر</div>
+      <div class="info-list">
+        <div class="info-row"><span>مشکل UI</span><strong>صفحه و مسیر را بنویسید</strong></div>
+        <div class="info-row"><span>خطای نرم‌افزاری</span><strong>مرحله رخداد را توضیح دهید</strong></div>
+        <div class="info-row"><span>مشکل فوری</span><strong>از تیکت پشتیبانی استفاده کنید</strong></div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="mobile-bottom-nav">
+    <a href="map.html"><span>⌖</span><span>نقشه</span></a>
+    <a href="requests.html"><span>□</span><span>درخواست</span></a>
+    <a href="ads.html"><span>⌂</span><span>آگهی</span></a>
+    <a href="chat.html"><span>◌</span><span>چت</span></a>
+    <a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a>
+  </nav>
 </div>
+<script>
+document.querySelectorAll('.type-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.type-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
+const stars=document.querySelectorAll('.star');
+stars.forEach(s=>s.addEventListener('click',()=>{const v=+s.dataset.v;stars.forEach(x=>x.classList.toggle('lit',+x.dataset.v<=v))}));
+</script>
 </body>
 </html>

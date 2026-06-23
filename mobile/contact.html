@@ -1,11 +1,22 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ارتباط با ما</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ارتباط با ما · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+html,body,.mobile-body{overflow-x:hidden}
+.ch-row{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--border);border-radius:16px;background:#fff;margin-bottom:10px}
+.ch-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.ch-row h3{font-size:13px;font-weight:900;margin-bottom:2px}
+.ch-row p{font-size:11px;color:var(--muted);margin-bottom:0}
+.ch-row .ch-detail{font-size:12px;font-weight:800;color:var(--primary);direction:ltr}
+.hour-row{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:10px;background:var(--surface-muted);font-size:12px;margin-bottom:6px}
+.hour-row strong{font-weight:900}
+.hour-row span{font-family:monospace;font-weight:800;color:var(--text-2)}
+</style>
 </head>
 <body>
 <div class="mobile-body">
@@ -14,41 +25,97 @@
     <div class="mobile-title">ارتباط با ما</div>
     <a class="icon-btn" href="my-dotmelk.html">‹</a>
   </header>
-  
-<div class="drawer-backdrop" data-drawer-close></div>
-<aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
-  <div class="drawer-head">
-    <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
-    <button class="icon-btn" data-drawer-close>×</button>
-  </div>
-  <div class="drawer-scroll">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="active" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
-  </div>
-  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
-</aside>
+
+  <div class="drawer-backdrop" data-drawer-close></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-head">
+      <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
+      <button class="icon-btn" data-drawer-close>×</button>
+    </div>
+    <div class="drawer-scroll">
+      <a href="account.html"><span>◫</span>حساب کاربری</a>
+      <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+      <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+      <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+      <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+      <a href="about.html"><span>●</span>درباره داتملک</a>
+      <a class="active" href="contact.html"><span>☎</span>ارتباط با ما</a>
+      <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+      <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+    </div>
+    <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+  </aside>
 
   <main class="mobile-content">
-<section class="mobile-card">
-  <div class="section-title"><div><h2>راه‌های ارتباط با ما</h2><p>مطابق Flutter: تماس، وبسایت و فیلدهای ارتباطی instagram/email/telegram از ContactUs دریافت می‌شوند.</p></div><span class="badge info">Contact Us API</span></div>
-  <div class="contact-grid">
-    <div class="contact-card"><div class="contact-icon">☎</div><strong>تماس تلفنی</strong><p class="small">تماس مستقیم با پشتیبانی؛ در بازه ۲۳ تا ۷ بهتر است هشدار زمان نامناسب نمایش داده شود.</p><button class="btn btn-soft">تماس</button></div>
-    <div class="contact-card"><div class="contact-icon">🌐</div><strong>وبسایت</strong><p class="small">باز کردن لینک وبسایت رسمی در مرورگر.</p><button class="btn btn-outline">مشاهده وبسایت</button></div>
-    <div class="contact-card"><div class="contact-icon">✉</div><strong>ایمیل</strong><p class="small">ارسال پیام یا مکاتبه رسمی با تیم داتملک.</p><button class="btn btn-outline">ارسال ایمیل</button></div>
-    <div class="contact-card"><div class="contact-icon">◎</div><strong>اینستاگرام</strong><p class="small">دسترسی به شبکه اجتماعی داتملک.</p><button class="btn btn-outline">باز کردن</button></div>
-    <div class="contact-card"><div class="contact-icon">◌</div><strong>تلگرام</strong><p class="small">ارتباط سریع از طریق کانال یا پشتیبانی تلگرام.</p><button class="btn btn-outline">باز کردن</button></div>
-    <div class="contact-card"><div class="contact-icon">!</div><strong>زمان نامناسب تماس</strong><p class="small">مطابق Flutter، اگر ساعت بین ۲۳ تا ۷ باشد قبل از تماس هشدار نمایش داده می‌شود.</p><button class="btn btn-danger">نمایش هشدار</button></div>
-  </div>
-</section>
-</main>
-  <nav class="mobile-bottom-nav"><a href="map.html" class=""><span>⌖</span><span>نقشه</span></a><a href="requests.html" class=""><span>□</span><span>درخواست</span></a><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a><a href="chat.html" class=""><span>◌</span><span>چت</span></a><a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a></nav>
+    <div class="ch-row">
+      <div class="ch-icon" style="background:linear-gradient(135deg,#EDE9FE,#C4B5FD)">📞</div>
+      <div style="flex:1">
+        <h3>تماس تلفنی</h3>
+        <p>پشتیبانی صوتی · روزهای کاری</p>
+        <div class="ch-detail">021-9۱۰۰-۷۸۰۰</div>
+      </div>
+      <button class="btn btn-primary" style="height:36px;font-size:12px;flex-shrink:0" data-toast="تماس در نسخه دمو">تماس</button>
+    </div>
+
+    <div class="ch-row">
+      <div class="ch-icon" style="background:linear-gradient(135deg,#ECFDF5,#A7F3D0)">✉</div>
+      <div style="flex:1">
+        <h3>ایمیل</h3>
+        <p>مکاتبه رسمی با تیم داتملک</p>
+        <div class="ch-detail">support@dotmelk.ir</div>
+      </div>
+      <button class="btn btn-outline" style="height:36px;font-size:12px;flex-shrink:0" data-toast="ایمیل در نسخه دمو">ارسال</button>
+    </div>
+
+    <div class="ch-row">
+      <div class="ch-icon" style="background:linear-gradient(135deg,#F0F9FF,#BAE6FD)">✈</div>
+      <div style="flex:1">
+        <h3>تلگرام</h3>
+        <p>ارتباط سریع · ۸ تا ۲۲</p>
+        <div class="ch-detail">@DotmelkSupport</div>
+      </div>
+      <button class="btn btn-outline" style="height:36px;font-size:12px;flex-shrink:0" data-toast="تلگرام در نسخه دمو">باز</button>
+    </div>
+
+    <div class="ch-row">
+      <div class="ch-icon" style="background:linear-gradient(135deg,#FFF1F2,#FECDD3)">◎</div>
+      <div style="flex:1">
+        <h3>اینستاگرام</h3>
+        <p>اخبار و آپدیت‌های محصول</p>
+        <div class="ch-detail">@dotmelk.ir</div>
+      </div>
+      <button class="btn btn-outline" style="height:36px;font-size:12px;flex-shrink:0" data-toast="اینستاگرام در نسخه دمو">باز</button>
+    </div>
+
+    <div class="ch-row">
+      <div class="ch-icon" style="background:linear-gradient(135deg,#F5F3FF,#DDD6FE)">◌</div>
+      <div style="flex:1">
+        <h3>تیکت پشتیبانی</h3>
+        <p style="color:var(--success)">پاسخ در ۴–۸ ساعت کاری</p>
+      </div>
+      <a href="tickets.html" class="btn btn-soft" style="height:36px;font-size:12px;flex-shrink:0;display:grid;place-items:center">ثبت</a>
+    </div>
+
+    <div class="mobile-card">
+      <div style="font-size:13px;font-weight:900;margin-bottom:10px">⏰ ساعات پشتیبانی</div>
+      <div class="hour-row"><strong>شنبه تا چهارشنبه</strong><span>۸:۰۰ – ۱۸:۰۰</span></div>
+      <div class="hour-row" style="background:var(--primary-soft)"><strong>پنجشنبه</strong><span>۸:۰۰ – ۱۴:۰۰</span></div>
+      <div class="hour-row"><strong>جمعه و تعطیلات</strong><span style="color:var(--danger)">تعطیل</span></div>
+    </div>
+
+    <div class="mobile-card">
+      <div style="font-size:13px;font-weight:900;margin-bottom:8px">📍 آدرس دفتر</div>
+      <p style="font-size:12px;color:var(--text-2);line-height:20px;margin:0">تهران، خیابان ولیعصر، برج داتملک، طبقه ۱۲</p>
+    </div>
+  </main>
+
+  <nav class="mobile-bottom-nav">
+    <a href="map.html"><span>⌖</span><span>نقشه</span></a>
+    <a href="requests.html"><span>□</span><span>درخواست</span></a>
+    <a href="ads.html"><span>⌂</span><span>آگهی</span></a>
+    <a href="chat.html"><span>◌</span><span>چت</span></a>
+    <a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a>
+  </nav>
 </div>
 </body>
 </html>

@@ -1,75 +1,170 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>حساب کاربری من</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>حساب کاربری · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+.profile-av-wrap{display:flex;align-items:center;gap:18px;padding:18px;background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border:1px solid var(--primary-border);border-radius:18px;margin-bottom:18px}
+.profile-av{width:72px;height:72px;border-radius:24px;background:linear-gradient(135deg,#7C3AED,#5B21B6);display:grid;place-items:center;color:#fff;font-size:26px;font-weight:900;flex-shrink:0;box-shadow:0 8px 24px rgba(109,40,217,.22)}
+.profile-name{font-size:18px;font-weight:900;line-height:28px}
+.profile-role{font-size:13px;color:var(--muted);margin-top:2px}
+.profile-av-btns{display:flex;gap:8px;margin-top:10px}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:#fff;margin-bottom:8px}
+.toggle-row span{font-size:13px;font-weight:800;color:var(--text-2)}
+.toggle{width:44px;height:26px;border-radius:999px;background:var(--primary);border:0;cursor:pointer;position:relative;flex-shrink:0;transition:.2s}
+.toggle::after{content:'';position:absolute;width:20px;height:20px;border-radius:999px;background:#fff;top:3px;right:3px;transition:.2s;box-shadow:0 2px 4px rgba(0,0,0,.15)}
+.toggle.off{background:var(--border-strong)}
+.toggle.off::after{right:calc(100% - 23px)}
+.section-divider{font-size:12px;font-weight:900;color:var(--subtle);letter-spacing:.04em;margin:18px 0 10px;display:flex;align-items:center;gap:8px}
+.section-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.phone-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:14px;background:#fff;margin-bottom:8px}
+.phone-badge{width:28px;height:28px;border-radius:9px;background:var(--success-soft);display:grid;place-items:center;font-size:13px;flex-shrink:0}
+.phone-num{font-size:14px;font-weight:900;flex:1;direction:ltr;text-align:right}
+.phone-status{font-size:11px;font-weight:800}
+.security-card{border:1px solid var(--border);border-radius:16px;background:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.security-icon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.security-title{font-size:13px;font-weight:900;line-height:22px}
+.security-sub{font-size:11px;color:var(--muted);margin-top:1px}
+</style>
 </head>
 <body>
 <div class="shell">
   <header class="topbar">
-    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و صفحات پشتیبانی</div></div></a>
+    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و پشتیبانی</div></div></a>
     <nav class="nav"><a href="map.html"><span>⌖</span>نقشه</a><a href="requests.html"><span>□</span>درخواست‌ها</a><a href="ads.html"><span>⌂</span>آگهی‌ها</a><a href="chat.html"><span>◌</span>چت</a><a href="my-dotmelk.html"><span>◫</span>داتملک من</a></nav>
     <div class="top-actions">
-<details class="more-menu">
-  <summary class="btn btn-outline">☰ بیشتر</summary>
-  <div class="more-panel">
-    <a class="active" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
-  </div>
-</details>
-<button class="btn btn-primary" data-toast="ثبت آگهی نمایشی است">＋ ثبت آگهی</button></div>
+      <details class="more-menu">
+        <summary class="btn btn-outline">☰ بیشتر</summary>
+        <div class="more-panel">
+          <a class="active" href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+          <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+        </div>
+      </details>
+      <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو">🔔</button>
+      <a href="add-advertise.html" class="btn btn-primary">＋ ثبت آگهی</a>
+    </div>
   </header>
+
   <section class="page-head">
-    <div><h1>حساب کاربری من</h1><p>ویرایش اطلاعات پایه کاربر، شماره‌های همراه و تصویر پروفایل.</p></div>
-    <div style="display:flex;gap:8px"><a class="btn btn-outline" href="my-dotmelk.html">بازگشت به داتملک من</a></div>
+    <div><h1>حساب کاربری من</h1><p>اطلاعات پروفایل، شماره‌های همراه، تنظیمات اطلاع‌رسانی و امنیت حساب</p></div>
+    <a class="btn btn-outline" href="my-dotmelk.html">← داتملک من</a>
   </section>
+
   <main class="layout">
     <aside class="card side-nav">
-      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
+      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
       <nav class="menu-list">
-        <a class="active" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-        <a class="logout" href="logout.html"><span>⎋</span>خروج</a>
+        <a class="active" href="account.html"><span>◫</span>حساب کاربری</a>
+        <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+        <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+        <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+        <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+        <a href="about.html"><span>●</span>درباره داتملک</a>
+        <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+        <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+        <a class="logout" href="logout.html"><span>⎋</span>خروج از حساب</a>
       </nav>
     </aside>
+
     <section class="content">
-<section class="card soft">
-  <div class="section-title"><div><h2>اطلاعات حساب کاربری</h2><p>مطابق Flutter: نام، نام خانوادگی، سمت، شماره‌های همراه و تصویر پروفایل.</p></div><span class="badge success">فعال</span></div>
-  <div class="form-grid">
-    <div class="field"><label>نام</label><input value="مهراد" /></div>
-    <div class="field"><label>نام خانوادگی</label><input value="محمدی" /></div>
-    <div class="field"><label>سمت شما</label><input value="مشاور املاک" readonly /></div>
-    <div class="field"><label>شماره همراه ۱</label><input value="۰۹۱۲۳۴۵۶۷۸۹" readonly /></div>
-    <div class="field"><label>شماره همراه ۲</label><input placeholder="شماره دوم را وارد کنید" /></div>
-    <div class="field"><label>تصویر پروفایل</label><div class="info-row" style="height:44px"><span>آپلود/حذف تصویر</span><strong>انتخاب فایل</strong></div></div>
-  </div>
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px"><button class="btn btn-outline">حذف تصویر</button><button class="btn btn-primary" data-toast="اطلاعات حساب کاربری با موفقیت ذخیره شد">ذخیره</button></div>
-</section>
-<section class="kpi-grid">
-  <div class="kpi"><span>آگهی فعال</span><strong>۱۸</strong></div>
-  <div class="kpi"><span>درخواست فعال</span><strong>۷</strong></div>
-  <div class="kpi"><span>گفتگوی باز</span><strong>۲۴</strong></div>
-  <div class="kpi"><span>سطح دسترسی</span><strong>کاربر</strong></div>
-</section>
-</section>
+      <!-- Profile -->
+      <div class="card soft">
+        <div class="profile-av-wrap">
+          <div class="profile-av">م</div>
+          <div style="flex:1">
+            <div class="profile-name">مهراد محمدی</div>
+            <div class="profile-role">مشاور · آژانس آسمان · اشتراک Pro</div>
+            <div class="profile-av-btns">
+              <button class="btn btn-soft" style="height:32px;font-size:12px" data-toast="آپلود تصویر پروفایل">آپلود تصویر</button>
+              <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="تصویر پروفایل حذف شد">حذف</button>
+            </div>
+          </div>
+          <span class="badge success">حساب فعال</span>
+        </div>
+
+        <div class="section-divider">اطلاعات پایه</div>
+        <div class="form-grid">
+          <div class="field"><label>نام</label><input value="مهراد"/></div>
+          <div class="field"><label>نام خانوادگی</label><input value="محمدی"/></div>
+          <div class="field"><label>سمت</label><input value="مشاور املاک" readonly/></div>
+          <div class="field"><label>ایمیل</label><input value="mhmdmirshabi@gmail.com" placeholder="ایمیل (اختیاری)"/></div>
+        </div>
+
+        <div class="section-divider">شماره‌های همراه</div>
+        <div class="phone-row">
+          <div class="phone-badge">📱</div>
+          <span class="phone-num">09123456789</span>
+          <span class="phone-status" style="color:var(--success)">تأیید شده (اصلی)</span>
+          <button class="btn btn-outline" style="height:32px;font-size:12px" data-toast="تغییر شماره اصلی">تغییر</button>
+        </div>
+        <div class="phone-row" style="border-style:dashed">
+          <div class="phone-badge" style="background:var(--surface-muted)">➕</div>
+          <input placeholder="شماره همراه دوم (اختیاری)" style="border:0;flex:1;outline:none;font-size:14px;font-weight:800;color:var(--text)"/>
+          <button class="btn btn-soft" style="height:32px;font-size:12px" data-toast="شماره دوم ثبت شد">افزودن</button>
+        </div>
+
+        <div class="section-divider">اطلاعات آژانس</div>
+        <div class="form-grid">
+          <div class="field"><label>نام آژانس</label><input value="آژانس آسمان" readonly/></div>
+          <div class="field"><label>نقش در آژانس</label><input value="مشاور" readonly/></div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:20px">
+          <button class="btn btn-outline" data-toast="تغییرات لغو شد">لغو</button>
+          <button class="btn btn-primary" data-toast="اطلاعات پروفایل ذخیره شد">ذخیره تغییرات</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="kpi-grid">
+        <div class="kpi"><span>آگهی فعال</span><strong>۱۸</strong></div>
+        <div class="kpi"><span>درخواست فعال</span><strong>۷</strong></div>
+        <div class="kpi"><span>گفتگوی باز</span><strong>۲۴</strong></div>
+        <div class="kpi"><span>اشتراک</span><strong style="color:var(--primary)">Pro</strong></div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="card">
+        <div class="section-title"><div><h2>تنظیمات اطلاع‌رسانی</h2><p>انتخاب کانال‌های دریافت اعلان</p></div></div>
+        <div class="toggle-row"><span>اعلان‌های پیام جدید</span><button class="toggle" data-toast="وضعیت اعلان تغییر کرد"></button></div>
+        <div class="toggle-row"><span>اعلان درخواست بازدید</span><button class="toggle" data-toast="وضعیت اعلان تغییر کرد"></button></div>
+        <div class="toggle-row"><span>اعلان وضعیت آگهی</span><button class="toggle" data-toast="وضعیت اعلان تغییر کرد"></button></div>
+        <div class="toggle-row"><span>پیامک تأیید جلسه</span><button class="toggle off" data-toast="وضعیت اعلان تغییر کرد"></button></div>
+        <div class="toggle-row"><span>ایمیل گزارش هفتگی</span><button class="toggle off" data-toast="وضعیت اعلان تغییر کرد"></button></div>
+      </div>
+
+      <!-- Security -->
+      <div class="card">
+        <div class="section-title"><div><h2>امنیت حساب</h2><p>مدیریت رمز عبور و جلسات ورود</p></div></div>
+        <div class="security-card">
+          <div class="security-icon" style="background:var(--info-soft)">🔑</div>
+          <div style="flex:1"><div class="security-title">تغییر رمز عبور</div><div class="security-sub">آخرین تغییر: ۳ ماه پیش</div></div>
+          <button class="btn btn-outline" style="height:34px;font-size:12px" data-toast="لینک تغییر رمز ارسال شد">تغییر</button>
+        </div>
+        <div class="security-card">
+          <div class="security-icon" style="background:var(--success-soft)">📱</div>
+          <div style="flex:1"><div class="security-title">احراز هویت دو مرحله‌ای</div><div class="security-sub">با OTP پیامکی فعال است</div></div>
+          <span class="badge success">فعال</span>
+        </div>
+        <div class="security-card" style="border-color:var(--danger-soft)">
+          <div class="security-icon" style="background:var(--danger-soft)">⎋</div>
+          <div style="flex:1"><div class="security-title" style="color:var(--danger)">خروج از همه دستگاه‌ها</div><div class="security-sub">تمام جلسات فعال پاک می‌شوند</div></div>
+          <button class="btn btn-danger" style="height:34px;font-size:12px" data-toast="از همه دستگاه‌ها خارج شدید">خروج</button>
+        </div>
+      </div>
+    </section>
   </main>
 </div>
-<div class="prototype-ribbon">Dotmelk Menu Pages · Desktop</div>
+<div class="prototype-ribbon">Dotmelk · Desktop · حساب کاربری</div>
 </body>
 </html>

@@ -1,71 +1,115 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>درباره داتملک</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+.about-hero{background:linear-gradient(135deg,#4C1D95,#7C3AED,#6D28D9);border-radius:20px;padding:28px 28px 24px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden}
+.about-hero::before{content:'⌖';position:absolute;left:-20px;top:-20px;font-size:120px;opacity:.07;pointer-events:none}
+.about-hero h2{font-size:22px;font-weight:900;margin-bottom:10px;line-height:32px}
+.about-hero p{font-size:14px;line-height:24px;opacity:.88}
+.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.about-stat{border:1px solid var(--border);border-radius:18px;background:#fff;padding:16px;text-align:center}
+.about-stat .stat-num{font-size:28px;font-weight:900;color:var(--primary);line-height:36px;margin-bottom:4px}
+.about-stat .stat-label{font-size:12px;font-weight:800;color:var(--muted)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.pillar{border:1px solid var(--border);border-radius:18px;background:#fff;padding:18px}
+.pillar-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+.pillar h3{font-size:14px;font-weight:900;margin-bottom:6px}
+.pillar p{font-size:12px;color:var(--muted);line-height:20px}
+.version-row{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:var(--muted);padding:12px 14px;background:var(--surface-muted);border-radius:12px}
+</style>
 </head>
 <body>
 <div class="shell">
   <header class="topbar">
-    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و صفحات پشتیبانی</div></div></a>
+    <a class="brand" href="ads.html"><div class="logo-mark"></div><div><div class="brand-title">داتملک</div><div class="brand-subtitle">منوی کاربری و پشتیبانی</div></div></a>
     <nav class="nav"><a href="map.html"><span>⌖</span>نقشه</a><a href="requests.html"><span>□</span>درخواست‌ها</a><a href="ads.html"><span>⌂</span>آگهی‌ها</a><a href="chat.html"><span>◌</span>چت</a><a href="my-dotmelk.html"><span>◫</span>داتملک من</a></nav>
     <div class="top-actions">
-<details class="more-menu">
-  <summary class="btn btn-outline">☰ بیشتر</summary>
-  <div class="more-panel">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="active" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
-  </div>
-</details>
-<button class="btn btn-primary" data-toast="ثبت آگهی نمایشی است">＋ ثبت آگهی</button></div>
+      <details class="more-menu">
+        <summary class="btn btn-outline">☰ بیشتر</summary>
+        <div class="more-panel">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a class="active" href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+          <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+        </div>
+      </details>
+      <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو">🔔</button>
+      <a href="add-advertise.html" class="btn btn-primary">＋ ثبت آگهی</a>
+    </div>
   </header>
+
   <section class="page-head">
-    <div><h1>درباره داتملک</h1><p>معرفی رسمی داتملک و نگاه محصول.</p></div>
-    <div style="display:flex;gap:8px"><a class="btn btn-outline" href="my-dotmelk.html">بازگشت به داتملک من</a></div>
+    <div><h1>درباره داتملک</h1><p>پلتفرم ملکی مبتنی بر نقشه و داده مکانی</p></div>
+    <a class="btn btn-outline" href="my-dotmelk.html">← داتملک من</a>
   </section>
+
   <main class="layout">
     <aside class="card side-nav">
-      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
+      <div class="user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
       <nav class="menu-list">
-        <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="active" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-        <a class="logout" href="logout.html"><span>⎋</span>خروج</a>
+        <a href="account.html"><span>◫</span>حساب کاربری</a>
+        <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+        <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+        <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+        <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+        <a class="active" href="about.html"><span>●</span>درباره داتملک</a>
+        <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+        <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+        <a class="logout" href="logout.html"><span>⎋</span>خروج از حساب</a>
       </nav>
     </aside>
+
     <section class="content">
-<section class="card doc-card soft">
-  <div class="section-title"><div><h2>درباره داتملک</h2><p>در Flutter متن درباره داتملک از API public_content/about_us دریافت می‌شود.</p></div><span class="badge primary">About Us</span></div>
-  <p>داتملک یک تجربه ملکی مبتنی بر نقشه، داده مکانی، آگهی، درخواست، چت و فضای کاری است. این صفحه در محصول واقعی محتوای رسمی معرفی داتملک را از سرور نمایش می‌دهد.</p>
-  <h2>نگاه محصول</h2>
-  <p>تمرکز داتملک فقط نمایش فایل نیست؛ کاربر باید بتواند ملک، درخواست، محدوده، وضعیت مکانی، ارزیابی محیطی و ارتباطات بعدی را در یک فضای منسجم دنبال کند.</p>
-  <h2>ارزش برای کاربران</h2>
-  <p>کاربران عمومی، مشاوران، آژانس‌ها و تیم‌های ملکی می‌توانند از مسیر آگهی، درخواست، نقشه، چت و داتملک من به اطلاعات و عملیات موردنیاز دسترسی داشته باشند.</p>
-</section>
-<section class="kpi-grid">
-  <div class="kpi"><span>هسته تجربه</span><strong>GIS</strong></div>
-  <div class="kpi"><span>مسیرهای اصلی</span><strong>۵</strong></div>
-  <div class="kpi"><span>نوع محتوا</span><strong>آگهی/درخواست</strong></div>
-  <div class="kpi"><span>فضای کاری</span><strong>داتملک من</strong></div>
-</section>
-</section>
+      <div class="about-hero">
+        <h2>داتملک؛ تجربه متفاوت بازار ملک ایران</h2>
+        <p>داتملک یک پلتفرم ملکی GIS-first است که ملک، موقعیت، درخواست، چت و فضای کاری را در یک محیط یکپارچه گرد می‌آورد. ما باور داریم که تصمیم‌گیری در خرید یا اجاره ملک باید با داده مکانی واقعی — نه فقط عکس و قیمت — همراه باشد.</p>
+      </div>
+
+      <div class="about-stats">
+        <div class="about-stat"><div class="stat-num">+۱۲۰K</div><div class="stat-label">آگهی فعال</div></div>
+        <div class="about-stat"><div class="stat-num">+۳۸</div><div class="stat-label">شهر پوشش‌داده</div></div>
+        <div class="about-stat"><div class="stat-num">+۸K</div><div class="stat-label">مشاور فعال</div></div>
+        <div class="about-stat"><div class="stat-num">+۲۵۰K</div><div class="stat-label">کاربر ثبت‌نام‌شده</div></div>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon" style="background:linear-gradient(135deg,#EDE9FE,#C4B5FD)">⌖</div>
+          <h3>نقشه هوشمند GIS</h3>
+          <p>جستجو روی نقشه با لایه‌های مکانی، ارزیابی محیطی، UTM و رسم ناحیه برای یافتن دقیق ملک.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon" style="background:linear-gradient(135deg,#ECFDF5,#A7F3D0)">◫</div>
+          <h3>فضای کاری یکپارچه</h3>
+          <p>داشبورد مشاور، مدیریت آگهی و درخواست، جلسات، قراردادها و کیف‌پول در یک فضا.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA)">◌</div>
+          <h3>ارتباط مستقیم</h3>
+          <p>پیام‌رسان داخلی با اشتراک‌گذاری موقعیت، هماهنگی بازدید و تاریخچه مکالمه.</p>
+        </div>
+      </div>
+
+      <div class="doc-card" style="border-radius:18px">
+        <h2>چشم‌انداز ما</h2>
+        <p>ما می‌خواهیم فرایند خرید، فروش و اجاره ملک در ایران را با استانداردهای جهانی — شفافیت، داده‌محوری و تجربه کاربری روان — متحول کنیم. داتملک تنها یک پورتال آگهی نیست؛ یک اکوسیستم ملکی است.</p>
+        <div class="version-row" style="margin-top:16px">
+          <span>Dotmelk Web Prototype</span><span>·</span><span>نسخه ۱.۰</span><span>·</span><span>خرداد ۱۴۰۴</span>
+        </div>
+      </div>
+    </section>
   </main>
 </div>
-<div class="prototype-ribbon">Dotmelk Menu Pages · Desktop</div>
+<div class="prototype-ribbon">Dotmelk · Desktop · درباره داتملک</div>
 </body>
 </html>

@@ -1,52 +1,131 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>راهنمای استفاده از نرم افزار</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>راهنمای استفاده · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+html,body,.mobile-body{overflow-x:hidden}
+.guide-row{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--border);border-radius:16px;background:#fff;margin-bottom:10px;cursor:pointer;transition:box-shadow .15s}
+.guide-row:hover{box-shadow:0 4px 12px rgba(109,40,217,.1)}
+.guide-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.guide-row h3{font-size:13px;font-weight:900;margin-bottom:4px;line-height:18px}
+.guide-row p{font-size:12px;color:var(--muted);line-height:17px;margin-bottom:0}
+.guide-row .dur{font-size:11px;font-weight:800;color:var(--subtle);margin-top:4px}
+.cat-chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+.cat-chips::-webkit-scrollbar{display:none}
+.cchip{padding:6px 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:900;white-space:nowrap;cursor:pointer}
+.cchip.active{background:var(--primary);border-color:var(--primary);color:#fff}
+</style>
 </head>
 <body>
 <div class="mobile-body">
   <header class="mobile-topbar">
     <button class="icon-btn" data-drawer-toggle>☰</button>
-    <div class="mobile-title">راهنمای استفاده از نرم افزار</div>
+    <div class="mobile-title">راهنمای استفاده</div>
     <a class="icon-btn" href="my-dotmelk.html">‹</a>
   </header>
-  
-<div class="drawer-backdrop" data-drawer-close></div>
-<aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
-  <div class="drawer-head">
-    <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
-    <button class="icon-btn" data-drawer-close>×</button>
-  </div>
-  <div class="drawer-scroll">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="active" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
-  </div>
-  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
-</aside>
+
+  <div class="drawer-backdrop" data-drawer-close></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-head">
+      <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
+      <button class="icon-btn" data-drawer-close>×</button>
+    </div>
+    <div class="drawer-scroll">
+      <a href="account.html"><span>◫</span>حساب کاربری</a>
+      <a class="active" href="guides.html"><span>؟</span>راهنمای استفاده</a>
+      <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+      <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+      <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+      <a href="about.html"><span>●</span>درباره داتملک</a>
+      <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+      <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+      <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+    </div>
+    <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+  </aside>
 
   <main class="mobile-content">
-<section class="mobile-card">
-  <div class="section-title"><div><h2>ویدیوها و راهنمای استفاده</h2><p>در Flutter هر راهنما شامل title، description، url و thumbnail است و با کلیک وارد صفحه ویدیو می‌شود.</p></div><span class="badge info">Software Guides API</span></div>
-  <div class="guide-grid">
-    <article class="guide-card"><div class="guide-thumb"></div><div class="guide-card-body"><h3>ثبت و مدیریت آگهی</h3><p>راهنمای ثبت آگهی، تکمیل مشخصات، افزودن تصویر، و مدیریت وضعیت انتشار.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-    <article class="guide-card"><div class="guide-thumb" style="background:linear-gradient(135deg,#CCFBF1,#DBEAFE)"></div><div class="guide-card-body"><h3>جستجو روی نقشه و لایه‌ها</h3><p>آشنایی با موقعیت تقریبی، لایه‌های مکانی، UTM و ارزیابی محیطی.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-    <article class="guide-card"><div class="guide-thumb" style="background:linear-gradient(135deg,#FEF3C7,#EDE9FE)"></div><div class="guide-card-body"><h3>ثبت درخواست ملکی</h3><p>نحوه ثبت نیاز، محدوده جغرافیایی، بودجه و پیگیری درخواست‌ها.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-    <article class="guide-card"><div class="guide-thumb" style="background:linear-gradient(135deg,#FEE2E2,#DDD6FE)"></div><div class="guide-card-body"><h3>گفتگو، تیکت و پشتیبانی</h3><p>مدیریت پیام‌ها، ارسال تیکت و پیگیری پاسخ پشتیبانی.</p><button class="btn btn-soft">مشاهده ویدیو</button></div></article>
-  </div>
-</section>
-</main>
-  <nav class="mobile-bottom-nav"><a href="map.html" class=""><span>⌖</span><span>نقشه</span></a><a href="requests.html" class=""><span>□</span><span>درخواست</span></a><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a><a href="chat.html" class=""><span>◌</span><span>چت</span></a><a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a></nav>
+    <div class="cat-chips">
+      <button class="cchip active">همه</button>
+      <button class="cchip">آگهی</button>
+      <button class="cchip">نقشه GIS</button>
+      <button class="cchip">درخواست</button>
+      <button class="cchip">اشتراک</button>
+      <button class="cchip">فضای کاری</button>
+    </div>
+
+    <div class="guide-row" data-toast="راهنما در دست اقدام">
+      <div class="guide-ico" style="background:linear-gradient(135deg,#EDE9FE,#C4B5FD)">⌖</div>
+      <div style="flex:1">
+        <h3>کار با نقشه هوشمند</h3>
+        <p>لایه‌های GIS، فیلترهای مکانی و رسم ناحیه</p>
+        <div class="dur">⏱ ۵ دقیقه · نقشه GIS</div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">›</span>
+    </div>
+    <div class="guide-row" data-toast="راهنما در دست اقدام">
+      <div class="guide-ico" style="background:linear-gradient(135deg,#ECFDF5,#A7F3D0)">⌂</div>
+      <div style="flex:1">
+        <h3>ثبت آگهی حرفه‌ای</h3>
+        <p>از تکمیل اطلاعات تا انتشار در ۵ دقیقه</p>
+        <div class="dur">⏱ ۴ دقیقه · آگهی</div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">›</span>
+    </div>
+    <div class="guide-row" data-toast="راهنما در دست اقدام">
+      <div class="guide-ico" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA)">□</div>
+      <div style="flex:1">
+        <h3>ثبت درخواست ملکی</h3>
+        <p>فرم درخواست و دریافت پیشنهادهای هدفمند</p>
+        <div class="dur">⏱ ۳ دقیقه · درخواست</div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">›</span>
+    </div>
+    <div class="guide-row" data-toast="راهنما در دست اقدام">
+      <div class="guide-ico" style="background:linear-gradient(135deg,#F0F9FF,#BAE6FD)">◫</div>
+      <div style="flex:1">
+        <h3>مدیریت تیم و آژانس</h3>
+        <p>دعوت اعضا، نقش‌ها و داشبورد آژانس</p>
+        <div class="dur">⏱ ۶ دقیقه · فضای کاری</div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">›</span>
+    </div>
+    <div class="guide-row" data-toast="راهنما در دست اقدام">
+      <div class="guide-ico" style="background:linear-gradient(135deg,#FFF1F2,#FECDD3)">◌</div>
+      <div style="flex:1">
+        <h3>ارتباط با مشتریان</h3>
+        <p>پیام‌رسان، موقعیت‌گذاری و بازدید</p>
+        <div class="dur">⏱ ۴ دقیقه · چت</div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">›</span>
+    </div>
+    <div class="guide-row" data-toast="راهنما در دست اقدام">
+      <div class="guide-ico" style="background:linear-gradient(135deg,#F5F3FF,#DDD6FE)">⭐</div>
+      <div style="flex:1">
+        <h3>اشتراک Pro و آژانس</h3>
+        <p>مقایسه پلن‌ها و فعال‌سازی</p>
+        <div class="dur">⏱ ۳ دقیقه · اشتراک</div>
+      </div>
+      <span style="font-size:16px;color:var(--muted)">›</span>
+    </div>
+
+    <div class="mobile-card" style="text-align:center;margin-top:4px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px">جوابتان را پیدا نکردید؟</p>
+      <a href="tickets.html" class="btn btn-primary" style="display:block;height:40px;line-height:40px">ثبت تیکت پشتیبانی</a>
+    </div>
+  </main>
+
+  <nav class="mobile-bottom-nav">
+    <a href="map.html"><span>⌖</span><span>نقشه</span></a>
+    <a href="requests.html"><span>□</span><span>درخواست</span></a>
+    <a href="ads.html"><span>⌂</span><span>آگهی</span></a>
+    <a href="chat.html"><span>◌</span><span>چت</span></a>
+    <a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a>
+  </nav>
 </div>
 </body>
 </html>

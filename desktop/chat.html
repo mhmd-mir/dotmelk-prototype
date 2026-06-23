@@ -1,169 +1,520 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>چت داتملک</title>
-    <link rel="stylesheet" href="../assets/dotmelk-design-system.css" />
-    <script defer src="../assets/prototype.js"></script>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>چت · داتملک</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── Tokens ── */
+    :root{
+      --primary:#6D28D9;--primary-hover:#5B21B6;--primary-soft:#F5F3FF;--primary-subtle:#EDE9FE;--primary-border:#C4B5FD;--primary-fg:#fff;
+      --bg:#F8FAFC;--surface:#fff;--card:#fff;--surface-muted:#F1F5F9;--text:#0F172A;--text-2:#475569;--muted:#64748B;--subtle:#94A3B8;--border:#E2E8F0;--border-strong:#CBD5E1;
+      --success:#16A34A;--success-soft:#DCFCE7;--success-text:#166534;--warning:#D97706;--warning-soft:#FEF3C7;--warning-text:#92400E;--danger:#DC2626;--danger-soft:#FEE2E2;--danger-text:#991B1B;--info:#2563EB;--info-soft:#DBEAFE;--info-text:#1E40AF;
+      --teal:#0F766E;--teal-soft:#CCFBF1;--orange:#F97316;--orange-soft:#FFEDD5;
+      --shadow-sm:0 4px 12px rgba(15,23,42,.06);--shadow-md:0 10px 24px rgba(15,23,42,.08);--shadow-lg:0 20px 45px rgba(15,23,42,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--bg);color:var(--text);direction:rtl;font-size:14px}
+    button,input,textarea{font:inherit;border:0;cursor:pointer}
+    a{text-decoration:none;color:inherit}
 
-    <link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
-    <script defer src="../assets/dotmelk-menu-pages.js"></script>
-  </head>
-  <body>
-    <div class="shell">
-      <header class="topbar">
-        <a class="brand" href="ads.html">
-          <div class="logo-mark"></div>
-          <div>
-            <div class="brand-title">داتملک</div>
-            <div class="brand-subtitle">
-              نسخه وب پیشنهادی · جریان اصلی محصول
-            </div>
-          </div>
-        </a>
-        <nav class="nav">
-          <a href="map.html" class=""><span>⌖</span>نقشه</a
-          ><a href="requests.html" class=""><span>□</span>درخواست‌ها</a
-          ><a href="ads.html" class=""><span>⌂</span>آگهی‌ها</a
-          ><a href="chat.html" class="active"><span>◌</span>چت</a
-          ><a href="my-dotmelk.html" class=""><span>◫</span>داتملک من</a>
-        </nav>
-        <div class="top-actions">
-          <details class="more-menu">
-              <summary class="btn btn-outline">☰ بیشتر</summary>
-              <div class="more-panel">
-                <a href="account.html"><span>◫</span>حساب کاربری من</a>
-                <a href="guides.html"
-                  ><span>؟</span>راهنمای استفاده از نرم افزار</a
-                >
-                <a href="rules.html"><span>§</span>قوانین و مقررات</a>
-                <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-                <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-                <a href="about.html"><span>●</span>درباره داتملک</a>
-                <a href="contact.html"><span>☎</span>ارتباط با ما</a>
-                <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-                <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
-              </div>
-            </details>
-          <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو فعال نیست">
-            🔔
-          </button>
-          <button
-            class="btn btn-primary"
-            data-toast="ثبت آگهی در فاز بعدی طراحی می‌شود"
-          >
-            ＋ ثبت آگهی
-          </button>
-        </div>
-      </header>
-      <section class="page-head">
-        <div>
-          <h1>چت و ارتباطات</h1>
-          <p>
-            گفتگوهای مرتبط با آگهی، درخواست و پشتیبانی؛ با context کامل و
-            actionهای کاربردی.
-          </p>
-        </div>
-        <div style="display: flex; gap: 8px">
-          <button class="btn btn-outline">همه گفتگوها</button
-          ><button class="btn btn-primary">گفتگوی جدید</button>
-        </div>
-      </section>
+    /* ── Shell ── */
+    .shell{max-width:1440px;margin:0 auto;padding:18px 24px 24px;height:100vh;display:flex;flex-direction:column;gap:0}
 
-      <section class="chat-layout">
-        <aside class="chat-list">
-          <div class="chat-search">
-            <div class="searchbox" style="margin: 0">⌕ جستجو در گفتگوها</div>
+    /* ── Topbar ── */
+    .topbar{height:72px;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:24px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;box-shadow:var(--shadow-sm);position:sticky;top:14px;z-index:50;flex-shrink:0}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo-mark{width:36px;height:36px;border-radius:14px;background:linear-gradient(135deg,#7C3AED,#5B21B6);display:grid;place-items:center;color:#fff;box-shadow:0 10px 25px rgba(109,40,217,.20)}
+    .logo-mark::before{content:'⌖';font-size:19px;font-weight:900}
+    .brand-title{font-size:18px;font-weight:900;letter-spacing:-.01em}
+    .brand-subtitle{font-size:12px;color:var(--muted);margin-top:1px}
+    .nav{display:flex;align-items:center;gap:4px;background:var(--surface-muted);border-radius:999px;padding:4px}
+    .nav a{height:36px;padding:0 14px;border-radius:999px;display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:13px;font-weight:800}
+    .nav a.active{background:var(--surface);color:var(--primary);box-shadow:0 3px 10px rgba(15,23,42,.06)}
+    .top-actions{display:flex;align-items:center;gap:8px}
+    .btn{height:40px;padding:0 16px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:14px;transition:.15s ease-out;white-space:nowrap;cursor:pointer;border:0}
+    .btn:active{transform:scale(.98)}
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{background:var(--primary-hover)}
+    .btn-soft{background:var(--primary-soft);color:var(--primary)}
+    .btn-soft:hover{background:var(--primary-subtle)}
+    .btn-outline{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+    .btn-outline:hover{border-color:var(--primary-border);color:var(--primary)}
+    .btn-ghost{background:transparent;color:var(--text-2)}
+    .icon-btn{width:42px;height:42px;border-radius:14px;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center;color:var(--text-2);transition:.15s ease-out;flex-shrink:0}
+    .icon-btn:hover{border-color:var(--primary-border);color:var(--primary);box-shadow:var(--shadow-sm)}
+    .badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:3px 9px;font-size:11px;line-height:18px;font-weight:800;white-space:nowrap}
+    .badge.primary{background:var(--primary-soft);color:var(--primary)}
+    .badge.warning{background:var(--warning-soft);color:var(--warning-text)}
+    .badge.info{background:var(--info-soft);color:var(--info-text)}
+    .badge.success{background:var(--success-soft);color:var(--success-text)}
+    .badge.neutral{background:var(--surface-muted);color:var(--text-2)}
+    .badge.danger{background:var(--danger-soft);color:var(--danger-text)}
+    .more-menu{position:relative}
+    .more-menu summary{list-style:none;cursor:pointer}
+    .more-menu summary::-webkit-details-marker{display:none}
+    .more-panel{position:absolute;left:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-lg);padding:8px;min-width:220px;z-index:200;display:grid;gap:2px}
+    .more-panel a{height:40px;border-radius:12px;display:flex;align-items:center;gap:10px;padding:0 12px;color:var(--text-2);font-size:13px;font-weight:800}
+    .more-panel a:hover{background:var(--surface-muted);color:var(--text)}
+    .more-panel a.danger{color:var(--danger)}
+    .more-panel a.danger:hover{background:var(--danger-soft)}
+    .more-panel span{width:20px;text-align:center;opacity:.65;font-size:15px}
+
+    /* ── Page head ── */
+    .page-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:22px 4px 16px;flex-shrink:0}
+    .page-head h1{font-size:26px;line-height:40px;font-weight:900;letter-spacing:-.01em}
+    .page-head p{margin:4px 0 0;color:var(--muted);font-size:14px;line-height:24px}
+
+    /* ── Chat layout ── */
+    .chat-layout{display:grid;grid-template-columns:360px 1fr;gap:14px;flex:1;min-height:0;padding-bottom:6px}
+
+    /* ── Sidebar (list) ── */
+    .chat-sidebar{border:1px solid var(--border);border-radius:24px;background:var(--surface);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden}
+    .sidebar-top{padding:14px 14px 0}
+    .searchbox{height:44px;border:1px solid var(--border);border-radius:14px;background:var(--surface-muted);display:flex;align-items:center;gap:8px;padding:0 13px;color:var(--muted);font-size:13px;font-weight:700;cursor:text}
+    .searchbox input{border:0;background:transparent;flex:1;outline:none;color:var(--text);font-size:13px}
+    .searchbox input::placeholder{color:var(--muted)}
+    .tabs{display:flex;gap:4px;margin-top:10px;overflow-x:auto;padding-bottom:1px}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{height:32px;padding:0 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-size:12px;font-weight:800;white-space:nowrap;cursor:pointer;transition:.15s ease-out;display:flex;align-items:center;gap:6px}
+    .tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .tab .count{background:rgba(255,255,255,.25);border-radius:999px;padding:1px 6px;font-size:11px}
+    .tab:not(.active) .count{background:var(--surface-muted);color:var(--muted)}
+    .conv-list{flex:1;overflow-y:auto;padding:10px 6px}
+    .conv-list::-webkit-scrollbar{width:4px}
+    .conv-list::-webkit-scrollbar-track{background:transparent}
+    .conv-list::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px}
+    .conv{display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;padding:11px 10px;border-radius:18px;cursor:pointer;transition:.15s ease-out;position:relative}
+    .conv:hover{background:var(--surface-muted)}
+    .conv.active{background:var(--primary-soft)}
+    .conv-separator{margin:8px 10px;height:1px;background:var(--border)}
+    .conv-group-label{padding:6px 10px 4px;font-size:11px;font-weight:900;color:var(--subtle);text-transform:uppercase;letter-spacing:.04em}
+    .avatar{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:16px;flex-shrink:0}
+    .av-purple{background:linear-gradient(135deg,#7C3AED,#5B21B6)}
+    .av-teal{background:linear-gradient(135deg,#0F766E,#2563EB)}
+    .av-orange{background:linear-gradient(135deg,#F97316,#D97706)}
+    .av-system{background:linear-gradient(135deg,#475569,#0F172A)}
+    .av-green{background:linear-gradient(135deg,#16A34A,#0F766E)}
+    .conv-body{min-width:0}
+    .conv-name{font-size:13px;font-weight:900;line-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .conv-preview{font-size:12px;color:var(--muted);line-height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+    .conv-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+    .conv-time{font-size:11px;color:var(--subtle);white-space:nowrap}
+    .unread-dot{width:20px;height:20px;border-radius:999px;background:var(--primary);color:#fff;font-size:10px;font-weight:900;display:grid;place-items:center}
+
+    /* ── Room ── */
+    .chat-room{border:1px solid var(--border);border-radius:24px;background:var(--surface);box-shadow:var(--shadow-sm);display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+    .room-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
+    .room-info{display:flex;align-items:center;gap:12px;min-width:0}
+    .room-info .avatar{width:46px;height:46px;border-radius:14px;font-size:15px}
+    .room-text{min-width:0}
+    .room-name{font-size:15px;font-weight:900;line-height:24px}
+    .room-sub{font-size:12px;color:var(--muted);margin-top:1px;display:flex;align-items:center;gap:6px}
+    .online-dot{width:7px;height:7px;border-radius:999px;background:var(--success);display:inline-block}
+    .room-actions{display:flex;gap:8px;align-items:center;flex-shrink:0}
+
+    /* Context card (linked ad/request) */
+    .ctx-bar{padding:10px 16px;border-bottom:1px solid var(--border);background:var(--primary-soft)}
+    .ctx-card{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;border:1px solid var(--primary-border);border-radius:16px;background:rgba(255,255,255,.72);padding:10px 12px}
+    .ctx-photo{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,#DDD6FE,#BFDBFE);flex-shrink:0;position:relative;overflow:hidden}
+    .ctx-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(109,40,217,.15),rgba(37,99,235,.1))}
+    .ctx-photo-req{background:linear-gradient(135deg,#CCFBF1,#DBEAFE)}
+    .ctx-photo-req::after{background:linear-gradient(135deg,rgba(15,118,110,.15),rgba(37,99,235,.1))}
+    .ctx-title{font-size:13px;font-weight:900;line-height:22px;margin-bottom:2px}
+    .ctx-meta{font-size:12px;color:var(--text-2);display:flex;gap:8px;flex-wrap:wrap}
+    .ctx-sep{color:var(--border-strong)}
+    .ctx-link{font-size:12px;color:var(--primary);font-weight:800;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0}
+
+    /* Messages */
+    .messages{padding:16px 20px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,#fff 0,#F8FAFC 100%)}
+    .messages::-webkit-scrollbar{width:4px}
+    .messages::-webkit-scrollbar-track{background:transparent}
+    .messages::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px}
+    .day-label{align-self:center;background:var(--surface-muted);border:1px solid var(--border);border-radius:999px;padding:3px 12px;font-size:11px;font-weight:800;color:var(--subtle);margin:4px 0}
+    .msg{max-width:62%;border-radius:20px;padding:10px 14px;font-size:14px;line-height:25px;position:relative}
+    .msg.me{align-self:flex-start;background:var(--primary);color:#fff;border-bottom-left-radius:5px}
+    .msg.them{align-self:flex-end;background:var(--surface);border:1px solid var(--border);color:var(--text);border-bottom-right-radius:5px;box-shadow:var(--shadow-sm)}
+    .msg-meta{font-size:11px;opacity:.7;margin-top:5px;display:flex;align-items:center;gap:5px}
+    .msg.me .msg-meta{color:rgba(255,255,255,.85)}
+    .msg.them .msg-meta{color:var(--muted)}
+    .msg-check{font-size:12px}
+    .msg-img{width:200px;height:130px;border-radius:14px;background:linear-gradient(135deg,#DDD6FE,#BFDBFE);display:block;overflow:hidden;margin-bottom:6px;position:relative}
+    .msg-img::after{content:'🖼';position:absolute;inset:0;display:grid;place-items:center;font-size:28px;opacity:.4}
+    .msg-location{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border-radius:12px;padding:8px 10px;font-size:12px;margin-bottom:4px}
+    .msg-location .loc-icon{font-size:16px}
+
+    /* Composer */
+    .composer{padding:12px 14px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;background:var(--surface)}
+    .composer-attach{width:40px;height:40px;border-radius:12px;border:1px solid var(--border);background:var(--surface-muted);display:grid;place-items:center;color:var(--text-2);transition:.15s;flex-shrink:0;font-size:18px}
+    .composer-attach:hover{border-color:var(--primary-border);color:var(--primary)}
+    .composer-input-wrap{flex:1;border:1px solid var(--border);border-radius:16px;background:var(--surface-muted);display:flex;align-items:center;gap:6px;padding:0 12px;min-height:44px;transition:.15s}
+    .composer-input-wrap:focus-within{border-color:var(--primary-border);background:var(--surface);box-shadow:0 0 0 3px var(--primary-subtle)}
+    .composer-input{border:0;background:transparent;flex:1;outline:none;resize:none;font-size:14px;color:var(--text);line-height:24px;max-height:120px;overflow-y:auto;padding:10px 0}
+    .composer-input::placeholder{color:var(--muted)}
+    .composer-emoji{background:transparent;border:0;font-size:18px;color:var(--muted);cursor:pointer;transition:.15s;flex-shrink:0}
+    .composer-emoji:hover{color:var(--warning)}
+    .composer-send{width:44px;height:44px;border-radius:14px;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:20px;transition:.15s;flex-shrink:0;border:0;cursor:pointer}
+    .composer-send:hover{background:var(--primary-hover)}
+    .composer-send:active{transform:scale(.95)}
+
+    /* Prototype ribbon */
+    .prototype-ribbon{position:fixed;left:24px;bottom:24px;background:rgba(15,23,42,.82);color:#fff;border-radius:999px;padding:9px 13px;font-size:12px;box-shadow:var(--shadow-md);z-index:80}
+    .toast-demo{position:fixed;left:20px;bottom:20px;z-index:9999;background:rgba(15,23,42,.88);color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 10px 24px rgba(15,23,42,.18);font-size:13px}
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a class="brand" href="ads.html">
+      <div class="logo-mark"></div>
+      <div>
+        <div class="brand-title">داتملک</div>
+        <div class="brand-subtitle">نسخه وب پیشنهادی · جریان اصلی محصول</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="map.html"><span>⌖</span>نقشه</a>
+      <a href="requests.html"><span>□</span>درخواست‌ها</a>
+      <a href="ads.html"><span>⌂</span>آگهی‌ها</a>
+      <a href="chat.html" class="active"><span>◌</span>چت</a>
+      <a href="my-dotmelk.html"><span>◫</span>داتملک من</a>
+    </nav>
+    <div class="top-actions">
+      <details class="more-menu">
+        <summary class="btn btn-outline">☰ بیشتر</summary>
+        <div class="more-panel">
+          <a href="account.html"><span>◫</span>حساب کاربری من</a>
+          <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+          <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+          <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+          <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+          <a href="about.html"><span>●</span>درباره داتملک</a>
+          <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+          <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+          <a class="danger" href="logout.html"><span>⎋</span>خروج</a>
+        </div>
+      </details>
+      <button class="icon-btn" data-toast="اعلان‌ها در نسخه دمو فعال نیست">🔔</button>
+      <a href="add-advertise.html" class="btn btn-primary">＋ ثبت آگهی</a>
+    </div>
+  </header>
+
+  <!-- Page head -->
+  <div class="page-head">
+    <div>
+      <h1>گفتگوها</h1>
+      <p>ارتباطات مرتبط با آگهی‌ها و درخواست‌های شما</p>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-outline" data-toast="آرشیو گفتگوها">📦 آرشیو</button>
+      <button class="btn btn-primary" data-toast="گفتگوی جدید در نسخه دمو">＋ گفتگوی جدید</button>
+    </div>
+  </div>
+
+  <!-- Chat layout -->
+  <div class="chat-layout">
+
+    <!-- Sidebar -->
+    <aside class="chat-sidebar">
+      <div class="sidebar-top">
+        <div class="searchbox">
+          <span style="color:var(--subtle);font-size:16px">⌕</span>
+          <input placeholder="جستجو در گفتگوها…" id="chat-search"/>
+        </div>
+        <div class="tabs" id="tab-row">
+          <button class="tab active" data-tab="all">همه <span class="count">۷</span></button>
+          <button class="tab" data-tab="ad">آگهی <span class="count">۳</span></button>
+          <button class="tab" data-tab="request">درخواست <span class="count">۲</span></button>
+          <button class="tab" data-tab="system">سیستم <span class="count">۲</span></button>
+        </div>
+      </div>
+
+      <div class="conv-list" id="conv-list">
+
+        <div class="conv-group-label">امروز</div>
+
+        <div class="conv active" data-type="ad" data-room="1">
+          <div class="avatar av-purple">آ</div>
+          <div class="conv-body">
+            <div class="conv-name">آرمان رضایی · آژانس آسمان</div>
+            <div class="conv-preview">برای بازدید فردا ساعت ۵ مناسب است؟</div>
           </div>
-          <div class="conv active">
-            <div class="avatar">آ</div>
-            <div>
-              <h3>آرمان رضایی · آژانس آسمان</h3>
-              <p>برای بازدید فردا ساعت ۵ مناسب است؟</p>
-            </div>
-            <span class="badge primary">ملک</span>
+          <div class="conv-meta">
+            <span class="conv-time">۱۱:۴۲</span>
+            <span class="unread-dot">۲</span>
           </div>
-          <div class="conv">
-            <div
-              class="avatar"
-              style="background: linear-gradient(135deg, #0f766e, #2563eb)"
-            >
-              م
-            </div>
-            <div>
-              <h3>متقاضی خرید سعادت‌آباد</h3>
-              <p>بودجه خریدار تأیید شده است...</p>
-            </div>
-            <span class="badge warning">درخواست</span>
+        </div>
+
+        <div class="conv" data-type="request" data-room="2">
+          <div class="avatar av-teal">م</div>
+          <div class="conv-body">
+            <div class="conv-name">متقاضی خرید سعادت‌آباد</div>
+            <div class="conv-preview">بودجه خریدار تأیید شده است</div>
           </div>
-          <div class="conv">
-            <div
-              class="avatar"
-              style="background: linear-gradient(135deg, #f97316, #d97706)"
-            >
-              پ
-            </div>
-            <div>
-              <h3>پشتیبانی داتملک</h3>
-              <p>وضعیت اشتراک شما به‌روزرسانی شد.</p>
-            </div>
+          <div class="conv-meta">
+            <span class="conv-time">۱۰:۱۵</span>
+            <span class="badge primary">درخواست</span>
+          </div>
+        </div>
+
+        <div class="conv" data-type="ad" data-room="3">
+          <div class="avatar av-green">ن</div>
+          <div class="conv-body">
+            <div class="conv-name">نیلوفر احمدی</div>
+            <div class="conv-preview">عکس‌های بیشتری از حیاط دارید؟</div>
+          </div>
+          <div class="conv-meta">
+            <span class="conv-time">۰۹:۳۰</span>
+          </div>
+        </div>
+
+        <div class="conv-separator"></div>
+        <div class="conv-group-label">دیروز</div>
+
+        <div class="conv" data-type="system" data-room="4">
+          <div class="avatar av-system">د</div>
+          <div class="conv-body">
+            <div class="conv-name">داتملک · پشتیبانی</div>
+            <div class="conv-preview">وضعیت اشتراک شما به‌روزرسانی شد</div>
+          </div>
+          <div class="conv-meta">
+            <span class="conv-time">دیروز</span>
             <span class="badge info">سیستم</span>
           </div>
-        </aside>
-        <section class="chat-room">
-          <header class="room-head">
-            <div class="room-title">
-              <div class="avatar">آ</div>
-              <div>
-                <h2>آرمان رضایی</h2>
-                <p>گفتگو مرتبط با آگهی DM-24891</p>
-              </div>
-            </div>
-            <div style="display: flex; gap: 8px">
-              <button class="btn btn-outline">تماس</button
-              ><button class="btn btn-soft">ثبت بازدید</button>
-            </div>
-          </header>
-          <div class="messages">
-            <div class="ad-context">
-              <div class="visual-photo"></div>
-              <div>
-                <h3>فروش آپارتمان ۱۳۵ متری در سعادت‌آباد</h3>
-                <p>۱۲.۸ میلیارد · ۳ خواب · تور ۳۶۰</p>
-              </div>
-            </div>
-            <div class="msg them">
-              سلام، این واحد هنوز موجوده؟ امکان بازدید حضوری برای فردا هست؟
-              <div class="msg-meta">۱۰:۲۴</div>
-            </div>
-            <div class="msg me">
-              سلام وقت بخیر. بله فایل فعاله. فردا بین ۵ تا ۷ عصر امکان بازدید
-              داریم.
-              <div class="msg-meta">۱۰:۲۵ · ارسال شد</div>
-            </div>
-            <div class="msg them">
-              موقعیت دقیق بعد از هماهنگی ارسال میشه؟ چون روی نقشه تقریبی نمایش
-              داده شده.
-              <div class="msg-meta">۱۰:۲۶</div>
-            </div>
-            <div class="msg me">
-              بله، برای حفظ حریم خصوصی مالک فعلاً موقعیت تقریبیه. بعد از ثبت
-              بازدید، آدرس دقیق ارسال میشه.
-              <div class="msg-meta">۱۰:۲۷ · دیده شد</div>
+        </div>
+
+        <div class="conv" data-type="request" data-room="5">
+          <div class="avatar av-teal">ر</div>
+          <div class="conv-body">
+            <div class="conv-name">رضا کریمی · خریدار</div>
+            <div class="conv-preview">تشکر، منتظر تأیید بازدید هستم</div>
+          </div>
+          <div class="conv-meta">
+            <span class="conv-time">دیروز</span>
+          </div>
+        </div>
+
+        <div class="conv" data-type="ad" data-room="6">
+          <div class="avatar av-orange">ف</div>
+          <div class="conv-body">
+            <div class="conv-name">فریده موسوی</div>
+            <div class="conv-preview">آیا اجاره‌نامه رسمی تنظیم می‌شود؟</div>
+          </div>
+          <div class="conv-meta">
+            <span class="conv-time">دیروز</span>
+          </div>
+        </div>
+
+        <div class="conv-separator"></div>
+        <div class="conv-group-label">این هفته</div>
+
+        <div class="conv" data-type="system" data-room="7">
+          <div class="avatar av-system">د</div>
+          <div class="conv-body">
+            <div class="conv-name">داتملک · اطلاع‌رسانی</div>
+            <div class="conv-preview">آگهی DM-24891 شما تأیید و منتشر شد</div>
+          </div>
+          <div class="conv-meta">
+            <span class="conv-time">۲ روز پیش</span>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Room -->
+    <section class="chat-room">
+
+      <!-- Room header -->
+      <div class="room-head">
+        <div class="room-info">
+          <div class="avatar av-purple" style="width:46px;height:46px;border-radius:14px;font-size:15px">آ</div>
+          <div class="room-text">
+            <div class="room-name">آرمان رضایی</div>
+            <div class="room-sub">
+              <span class="online-dot"></span>
+              آنلاین
+              <span style="color:var(--border-strong)">·</span>
+              <span class="badge primary" style="font-size:11px;padding:2px 8px">آگهی</span>
+              <span style="color:var(--border-strong)">·</span>
+              آژانس آسمان
             </div>
           </div>
-          <footer class="composer">
-            <button class="icon-btn">＋</button
-            ><input placeholder="پیام خود را بنویسید..." /><button
-              class="btn btn-primary"
-            >
-              ارسال
-            </button>
-          </footer>
-        </section>
-      </section>
-    </div>
-    <div class="prototype-ribbon">Dotmelk Main Flow · Desktop</div>
-  </body>
+        </div>
+        <div class="room-actions">
+          <button class="btn btn-outline" style="height:36px;font-size:13px" data-toast="تماس تلفنی">📞 تماس</button>
+          <button class="btn btn-soft" style="height:36px;font-size:13px" data-toast="ثبت بازدید">📅 ثبت بازدید</button>
+          <button class="icon-btn" data-toast="گزینه‌های بیشتر" style="width:36px;height:36px;border-radius:10px">⋮</button>
+        </div>
+      </div>
+
+      <!-- Context card (linked ad) -->
+      <div class="ctx-bar">
+        <div class="ctx-card">
+          <div class="ctx-photo"></div>
+          <div>
+            <div class="ctx-title">فروش آپارتمان ۱۳۵ متری در سعادت‌آباد</div>
+            <div class="ctx-meta">
+              <span>کد DM-24891</span>
+              <span class="ctx-sep">·</span>
+              <span>۱۲.۸ میلیارد تومان</span>
+              <span class="ctx-sep">·</span>
+              <span>۳ خواب</span>
+              <span class="ctx-sep">·</span>
+              <span class="badge success" style="font-size:11px;padding:2px 7px">منتشرشده</span>
+            </div>
+          </div>
+          <a href="property-detail.html" class="ctx-link">مشاهده آگهی ←</a>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="messages" id="messages-area">
+        <div class="day-label">امروز — ۲ خرداد ۱۴۰۴</div>
+
+        <div class="msg them">
+          سلام، این واحد هنوز موجوده؟ امکان بازدید حضوری برای فردا هست؟
+          <div class="msg-meta">۱۰:۲۴</div>
+        </div>
+
+        <div class="msg me">
+          سلام وقت بخیر. بله فایل فعاله. فردا بین ۵ تا ۷ عصر امکان بازدید داریم.
+          <div class="msg-meta">۱۰:۲۵ <span class="msg-check">✓✓</span></div>
+        </div>
+
+        <div class="msg them">
+          موقعیت دقیق بعد از هماهنگی ارسال میشه؟ چون روی نقشه تقریبی نمایش داده شده.
+          <div class="msg-meta">۱۰:۲۶</div>
+        </div>
+
+        <div class="msg me">
+          بله، برای حفظ حریم خصوصی مالک فعلاً موقعیت تقریبیه. بعد از ثبت بازدید، آدرس دقیق ارسال میشه.
+          <div class="msg-meta">۱۰:۲۷ <span class="msg-check">✓✓</span></div>
+        </div>
+
+        <div class="msg them">
+          <div class="msg-img"></div>
+          عکسی که گفتید — نمای ساختمان
+          <div class="msg-meta">۱۰:۴۸</div>
+        </div>
+
+        <div class="msg me">
+          عالیه، ممنون. پس فردا ساعت ۵ منتظرم.
+          <div class="msg-meta">۱۱:۴۱ <span class="msg-check">✓</span></div>
+        </div>
+
+        <div class="msg them">
+          برای بازدید فردا ساعت ۵ مناسب است؟ آدرس کامل رو هم ارسال کنید لطفاً.
+          <div class="msg-meta">۱۱:۴۲</div>
+        </div>
+      </div>
+
+      <!-- Composer -->
+      <div class="composer">
+        <button class="composer-attach" data-toast="ارسال فایل/تصویر در نسخه دمو" title="پیوست">📎</button>
+        <div class="composer-input-wrap">
+          <textarea class="composer-input" id="msg-input" rows="1" placeholder="پیام خود را بنویسید…"></textarea>
+          <button class="composer-emoji" data-toast="ایموجی در نسخه دمو">😊</button>
+        </div>
+        <button class="composer-send" id="send-btn" title="ارسال">➤</button>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+<div class="prototype-ribbon">Dotmelk · Desktop · Chat</div>
+
+<script>
+(function(){
+  /* Toast */
+  function toast(msg){
+    const old=document.querySelector('.toast-demo');if(old)old.remove();
+    const el=document.createElement('div');el.className='toast-demo';el.textContent=msg;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),2600);
+  }
+  document.addEventListener('click',function(e){
+    const t=e.target.closest('[data-toast]');
+    if(t){toast(t.getAttribute('data-toast'));return;}
+  });
+
+  /* Tabs */
+  document.getElementById('tab-row').addEventListener('click',function(e){
+    const tab=e.target.closest('.tab');if(!tab)return;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const type=tab.dataset.tab;
+    document.querySelectorAll('.conv').forEach(c=>{
+      const show= type==='all' || c.dataset.type===type;
+      c.style.display=show?'':'none';
+    });
+    document.querySelectorAll('.conv-separator,.conv-group-label').forEach(el=>el.style.display='');
+  });
+
+  /* Conversation click */
+  const roomData={
+    1:{name:'آرمان رضایی',sub:'آنلاین',badge:'آگهی',badgeClass:'primary',av:'آ',avClass:'av-purple',agencyNote:'آژانس آسمان',ctxTitle:'فروش آپارتمان ۱۳۵ متری در سعادت‌آباد',ctxCode:'DM-24891',ctxPrice:'۱۲.۸ میلیارد',ctxBadge:'منتشرشده',ctxLink:'property-detail.html',photoClass:''},
+    2:{name:'متقاضی خرید سعادت‌آباد',sub:'آخرین بازدید: ۱ ساعت پیش',badge:'درخواست',badgeClass:'warning',av:'م',avClass:'av-teal',agencyNote:'',ctxTitle:'درخواست خرید آپارتمان — سعادت‌آباد',ctxCode:'RQ-11042',ctxPrice:'تا ۱۵ میلیارد',ctxBadge:'فعال',ctxLink:'request-detail.html',photoClass:'ctx-photo-req'},
+    3:{name:'نیلوفر احمدی',sub:'آخرین بازدید: ۳ ساعت پیش',badge:'آگهی',badgeClass:'primary',av:'ن',avClass:'av-green',agencyNote:'',ctxTitle:'اجاره ویلا در لواسان',ctxCode:'DM-31245',ctxPrice:'۲۵ میلیون/ماه',ctxBadge:'منتشرشده',ctxLink:'property-detail.html',photoClass:''},
+    4:{name:'داتملک · پشتیبانی',sub:'پیام سیستمی',badge:'سیستم',badgeClass:'info',av:'د',avClass:'av-system',agencyNote:'',ctxTitle:'',ctxCode:'',ctxPrice:'',ctxBadge:'',ctxLink:'',photoClass:''},
+    5:{name:'رضا کریمی',sub:'آخرین بازدید: دیروز',badge:'درخواست',badgeClass:'warning',av:'ر',avClass:'av-teal',agencyNote:'خریدار',ctxTitle:'درخواست خرید زمین — شهریار',ctxCode:'RQ-10987',ctxPrice:'تا ۸ میلیارد',ctxBadge:'فعال',ctxLink:'request-detail.html',photoClass:'ctx-photo-req'},
+    6:{name:'فریده موسوی',sub:'آخرین بازدید: دیروز',badge:'آگهی',badgeClass:'primary',av:'ف',avClass:'av-orange',agencyNote:'',ctxTitle:'اجاره آپارتمان ۹۰ متری در پونک',ctxCode:'DM-28830',ctxPrice:'۱۸ میلیون/ماه',ctxBadge:'منتشرشده',ctxLink:'property-detail.html',photoClass:''},
+    7:{name:'داتملک · اطلاع‌رسانی',sub:'پیام سیستمی',badge:'سیستم',badgeClass:'info',av:'د',avClass:'av-system',agencyNote:'',ctxTitle:'',ctxCode:'',ctxPrice:'',ctxBadge:'',ctxLink:'',photoClass:''},
+  };
+
+  document.getElementById('conv-list').addEventListener('click',function(e){
+    const conv=e.target.closest('.conv');if(!conv)return;
+    document.querySelectorAll('.conv').forEach(c=>c.classList.remove('active'));
+    conv.classList.add('active');
+    const id=parseInt(conv.dataset.room);
+    const d=roomData[id];if(!d)return;
+    // Remove unread
+    const dot=conv.querySelector('.unread-dot');if(dot)dot.remove();
+    // Update room header
+    document.querySelector('.room-name').textContent=d.name;
+    const sub=document.querySelector('.room-sub');
+    sub.innerHTML=`<span class="online-dot" style="background:${d.badge==='سیستم'?'var(--muted)':'var(--success)'}"></span>${d.sub}<span style="color:var(--border-strong)">·</span><span class="badge ${d.badgeClass}" style="font-size:11px;padding:2px 8px">${d.badge}</span>${d.agencyNote?`<span style="color:var(--border-strong)">·</span>${d.agencyNote}`:''}`;
+    const av=document.querySelector('.room-info .avatar');
+    av.className=`avatar ${d.avClass}`;av.style.cssText='width:46px;height:46px;border-radius:14px;font-size:15px';
+    av.textContent=d.av;
+    // Update context bar
+    const ctxBar=document.querySelector('.ctx-bar');
+    if(!d.ctxTitle){ctxBar.style.display='none';}
+    else{
+      ctxBar.style.display='';
+      document.querySelector('.ctx-photo').className=`ctx-photo ${d.photoClass}`;
+      document.querySelector('.ctx-title').textContent=d.ctxTitle;
+      document.querySelector('.ctx-meta').innerHTML=`<span>کد ${d.ctxCode}</span><span class="ctx-sep">·</span><span>${d.ctxPrice}</span><span class="ctx-sep">·</span><span class="badge success" style="font-size:11px;padding:2px 7px">${d.ctxBadge}</span>`;
+      const link=document.querySelector('.ctx-link');link.href=d.ctxLink;
+    }
+  });
+
+  /* Send message */
+  const input=document.getElementById('msg-input');
+  const area=document.getElementById('messages-area');
+  function sendMsg(){
+    const text=input.value.trim();if(!text)return;
+    const msg=document.createElement('div');
+    msg.className='msg me';
+    msg.innerHTML=text+'<div class="msg-meta">همین الان <span class="msg-check">✓</span></div>';
+    area.appendChild(msg);
+    msg.scrollIntoView({behavior:'smooth'});
+    input.value='';input.style.height='auto';
+  }
+  document.getElementById('send-btn').addEventListener('click',sendMsg);
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}
+  });
+  input.addEventListener('input',function(){
+    this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';
+  });
+})();
+</script>
+</body>
 </html>

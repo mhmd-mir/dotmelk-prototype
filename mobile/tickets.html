@@ -1,68 +1,161 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>پشتیبانی و تیکت ها</title>
-<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>پشتیبانی و تیکت‌ها · داتملک</title>
+<link rel="stylesheet" href="../assets/dotmelk-menu-pages.css"/>
 <script defer src="../assets/dotmelk-menu-pages.js"></script>
+<style>
+html,body,.mobile-body{overflow-x:hidden}
+/* Two-screen pattern */
+#screen-room{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;background:var(--surface);transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+#screen-room.open{transform:translateX(0)}
+.room-topbar{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fff;border-bottom:1px solid var(--border);flex-shrink:0}
+.room-topbar-info h2{font-size:14px;font-weight:900;margin:0;line-height:20px}
+.room-topbar-info p{font-size:11px;color:var(--muted);margin:0}
+.room-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.cat-chips{display:flex;gap:8px;overflow-x:auto;padding:10px 14px;scrollbar-width:none;border-bottom:1px solid var(--border)}
+.cat-chips::-webkit-scrollbar{display:none}
+.cchip{padding:5px 12px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:11px;font-weight:900;white-space:nowrap;cursor:pointer}
+.cchip.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.tk-list{flex:1;overflow-y:auto}
+.tk-row{padding:14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
+.tk-row:hover{background:var(--surface-muted)}
+.tk-row.active{background:var(--primary-soft)}
+.tk-row-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px}
+.tk-row h3{font-size:13px;font-weight:900;line-height:18px}
+.tk-row p{font-size:12px;color:var(--muted);margin:0;line-height:17px}
+.tk-row .tk-date{font-size:11px;color:var(--subtle)}
+/* New ticket overlay */
+#new-ticket-overlay{position:fixed;inset:0;z-index:200;background:var(--surface);transform:translateY(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+#new-ticket-overlay.open{transform:translateY(0)}
+</style>
 </head>
 <body>
 <div class="mobile-body">
+  <!-- Screen 1: Ticket List -->
   <header class="mobile-topbar">
     <button class="icon-btn" data-drawer-toggle>☰</button>
-    <div class="mobile-title">پشتیبانی و تیکت ها</div>
-    <a class="icon-btn" href="my-dotmelk.html">‹</a>
+    <div class="mobile-title">پشتیبانی و تیکت‌ها</div>
+    <button class="icon-btn" onclick="openNewTicket()">＋</button>
   </header>
-  
-<div class="drawer-backdrop" data-drawer-close></div>
-<aside class="mobile-drawer" aria-label="منوی جانبی داتملک">
-  <div class="drawer-head">
-    <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
-    <button class="icon-btn" data-drawer-close>×</button>
-  </div>
-  <div class="drawer-scroll">
-    <a class="" href="account.html"><span>◫</span>حساب کاربری من</a>
-<a class="" href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
-<a class="" href="rules.html"><span>§</span>قوانین و مقررات</a>
-<a class="" href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-<a class="" href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-<a class="" href="about.html"><span>●</span>درباره داتملک</a>
-<a class="" href="contact.html"><span>☎</span>ارتباط با ما</a>
-<a class="active" href="tickets.html"><span>◌</span>پشتیبانی و تیکت ها</a>
-    <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
-  </div>
-  <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
-</aside>
 
-  <main class="mobile-content">
-<section class="ticket-layout">
-  <aside class="ticket-list">
-    <div style="padding:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px"><strong>تیکت‌های من</strong><a class="btn btn-primary" href="#new-ticket">＋ تیکت جدید</a></div>
-    <div class="ticket-item active"><div style="display:flex;justify-content:space-between;gap:8px"><h3>مشکل در ثبت موقعیت ملک</h3><span class="badge info">پاسخ داده شده</span></div><p>لطفاً موقعیت را از روی نقشه دوباره انتخاب کنید...</p><span class="small">۱۴۰۳/۰۸/۲۴</span></div>
-    <div class="ticket-item"><div style="display:flex;justify-content:space-between;gap:8px"><h3>درخواست بررسی آگهی</h3><span class="badge warning">در حال بررسی</span></div><p>آگهی شما در صف بررسی قرار دارد...</p><span class="small">۱۴۰۳/۰۸/۲۲</span></div>
-    <div class="ticket-item"><div style="display:flex;justify-content:space-between;gap:8px"><h3>سوال درباره اشتراک</h3><span class="badge danger">بسته شده</span></div><p>پاسخ نهایی ارسال شد.</p><span class="small">۱۴۰۳/۰۸/۲۰</span></div>
-  </aside>
-  <section class="ticket-chat">
-    <header class="ticket-head"><div><strong>مشکل در ثبت موقعیت ملک</strong><div class="small">وضعیت: پاسخ داده شده</div></div><span class="badge primary">Ticket Group</span></header>
-    <div class="messages">
-      <div class="msg me">سلام، هنگام ثبت آگهی، نقطه انتخاب‌شده روی نقشه ذخیره نمی‌شود.</div>
-      <div class="msg support">سلام. لطفاً ابتدا محدوده را جستجو کنید، سپس نقطه را روی نقشه انتخاب و ذخیره را بزنید. اگر خطا ادامه داشت، کد آگهی را ارسال کنید.</div>
-      <div class="msg me">کد آگهی DM-24891 است. مشکل بعد از انتخاب UTM رخ می‌دهد.</div>
+  <div class="drawer-backdrop" data-drawer-close></div>
+  <aside class="mobile-drawer">
+    <div class="drawer-head">
+      <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
+      <button class="icon-btn" data-drawer-close>×</button>
     </div>
-    <footer class="composer"><input placeholder="پیام جدید برای این تیکت..." /><button class="btn btn-primary">ارسال</button></footer>
-  </section>
-</section>
-<section class="mobile-card" id="new-ticket">
-  <div class="section-title"><div><h2>ایجاد تیکت جدید</h2><p>مطابق Flutter: عنوان درخواست و توضیحات تکمیلی الزامی هستند.</p></div></div>
-  <div class="form-grid">
-    <div class="field full"><label>عنوان درخواست</label><input placeholder="عنوان درخواست را اینجا وارد نمایید" /></div>
-    <div class="field full"><label>توضیحات تکمیلی</label><textarea placeholder="توضیحات تکمیلی را در رابطه با درخواست خود اینجا وارد نمایید"></textarea></div>
-  </div>
-  <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn btn-primary" data-toast="تیکت با موفقیت ایجاد شد">ارسال</button></div>
-</section>
-</main>
-  <nav class="mobile-bottom-nav"><a href="map.html" class=""><span>⌖</span><span>نقشه</span></a><a href="requests.html" class=""><span>□</span><span>درخواست</span></a><a href="ads.html" class=""><span>⌂</span><span>آگهی</span></a><a href="chat.html" class=""><span>◌</span><span>چت</span></a><a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a></nav>
+    <div class="drawer-scroll">
+      <a href="account.html"><span>◫</span>حساب کاربری</a>
+      <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
+      <a href="rules.html"><span>§</span>قوانین و مقررات</a>
+      <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
+      <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
+      <a href="about.html"><span>●</span>درباره داتملک</a>
+      <a href="contact.html"><span>☎</span>ارتباط با ما</a>
+      <a class="active" href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
+      <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+    </div>
+    <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+  </aside>
+
+  <main class="mobile-content" style="padding:0">
+    <div class="cat-chips">
+      <button class="cchip active">همه</button>
+      <button class="cchip">باز</button>
+      <button class="cchip">پاسخ‌داده</button>
+      <button class="cchip">بسته</button>
+    </div>
+    <div class="tk-list">
+      <div class="tk-row" onclick="openRoom('tk1')">
+        <div class="tk-row-head"><h3>مشکل در ثبت موقعیت ملک</h3><span class="badge info" style="font-size:10px;flex-shrink:0">پاسخ داده شده</span></div>
+        <p>لطفاً موقعیت را از روی نقشه دوباره انتخاب کنید…</p>
+        <div class="tk-date" style="margin-top:5px">۱۴۰۴/۰۳/۲۴</div>
+      </div>
+      <div class="tk-row" onclick="openRoom('tk2')">
+        <div class="tk-row-head"><h3>درخواست بررسی آگهی</h3><span class="badge warning" style="font-size:10px;flex-shrink:0">در حال بررسی</span></div>
+        <p>آگهی شما در صف بررسی قرار دارد…</p>
+        <div class="tk-date" style="margin-top:5px">۱۴۰۴/۰۳/۲۲</div>
+      </div>
+      <div class="tk-row" onclick="openRoom('tk3')">
+        <div class="tk-row-head"><h3>سوال درباره اشتراک Pro</h3><span class="badge danger" style="font-size:10px;flex-shrink:0">بسته</span></div>
+        <p>پاسخ نهایی ارسال شد و مشکل حل گردید.</p>
+        <div class="tk-date" style="margin-top:5px">۱۴۰۴/۰۳/۲۰</div>
+      </div>
+      <div class="tk-row" onclick="openRoom('tk4')">
+        <div class="tk-row-head"><h3>خطا در ارسال تصویر</h3><span class="badge success" style="font-size:10px;flex-shrink:0">باز</span></div>
+        <p>هنگام بارگذاری تصویر خطای ۴۱۳ دریافت می‌شود.</p>
+        <div class="tk-date" style="margin-top:5px">۱۴۰۴/۰۳/۱۸</div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="mobile-bottom-nav">
+    <a href="map.html"><span>⌖</span><span>نقشه</span></a>
+    <a href="requests.html"><span>□</span><span>درخواست</span></a>
+    <a href="ads.html"><span>⌂</span><span>آگهی</span></a>
+    <a href="chat.html"><span>◌</span><span>چت</span></a>
+    <a href="my-dotmelk.html" class="active"><span>◫</span><span>من</span></a>
+  </nav>
 </div>
+
+<!-- Screen 2: Ticket Chat Room -->
+<div id="screen-room">
+  <header class="room-topbar">
+    <button class="icon-btn" onclick="closeRoom()">‹</button>
+    <div class="room-topbar-info" style="flex:1">
+      <h2 id="room-title">مشکل در ثبت موقعیت ملک</h2>
+      <p id="room-status">#TK-240324 · پاسخ داده شده</p>
+    </div>
+    <span id="room-badge" class="badge info" style="font-size:10px;flex-shrink:0">فنی</span>
+  </header>
+  <div class="room-msgs" id="room-msgs">
+    <div class="msg me">سلام، هنگام ثبت آگهی نقطه انتخاب‌شده روی نقشه ذخیره نمی‌شود.</div>
+    <div class="msg support">سلام. محدوده را ابتدا جستجو کنید، سپس نقطه را روی نقشه انتخاب و «تأیید موقعیت» را بزنید.</div>
+    <div class="msg me">کد آگهی DM-24891 است. مشکل بعد از انتخاب UTM رخ می‌دهد.</div>
+    <div class="msg support">باگی در ثبت UTM در Firefox بود که اصلاح شده. لطفاً صفحه را رفرش کنید.</div>
+    <div class="msg me">ممنون، الان حل شد! ✓</div>
+  </div>
+  <footer class="composer">
+    <input placeholder="پیام جدید…"/>
+    <button class="btn btn-primary" data-toast="پیام ارسال شد">ارسال</button>
+  </footer>
+</div>
+
+<!-- New Ticket Overlay -->
+<div id="new-ticket-overlay">
+  <header class="mobile-topbar">
+    <button class="icon-btn" onclick="closeNewTicket()">×</button>
+    <div class="mobile-title">تیکت جدید</div>
+    <div style="width:36px"></div>
+  </header>
+  <div style="padding:14px">
+    <div class="form-grid">
+      <div class="field full"><label>موضوع</label>
+        <select style="border:1.5px solid var(--border);border-radius:12px;padding:0 12px;height:44px;font-size:13px;font-weight:800;font-family:inherit;background:#fff;width:100%">
+          <option>مشکل فنی</option>
+          <option>سوال درباره آگهی</option>
+          <option>مشکل اشتراک</option>
+          <option>درخواست بررسی محتوا</option>
+          <option>سایر</option>
+        </select>
+      </div>
+      <div class="field full"><label>عنوان تیکت</label><input placeholder="خلاصه مشکل را بنویسید"/></div>
+      <div class="field full"><label>توضیحات</label><textarea rows="6" placeholder="جزئیات مشکل را شرح دهید…"></textarea></div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;height:44px;font-size:14px;margin-top:14px" data-toast="تیکت با موفقیت ثبت شد">ارسال تیکت</button>
+    <button class="btn btn-outline" style="width:100%;height:40px;font-size:13px;margin-top:8px" onclick="closeNewTicket()">لغو</button>
+  </div>
+</div>
+
+<script>
+function openRoom(id){document.getElementById('screen-room').classList.add('open')}
+function closeRoom(){document.getElementById('screen-room').classList.remove('open')}
+function openNewTicket(){document.getElementById('new-ticket-overlay').classList.add('open')}
+function closeNewTicket(){document.getElementById('new-ticket-overlay').classList.remove('open')}
+document.querySelectorAll('.cchip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.cchip').forEach(x=>x.classList.remove('active'));c.classList.add('active')}));
+</script>
 </body>
 </html>
