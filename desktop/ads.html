@@ -7,90 +7,40 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
       :root {
-        --primary: #6d28d9;
-        --primary-hover: #5b21b6;
-        --primary-soft: #f5f3ff;
-        --primary-subtle: #ede9fe;
-        --primary-border: #c4b5fd;
-        --bg: #f8fafc;
-        --surface: #ffffff;
-        --card: #ffffff;
-        --surface-muted: #f1f5f9;
-        --text: #0f172a;
-        --text-2: #475569;
-        --muted: #64748b;
-        --subtle: #94a3b8;
-        --border: #e2e8f0;
-        --border-strong: #cbd5e1;
-        --success: #16a34a;
-        --success-soft: #dcfce7;
-        --success-text: #166534;
-        --warning: #d97706;
-        --warning-soft: #fef3c7;
-        --warning-text: #92400e;
-        --danger: #dc2626;
-        --danger-soft: #fee2e2;
-        --danger-text: #991b1b;
-        --info: #2563eb;
-        --info-soft: #dbeafe;
-        --info-text: #1e40af;
-        --teal: #0f766e;
-        --teal-soft: #ccfbf1;
-        --pink-soft: #fce7f3;
-        /* advertise type accent colors (from Flutter AdvertiseType enum) */
-        --t-sale: #2563eb;
-        --t-rent: #16a34a;
-        --t-participation: #ea580c;
-        --t-presell: #dc2626;
-        --t-short: #0d9488;
-        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
-        --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08);
-        --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
+        --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-subtle: #ede9fe; --primary-border: #c4b5fd;
+        --bg: #f8fafc; --surface: #ffffff; --card: #ffffff; --surface-muted: #f1f5f9;
+        --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
+        --border: #e2e8f0; --border-strong: #cbd5e1;
+        --success: #16a34a; --success-soft: #dcfce7; --success-text: #166534;
+        --warning: #d97706; --warning-soft: #fef3c7; --warning-text: #92400e;
+        --danger: #dc2626; --danger-soft: #fee2e2; --danger-text: #991b1b;
+        --info: #2563eb; --info-soft: #dbeafe; --info-text: #1e40af;
+        --teal: #0f766e; --teal-soft: #ccfbf1; --pink-soft: #fce7f3; --orange: #ea580c; --orange-soft: #ffedd5;
+        --t-sale: #2563eb; --t-rent: #16a34a; --t-participation: #ea580c; --t-presell: #dc2626; --t-short: #0d9488;
+        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06); --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08); --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        min-width: 1180px;
-        font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        direction: rtl;
-      }
+      body { margin: 0; min-width: 1180px; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); direction: rtl; }
       a { text-decoration: none; color: inherit; }
       button, input { font: inherit; }
       button { border: 0; cursor: pointer; background: none; color: inherit; }
       .icon { display: inline-flex; align-items: center; justify-content: center; line-height: 1; flex: 0 0 auto; }
       .icon-sm { font-size: 13px; }
 
-      .btn {
-        height: 40px; padding: 0 16px; border-radius: 12px;
-        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        font-weight: 800; font-size: 14px; transition: 0.15s ease-out; white-space: nowrap;
-      }
+      .btn { height: 40px; padding: 0 16px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 14px; transition: 0.15s ease-out; white-space: nowrap; }
       .btn:active { transform: scale(0.98); }
       .btn-primary { background: var(--primary); color: #fff; }
       .btn-primary:hover { background: var(--primary-hover); }
       .btn-soft { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
       .btn-outline { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
-      .chip {
-        height: 32px; display: inline-flex; align-items: center; gap: 6px;
-        border-radius: 999px; padding: 0 12px; border: 1px solid var(--border);
-        background: var(--surface); color: var(--text-2); font-size: 13px; font-weight: 700;
-        white-space: nowrap; cursor: pointer;
-      }
+      .chip { height: 32px; display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 0 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; }
       .chip.active { background: var(--primary-soft); border-color: var(--primary-border); color: var(--primary); }
-      .badge {
-        display: inline-flex; align-items: center; gap: 4px; border-radius: 999px;
-        padding: 4px 9px; font-size: 12px; line-height: 18px; font-weight: 800; white-space: nowrap;
-      }
+      .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 4px 9px; font-size: 12px; line-height: 18px; font-weight: 800; white-space: nowrap; }
       .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
       .badge.danger { background: var(--danger-soft); color: var(--danger-text); }
       .badge.vip { background: linear-gradient(135deg, #fde68a, #f59e0b); color: #7c2d12; }
-      .status {
-        display: inline-flex; align-items: center; gap: 5px; border-radius: 999px;
-        padding: 3px 10px; font-size: 11px; font-weight: 800; white-space: nowrap;
-      }
+      .status { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 800; white-space: nowrap; }
       .status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
       .status.public { background: var(--success-soft); color: var(--success-text); }
       .status.folk { background: #dcfce7; color: #15803d; }
@@ -103,45 +53,24 @@
       .status.expired { background: #fee2e2; color: #b91c1c; }
 
       /* shell / topbar */
-      .shell { max-width: 1440px; margin: 0 auto; padding: 18px 24px 60px; }
-      .topbar {
-        height: 72px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(20px);
-        border: 1px solid var(--border); border-radius: 24px; display: flex; align-items: center;
-        justify-content: space-between; padding: 0 18px; box-shadow: var(--shadow-sm);
-        position: sticky; top: 14px; z-index: 30;
-      }
+      .shell { max-width: 1500px; margin: 0 auto; padding: 18px 24px 40px; }
+      .topbar { height: 72px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; box-shadow: var(--shadow-sm); position: sticky; top: 14px; z-index: 30; }
       .brand { display: flex; align-items: center; gap: 10px; }
-      .logo-mark {
-        width: 36px; height: 36px; border-radius: 14px; background: linear-gradient(135deg, #7c3aed, #5b21b6);
-        display: grid; place-items: center; color: #fff; box-shadow: 0 10px 25px rgba(109, 40, 217, 0.2);
-      }
+      .logo-mark { width: 36px; height: 36px; border-radius: 14px; background: linear-gradient(135deg, #7c3aed, #5b21b6); display: grid; place-items: center; color: #fff; box-shadow: 0 10px 25px rgba(109, 40, 217, 0.2); }
       .logo-mark:before { content: "⌖"; font-size: 19px; font-weight: 800; }
       .brand-title { font-size: 18px; font-weight: 900; letter-spacing: -0.01em; }
       .brand-subtitle { font-size: 12px; color: var(--muted); margin-top: 1px; }
       .nav { display: flex; align-items: center; gap: 4px; background: var(--surface-muted); border-radius: 999px; padding: 4px; }
-      .nav a {
-        height: 36px; padding: 0 14px; border-radius: 999px; display: flex; align-items: center; gap: 8px;
-        color: var(--text-2); font-size: 13px; font-weight: 800;
-      }
+      .nav a { height: 36px; padding: 0 14px; border-radius: 999px; display: flex; align-items: center; gap: 8px; color: var(--text-2); font-size: 13px; font-weight: 800; }
       .nav a.active { background: var(--surface); color: var(--primary); box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06); }
       .top-actions { display: flex; align-items: center; gap: 8px; }
-      .circle-btn {
-        width: 42px; height: 42px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface);
-        display: grid; place-items: center; color: var(--text-2); transition: 0.15s ease-out;
-      }
+      .circle-btn { width: 42px; height: 42px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); display: grid; place-items: center; color: var(--text-2); transition: 0.15s ease-out; }
       .circle-btn:hover { border-color: var(--primary-border); color: var(--primary); }
       .more-menu { position: relative; }
       .more-menu summary { list-style: none; }
       .more-menu summary::-webkit-details-marker { display: none; }
-      .more-panel {
-        position: absolute; top: 52px; left: 0; width: 300px; background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(18px); border: 1px solid var(--border); border-radius: 22px; padding: 10px;
-        box-shadow: var(--shadow-lg); z-index: 80;
-      }
-      .more-panel a {
-        height: 42px; border-radius: 14px; display: flex; align-items: center; gap: 10px; padding: 0 12px;
-        font-size: 13px; font-weight: 800; color: var(--text-2);
-      }
+      .more-panel { position: absolute; top: 52px; left: 0; width: 300px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(18px); border: 1px solid var(--border); border-radius: 22px; padding: 10px; box-shadow: var(--shadow-lg); z-index: 80; }
+      .more-panel a { height: 42px; border-radius: 14px; display: flex; align-items: center; gap: 10px; padding: 0 12px; font-size: 13px; font-weight: 800; color: var(--text-2); }
       .more-panel a:hover { background: var(--primary-soft); color: var(--primary); }
       .more-panel .danger { color: var(--danger-text); }
 
@@ -149,8 +78,20 @@
       .page-head h1 { font-size: 25px; line-height: 38px; margin: 0; font-weight: 900; letter-spacing: -0.01em; }
       .page-head p { margin: 6px 0 0; color: var(--text-2); font-size: 14px; line-height: 24px; max-width: 640px; }
       .head-actions { display: flex; gap: 8px; flex: 0 0 auto; }
+      .loc-btn { height: 42px; padding: 0 13px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); font-size: 13px; font-weight: 800; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+      .loc-btn:hover { border-color: var(--primary-border); color: var(--primary); }
+      .loc-btn b { color: var(--text); font-weight: 900; }
+      /* کارشناسی ملک banner (replaces old page-head) */
+      .expert-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(120deg, #6d28d9, #5b21b6 70%, #4c1d95); border-radius: 20px; padding: 14px 20px; margin: 18px 4px 16px; color: #fff; box-shadow: 0 14px 30px rgba(109, 40, 217, 0.22); position: relative; overflow: hidden; }
+      .expert-banner:before { content: "⚖"; position: absolute; left: -8px; top: -22px; font-size: 116px; opacity: 0.1; pointer-events: none; }
+      .be-btn { background: #fff; color: var(--primary); height: 46px; padding: 0 22px; border-radius: 13px; font-weight: 900; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); }
+      .be-btn:hover { background: var(--primary-soft); }
+      .be-text { flex: 1; font-size: 14px; font-weight: 700; line-height: 24px; }
+      .be-cta { flex: 0 0 auto; height: 46px; padding: 0 18px; border-radius: 13px; border: 1px solid rgba(255, 255, 255, 0.55); color: #fff; font-weight: 800; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
+      .be-cta:hover { background: rgba(255, 255, 255, 0.14); }
 
-      .layout { display: grid; grid-template-columns: 296px minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+      /* ===== Divar-style 3-pane ===== */
+      .layout { display: grid; grid-template-columns: 268px 412px minmax(0, 1fr); gap: 16px; align-items: start; }
       .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-sm); }
 
       /* filters */
@@ -162,10 +103,7 @@
       .clear-btn { font-size: 12px; color: var(--danger); font-weight: 800; }
       .req-note { font-size: 12px; line-height: 20px; color: var(--muted); margin: 0 0 6px; }
       .fsec { border-top: 1px solid var(--border); }
-      .fsec > summary {
-        list-style: none; cursor: pointer; padding: 13px 2px; display: flex; align-items: center;
-        justify-content: space-between; font-size: 13px; font-weight: 800; color: var(--text);
-      }
+      .fsec > summary { list-style: none; cursor: pointer; padding: 13px 2px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 800; color: var(--text); }
       .fsec > summary::-webkit-details-marker { display: none; }
       .fsec > summary .chev { color: var(--primary); transition: 0.2s; font-size: 12px; }
       .fsec[open] > summary .chev { transform: rotate(180deg); }
@@ -174,102 +112,171 @@
       .filter-label { font-size: 12px; color: var(--text-2); font-weight: 800; margin: 10px 0 8px; }
       .filter-values { display: flex; flex-wrap: wrap; gap: 7px; }
       .range-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-      .input-fake {
-        height: 38px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);
-        display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: var(--muted);
-      }
+      .input-fake { height: 38px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); display: flex; align-items: center; padding: 0 10px; font-size: 12px; color: var(--muted); }
       .switch-row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--text-2); font-weight: 700; padding: 6px 0; }
       .switch { width: 38px; height: 22px; border-radius: 999px; background: var(--border-strong); position: relative; flex: 0 0 auto; }
       .switch.on { background: var(--primary); }
       .switch:before { content: ""; position: absolute; right: 3px; top: 3px; width: 16px; height: 16px; background: #fff; border-radius: 999px; transition: 0.15s; }
       .switch.on:before { right: 19px; }
       .apply-row { display: grid; gap: 8px; margin-top: 12px; }
+      .licenses { display: flex; gap: 8px; justify-content: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+      .license { width: 50px; height: 50px; border-radius: 12px; background: var(--surface-muted); border: 1px solid var(--border); display: grid; place-items: center; font-size: 9px; font-weight: 800; color: var(--muted); text-align: center; line-height: 12px; }
 
-      /* results */
-      .results { min-width: 0; display: grid; gap: 14px; }
-      .search-card { padding: 14px; border-radius: 24px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-      .search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; }
-      .field {
-        height: 44px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface);
-        padding: 0 14px; display: flex; align-items: center; gap: 10px; color: var(--muted);
-      }
+      /* results (narrow list) */
+      .results { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .search-card { padding: 14px; border-radius: 22px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+      .search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+      .field { height: 44px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 0 14px; display: flex; align-items: center; gap: 10px; color: var(--muted); }
       .field:focus-within { box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18); border-color: var(--primary-border); }
       .field input { border: 0; outline: 0; background: transparent; width: 100%; color: var(--text); font-size: 14px; }
       .tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-top: 12px; }
       .tabs::-webkit-scrollbar { display: none; }
       .result-head { display: flex; align-items: center; justify-content: space-between; margin: 2px 2px; }
-      .result-head h2 { font-size: 17px; margin: 0; font-weight: 900; }
+      .result-head h2 { font-size: 16px; margin: 0; font-weight: 900; }
       .result-head p { font-size: 12px; color: var(--muted); margin: 2px 0 0; }
       .sort-pill { height: 34px; border: 1px solid var(--border); border-radius: 999px; background: #fff; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; font-size: 12px; font-weight: 800; color: var(--text-2); }
 
-      /* ad card (synced to Flutter advertise item) */
-      .ad-card {
-        position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 22px;
-        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03); display: grid; grid-template-columns: 6px minmax(0, 1fr) 168px;
-        overflow: hidden; transition: 0.15s ease-out; cursor: pointer;
-      }
+      /* ===== AD CARD (redesigned: title top + assessment + compare) ===== */
+      .ad-card { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03); display: grid; grid-template-columns: 5px minmax(0, 1fr); overflow: hidden; transition: 0.15s ease-out; cursor: pointer; }
       .ad-card:hover { border-color: var(--primary-border); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
-      .type-rail { width: 6px; }
+      .ad-card.active { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-subtle), var(--shadow-md); }
+      .type-rail { width: 5px; }
       .type-rail.sale { background: var(--t-sale); }
       .type-rail.rent { background: var(--t-rent); }
       .type-rail.participation { background: var(--t-participation); }
       .type-rail.presell { background: var(--t-presell); }
       .type-rail.short { background: var(--t-short); }
-      .ad-body { padding: 15px 16px; min-width: 0; }
-      .ad-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-      .type-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 900; padding: 4px 10px; border-radius: 999px; color: #fff; }
+      .ad-body { padding: 13px 14px; min-width: 0; }
+      .ad-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+      .ad-title { font-size: 15px; line-height: 23px; font-weight: 900; margin: 0; color: var(--text); }
+      .ad-head .status { flex: 0 0 auto; margin-top: 2px; }
+      .ad-specs { font-size: 11px; color: var(--muted); font-weight: 700; margin: 5px 0 11px; }
+      .ad-mid { display: flex; gap: 12px; }
+      .ad-mid-info { flex: 1; min-width: 0; }
+      .ad-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 8px; }
+      .type-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 900; padding: 4px 9px; border-radius: 999px; color: #fff; }
       .type-tag.sale { background: var(--t-sale); }
       .type-tag.rent { background: var(--t-rent); }
       .type-tag.participation { background: var(--t-participation); }
       .type-tag.presell { background: var(--t-presell); }
       .type-tag.short { background: var(--t-short); }
-      .ad-title { font-size: 16px; line-height: 26px; font-weight: 900; margin: 0 0 8px; color: var(--text); }
-      .ad-amount { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; font-size: 18px; line-height: 28px; font-weight: 900; color: var(--text); }
-      .ad-amount .label { font-size: 12px; font-weight: 800; color: var(--muted); }
-      .ad-amount small { font-size: 13px; color: var(--muted); font-weight: 700; }
-      .ad-amount .sep { width: 1px; height: 16px; background: var(--border-strong); align-self: center; }
+      .ad-amount { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 8px; font-size: 16px; line-height: 26px; font-weight: 900; color: var(--text); }
+      .ad-amount .label { font-size: 11px; font-weight: 800; color: var(--muted); }
+      .ad-amount small { font-size: 12px; color: var(--muted); font-weight: 700; }
+      .ad-amount .sep { width: 1px; height: 15px; background: var(--border-strong); align-self: center; }
       .ad-amount .agreed { color: var(--primary); }
-      .ad-range { display: flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--text-2); font-size: 13px; line-height: 22px; }
+      .ad-range { display: flex; align-items: center; gap: 5px; margin-top: 7px; color: var(--text-2); font-size: 12px; line-height: 20px; }
       .ad-range b { color: var(--text); font-weight: 800; }
-      .ad-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
-      .ad-time { font-size: 12px; color: var(--muted); font-weight: 600; }
-      .ad-actions { display: flex; gap: 6px; }
-      .mini-action { width: 34px; height: 34px; border-radius: 11px; border: 1px solid var(--border); background: var(--surface); display: grid; place-items: center; color: var(--text-2); font-size: 15px; }
-      .mini-action:hover { border-color: var(--primary-border); color: var(--primary); }
-      .mini-action.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
-      /* thumbnail */
-      .ad-thumb { position: relative; margin: 12px 0 12px 12px; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, #dbeafe, #ede9fe 60%, #f8fafc); }
+      .ad-thumb { width: 116px; flex: 0 0 116px; min-height: 104px; position: relative; border-radius: 14px; overflow: hidden; background: linear-gradient(135deg, #dbeafe, #ede9fe 60%, #f8fafc); }
       .ad-thumb.rent { background: linear-gradient(135deg, #d1fae5, #dbeafe 60%, #f8fafc); }
       .ad-thumb.participation { background: linear-gradient(135deg, #ffedd5, #fde68a 60%, #f8fafc); }
       .ad-thumb.presell { background: linear-gradient(135deg, #fee2e2, #ede9fe 60%, #f8fafc); }
       .ad-thumb.short { background: linear-gradient(135deg, #ccfbf1, #dbeafe 60%, #f8fafc); }
-      .ad-thumb .ph { position: absolute; inset: auto 16px 14px 16px; height: 46%; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5)); }
-      .code-pill { position: absolute; top: 8px; right: 8px; background: rgba(15, 23, 42, 0.72); color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 999px; z-index: 2; }
-      .media-pills { position: absolute; bottom: 8px; right: 8px; left: 8px; display: flex; gap: 5px; justify-content: flex-end; z-index: 2; }
-      .media-pill { width: 26px; height: 26px; border-radius: 8px; background: rgba(15, 23, 42, 0.6); color: #fff; display: grid; place-items: center; font-size: 13px; backdrop-filter: blur(6px); }
-      .vip-corner { position: absolute; top: 8px; left: 8px; z-index: 2; }
+      .ad-thumb .ph { position: absolute; inset: auto 12px 12px 12px; height: 46%; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5)); }
+      .code-pill { position: absolute; top: 7px; right: 7px; background: rgba(15, 23, 42, 0.72); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 999px; z-index: 2; }
+      .media-pills { position: absolute; bottom: 7px; right: 7px; left: 7px; display: flex; gap: 5px; justify-content: flex-end; z-index: 2; }
+      .media-pill { width: 24px; height: 24px; border-radius: 7px; background: rgba(15, 23, 42, 0.6); color: #fff; display: grid; place-items: center; font-size: 12px; backdrop-filter: blur(6px); }
+      .vip-corner { position: absolute; top: 7px; left: 7px; z-index: 2; }
 
-      /* right rail */
-      .rail { position: sticky; top: 100px; display: grid; gap: 16px; }
-      .rail-card { padding: 16px; }
-      .rail-card h3 { margin: 0 0 4px; font-size: 15px; font-weight: 900; }
-      .rail-card p { margin: 0 0 12px; font-size: 12px; color: var(--muted); line-height: 20px; }
-      .map-mini { position: relative; height: 150px; border-radius: 18px; overflow: hidden; background: #eef6f4; border: 1px solid var(--border); }
-      .map-mini:before { content: ""; position: absolute; inset: -20%; background: linear-gradient(90deg, rgba(15, 118, 110, 0.12) 1px, transparent 1px), linear-gradient(0deg, rgba(15, 118, 110, 0.12) 1px, transparent 1px); background-size: 34px 34px; transform: rotate(-8deg); }
-      .map-mini .mk { position: absolute; width: 26px; height: 26px; border-radius: 999px; background: var(--t-sale); border: 3px solid #fff; color: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 900; box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22); }
-      .assess-card { background: linear-gradient(135deg, var(--primary-soft), #eef2ff); border-color: var(--primary-border); }
-      .assess-row { display: flex; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid var(--border); border-radius: 13px; background: #fff; margin-bottom: 8px; font-size: 13px; font-weight: 700; color: var(--text-2); }
-      .assess-row .ic { width: 30px; height: 30px; border-radius: 9px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 15px; flex: 0 0 auto; }
-      .assess-row b { color: var(--text); font-weight: 800; margin-inline-start: auto; }
-      .legend { display: grid; gap: 7px; font-size: 12px; color: var(--text-2); font-weight: 700; }
-      .legend span { display: flex; align-items: center; gap: 8px; }
-      .legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+      /* assessment block (ارزیابی محیطی داتملک) */
+      .assess { margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--border); }
+      .as-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 16px; }
+      .as-item { display: flex; align-items: center; gap: 7px; }
+      .as-l { font-size: 10px; font-weight: 800; color: var(--text-2); width: 46px; flex: 0 0 auto; }
+      .as-track { flex: 1; height: 5px; border-radius: 999px; background: var(--surface-muted); overflow: hidden; }
+      .as-fill { display: block; height: 100%; border-radius: 999px; }
+      .as-fill.p { background: var(--primary); }
+      .as-fill.g { background: var(--teal); }
+      .as-overall { display: flex; align-items: center; gap: 9px; margin-top: 11px; padding-top: 10px; border-top: 1px dashed var(--border); }
+      .as-ov-l { font-size: 11px; font-weight: 900; color: var(--text); flex: 0 0 auto; }
+      .as-overall .as-track { height: 7px; }
+      .as-fill.tier-exc { background: var(--success); }
+      .as-fill.tier-good { background: var(--info); }
+      .as-fill.tier-fair { background: var(--warning); }
+      .as-fill.tier-risk { background: var(--danger); }
+      .as-tier { font-size: 11px; font-weight: 900; flex: 0 0 auto; padding: 3px 9px; border-radius: 999px; }
+      .as-tier.tier-exc { background: var(--success-soft); color: var(--success-text); }
+      .as-tier.tier-good { background: var(--info-soft); color: var(--info-text); }
+      .as-tier.tier-fair { background: var(--warning-soft); color: var(--warning-text); }
+      .as-tier.tier-risk { background: var(--danger-soft); color: var(--danger-text); }
 
-      .float-add {
-        position: fixed; right: 32px; bottom: 28px; height: 52px; border-radius: 999px; padding: 0 20px;
-        display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7c3aed, #5b21b6);
-        color: #fff; font-weight: 800; box-shadow: 0 22px 50px rgba(109, 40, 217, 0.28); z-index: 50;
-      }
+      /* footer: compare + actions */
+      .ad-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
+      .compare-btn { height: 34px; padding: 0 13px; border-radius: 11px; border: 1px solid var(--primary-border); background: var(--primary-soft); color: var(--primary); font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; transition: 0.15s; }
+      .compare-btn:hover { background: var(--primary-subtle); }
+      .compare-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+      .ad-actions { display: flex; gap: 6px; }
+      .mini-action { width: 32px; height: 32px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); display: grid; place-items: center; color: var(--text-2); font-size: 14px; }
+      .mini-action:hover { border-color: var(--primary-border); color: var(--primary); }
+      .mini-action.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+      .ad-meta { font-size: 11px; color: var(--muted); font-weight: 600; margin-top: 9px; }
+
+      /* ===== STICKY MAP PANEL ===== */
+      .map-panel { position: sticky; top: 100px; height: calc(100vh - 116px); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm); background: #e9f1ef; }
+      .map-viewport { position: absolute; inset: 0; overflow: hidden; background: #e9f1ef; cursor: grab; touch-action: none; }
+      .map-viewport.grabbing { cursor: grabbing; }
+      .map-world { position: absolute; top: 50%; right: 50%; width: 1700px; height: 1300px; transform: translate(50%, -50%) scale(1); transform-origin: center; will-change: transform; }
+      .map-world:before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15, 118, 110, 0.09) 1px, transparent 1px), linear-gradient(0deg, rgba(15, 118, 110, 0.09) 1px, transparent 1px); background-size: 46px 46px; }
+      .road { position: absolute; background: #fff; border: 1px solid rgba(203, 213, 225, 0.7); box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05); border-radius: 999px; }
+      .road.major { background: #fffdf5; border-color: #fde68a; height: 34px; }
+      .park { position: absolute; border-radius: 36px; background: rgba(22, 163, 74, 0.16); border: 1px solid rgba(22, 163, 74, 0.2); }
+      .water { position: absolute; border-radius: 50% 50% 46% 54% / 54% 50% 50% 46%; background: rgba(37, 99, 235, 0.14); border: 1px solid rgba(37, 99, 235, 0.2); }
+      .district { position: absolute; border-radius: 26px; border: 1.5px dashed rgba(109, 40, 217, 0.3); background: rgba(109, 40, 217, 0.04); }
+      .district b { position: absolute; top: 10px; right: 14px; font-size: 13px; font-weight: 900; color: rgba(109, 40, 217, 0.6); }
+      .price-pin { position: absolute; transform: translate(50%, -50%); display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1.5px solid var(--border); border-radius: 999px; padding: 6px 11px; font-size: 12px; font-weight: 900; color: var(--text); white-space: nowrap; cursor: pointer; z-index: 3; box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16); transition: transform 0.12s, background 0.12s, color 0.12s, box-shadow 0.12s; }
+      .price-pin .pdot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+      .price-pin:hover, .price-pin.active { background: var(--primary); color: #fff; border-color: var(--primary); z-index: 7; transform: translate(50%, -50%) scale(1.07); box-shadow: 0 12px 26px rgba(109, 40, 217, 0.32); }
+      .price-pin:hover .pdot, .price-pin.active .pdot { background: #fff !important; }
+      .cluster { position: absolute; transform: translate(50%, -50%); width: 48px; height: 48px; border-radius: 999px; background: rgba(109, 40, 217, 0.92); color: #fff; display: grid; place-items: center; font-weight: 900; font-size: 14px; border: 3px solid #fff; box-shadow: 0 12px 26px rgba(109, 40, 217, 0.35); cursor: pointer; z-index: 4; }
+      .user-loc { position: absolute; transform: translate(50%, -50%); z-index: 5; }
+      .user-loc .dot { width: 16px; height: 16px; border-radius: 999px; background: var(--info); border: 3px solid #fff; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5); }
+      .user-loc .pulse { position: absolute; inset: -14px; border-radius: 999px; background: rgba(37, 99, 235, 0.18); animation: pulse 2s infinite; }
+      @keyframes pulse { 0% { transform: scale(0.6); opacity: 0.8; } 100% { transform: scale(1.5); opacity: 0; } }
+      .map-head { position: absolute; top: 12px; right: 12px; left: 12px; z-index: 12; display: flex; align-items: center; justify-content: space-between; gap: 10px; pointer-events: none; }
+      .map-area-chip { pointer-events: auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 13px; box-shadow: var(--shadow-sm); padding: 8px 12px; font-size: 12px; font-weight: 800; color: var(--text-2); display: flex; align-items: center; gap: 7px; }
+      .map-area-chip b { color: var(--text); }
+      .map-full-btn { pointer-events: auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 13px; box-shadow: var(--shadow-sm); padding: 8px 12px; font-size: 12px; font-weight: 800; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; }
+      .map-full-btn:hover { border-color: var(--primary-border); background: #fff; }
+      .map-zoom { position: absolute; left: 12px; bottom: 12px; z-index: 12; display: grid; background: rgba(255, 255, 255, 0.96); border: 1px solid var(--border); border-radius: 13px; box-shadow: var(--shadow-md); overflow: hidden; }
+      .map-zoom button { width: 42px; height: 40px; display: grid; place-items: center; font-size: 19px; color: var(--text-2); }
+      .map-zoom button:hover { background: var(--surface-muted); color: var(--primary); }
+      .map-zoom .sep { height: 1px; background: var(--border); }
+      .map-loc { position: absolute; left: 12px; bottom: 104px; z-index: 12; width: 42px; height: 42px; border-radius: 13px; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 18px; box-shadow: var(--shadow-md); }
+      .map-loc:hover { background: var(--primary-hover); }
+      .map-legend { position: absolute; right: 12px; bottom: 12px; z-index: 12; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 13px; box-shadow: var(--shadow-sm); padding: 9px 12px; display: grid; gap: 6px; }
+      .map-legend .lg { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 800; color: var(--text-2); }
+      .map-legend .lg i { width: 10px; height: 10px; border-radius: 3px; }
+      .map-privacy { position: absolute; right: 12px; top: 56px; z-index: 11; background: rgba(15, 23, 42, 0.76); color: #fff; font-size: 11px; font-weight: 700; padding: 6px 11px; border-radius: 999px; }
+      .map-popup { position: absolute; width: 280px; background: #fff; border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow-lg); z-index: 20; overflow: hidden; transform: translate(50%, calc(-100% - 18px)); display: none; }
+      .map-popup.show { display: block; }
+      .mp-photo { height: 110px; position: relative; background: linear-gradient(135deg, #ddd6fe, #bfdbfe 60%, #f8fafc); }
+      .mp-photo .tag { position: absolute; top: 10px; right: 10px; font-size: 11px; font-weight: 800; color: #fff; padding: 3px 9px; border-radius: 999px; background: var(--primary); }
+      .mp-photo .code { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 800; color: #fff; padding: 3px 8px; border-radius: 999px; background: rgba(15, 23, 42, 0.7); }
+      .mp-close { position: absolute; bottom: 10px; left: 10px; width: 28px; height: 28px; border-radius: 999px; background: rgba(255, 255, 255, 0.9); display: grid; place-items: center; font-size: 15px; color: var(--text-2); }
+      .mp-body { padding: 11px 13px 13px; }
+      .mp-body h4 { margin: 0 0 5px; font-size: 14px; font-weight: 900; line-height: 22px; }
+      .mp-body .price { font-size: 15px; font-weight: 900; color: var(--text); }
+      .mp-body p { margin: 5px 0 0; font-size: 12px; color: var(--muted); line-height: 19px; }
+      .mp-actions { display: flex; gap: 8px; margin-top: 12px; }
+      .mp-actions .btn { flex: 1; height: 36px; }
+
+      /* ===== COMPARE TRAY ===== */
+      .compare-tray { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 150%); background: #fff; border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 14px; padding: 10px 12px 10px 16px; z-index: 56; transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); max-width: calc(100vw - 60px); }
+      .compare-tray.show { transform: translate(-50%, 0); }
+      .ct-info { font-size: 13px; font-weight: 800; color: var(--text-2); white-space: nowrap; }
+      .ct-info b { color: var(--primary); font-size: 16px; }
+      .ct-chips { display: flex; gap: 7px; overflow-x: auto; max-width: 460px; scrollbar-width: none; }
+      .ct-chips::-webkit-scrollbar { display: none; }
+      .ct-chip { display: inline-flex; align-items: center; gap: 7px; background: var(--surface-muted); border: 1px solid var(--border); border-radius: 999px; padding: 5px 6px 5px 11px; font-size: 11px; font-weight: 800; white-space: nowrap; color: var(--text-2); }
+      .ct-chip i { width: 4px; height: 14px; border-radius: 2px; flex: 0 0 auto; }
+      .ct-chip button { width: 18px; height: 18px; border-radius: 999px; background: var(--border-strong); color: #fff; display: grid; place-items: center; font-size: 12px; flex: 0 0 auto; }
+      .ct-chip button:hover { background: var(--danger); }
+      .ct-actions { display: flex; gap: 8px; flex: 0 0 auto; }
+      .ct-actions .btn { height: 38px; }
+
+      .mini-toast { position: fixed; left: 50%; bottom: 92px; transform: translate(-50%, 20px); background: rgba(15, 23, 42, 0.9); color: #fff; padding: 9px 16px; border-radius: 999px; font-size: 12px; font-weight: 800; z-index: 70; opacity: 0; pointer-events: none; transition: 0.2s; }
+      .mini-toast.show { opacity: 1; transform: translate(-50%, 0); }
+      .float-add { position: fixed; right: 32px; bottom: 28px; height: 52px; border-radius: 999px; padding: 0 20px; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7c3aed, #5b21b6); color: #fff; font-weight: 800; box-shadow: 0 22px 50px rgba(109, 40, 217, 0.28); z-index: 50; }
       .ribbon { position: fixed; left: 24px; bottom: 24px; background: rgba(15, 23, 42, 0.82); color: #fff; border-radius: 999px; padding: 9px 13px; font-size: 12px; z-index: 50; }
     </style>
   </head>
@@ -278,10 +285,7 @@
       <header class="topbar">
         <a class="brand" href="ads.html">
           <div class="logo-mark"></div>
-          <div>
-            <div class="brand-title">داتملک</div>
-            <div class="brand-subtitle">بازطراحی وب · GIS Real Estate</div>
-          </div>
+          <div><div class="brand-title">داتملک</div><div class="brand-subtitle">بازطراحی وب · GIS Real Estate</div></div>
         </a>
         <nav class="nav" aria-label="ناوبری اصلی">
           <a href="map.html"><span class="icon">⌖</span>نقشه</a>
@@ -291,6 +295,7 @@
           <a href="my-dotmelk.html"><span class="icon">◫</span>داتملک من</a>
         </nav>
         <div class="top-actions">
+          <button class="loc-btn" title="انتخاب شهر">📍 <b>مشهد</b> ▾</button>
           <details class="more-menu">
             <summary class="btn btn-outline">☰ بیشتر</summary>
             <div class="more-panel">
@@ -306,60 +311,31 @@
             </div>
           </details>
           <button class="circle-btn" aria-label="اعلان‌ها">◷</button>
-          <button class="btn btn-soft"><span class="icon-sm">★</span>پنل آژانس</button>
+          <button class="btn btn-outline"><span class="icon-sm">📄</span>تنظیم قرارداد</button>
           <a class="btn btn-primary" href="add-advertise.html"><span class="icon-sm">＋</span>ثبت آگهی</a>
         </div>
       </header>
 
-      <section class="page-head">
-        <div>
-          <h1>آگهی‌های ملکی</h1>
-          <p>
-            عرضه‌ی ملک برای فروش، رهن و اجاره، مشارکت، پیش‌فروش و اجاره کوتاه‌مدت.
-            هر آگهی را با موقعیت روی نقشه و ارزیابی محیطی اطراف ملک بررسی کن.
-          </p>
-        </div>
-        <div class="head-actions">
-          <button class="btn btn-outline"><span class="icon-sm">⌖</span>نمایش روی نقشه</button>
-          <a class="btn btn-primary" href="add-advertise.html"><span class="icon-sm">＋</span>ثبت آگهی</a>
-        </div>
+      <section class="expert-banner">
+        <button class="be-btn">⚖ کارشناسی ملک</button>
+        <p class="be-text">می‌خوای یک خرید مطمئن و مورد اعتماد داشته باشی؟ همین حالا درخواست کارشناسی تخصصی برای ملکت را ثبت کن.</p>
+        <a class="be-cta" href="#">ثبت درخواست کارشناسی ←</a>
       </section>
 
       <main class="layout">
-        <!-- ===== FILTER SIDEBAR (synced to AdvertiseFilter) ===== -->
+        <!-- ===== FILTER SIDEBAR ===== -->
         <aside class="panel filters">
-          <div class="panel-title">
-            <h2>فیلتر آگهی‌ها</h2>
-            <button class="clear-btn">حذف فیلترها</button>
-          </div>
+          <div class="panel-title"><h2>فیلتر آگهی‌ها</h2><button class="clear-btn">حذف فیلترها</button></div>
           <p class="req-note">برای اعمال فیلتر، ابتدا محدوده‌ی جستجو را مشخص کن.</p>
 
           <details class="fsec" open style="border-top: 0">
             <summary>محدوده‌ی آگهی <span style="display:flex;gap:6px;align-items:center"><span class="req-flag">الزامی</span><span class="chev">▾</span></span></summary>
-            <div class="fbody">
-              <div class="filter-values">
-                <span class="chip active">تهران</span>
-                <span class="chip active">سعادت‌آباد</span>
-                <span class="chip">مرزداران</span>
-                <span class="chip">+ افزودن محدوده</span>
-              </div>
-            </div>
+            <div class="fbody"><div class="filter-values"><span class="chip active">تهران</span><span class="chip active">سعادت‌آباد</span><span class="chip">مرزداران</span><span class="chip">+ افزودن محدوده</span></div></div>
           </details>
-
           <details class="fsec" open>
             <summary>نوع آگهی <span class="chev">▾</span></summary>
-            <div class="fbody">
-              <div class="filter-values">
-                <span class="chip active">همه</span>
-                <span class="chip">فروش</span>
-                <span class="chip">رهن و اجاره</span>
-                <span class="chip">مشارکت</span>
-                <span class="chip">پیش‌فروش</span>
-                <span class="chip">اجاره کوتاه‌مدت</span>
-              </div>
-            </div>
+            <div class="fbody"><div class="filter-values"><span class="chip active">همه</span><span class="chip">فروش</span><span class="chip">رهن و اجاره</span><span class="chip">مشارکت</span><span class="chip">پیش‌فروش</span><span class="chip">اجاره کوتاه‌مدت</span></div></div>
           </details>
-
           <details class="fsec" open>
             <summary>قیمت <span class="chev">▾</span></summary>
             <div class="fbody">
@@ -371,7 +347,6 @@
               <div class="range-row"><div class="input-fake">از ۵ م</div><div class="input-fake">تا ۵۰ م</div></div>
             </div>
           </details>
-
           <details class="fsec">
             <summary>متراژ و سال ساخت <span class="chev">▾</span></summary>
             <div class="fbody">
@@ -383,51 +358,30 @@
               <div class="range-row"><div class="input-fake">از ۱۳۹۰</div><div class="input-fake">تا ۱۴۰۳</div></div>
             </div>
           </details>
-
           <details class="fsec">
             <summary>مشخصات ملک <span class="chev">▾</span></summary>
             <div class="fbody">
               <div class="filter-label">تعداد اتاق</div>
-              <div class="filter-values">
-                <span class="chip">۱</span><span class="chip active">۲</span><span class="chip active">۳</span><span class="chip">۴</span><span class="chip">۵+</span>
-              </div>
+              <div class="filter-values"><span class="chip">۱</span><span class="chip active">۲</span><span class="chip active">۳</span><span class="chip">۴</span><span class="chip">۵+</span></div>
               <div class="filter-label">طبقه</div>
-              <div class="filter-values">
-                <span class="chip">همکف</span><span class="chip">۱ تا ۳</span><span class="chip">۴ تا ۷</span><span class="chip">۸ به بالا</span>
-              </div>
+              <div class="filter-values"><span class="chip">همکف</span><span class="chip">۱ تا ۳</span><span class="chip">۴ تا ۷</span><span class="chip">۸ به بالا</span></div>
               <div class="filter-label">نوع سند</div>
-              <div class="filter-values">
-                <span class="chip">تک‌برگ</span><span class="chip">منگوله‌دار</span><span class="chip">قولنامه‌ای</span><span class="chip">اوقافی</span>
-              </div>
+              <div class="filter-values"><span class="chip">تک‌برگ</span><span class="chip">منگوله‌دار</span><span class="chip">قولنامه‌ای</span><span class="chip">اوقافی</span></div>
               <div class="filter-label">جهت ساختمان</div>
-              <div class="filter-values">
-                <span class="chip">شمالی</span><span class="chip">جنوبی</span><span class="chip">شرقی</span><span class="chip">غربی</span>
-              </div>
+              <div class="filter-values"><span class="chip">شمالی</span><span class="chip">جنوبی</span><span class="chip">شرقی</span><span class="chip">غربی</span></div>
             </div>
           </details>
-
           <details class="fsec">
             <summary>تأسیسات و پوشش <span class="chev">▾</span></summary>
             <div class="fbody">
               <div class="filter-label">سیستم گرمایش</div>
-              <div class="filter-values">
-                <span class="chip">پکیج</span><span class="chip">شوفاژ</span><span class="chip">بخاری</span><span class="chip">از کف</span>
-              </div>
+              <div class="filter-values"><span class="chip">پکیج</span><span class="chip">شوفاژ</span><span class="chip">بخاری</span><span class="chip">از کف</span></div>
               <div class="filter-label">سیستم سرمایش</div>
-              <div class="filter-values">
-                <span class="chip">کولر گازی</span><span class="chip">اسپلیت</span><span class="chip">کولر آبی</span><span class="chip">چیلر</span>
-              </div>
+              <div class="filter-values"><span class="chip">کولر گازی</span><span class="chip">اسپلیت</span><span class="chip">کولر آبی</span><span class="chip">چیلر</span></div>
               <div class="filter-label">کف‌پوش</div>
-              <div class="filter-values">
-                <span class="chip">سرامیک</span><span class="chip">پارکت</span><span class="chip">سنگ</span><span class="chip">موکت</span>
-              </div>
-              <div class="filter-label">دیوارپوش</div>
-              <div class="filter-values">
-                <span class="chip">رنگ</span><span class="chip">کاغذ دیواری</span><span class="chip">سنگ</span>
-              </div>
+              <div class="filter-values"><span class="chip">سرامیک</span><span class="chip">پارکت</span><span class="chip">سنگ</span><span class="chip">موکت</span></div>
             </div>
           </details>
-
           <details class="fsec" open>
             <summary>رسانه <span class="chev">▾</span></summary>
             <div class="fbody">
@@ -436,7 +390,6 @@
               <div class="switch-row"><span>تور مجازی ۳۶۰</span><span class="switch on"></span></div>
             </div>
           </details>
-
           <details class="fsec" open>
             <summary>دسترسی‌های من <span class="chev">▾</span></summary>
             <div class="fbody">
@@ -447,296 +400,216 @@
 
           <div class="apply-row">
             <button class="btn btn-primary" style="width: 100%">اعمال فیلتر</button>
-            <button class="btn btn-outline" style="width: 100%"><span class="icon-sm">⌖</span>اعمال روی نقشه</button>
+            <button class="btn btn-outline" style="width: 100%" onclick="goToArea()"><span class="icon-sm">⌖</span>اعمال روی نقشه</button>
+          </div>
+          <div class="licenses">
+            <div class="license">ساماندهی</div>
+            <div class="license">نماد<br/>اعتماد</div>
+            <div class="license">کسب‌وکار<br/>مجازی</div>
           </div>
         </aside>
 
-        <!-- ===== RESULTS ===== -->
-        <section class="results">
-          <div class="search-card">
+        <!-- ===== RESULTS (JS-rendered) ===== -->
+        <section class="results-wrap">
+          <div class="search-card" style="margin-bottom:14px">
             <div class="search-row">
               <label class="field"><span class="icon">⌕</span><input value="آپارتمان سعادت‌آباد" aria-label="جستجو در آگهی‌ها" /></label>
               <button class="btn btn-primary">جستجو</button>
-              <button class="btn btn-outline"><span class="icon-sm">⌘</span>فیلتر پیشرفته</button>
             </div>
             <div class="tabs">
-              <span class="chip active">همه آگهی‌ها</span>
-              <span class="chip">فروش</span>
-              <span class="chip">رهن و اجاره</span>
-              <span class="chip">مشارکت</span>
-              <span class="chip">پیش‌فروش</span>
-              <span class="chip">اجاره کوتاه‌مدت</span>
+              <span class="chip active">همه آگهی‌ها</span><span class="chip">فروش</span><span class="chip">رهن و اجاره</span><span class="chip">مشارکت</span><span class="chip">پیش‌فروش</span><span class="chip">اجاره کوتاه‌مدت</span>
             </div>
           </div>
-
-          <div class="result-head">
-            <div>
-              <h2>آگهی‌های فعال</h2>
-              <p>۲۴۸ آگهی فعال · محدوده تهران · مرتب‌سازی: جدیدترین و ویژه</p>
-            </div>
+          <div class="result-head" style="margin-bottom:12px">
+            <div><h2>آگهی‌های فعال</h2><p>۲۴۸ آگهی · محدوده تهران، سعادت‌آباد</p></div>
             <button class="sort-pill">جدیدترین ▾</button>
           </div>
-
-          <!-- 1) فروش · عمومی · فوری · تور -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail sale"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag sale"><span class="dot" style="background:#fff"></span>فروش</span>
-                <span class="status public"><span class="dot"></span>منتشر شده عمومی</span>
-                <span class="badge danger">فوری</span>
-              </div>
-              <h3 class="ad-title">آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h3>
-              <div class="ad-amount"><span class="label">مبلغ:</span> ۱۲٫۸ میلیارد <small>تومان</small></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، سعادت‌آباد</b> — محله کاج</div>
-              <div class="ad-foot">
-                <span class="ad-time">امروز · توسط آژانس آسمان</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
-                  <button class="mini-action" aria-label="نمایش روی نقشه" onclick="event.stopPropagation()">⌖</button>
-                  <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb"><span class="ph"></span><span class="code-pill">کد ۵۴۲۱</span><div class="media-pills"><span class="media-pill" title="تور مجازی">↻</span><span class="media-pill" title="۸ عکس">▦</span></div></div>
-          </article>
-
-          <!-- 2) رهن و اجاره · املاک · VIP -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail rent"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag rent"><span class="dot" style="background:#fff"></span>رهن و اجاره</span>
-                <span class="status agency"><span class="dot"></span>منتشر شده املاک</span>
-              </div>
-              <h3 class="ad-title">واحد ۹۰ متری بازسازی‌شده در مرزداران</h3>
-              <div class="ad-amount"><span class="label">ودیعه:</span> ۷۰۰ میلیون <span class="sep"></span> <span class="label">اجاره:</span> ۲۵ میلیون <small>تومان</small></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، مرزداران</b> — محله آریافر</div>
-              <div class="ad-foot">
-                <span class="ad-time">امروز · توسط املاک خانه نو</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
-                  <button class="mini-action" aria-label="نمایش روی نقشه" onclick="event.stopPropagation()">⌖</button>
-                  <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb rent"><span class="ph"></span><span class="vip-corner"><span class="badge vip">★ ویژه</span></span><span class="code-pill">کد ۶۳۱۸</span><div class="media-pills"><span class="media-pill" title="۱۲ عکس">▦</span></div></div>
-          </article>
-
-          <!-- 3) رهن کامل · منقضی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail rent"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag rent"><span class="dot" style="background:#fff"></span>رهن و اجاره</span>
-                <span class="status expired"><span class="dot"></span>منقضی شده</span>
-              </div>
-              <h3 class="ad-title">آپارتمان ۸۰ متری رهن کامل در ولنجک</h3>
-              <div class="ad-amount"><span class="agreed">رهن کامل</span> <span class="sep"></span> ۱٫۲ میلیارد <small>تومان ودیعه</small></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، ولنجک</b> — محله یمن</div>
-              <div class="ad-foot">
-                <span class="ad-time">۵ روز پیش · آگهی‌دهنده شخصی</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
-                  <button class="mini-action primary" aria-label="تماس" onclick="event.stopPropagation()">☎</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb rent"><span class="ph"></span><span class="code-pill">کد ۶۹۰۲</span></div>
-          </article>
-
-          <!-- 4) مشارکت · مردمی · توافقی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail participation"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag participation"><span class="dot" style="background:#fff"></span>مشارکت</span>
-                <span class="status folk"><span class="dot"></span>منتشر شده مردمی</span>
-              </div>
-              <h3 class="ad-title">زمین ۴۲۰ متری مناسب مشارکت در ساخت — نیاوران</h3>
-              <div class="ad-amount"><span class="label">حداقل سرمایه:</span> <span class="agreed">توافقی</span></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، نیاوران</b> — محله جماران</div>
-              <div class="ad-foot">
-                <span class="ad-time">۲ روز پیش · توسط دفتر شمال شهر</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
-                  <button class="mini-action" aria-label="نمایش روی نقشه" onclick="event.stopPropagation()">⌖</button>
-                  <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb participation"><span class="ph"></span><span class="code-pill">کد ۴۸۸۹</span></div>
-          </article>
-
-          <!-- 5) پیش‌فروش · در انتظار · ویدئو -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail presell"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag presell"><span class="dot" style="background:#fff"></span>پیش‌فروش</span>
-                <span class="status waiting"><span class="dot"></span>در انتظار انتشار</span>
-              </div>
-              <h3 class="ad-title">پیش‌فروش واحد ۱۱۰ متری در پروژه چیتگر</h3>
-              <div class="ad-amount"><span class="label">پیش‌پرداخت:</span> ۳٫۲ میلیارد <small>تومان</small></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، چیتگر</b> — منطقه ۲۲</div>
-              <div class="ad-foot">
-                <span class="ad-time">دیروز · توسط گروه آرتا</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
-                  <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb presell"><span class="ph"></span><span class="code-pill">کد ۷۰۳۴</span><div class="media-pills"><span class="media-pill" title="ویدئو">▷</span></div></div>
-          </article>
-
-          <!-- 6) اجاره کوتاه‌مدت · عمومی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail short"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag short"><span class="dot" style="background:#fff"></span>اجاره کوتاه‌مدت</span>
-                <span class="status public"><span class="dot"></span>منتشر شده عمومی</span>
-              </div>
-              <h3 class="ad-title">سوئیت مبله‌ی روزانه نزدیک برج میلاد</h3>
-              <div class="ad-amount"><span class="label">اجاره شبانه:</span> از ۲٫۵ میلیون <small>تومان</small></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، گیشا</b> — محله نصر</div>
-              <div class="ad-foot">
-                <span class="ad-time">امروز · آگهی‌دهنده شخصی</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
-                  <button class="mini-action primary" aria-label="تماس" onclick="event.stopPropagation()">☎</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb short"><span class="ph"></span><span class="code-pill">کد ۸۱۱۵</span></div>
-          </article>
-
-          <!-- 7) فروش · نیاز به ویرایش · توافقی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail sale"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag sale"><span class="dot" style="background:#fff"></span>فروش</span>
-                <span class="status edit"><span class="dot"></span>نیاز به ویرایش</span>
-              </div>
-              <h3 class="ad-title">کلنگی ۲۲۰ متری مناسب بازسازی در امانیه</h3>
-              <div class="ad-amount"><span class="label">مبلغ:</span> <span class="agreed">توافقی</span></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، امانیه</b> — محله دروس</div>
-              <div class="ad-foot">
-                <span class="ad-time">۳ روز پیش · توسط آژانس آسمان</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="ویرایش" onclick="event.stopPropagation()">✎</button>
-                  <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb"><span class="ph"></span><span class="code-pill">کد ۵۲۷۰</span></div>
-          </article>
-
-          <!-- 8) مشارکت · بایگانی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail participation"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag participation"><span class="dot" style="background:#fff"></span>مشارکت</span>
-                <span class="status archived"><span class="dot"></span>بایگانی شده</span>
-              </div>
-              <h3 class="ad-title">ملک کلنگی ۳۰۰ متری برای مشارکت در لواسان</h3>
-              <div class="ad-amount"><span class="label">حداقل سرمایه:</span> از ۴۵ میلیارد <small>تومان</small></div>
-              <div class="ad-range">⌖ محدوده: <b>لواسان</b> — محله ایگل</div>
-              <div class="ad-foot">
-                <span class="ad-time">هفته پیش · آگهی‌دهنده شخصی</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
-                  <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb participation"><span class="ph"></span><span class="code-pill">کد ۴۱۰۲</span></div>
-          </article>
-
-          <!-- 9) پیش‌فروش · رد شده -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail presell"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag presell"><span class="dot" style="background:#fff"></span>پیش‌فروش</span>
-                <span class="status rejected"><span class="dot"></span>رد شده</span>
-              </div>
-              <h3 class="ad-title">پیش‌فروش برج مسکونی در زعفرانیه</h3>
-              <div class="ad-amount"><span class="label">پیش‌پرداخت:</span> ۵ میلیارد <small>تومان</small></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، منطقه ۱</b> — زعفرانیه</div>
-              <div class="ad-foot">
-                <span class="ad-time">۴ روز پیش · توسط گروه آرتا</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="ویرایش" onclick="event.stopPropagation()">✎</button>
-                  <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb presell"><span class="ph"></span><span class="code-pill">کد ۷۷۸۱</span></div>
-          </article>
-
-          <!-- 10) فروش · حذف شده -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail sale"></span>
-            <div class="ad-body">
-              <div class="ad-top">
-                <span class="type-tag sale"><span class="dot" style="background:#fff"></span>فروش</span>
-                <span class="status deleted"><span class="dot"></span>حذف شده</span>
-              </div>
-              <h3 class="ad-title">واحد ۶۰ متری سرمایه‌ای در نازی‌آباد</h3>
-              <div class="ad-amount"><span class="label">مبلغ:</span> ۴ میلیارد <small>تومان</small></div>
-              <div class="ad-range">⌖ محدوده: <b>تهران، نازی‌آباد</b> — بازار دوم</div>
-              <div class="ad-foot">
-                <span class="ad-time">هفته پیش · آگهی‌دهنده شخصی</span>
-                <div class="ad-actions">
-                  <button class="mini-action" aria-label="بازیابی" onclick="event.stopPropagation()">↺</button>
-                </div>
-              </div>
-            </div>
-            <div class="ad-thumb"><span class="ph"></span><span class="code-pill">کد ۳۳۵۰</span></div>
-          </article>
+          <section class="results" id="results"><!-- cards injected by JS --></section>
         </section>
 
-        <!-- ===== RIGHT RAIL ===== -->
-        <aside class="rail">
-          <div class="panel rail-card">
-            <h3>نمایش آگهی‌ها روی نقشه</h3>
-            <p>موقعیت‌ها با رعایت حریم خصوصی نمایش داده می‌شوند. روی نقشه محدوده را دقیق‌تر کن.</p>
-            <div class="map-mini">
-              <span class="mk" style="right: 30%; top: 34%">⌂</span>
-              <span class="mk" style="right: 58%; top: 56%; background: var(--t-rent)">⌂</span>
-              <span class="mk" style="right: 44%; top: 72%; background: var(--t-participation)">⌂</span>
+        <!-- ===== STICKY MAP PANEL ===== -->
+        <aside class="map-panel">
+          <div class="map-viewport" id="viewport">
+            <div class="map-world" id="world">
+              <span class="district" style="right: 220px; top: 220px; width: 480px; height: 340px"><b>سعادت‌آباد</b></span>
+              <span class="district" style="right: 760px; top: 480px; width: 420px; height: 300px"><b>شهرک غرب</b></span>
+              <span class="district" style="right: 380px; top: 640px; width: 400px; height: 280px"><b>مرزداران</b></span>
+              <span class="park" style="right: 320px; top: 300px; width: 160px; height: 110px"></span>
+              <span class="park" style="right: 900px; top: 560px; width: 140px; height: 120px"></span>
+              <span class="water" style="right: 520px; top: 840px; width: 220px; height: 140px"></span>
+              <span class="road major" style="right: -5%; top: 340px; width: 110%; transform: rotate(-7deg)"></span>
+              <span class="road major" style="right: -5%; top: 780px; width: 110%; transform: rotate(5deg)"></span>
+              <span class="road" style="right: 640px; top: -5%; width: 24px; height: 110%; transform: rotate(4deg)"></span>
+              <span class="road" style="right: -5%; top: 540px; width: 110%; height: 20px; transform: rotate(12deg)"></span>
+              <!-- price-pins injected by JS -->
+              <span class="cluster" style="right: 1140px; top: 720px" onclick="event.stopPropagation();zoomBy(1.4)">۲۴</span>
+              <span class="user-loc" id="userLoc" style="right: 600px; top: 560px"><span class="pulse"></span><span class="dot"></span></span>
             </div>
-            <button class="btn btn-soft" style="width: 100%; margin-top: 12px">باز کردن نقشه‌ی آگهی‌ها</button>
           </div>
-
-          <div class="panel rail-card assess-card">
-            <h3>ارزیابی محیطی ملک</h3>
-            <p>برتری داتملک: امکانات و فاصله‌های اطراف هر ملک، با زمان پیاده و خودرو.</p>
-            <div class="assess-row"><span class="ic">Ⓜ</span>ایستگاه مترو <b>۷ دقیقه پیاده</b></div>
-            <div class="assess-row"><span class="ic">✎</span>مدرسه <b>۴ دقیقه پیاده</b></div>
-            <div class="assess-row"><span class="ic">＋</span>درمانگاه <b>۳ دقیقه خودرو</b></div>
-            <div class="assess-row"><span class="ic">▦</span>مرکز خرید <b>۶ دقیقه پیاده</b></div>
+          <div class="map-head">
+            <span class="map-area-chip">⌖ محدوده: <b>تهران، سعادت‌آباد</b> · ۶ آگهی روی نقشه</span>
+            <a class="map-full-btn" href="map.html">⛶ تمام‌صفحه</a>
           </div>
-
-          <div class="panel rail-card">
-            <h3>راهنمای نوع آگهی</h3>
-            <div class="legend">
-              <span><i style="background: var(--t-sale)"></i>فروش</span>
-              <span><i style="background: var(--t-rent)"></i>رهن و اجاره</span>
-              <span><i style="background: var(--t-participation)"></i>مشارکت</span>
-              <span><i style="background: var(--t-presell)"></i>پیش‌فروش</span>
-              <span><i style="background: var(--t-short)"></i>اجاره کوتاه‌مدت</span>
+          <div class="map-privacy">⚲ موقعیت تقریبی برای حفظ حریم خصوصی</div>
+          <button class="map-loc" onclick="goToUser()" title="موقعیت من">◎</button>
+          <div class="map-zoom"><button onclick="zoomBy(1.25)">＋</button><span class="sep"></span><button onclick="zoomBy(0.8)">－</button></div>
+          <div class="map-legend">
+            <div class="lg"><i style="background: var(--t-sale)"></i>فروش</div>
+            <div class="lg"><i style="background: var(--t-rent)"></i>رهن و اجاره</div>
+            <div class="lg"><i style="background: var(--t-participation)"></i>مشارکت</div>
+            <div class="lg"><i style="background: var(--t-presell)"></i>پیش‌فروش</div>
+            <div class="lg"><i style="background: var(--t-short)"></i>اجاره کوتاه‌مدت</div>
+          </div>
+          <div class="map-popup" id="popup">
+            <div class="mp-photo"><span class="tag" id="popTag">فروش</span><span class="code" id="popCode">کد ۵۴۲۱</span><button class="mp-close" onclick="closePopup()">×</button></div>
+            <div class="mp-body">
+              <h4 id="popTitle">عنوان</h4>
+              <div class="price" id="popPrice">قیمت</div>
+              <p id="popDesc">توضیحات</p>
+              <div class="mp-actions"><a class="btn btn-primary" id="popDetail" href="property-detail.html">مشاهده جزئیات</a><button class="btn btn-outline" onclick="closePopup()">◌</button></div>
             </div>
           </div>
         </aside>
       </main>
     </div>
-    <a class="float-add" href="add-advertise.html">＋ ثبت آگهی جدید</a>
+
+    <!-- compare tray -->
+    <div class="compare-tray" id="compareTray">
+      <div class="ct-info"><b id="ctCount">۰</b> ملک برای مقایسه</div>
+      <div class="ct-chips" id="ctChips"></div>
+      <div class="ct-actions">
+        <button class="btn btn-outline" onclick="clearCompare()">پاک کردن</button>
+        <button class="btn btn-primary" onclick="goCompare()">مقایسه ملک‌ها</button>
+      </div>
+    </div>
+    <div class="mini-toast" id="toast"></div>
     <div class="ribbon">Dotmelk · آگهی‌ها (دسکتاپ)</div>
+
+    <script src="../assets/dotmelk-ads-data.js?v=2"></script>
+    <script>
+      /* ===== render ad cards + map pins from shared data ===== */
+      function cardHTML(ad) {
+        const t = DM_tier(ad.score);
+        const bars = DM_DIMS.map((d, i) =>
+          `<div class="as-item"><span class="as-l">${d[0]}</span><span class="as-track"><span class="as-fill ${d[1]}" style="width:${ad.a[i]}%"></span></span></div>`
+        ).join("");
+        const media = ad.media.length ? `<div class="media-pills">${ad.media.map(m => `<span class="media-pill">${m}</span>`).join("")}</div>` : "";
+        const vip = ad.vip ? `<span class="vip-corner"><span class="badge vip">★ ویژه</span></span>` : "";
+        const urgent = ad.urgent ? `<span class="badge danger">فوری</span>` : "";
+        return `
+        <article class="ad-card" data-key="${ad.key}" onmouseenter="hoverPin('${ad.key}',1)" onmouseleave="hoverPin('${ad.key}',0)" onclick="location.href='property-detail.html?key=${ad.key}'">
+          <span class="type-rail ${ad.type}"></span>
+          <div class="ad-body">
+            <div class="ad-head">
+              <h3 class="ad-title">${ad.title}</h3>
+              <span class="status ${ad.status}"><span class="dot"></span>${ad.statusLabel}</span>
+            </div>
+            <div class="ad-specs">${ad.specs}</div>
+            <div class="ad-mid">
+              <div class="ad-mid-info">
+                <div class="ad-top"><span class="type-tag ${ad.type}"><span class="dot" style="background:#fff"></span>${ad.typeLabel}</span>${urgent}</div>
+                <div class="ad-amount">${ad.price}</div>
+                <div class="ad-range">⌖ <b>${ad.area}</b></div>
+              </div>
+              <div class="ad-thumb ${ad.type}">${vip}<span class="ph"></span><span class="code-pill">کد ${ad.code}</span>${media}</div>
+            </div>
+            <div class="assess">
+              <div class="as-grid">${bars}</div>
+              <div class="as-overall">
+                <span class="as-ov-l">ارزیابی کلی</span>
+                <span class="as-track"><span class="as-fill" style="width:${ad.score}%;background:${t.color}"></span></span>
+                <span class="as-tier" style="background:${t.soft};color:${t.text}">${t.l} · ${DM_fa(ad.score)}</span>
+              </div>
+            </div>
+            <div class="ad-foot">
+              <button class="compare-btn" data-key="${ad.key}" onclick="event.stopPropagation();toggleCompare('${ad.key}')">⇄ افزودن به مقایسه</button>
+              <div class="ad-actions">
+                <button class="mini-action" aria-label="نشان کردن" onclick="event.stopPropagation()">♡</button>
+                ${ad.pin ? `<button class="mini-action" aria-label="نمایش روی نقشه" onclick="event.stopPropagation();focusPin('${ad.key}')">⌖</button>` : ""}
+                <button class="mini-action primary" aria-label="چت" onclick="event.stopPropagation()">◌</button>
+              </div>
+            </div>
+            <div class="ad-meta">${ad.time} · ${ad.agency}</div>
+          </div>
+        </article>`;
+      }
+      document.getElementById("results").innerHTML = DM_ADS.map(cardHTML).join("");
+
+      /* inject price pins */
+      const world = document.getElementById("world");
+      const pinsHTML = DM_ADS.filter(a => a.pin).map(ad =>
+        `<span class="price-pin" data-key="${ad.key}" style="right:${ad.pin.right}px;top:${ad.pin.top}px" onclick="event.stopPropagation();openPop('${ad.key}',this)"><span class="pdot" style="background:var(--t-${ad.type})"></span>${ad.pin.label}</span>`
+      ).join("");
+      world.insertAdjacentHTML("afterbegin", pinsHTML);
+
+      /* ===== pan / zoom ===== */
+      const vp = document.getElementById("viewport");
+      let tx = 0, ty = 0, scale = 1, dragging = false, sx = 0, sy = 0, moved = false;
+      function apply() { world.style.transform = `translate(calc(50% + ${tx}px), calc(-50% + ${ty}px)) scale(${scale})`; }
+      vp.addEventListener("pointerdown", e => { dragging = true; moved = false; sx = e.clientX - tx; sy = e.clientY - ty; vp.classList.add("grabbing"); closePopup(); });
+      window.addEventListener("pointermove", e => { if (!dragging) return; tx = e.clientX - sx; ty = e.clientY - sy; moved = true; apply(); });
+      window.addEventListener("pointerup", () => { dragging = false; vp.classList.remove("grabbing"); });
+      vp.addEventListener("wheel", e => { e.preventDefault(); zoomBy(e.deltaY < 0 ? 1.12 : 0.89); }, { passive: false });
+      function zoomBy(f) { scale = Math.min(2.6, Math.max(0.5, scale * f)); apply(); }
+      function goToUser() { tx = 0; ty = 0; scale = 1.15; apply(); const u = document.getElementById("userLoc"); u.style.filter = "drop-shadow(0 0 12px rgba(37,99,235,.8))"; setTimeout(() => u.style.filter = "", 1200); }
+      function goToArea() { tx = 60; ty = 40; scale = 1.3; apply(); }
+
+      /* ===== popup + card<->pin sync ===== */
+      const popup = document.getElementById("popup");
+      function openPop(key, pinEl) {
+        const d = DM_ADS.find(a => a.key === key); if (!d) return;
+        document.getElementById("popTitle").textContent = d.title;
+        document.getElementById("popPrice").innerHTML = d.price;
+        document.getElementById("popDesc").textContent = d.specs + " · " + d.area;
+        document.getElementById("popTag").textContent = d.typeLabel;
+        document.getElementById("popTag").style.background = "var(--t-" + d.type + ")";
+        document.getElementById("popCode").textContent = "کد " + d.code;
+        document.getElementById("popDetail").href = "property-detail.html?key=" + key;
+        const r = pinEl.getBoundingClientRect(), pr = document.querySelector(".map-panel").getBoundingClientRect();
+        popup.style.right = (pr.right - r.right + r.width / 2) + "px";
+        popup.style.top = (r.top - pr.top) + "px";
+        popup.classList.add("show");
+        setActiveCard(key, true);
+      }
+      function closePopup() { popup.classList.remove("show"); document.querySelectorAll(".ad-card.active").forEach(c => c.classList.remove("active")); }
+      function hoverPin(key, on) { const p = document.querySelector('.price-pin[data-key="' + key + '"]'); if (p) p.classList.toggle("active", !!on); }
+      function setActiveCard(key, on) {
+        document.querySelectorAll(".ad-card.active").forEach(c => c.classList.remove("active"));
+        if (on) { const c = document.querySelector('.ad-card[data-key="' + key + '"]'); if (c) { c.classList.add("active"); c.scrollIntoView({ behavior: "smooth", block: "center" }); } }
+      }
+      function focusPin(key) {
+        const p = document.querySelector('.price-pin[data-key="' + key + '"]'); if (!p) return;
+        document.querySelectorAll(".price-pin.active").forEach(x => x.classList.remove("active"));
+        p.classList.add("active"); openPop(key, p);
+      }
+
+      /* ===== compare list ===== */
+      const compareSet = new Set(JSON.parse(localStorage.getItem("dm_compare") || "[]"));
+      function persist() { localStorage.setItem("dm_compare", JSON.stringify([...compareSet])); }
+      function toggleCompare(key) {
+        if (compareSet.has(key)) compareSet.delete(key);
+        else { if (compareSet.size >= 4) { flash("حداکثر ۴ ملک برای مقایسه"); return; } compareSet.add(key); }
+        persist(); syncCompare();
+      }
+      function clearCompare() { compareSet.clear(); persist(); syncCompare(); }
+      function goCompare() { if (!compareSet.size) { flash("ابتدا حداقل یک ملک را انتخاب کنید"); return; } persist(); location.href = "compare.html"; }
+      function syncCompare() {
+        document.querySelectorAll(".compare-btn").forEach(b => {
+          const on = compareSet.has(b.dataset.key);
+          b.classList.toggle("active", on);
+          b.innerHTML = on ? "✓ در لیست مقایسه" : "⇄ افزودن به مقایسه";
+        });
+        document.getElementById("ctCount").textContent = DM_fa(compareSet.size);
+        document.getElementById("ctChips").innerHTML = [...compareSet].map(k => {
+          const a = DM_ADS.find(x => x.key === k); if (!a) return "";
+          return `<span class="ct-chip"><i class="type-rail ${a.type}"></i>${a.title.slice(0, 16)}…<button onclick="toggleCompare('${k}')">×</button></span>`;
+        }).join("");
+        document.getElementById("compareTray").classList.toggle("show", compareSet.size > 0);
+      }
+      let toastT; function flash(m) { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1800); }
+
+      document.addEventListener("keydown", e => { if (e.key === "Escape") closePopup(); });
+      apply(); syncCompare();
+    </script>
   </body>
 </html>

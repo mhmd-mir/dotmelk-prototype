@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dotmelk — مقایسه املاک / دسکتاپ</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
+      :root {
+        --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-subtle: #ede9fe; --primary-border: #c4b5fd;
+        --bg: #f8fafc; --surface: #ffffff; --surface-muted: #f1f5f9;
+        --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
+        --border: #e2e8f0; --border-strong: #cbd5e1;
+        --success: #16a34a; --success-soft: #dcfce7; --success-text: #166534;
+        --warning: #d97706; --warning-soft: #fef3c7; --warning-text: #92400e;
+        --danger: #dc2626; --danger-soft: #fee2e2; --danger-text: #991b1b;
+        --info: #2563eb; --info-soft: #dbeafe; --info-text: #1e40af;
+        --teal: #0f766e; --teal-soft: #ccfbf1; --orange: #ea580c; --orange-soft: #ffedd5; --pink-soft: #fce7f3;
+        --t-sale: #2563eb; --t-rent: #16a34a; --t-participation: #ea580c; --t-presell: #dc2626; --t-short: #0d9488;
+        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06); --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08); --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-width: 1180px; font-family: "Vazirmatn", system-ui, sans-serif; background: var(--bg); color: var(--text); direction: rtl; }
+      a { text-decoration: none; color: inherit; }
+      button { border: 0; cursor: pointer; background: none; color: inherit; font: inherit; }
+      .icon-sm { font-size: 13px; }
+      .btn { height: 40px; padding: 0 16px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 14px; white-space: nowrap; }
+      .btn-primary { background: var(--primary); color: #fff; }
+      .btn-outline { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+      .btn-soft { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
+      .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 4px 9px; font-size: 12px; font-weight: 800; }
+      .badge.vip { background: linear-gradient(135deg, #fde68a, #f59e0b); color: #7c2d12; }
+      .type-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 999px; color: #fff; }
+      .type-tag.sale { background: var(--t-sale); } .type-tag.rent { background: var(--t-rent); } .type-tag.participation { background: var(--t-participation); } .type-tag.presell { background: var(--t-presell); } .type-tag.short { background: var(--t-short); }
+
+      .shell { max-width: 1500px; margin: 0 auto; padding: 18px 24px 60px; }
+      .topbar { height: 72px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; box-shadow: var(--shadow-sm); position: sticky; top: 14px; z-index: 30; }
+      .brand { display: flex; align-items: center; gap: 10px; }
+      .logo-mark { width: 36px; height: 36px; border-radius: 14px; background: linear-gradient(135deg, #7c3aed, #5b21b6); display: grid; place-items: center; color: #fff; }
+      .logo-mark:before { content: "⌖"; font-size: 19px; font-weight: 800; }
+      .brand-title { font-size: 18px; font-weight: 900; }
+      .brand-subtitle { font-size: 12px; color: var(--muted); }
+      .nav { display: flex; gap: 4px; background: var(--surface-muted); border-radius: 999px; padding: 4px; }
+      .nav a { height: 36px; padding: 0 14px; border-radius: 999px; display: flex; align-items: center; gap: 8px; color: var(--text-2); font-size: 13px; font-weight: 800; }
+      .nav a.active { background: var(--surface); color: var(--primary); box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06); }
+
+      .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin: 22px 4px 16px; }
+      .page-head h1 { font-size: 25px; line-height: 38px; margin: 0; font-weight: 900; }
+      .page-head p { margin: 6px 0 0; color: var(--text-2); font-size: 14px; }
+
+      /* ===== compare table ===== */
+      .cmp-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-sm); overflow: hidden; }
+      .cmp-scroll { overflow-x: auto; }
+      .cmp { border-collapse: collapse; width: 100%; min-width: 760px; }
+      .cmp th, .cmp td { border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); padding: 14px 16px; text-align: right; vertical-align: middle; }
+      .cmp th:last-child, .cmp td:last-child { border-left: 0; }
+      .cmp tr:last-child th, .cmp tr:last-child td { border-bottom: 0; }
+      .row-label { width: 150px; font-size: 13px; font-weight: 800; color: var(--text-2); background: var(--surface-muted); position: sticky; right: 0; z-index: 2; }
+      .col-head { background: linear-gradient(180deg, var(--primary-soft), #fff); vertical-align: top; min-width: 230px; }
+      .ch-thumb { height: 110px; border-radius: 14px; position: relative; overflow: hidden; margin-bottom: 12px; background: linear-gradient(135deg, #dbeafe, #ede9fe 60%, #f8fafc); }
+      .ch-thumb.rent { background: linear-gradient(135deg, #d1fae5, #dbeafe 60%, #f8fafc); }
+      .ch-thumb.participation { background: linear-gradient(135deg, #ffedd5, #fde68a 60%, #f8fafc); }
+      .ch-thumb.presell { background: linear-gradient(135deg, #fee2e2, #ede9fe 60%, #f8fafc); }
+      .ch-thumb.short { background: linear-gradient(135deg, #ccfbf1, #dbeafe 60%, #f8fafc); }
+      .ch-thumb .ph { position: absolute; inset: auto 14px 12px 14px; height: 44%; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5)); }
+      .ch-thumb .rm { position: absolute; top: 8px; left: 8px; width: 28px; height: 28px; border-radius: 999px; background: rgba(255, 255, 255, 0.92); display: grid; place-items: center; color: var(--danger); font-size: 16px; }
+      .ch-title { font-size: 14px; font-weight: 900; line-height: 22px; margin: 0 0 8px; }
+      .ch-actions { display: flex; gap: 8px; margin-top: 12px; }
+      .ch-actions .btn { flex: 1; height: 36px; font-size: 13px; }
+      .price-cell { font-size: 15px; font-weight: 900; }
+      .price-cell small { font-size: 12px; color: var(--muted); font-weight: 700; }
+      .price-cell .label { font-size: 11px; color: var(--muted); font-weight: 800; }
+      .price-cell .sep { display: inline-block; width: 1px; height: 13px; background: var(--border-strong); margin: 0 6px; vertical-align: middle; }
+      .price-cell .agreed { color: var(--primary); }
+      .bar-cell { display: flex; align-items: center; gap: 10px; }
+      .bar-cell .track { flex: 1; height: 7px; border-radius: 999px; background: var(--surface-muted); overflow: hidden; }
+      .bar-cell .fill { display: block; height: 100%; border-radius: 999px; }
+      .bar-cell .val { font-size: 12px; font-weight: 900; width: 30px; color: var(--text-2); flex: 0 0 auto; }
+      .fill.p { background: var(--primary); } .fill.g { background: var(--teal); }
+      .fill.tier-exc { background: var(--success); } .fill.tier-good { background: var(--info); } .fill.tier-fair { background: var(--warning); } .fill.tier-risk { background: var(--danger); }
+      .tierbadge { font-size: 12px; font-weight: 900; padding: 4px 11px; border-radius: 999px; }
+      .tierbadge.tier-exc { background: var(--success-soft); color: var(--success-text); }
+      .tierbadge.tier-good { background: var(--info-soft); color: var(--info-text); }
+      .tierbadge.tier-fair { background: var(--warning-soft); color: var(--warning-text); }
+      .tierbadge.tier-risk { background: var(--danger-soft); color: var(--danger-text); }
+      .best { position: relative; }
+      .best:after { content: "بهترین"; position: absolute; top: 6px; left: 8px; font-size: 9px; font-weight: 900; color: var(--success-text); background: var(--success-soft); padding: 2px 6px; border-radius: 999px; }
+
+      .empty { padding: 80px 24px; text-align: center; }
+      .empty .ic { width: 72px; height: 72px; border-radius: 24px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 32px; margin: 0 auto 18px; }
+      .empty h2 { font-size: 20px; font-weight: 900; margin: 0 0 8px; }
+      .empty p { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+      .ribbon { position: fixed; left: 24px; bottom: 24px; background: rgba(15, 23, 42, 0.82); color: #fff; border-radius: 999px; padding: 9px 13px; font-size: 12px; z-index: 50; }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="ads.html">
+          <div class="logo-mark"></div>
+          <div><div class="brand-title">داتملک</div><div class="brand-subtitle">مقایسه‌ی املاک</div></div>
+        </a>
+        <nav class="nav">
+          <a href="map.html"><span>⌖</span>نقشه</a>
+          <a href="requests.html"><span>□</span>درخواست‌ها</a>
+          <a href="ads.html" class="active"><span>⌂</span>آگهی‌ها</a>
+          <a href="chat.html"><span>◌</span>چت</a>
+          <a href="my-dotmelk.html"><span>◫</span>داتملک من</a>
+        </nav>
+        <div style="display:flex;gap:8px">
+          <a class="btn btn-outline" href="ads.html">← بازگشت به آگهی‌ها</a>
+        </div>
+      </header>
+
+      <section class="page-head">
+        <div>
+          <h1>مقایسه‌ی املاک</h1>
+          <p>املاک انتخاب‌شده را بر اساس قیمت، مشخصات و ارزیابی محیطی داتملک کنار هم ببینید.</p>
+        </div>
+        <button class="btn btn-soft" onclick="clearAll()">پاک کردن همه</button>
+      </section>
+
+      <div class="cmp-wrap" id="cmpWrap"></div>
+    </div>
+    <div class="ribbon">Dotmelk · مقایسه (دسکتاپ)</div>
+
+    <script src="../assets/dotmelk-ads-data.js?v=2"></script>
+    <script>
+      let keys = JSON.parse(localStorage.getItem("dm_compare") || "[]");
+      // demo fallback if nothing selected
+      if (!keys.length) keys = ["a1", "a2", "a4"];
+      let items = keys.map(k => DM_ADS.find(a => a.key === k)).filter(Boolean);
+
+      function removeItem(key) {
+        keys = keys.filter(k => k !== key);
+        localStorage.setItem("dm_compare", JSON.stringify(keys));
+        items = keys.map(k => DM_ADS.find(a => a.key === k)).filter(Boolean);
+        render();
+      }
+      function clearAll() { keys = []; localStorage.setItem("dm_compare", "[]"); items = []; render(); }
+
+      function render() {
+        const wrap = document.getElementById("cmpWrap");
+        if (!items.length) {
+          wrap.innerHTML = `<div class="empty"><div class="ic">⇄</div><h2>لیست مقایسه خالی است</h2><p>از صفحه‌ی آگهی‌ها، چند ملک را به مقایسه اضافه کنید.</p><a class="btn btn-primary" href="ads.html">رفتن به آگهی‌ها</a></div>`;
+          return;
+        }
+        // best score index
+        let bestIdx = 0; items.forEach((a, i) => { if (a.score > items[bestIdx].score) bestIdx = i; });
+
+        const colHead = items.map((a, i) => {
+          const t = DM_tier(a.score);
+          const vip = a.vip ? `<span class="badge vip" style="margin-bottom:8px">★ ویژه</span><br/>` : "";
+          return `<th class="col-head ${i === bestIdx ? "best" : ""}">
+            <div class="ch-thumb ${a.type}"><span class="ph"></span><button class="rm" onclick="removeItem('${a.key}')" title="حذف">×</button></div>
+            ${vip}<span class="type-tag ${a.type}">${a.typeLabel}</span>
+            <h3 class="ch-title" style="margin-top:8px">${a.title}</h3>
+            <div class="ch-actions"><a class="btn btn-primary" href="property-detail.html?key=${a.key}">جزئیات</a><button class="btn btn-outline" onclick="removeItem('${a.key}')">حذف</button></div>
+          </th>`;
+        }).join("");
+
+        const dimRows = DM_DIMS.map((d, di) => {
+          // best value for this dim
+          let bv = Math.max(...items.map(a => a.a[di]));
+          const cells = items.map(a =>
+            `<td><div class="bar-cell"><span class="track"><span class="fill ${d[1]}" style="width:${a.a[di]}%"></span></span><span class="val" style="${a.a[di] === bv ? "color:var(--success-text)" : ""}">${DM_fa(a.a[di])}</span></div></td>`
+          ).join("");
+          return `<tr><th class="row-label">${d[0]}</th>${cells}</tr>`;
+        }).join("");
+
+        wrap.innerHTML = `<div class="cmp-scroll"><table class="cmp">
+          <tr><th class="row-label">ملک</th>${colHead}</tr>
+          <tr><th class="row-label">قیمت</th>${items.map(a => `<td class="price-cell">${a.price}</td>`).join("")}</tr>
+          <tr><th class="row-label">مشخصات</th>${items.map(a => `<td style="font-size:13px;color:var(--text-2);font-weight:700">${a.specs}</td>`).join("")}</tr>
+          <tr><th class="row-label">محدوده</th>${items.map(a => `<td style="font-size:13px;font-weight:800">⌖ ${a.area}</td>`).join("")}</tr>
+          <tr><th class="row-label" style="background:var(--primary-soft);color:var(--primary)">ارزیابی محیطی</th>${items.map(() => `<td style="background:var(--primary-soft)"></td>`).join("")}</tr>
+          ${dimRows}
+          <tr><th class="row-label">ارزیابی کلی</th>${items.map(a => { const t = DM_tier(a.score); return `<td><div class="bar-cell"><span class="track"><span class="fill" style="width:${a.score}%;background:${t.color}"></span></span><span class="tierbadge" style="background:${t.soft};color:${t.text}">${t.l} · ${DM_fa(a.score)}</span></div></td>`; }).join("")}</tr>
+          <tr><th class="row-label">آژانس</th>${items.map(a => `<td style="font-size:13px;font-weight:700;color:var(--text-2)">${a.agency}</td>`).join("")}</tr>
+        </table></div>`;
+      }
+      render();
+    </script>
+  </body>
+</html>

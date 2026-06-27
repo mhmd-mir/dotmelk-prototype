@@ -9,132 +9,240 @@
       :root {
         --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-subtle: #ede9fe; --primary-border: #c4b5fd;
         --bg: #f8fafc; --surface: #ffffff; --surface-muted: #f1f5f9; --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
-        --border: #e2e8f0; --border-strong: #cbd5e1; --success: #16a34a; --success-soft: #dcfce7; --success-text: #166534;
-        --warning-soft: #fef3c7; --warning-text: #92400e; --danger: #dc2626; --danger-soft: #fee2e2; --danger-text: #991b1b;
-        --info: #2563eb; --info-soft: #dbeafe; --info-text: #1e40af; --teal: #0f766e;
-        --t-sale: #2563eb;
+        --border: #e2e8f0; --border-strong: #cbd5e1;
+        --success: #16a34a; --success-soft: #dcfce7; --success-text: #166534;
+        --warning: #d97706; --warning-soft: #fef3c7; --warning-text: #92400e;
+        --danger: #dc2626; --danger-soft: #fee2e2; --danger-text: #991b1b;
+        --info: #2563eb; --info-soft: #dbeafe; --info-text: #1e40af;
+        --teal: #0f766e; --teal-soft: #ccfbf1; --orange: #ea580c; --orange-soft: #ffedd5;
+        --t-sale: #2563eb; --t-rent: #16a34a; --t-participation: #ea580c; --t-presell: #dc2626; --t-short: #0d9488;
         --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06); --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08); --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
       }
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body { margin: 0; min-width: 1180px; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); direction: rtl; }
       a { text-decoration: none; color: inherit; }
       button { border: 0; cursor: pointer; background: none; color: inherit; font: inherit; }
-      .shell { max-width: 1200px; margin: 0 auto; padding: 18px 24px 60px; }
+      .shell { max-width: 1320px; margin: 0 auto; padding: 18px 24px 60px; }
+
       .topbar { height: 64px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 20px; display: flex; align-items: center; gap: 12px; padding: 0 14px; box-shadow: var(--shadow-sm); position: sticky; top: 14px; z-index: 30; }
-      .back-btn { width: 40px; height: 40px; border-radius: 13px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--text-2); font-size: 18px; }
+      .back-btn { width: 40px; height: 40px; border-radius: 13px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--text-2); font-size: 18px; flex: 0 0 auto; }
       .back-btn:hover { border-color: var(--primary-border); color: var(--primary); }
       .topbar h1 { font-size: 16px; font-weight: 900; margin: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .mark-btn { width: 42px; height: 42px; border-radius: 13px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--text-2); font-size: 18px; }
-      .mark-btn.on { color: var(--danger); border-color: var(--danger-soft); background: var(--danger-soft); }
-      .crumb { font-size: 12px; color: var(--muted); }
+      .crumb { font-size: 12px; color: var(--muted); white-space: nowrap; }
+      .t-act { width: 42px; height: 42px; border-radius: 13px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--text-2); font-size: 17px; background: #fff; }
+      .t-act:hover { border-color: var(--primary-border); color: var(--primary); }
+      .t-act.on { color: var(--danger); border-color: var(--danger-soft); background: var(--danger-soft); }
 
       .btn { height: 40px; padding: 0 16px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 14px; white-space: nowrap; }
-      .btn-primary { background: var(--primary); color: #fff; }
+      .btn-primary { background: var(--primary); color: #fff; } .btn-primary:hover { background: var(--primary-hover); }
       .btn-soft { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
       .btn-outline { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+      .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 800; }
+      .badge.success { background: var(--success-soft); color: var(--success-text); }
+      .badge.danger { background: var(--danger-soft); color: var(--danger-text); }
+      .badge.vip { background: linear-gradient(135deg, #fde68a, #f59e0b); color: #7c2d12; }
+      .type-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 900; padding: 5px 12px; border-radius: 999px; color: #fff; }
+      .type-tag.sale { background: var(--t-sale); } .type-tag.rent { background: var(--t-rent); } .type-tag.participation { background: var(--t-participation); } .type-tag.presell { background: var(--t-presell); } .type-tag.short { background: var(--t-short); }
 
       .layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; margin-top: 16px; align-items: start; }
       .col { display: grid; gap: 16px; min-width: 0; }
       .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow-sm); }
       .pad { padding: 18px; }
+      .sec-title { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 16px; font-weight: 900; }
+      .sec-title .bar { width: 4px; height: 18px; border-radius: 999px; background: var(--primary); }
+      .sec-title .hint { margin-inline-start: auto; font-size: 12px; font-weight: 700; color: var(--muted); }
 
-      /* gallery */
-      .gallery { position: relative; height: 400px; border-radius: 22px; overflow: hidden; background: linear-gradient(135deg, #ddd6fe 0%, #bfdbfe 55%, #f8fafc 100%); border: 1px solid var(--border); }
+      /* ===== gallery ===== */
+      .gallery { position: relative; height: 420px; border-radius: 22px 22px 0 0; overflow: hidden; background: linear-gradient(135deg, #ddd6fe 0%, #bfdbfe 55%, #f8fafc 100%); }
       .gallery .ph { position: absolute; inset: auto 60px 0 60px; height: 64%; border-radius: 16px 16px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5)); box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14); }
-      .gallery .type-corner { position: absolute; top: 0; right: 0; background: var(--t-sale); color: #fff; font-size: 13px; font-weight: 800; padding: 8px 16px; border-bottom-left-radius: 16px; }
+      .gallery .type-corner { position: absolute; top: 0; right: 0; color: #fff; font-size: 13px; font-weight: 800; padding: 8px 16px; border-bottom-left-radius: 16px; }
       .gallery .code-badge { position: absolute; top: 12px; left: 12px; background: rgba(15, 23, 42, 0.72); color: #fff; font-size: 12px; font-weight: 800; padding: 5px 10px; border-radius: 999px; }
       .gallery .media-fab { position: absolute; bottom: 14px; left: 16px; display: flex; gap: 8px; }
-      .media-fab span { width: 40px; height: 40px; border-radius: 12px; background: rgba(109, 40, 217, 0.78); color: #fff; display: grid; place-items: center; font-size: 17px; }
-      .gallery .from-strip { position: absolute; bottom: 0; right: 0; left: 0; padding: 10px 16px; font-size: 12px; font-weight: 700; color: #fff; background: linear-gradient(0deg, rgba(15,23,42,.55), transparent); }
-      .gallery .dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
-      .gallery .dots i { width: 7px; height: 7px; border-radius: 999px; background: rgba(255,255,255,.7); }
-      .gallery .dots i.on { width: 18px; background: #fff; }
+      .media-fab span { width: 44px; height: 44px; border-radius: 13px; background: rgba(109, 40, 217, 0.82); color: #fff; display: grid; place-items: center; font-size: 18px; backdrop-filter: blur(6px); }
+      .gallery .nav-a { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 999px; background: rgba(255,255,255,.9); display: grid; place-items: center; color: var(--text); font-size: 18px; box-shadow: var(--shadow-sm); }
+      .gallery .nav-a.r { right: 14px; } .gallery .nav-a.l { left: 14px; }
+      .thumbs { display: flex; gap: 8px; padding: 10px; background: var(--surface); border-radius: 0 0 22px 22px; }
+      .thumb-s { flex: 1; height: 64px; border-radius: 12px; background: linear-gradient(135deg, #e9d5ff, #dbeafe); border: 2px solid transparent; cursor: pointer; position: relative; overflow: hidden; }
+      .thumb-s.active { border-color: var(--primary); }
+      .thumb-s.more { display: grid; place-items: center; color: var(--text-2); font-weight: 900; font-size: 13px; background: var(--surface-muted); }
 
-      .summary-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
-      .type-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 900; padding: 5px 12px; border-radius: 999px; color: #fff; background: var(--t-sale); }
-      .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 800; }
-      .badge.success { background: var(--success-soft); color: var(--success-text); }
-      .badge.danger { background: var(--danger-soft); color: var(--danger-text); }
-      .summary-head h2 { font-size: 22px; line-height: 34px; font-weight: 900; margin: 12px 0 0; }
-      .price-band { margin-top: 14px; border-radius: 16px; background: linear-gradient(135deg, var(--primary-soft), #eef2ff); border: 1px solid var(--primary-border); padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+      /* ===== header card ===== */
+      .head-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+      .head-top .left { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+      .head-meta { font-size: 12px; color: var(--muted); font-weight: 700; }
+      .det-title { font-size: 22px; line-height: 34px; font-weight: 900; margin: 12px 0 0; }
+      .det-specs { font-size: 13px; color: var(--text-2); font-weight: 700; margin-top: 6px; }
+      .facts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 14px; }
+      .fact { border: 1px solid var(--border); border-radius: 14px; padding: 11px; text-align: center; background: var(--bg); }
+      .fact .fi { font-size: 18px; color: var(--primary); }
+      .fact .fv { font-size: 15px; font-weight: 900; margin-top: 4px; }
+      .fact .fk { font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 1px; }
+      .price-band { margin-top: 14px; border-radius: 16px; background: linear-gradient(135deg, var(--primary-soft), #eef2ff); border: 1px solid var(--primary-border); padding: 16px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+      .price-band .item { flex: 1; min-width: 120px; }
       .price-band .item .k { font-size: 12px; color: var(--muted); font-weight: 800; }
-      .price-band .item .v { font-size: 24px; font-weight: 900; color: var(--primary); margin-top: 2px; }
+      .price-band .item .v { font-size: 23px; font-weight: 900; color: var(--primary); margin-top: 2px; }
       .price-band .item .v small { font-size: 13px; color: var(--text-2); font-weight: 700; }
+      .price-band .item .v.sm { font-size: 17px; color: var(--text); }
       .price-band .vsep { width: 1px; align-self: stretch; background: var(--primary-border); }
-      .meta-line { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; font-size: 13px; color: var(--text-2); }
-      .meta-line span { display: inline-flex; align-items: center; gap: 6px; }
-      .meta-line b { color: var(--text); font-weight: 800; }
 
-      .quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .quick-actions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
       .quick { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; color: var(--text-2); transition: 0.15s; }
       .quick:hover { border-color: var(--primary-border); color: var(--primary); background: var(--primary-soft); }
       .quick .ic { width: 40px; height: 40px; border-radius: 13px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 18px; }
 
-      .sec-title { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 16px; font-weight: 900; }
-      .sec-title .bar { width: 4px; height: 18px; border-radius: 999px; background: var(--primary); }
+      /* ===== expert assessment (گزارش کارشناسی) ===== */
+      .assess { border: 1.5px solid var(--primary-border); border-radius: 22px; overflow: hidden; background: #fff; }
+      .assess-head { padding: 16px 18px; background: linear-gradient(135deg, var(--primary-soft), #eef2ff); display: flex; align-items: center; gap: 12px; }
+      .assess-head .badge-gis { width: 42px; height: 42px; border-radius: 13px; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 20px; flex: 0 0 auto; }
+      .assess-head h3 { margin: 0; font-size: 16px; font-weight: 900; }
+      .assess-head p { margin: 2px 0 0; font-size: 12px; color: var(--text-2); }
+      .score-top { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 18px; padding: 18px; }
+      .gauge-wrap { border: 1px solid var(--border); border-radius: 18px; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; background: var(--bg); }
+      .gauge { width: 132px; height: 132px; border-radius: 999px; background: conic-gradient(var(--c) calc(var(--p) * 1%), var(--surface-muted) 0); display: grid; place-items: center; position: relative; }
+      .gauge:before { content: ""; position: absolute; inset: 12px; background: #fff; border-radius: 999px; }
+      .gauge-num { position: relative; font-size: 34px; font-weight: 900; line-height: 1; }
+      .gauge-num small { font-size: 14px; color: var(--muted); font-weight: 700; }
+      .gauge-tier { font-size: 15px; font-weight: 900; }
+      .gauge-rec { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+      .gauge-rec .b { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
+      .dim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+      .dim-card { border: 1px solid var(--border); border-radius: 14px; padding: 11px 13px; background: #fff; }
+      .dim-card .dh { display: flex; align-items: center; gap: 8px; }
+      .dim-card .di { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 15px; flex: 0 0 auto; background: var(--primary-soft); color: var(--primary); }
+      .dim-card .dl { font-size: 12px; font-weight: 800; color: var(--text-2); flex: 1; }
+      .dim-card .dv { font-size: 15px; font-weight: 900; }
+      .dim-card .track { height: 6px; border-radius: 999px; background: var(--surface-muted); overflow: hidden; margin-top: 9px; }
+      .dim-card .fill { display: block; height: 100%; border-radius: 999px; }
 
-      /* dynamic groups */
+      .tiers { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 18px 16px; }
+      .tier-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-2); }
+      .tier-chip i { width: 9px; height: 9px; border-radius: 50%; }
+      .acc { border-top: 1px solid var(--border); }
+      .acc > summary { list-style: none; cursor: pointer; padding: 14px 18px; display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 14px; }
+      .acc > summary::-webkit-details-marker { display: none; }
+      .acc > summary .ai { width: 30px; height: 30px; border-radius: 9px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 15px; }
+      .acc > summary .chev { margin-inline-start: auto; color: var(--primary); transition: 0.2s; }
+      .acc[open] > summary .chev { transform: rotate(180deg); }
+      .acc .ab { padding: 0 18px 16px 18px; font-size: 13px; line-height: 24px; color: var(--text-2); }
+      .sw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 16px 18px; border-top: 1px solid var(--border); }
+      .sw-col h4 { margin: 0 0 10px; font-size: 13px; font-weight: 900; display: flex; align-items: center; gap: 7px; }
+      .sw-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 20px; color: var(--text-2); padding: 6px 0; }
+      .sw-item .mk { width: 18px; height: 18px; border-radius: 999px; display: grid; place-items: center; font-size: 11px; flex: 0 0 auto; margin-top: 1px; }
+      .sw-pos .mk { background: var(--success-soft); color: var(--success-text); }
+      .sw-neg .mk { background: var(--danger-soft); color: var(--danger-text); }
+
+      /* ===== field groups ===== */
       .group { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; margin-bottom: 12px; }
+      .group:last-child { margin-bottom: 0; }
       .group > summary { list-style: none; cursor: pointer; padding: 14px 16px; background: var(--primary-soft); display: flex; align-items: center; justify-content: space-between; font-weight: 900; font-size: 14px; color: var(--text); }
       .group > summary::-webkit-details-marker { display: none; }
       .group > summary .chev { color: var(--primary); transition: 0.2s; }
       .group[open] > summary .chev { transform: rotate(180deg); }
-      .group .grid { padding: 14px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .grid2 { padding: 14px 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
       .attr { border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px; background: var(--bg); }
       .attr .k { font-size: 12px; color: var(--muted); font-weight: 700; }
       .attr .v { font-size: 14px; color: var(--text); font-weight: 800; margin-top: 3px; }
       .attr.full { grid-column: 1 / -1; }
-      .attr .v.yes { color: var(--success-text); }
-      .attr .v.no { color: var(--muted); }
-      .chips-line { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px; }
-      .pill { background: var(--surface-muted); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 800; color: var(--text-2); }
+      .attr .v.yes { color: var(--success-text); } .attr .v.no { color: var(--muted); }
 
-      /* ===== ENVIRONMENTAL ASSESSMENT (ارزیابی محیطی) ===== */
-      .assess { border: 1px solid var(--primary-border); border-radius: 22px; overflow: hidden; background: #fff; }
-      .assess-head { padding: 16px 18px; background: linear-gradient(135deg, var(--primary-soft), #eef2ff); display: flex; align-items: center; gap: 12px; }
-      .assess-head .badge-gis { width: 40px; height: 40px; border-radius: 13px; background: var(--primary); color: #fff; display: grid; place-items: center; font-size: 19px; flex: 0 0 auto; }
-      .assess-head h3 { margin: 0; font-size: 16px; font-weight: 900; }
-      .assess-head p { margin: 2px 0 0; font-size: 12px; color: var(--text-2); }
-      .assess-map { position: relative; height: 240px; background: #eef6f4; overflow: hidden; }
-      .assess-map:before { content: ""; position: absolute; inset: -20%; background: linear-gradient(90deg, rgba(15,118,110,.12) 1px, transparent 1px), linear-gradient(0deg, rgba(15,118,110,.12) 1px, transparent 1px); background-size: 38px 38px; transform: rotate(-8deg); }
-      .assess-map .prop { position: absolute; top: 48%; right: 46%; width: 36px; height: 36px; border-radius: 999px; background: var(--t-sale); border: 3px solid #fff; color: #fff; display: grid; place-items: center; font-size: 15px; font-weight: 900; box-shadow: 0 10px 24px rgba(15,23,42,.25); z-index: 2; }
-      .assess-map .poi { position: absolute; width: 30px; height: 30px; border-radius: 999px; background: #fff; border: 2px solid var(--primary-border); display: grid; place-items: center; font-size: 14px; box-shadow: 0 6px 14px rgba(15,23,42,.15); }
-      .assess-map .ring { position: absolute; top: 48%; right: 46%; transform: translate(50%, -50%); border: 1.5px dashed rgba(109,40,217,.4); border-radius: 999px; }
-      .cat-tabs { display: flex; gap: 8px; padding: 14px 16px 0; overflow-x: auto; scrollbar-width: none; }
+      /* amenities checklist with completeness */
+      .amen-head { display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+      .amen-head .pct { font-size: 13px; font-weight: 900; color: var(--primary); flex: 0 0 auto; }
+      .amen-head .track { flex: 1; height: 8px; border-radius: 999px; background: var(--surface-muted); overflow: hidden; }
+      .amen-head .fill { display: block; height: 100%; border-radius: 999px; background: var(--primary); }
+      .amen-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 16px 16px; }
+      .amen { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; padding: 8px 11px; border: 1px solid var(--border); border-radius: 12px; }
+      .amen .ck { width: 20px; height: 20px; border-radius: 999px; display: grid; place-items: center; font-size: 11px; flex: 0 0 auto; }
+      .amen.has { color: var(--text); } .amen.has .ck { background: var(--success-soft); color: var(--success-text); }
+      .amen.no { color: var(--subtle); } .amen.no .ck { background: var(--surface-muted); color: var(--subtle); }
+      .yard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 16px 16px; }
+
+      /* ===== location / maps ===== */
+      .mini-map { position: relative; height: 230px; border-radius: 16px; overflow: hidden; background: #eef6f4; border: 1px solid var(--border); }
+      .mini-map:before { content: ""; position: absolute; inset: -20%; background: linear-gradient(90deg, rgba(15,118,110,.12) 1px, transparent 1px), linear-gradient(0deg, rgba(15,118,110,.12) 1px, transparent 1px); background-size: 38px 38px; transform: rotate(-8deg); }
+      .mini-map .road { position: absolute; background: #fff; border: 1px solid rgba(203,213,225,.7); border-radius: 999px; }
+      .mini-map .prop { position: absolute; top: 46%; right: 46%; width: 38px; height: 38px; border-radius: 999px 999px 999px 2px; background: var(--primary); border: 3px solid #fff; color: #fff; display: grid; place-items: center; font-size: 16px; transform: rotate(45deg); box-shadow: 0 10px 24px rgba(15,23,42,.25); z-index: 2; }
+      .mini-map .prop span { transform: rotate(-45deg); }
+      .mini-map .poi { position: absolute; width: 28px; height: 28px; border-radius: 999px; background: #fff; border: 2px solid var(--primary-border); display: grid; place-items: center; font-size: 13px; box-shadow: 0 6px 14px rgba(15,23,42,.15); }
+      .mini-map .privacy { position: absolute; right: 10px; bottom: 10px; background: rgba(15,23,42,.76); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 999px; }
+      .map-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+      /* cadastre */
+      .cadastre { position: relative; height: 220px; border-radius: 16px; overflow: hidden; background: #f8fafc; border: 1px solid var(--border); }
+      .cadastre .parcel { position: absolute; border: 1.5px solid #cbd5e1; background: rgba(203,213,225,.18); }
+      .cadastre .target { background: rgba(220,38,38,.7); border: 2px solid #b91c1c; box-shadow: 0 8px 20px rgba(220,38,38,.35); z-index: 2; }
+      .cadastre .road-line { position: absolute; background: #fff; border: 1px solid #e2e8f0; }
+
+      /* floor plan */
+      .floorplan { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; height: 280px; padding: 10px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg); }
+      .room { border: 1.5px solid var(--border-strong); border-radius: 8px; background: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 800; color: var(--text-2); position: relative; }
+      .room small { position: absolute; bottom: 6px; font-size: 10px; color: var(--subtle); font-weight: 700; }
+      .room.kitchen { background: #f5f3ff; } .room.living { background: #ecfeff; } .room.bed { background: #f0fdf4; }
+
+      /* road/access info */
+      .road-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .ri { border: 1px solid var(--border); border-radius: 14px; padding: 12px; background: var(--bg); }
+      .ri .k { font-size: 12px; color: var(--muted); font-weight: 700; }
+      .ri .v { font-size: 15px; font-weight: 900; margin-top: 4px; }
+      .utils { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+      .util { border: 1px solid var(--border); border-radius: 14px; padding: 12px; text-align: center; background: #fff; }
+      .util .ui { font-size: 20px; }
+      .util .un { font-size: 12px; font-weight: 800; margin-top: 5px; }
+      .util .ud { font-size: 12px; font-weight: 900; color: var(--primary); margin-top: 3px; }
+
+      /* environmental access */
+      .cat-tabs { display: flex; gap: 8px; padding: 0 0 12px; overflow-x: auto; scrollbar-width: none; }
       .cat-tabs::-webkit-scrollbar { display: none; }
-      .cat { height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--border); background: #fff; font-size: 12px; font-weight: 800; color: var(--text-2); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+      .cat { height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--border); background: #fff; font-size: 12px; font-weight: 800; color: var(--text-2); white-space: nowrap; cursor: pointer; }
       .cat.active { background: var(--primary-soft); border-color: var(--primary-border); color: var(--primary); }
-      .access-grid { padding: 14px 16px 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .access { border: 1px solid var(--border); border-radius: 14px; padding: 11px; display: flex; flex-direction: column; gap: 7px; }
-      .access .ah { display: flex; align-items: center; gap: 8px; }
-      .access .ai { width: 32px; height: 32px; border-radius: 9px; background: var(--surface-muted); color: var(--primary); display: grid; place-items: center; font-size: 15px; flex: 0 0 auto; }
+      .access-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .access { border: 1px solid var(--border); border-radius: 14px; padding: 11px; display: flex; align-items: center; gap: 10px; }
+      .access .ai { width: 36px; height: 36px; border-radius: 10px; background: var(--surface-muted); color: var(--primary); display: grid; place-items: center; font-size: 16px; flex: 0 0 auto; }
+      .access .info { flex: 1; min-width: 0; }
       .access .at { font-size: 13px; font-weight: 800; }
-      .access .dist { font-size: 13px; font-weight: 900; color: var(--text); }
-      .access .times { display: flex; gap: 12px; font-size: 11px; color: var(--muted); font-weight: 700; }
-      .access .times span { display: inline-flex; align-items: center; gap: 4px; }
+      .access .times { display: flex; gap: 12px; font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 3px; }
+      .access .dist { font-size: 14px; font-weight: 900; flex: 0 0 auto; }
 
-      /* side */
+      /* similar */
+      .sim-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .sim { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: 0.15s; }
+      .sim:hover { border-color: var(--primary-border); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+      .sim .st { height: 90px; background: linear-gradient(135deg, #dbeafe, #ede9fe); }
+      .sim .sb { padding: 10px 12px; }
+      .sim .stt { font-size: 12px; font-weight: 800; line-height: 19px; height: 38px; overflow: hidden; }
+      .sim .sp { font-size: 13px; font-weight: 900; color: var(--primary); margin-top: 6px; }
+
+      /* ===== sidebar ===== */
       .side { position: sticky; top: 92px; display: grid; gap: 16px; }
-      .price-cta { padding: 18px; }
       .price-cta .pk { font-size: 12px; color: var(--muted); font-weight: 800; }
-      .price-cta .pv { font-size: 26px; font-weight: 900; color: var(--text); margin: 2px 0 14px; }
+      .price-cta .pv { font-size: 25px; font-weight: 900; color: var(--text); margin: 2px 0 2px; }
       .price-cta .pv small { font-size: 14px; color: var(--muted); font-weight: 700; }
+      .price-cta .pmeter { font-size: 12px; color: var(--text-2); font-weight: 700; margin-bottom: 14px; }
+      .mini-score { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px; margin-bottom: 14px; }
+      .mini-score .ms-num { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 16px; font-weight: 900; color: #fff; flex: 0 0 auto; }
+      .mini-score .ms-t { font-size: 13px; font-weight: 900; } .mini-score .ms-s { font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 1px; }
       .act-list { display: grid; gap: 8px; }
       .act { height: 46px; border-radius: 14px; display: flex; align-items: center; gap: 10px; padding: 0 14px; font-size: 14px; font-weight: 800; border: 1px solid var(--border); background: var(--surface); color: var(--text); width: 100%; }
-      .act .ic { color: var(--primary); font-size: 17px; }
-      .act .arr { margin-inline-start: auto; color: var(--subtle); }
+      .act .ic { color: var(--primary); font-size: 17px; } .act .arr { margin-inline-start: auto; color: var(--subtle); }
       .act:hover { border-color: var(--primary-border); background: var(--primary-soft); }
-      .act.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
-      .act.primary .ic { color: #fff; }
+      .act.primary { background: var(--primary); color: #fff; border-color: var(--primary); } .act.primary .ic { color: #fff; }
       .act.danger { color: var(--danger-text); } .act.danger .ic { color: var(--danger); }
-      .agency-row { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-      .agency-logo { width: 54px; height: 54px; border-radius: 14px; background: var(--surface-muted); border: 1px solid var(--border); display: grid; place-items: center; color: var(--primary); font-weight: 900; font-size: 18px; flex: 0 0 auto; }
-      .agency-row .nm { font-size: 14px; font-weight: 900; }
-      .agency-row .lnk { font-size: 12px; color: var(--primary); margin-top: 3px; font-weight: 700; }
+
+      .agent { display: flex; align-items: center; gap: 12px; }
+      .agent-photo { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, #7c3aed, #0f766e); color: #fff; display: grid; place-items: center; font-weight: 900; font-size: 20px; flex: 0 0 auto; }
+      .agent .nm { font-size: 15px; font-weight: 900; display: flex; align-items: center; gap: 6px; }
+      .agent .vrf { color: var(--info); font-size: 14px; }
+      .agent .role { font-size: 12px; color: var(--muted); font-weight: 700; margin-top: 2px; }
+      .agent .stars { display: flex; align-items: center; gap: 3px; margin-top: 5px; font-size: 12px; color: var(--warning); font-weight: 800; }
+      .agent .stars .cnt { color: var(--muted); margin-inline-start: 4px; }
+      .agent-contact { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 14px; }
+      .ac-btn { height: 44px; border-radius: 13px; display: grid; place-items: center; font-size: 18px; border: 1px solid var(--border); color: var(--text-2); }
+      .ac-btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+      .ac-btn:hover { border-color: var(--primary-border); }
       .info-rows { display: grid; gap: 8px; }
       .info-row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; border: 1px solid var(--border); border-radius: 12px; padding: 9px 12px; }
-      .info-row span { color: var(--muted); font-weight: 700; }
-      .info-row b { font-weight: 800; }
+      .info-row span { color: var(--muted); font-weight: 700; } .info-row b { font-weight: 800; }
       h3.card-h { margin: 0 0 12px; font-size: 15px; font-weight: 900; }
       .ribbon { position: fixed; left: 24px; bottom: 24px; background: rgba(15, 23, 42, 0.82); color: #fff; border-radius: 999px; padding: 9px 13px; font-size: 12px; z-index: 60; }
     </style>
@@ -143,128 +251,274 @@
     <div class="shell">
       <header class="topbar">
         <a class="back-btn" href="ads.html" aria-label="بازگشت">→</a>
-        <h1>آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h1>
+        <h1 id="tTitle">جزئیات آگهی</h1>
         <span class="crumb">آگهی‌ها / جزئیات آگهی</span>
-        <button class="mark-btn" onclick="this.classList.toggle('on')" aria-label="نشان کردن">♡</button>
+        <button class="t-act" aria-label="اشتراک‌گذاری">↗</button>
+        <button class="t-act" onclick="this.classList.toggle('on')" aria-label="نشان کردن">♡</button>
       </header>
 
       <main class="layout">
-        <!-- MAIN -->
+        <!-- ===== MAIN ===== -->
         <div class="col">
+          <!-- gallery -->
           <div class="panel" style="overflow: hidden; padding: 0">
             <div class="gallery">
               <span class="ph"></span>
-              <span class="type-corner">فروش</span>
-              <span class="code-badge">کد ۵۴۲۱</span>
+              <span class="type-corner" id="gType">فروش</span>
+              <span class="code-badge" id="gCode">کد ۵۴۲۱</span>
+              <button class="nav-a r">›</button>
+              <button class="nav-a l">‹</button>
               <div class="media-fab"><span title="تور مجازی ۳۶۰">↻</span><span title="ویدئو">▷</span></div>
-              <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
-              <div class="from-strip">فروش / مسکونی / آپارتمان ⟵ از داتملک</div>
+            </div>
+            <div class="thumbs">
+              <div class="thumb-s active"></div>
+              <div class="thumb-s" style="background:linear-gradient(135deg,#fce7f3,#ede9fe)"></div>
+              <div class="thumb-s" style="background:linear-gradient(135deg,#dcfce7,#dbeafe)"></div>
+              <div class="thumb-s" style="background:linear-gradient(135deg,#fef3c7,#fee2e2)"></div>
+              <div class="thumb-s more">۸+ عکس</div>
             </div>
           </div>
 
+          <!-- header card -->
           <div class="panel pad">
-            <div class="summary-head">
-              <div style="display: flex; gap: 8px; flex-wrap: wrap">
-                <span class="type-tag">● فروش</span>
-                <span class="badge success">منتشر شده عمومی</span>
-                <span class="badge danger">فوری</span>
+            <div class="head-top">
+              <div class="left">
+                <span class="type-tag sale" id="hType">● فروش</span>
+                <span class="badge success" id="hStatus">منتشر شده عمومی</span>
+                <span class="badge danger" id="hUrgent">فوری</span>
               </div>
-              <span style="font-size: 12px; color: var(--muted); font-weight: 700">امروز · آژانس آسمان</span>
+              <span class="head-meta" id="hMeta">امروز · آژانس آسمان</span>
             </div>
-            <h2>آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h2>
+            <h2 class="det-title" id="hTitle">آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h2>
+            <div class="det-specs" id="hSpecs">۱۳۵ متری · ۳ خواب · طبقه ۴ · سند تک‌برگ</div>
+            <div class="facts">
+              <div class="fact"><div class="fi">▭</div><div class="fv">۱۳۵</div><div class="fk">متر زیربنا</div></div>
+              <div class="fact"><div class="fi">⌂</div><div class="fv">۳</div><div class="fk">خواب</div></div>
+              <div class="fact"><div class="fi">⌃</div><div class="fv">۴ از ۷</div><div class="fk">طبقه</div></div>
+              <div class="fact"><div class="fi">◷</div><div class="fv">۱۴۰۱</div><div class="fk">سال ساخت</div></div>
+              <div class="fact"><div class="fi">⛁</div><div class="fv">۱</div><div class="fk">پارکینگ</div></div>
+            </div>
             <div class="price-band">
-              <div class="item"><div class="k">مبلغ کل</div><div class="v">۱۲٫۸ میلیارد <small>تومان</small></div></div>
+              <div class="item"><div class="k">مبلغ کل</div><div class="v" id="hPrice">۱۲٫۸ میلیارد <small>تومان</small></div></div>
               <div class="vsep"></div>
-              <div class="item"><div class="k">قیمت هر متر</div><div class="v" style="font-size: 18px">۹۴٫۸ میلیون <small>تومان</small></div></div>
+              <div class="item"><div class="k">قیمت هر متر</div><div class="v sm">۹۴٫۸ میلیون <small>تومان</small></div></div>
               <div class="vsep"></div>
-              <div class="item"><div class="k">شرایط</div><div class="v" style="font-size: 16px; color: var(--text)">قابل مذاکره</div></div>
-            </div>
-            <div class="meta-line">
-              <span>⌖ محدوده: <b>تهران، سعادت‌آباد — محله کاج</b></span>
-              <span>◷ تاریخ انتشار: <b>امروز</b></span>
+              <div class="item"><div class="k">شرایط</div><div class="v sm">قابل مذاکره</div></div>
             </div>
           </div>
 
-          <!-- top actions (print / share / visit / note) -->
+          <!-- quick actions -->
           <div class="panel pad">
             <div class="quick-actions">
               <button class="quick"><span class="ic">⎙</span>پرینت</button>
               <button class="quick"><span class="ic">↗</span>اشتراک‌گذاری</button>
               <button class="quick"><span class="ic">▤</span>زمان بازدید</button>
               <button class="quick"><span class="ic">✎</span>یادداشت</button>
+              <button class="quick" onclick="addCompare()"><span class="ic">⇄</span>افزودن به مقایسه</button>
             </div>
           </div>
 
-          <!-- dynamic property groups -->
-          <div class="panel pad">
-            <div class="sec-title"><span class="bar"></span>مشخصات ملک</div>
-            <details class="group" open>
-              <summary>اطلاعات کلی <span class="chev">▾</span></summary>
-              <div class="grid">
-                <div class="attr"><div class="k">نوع ملک</div><div class="v">آپارتمان مسکونی</div></div>
-                <div class="attr"><div class="k">نوع معامله</div><div class="v">فروش</div></div>
-                <div class="attr"><div class="k">نوع سند</div><div class="v">تک‌برگ شش‌دانگ</div></div>
-                <div class="attr"><div class="k">وضعیت</div><div class="v">نوساز</div></div>
-              </div>
-            </details>
-            <details class="group" open>
-              <summary>متراژ و مشخصات ساختمان <span class="chev">▾</span></summary>
-              <div class="chips-line">
-                <span class="pill">زیربنا: ۱۳۵ متر</span>
-                <span class="pill">تعداد خواب: ۳</span>
-                <span class="pill">طبقه: ۴ از ۷</span>
-                <span class="pill">واحد در طبقه: ۲</span>
-                <span class="pill">سال ساخت: ۱۴۰۱</span>
-                <span class="pill">جهت: جنوبی</span>
-              </div>
-            </details>
-            <details class="group">
-              <summary>امکانات <span class="chev">▾</span></summary>
-              <div class="grid">
-                <div class="attr"><div class="k">پارکینگ</div><div class="v yes">دارد</div></div>
-                <div class="attr"><div class="k">انباری</div><div class="v yes">دارد</div></div>
-                <div class="attr"><div class="k">آسانسور</div><div class="v yes">دارد</div></div>
-                <div class="attr"><div class="k">بالکن</div><div class="v yes">دارد</div></div>
-                <div class="attr"><div class="k">روف‌گاردن</div><div class="v no">ندارد</div></div>
-                <div class="attr"><div class="k">استخر</div><div class="v no">ندارد</div></div>
-              </div>
-            </details>
-            <details class="group">
-              <summary>تأسیسات و پوشش <span class="chev">▾</span></summary>
-              <div class="grid">
-                <div class="attr"><div class="k">سیستم گرمایش</div><div class="v">پکیج</div></div>
-                <div class="attr"><div class="k">سیستم سرمایش</div><div class="v">کولر گازی / اسپلیت</div></div>
-                <div class="attr"><div class="k">کف‌پوش</div><div class="v">سرامیک و پارکت</div></div>
-                <div class="attr"><div class="k">دیوارپوش</div><div class="v">رنگ</div></div>
-              </div>
-            </details>
-            <details class="group">
-              <summary>توضیحات آگهی‌دهنده <span class="chev">▾</span></summary>
-              <div class="grid">
-                <div class="attr full"><div class="k">توضیحات</div><div class="v" style="font-weight: 600; line-height: 26px">آپارتمان نوساز با نورگیر عالی و نقشه‌ی دو کله، دسترسی سریع به بلوار دریا و میدان کاج. تحویل فوری، مناسب سکونت و سرمایه‌گذاری.</div></div>
-              </div>
-            </details>
-          </div>
-
-          <!-- ===== ENVIRONMENTAL ASSESSMENT ===== -->
-          <div class="assess">
+          <!-- ===== EXPERT ASSESSMENT ===== -->
+          <div class="assess" id="assess">
             <div class="assess-head">
               <span class="badge-gis">◎</span>
               <div>
-                <h3>ارزیابی محیطی ملک</h3>
-                <p>امکانات و خدمات اطراف ملک، با فاصله و زمان دسترسی (پیاده و خودرو) — برتری GIS داتملک.</p>
+                <h3>گزارش کارشناسی داتملک</h3>
+                <p>ارزیابی هوشمند ملک بر اساس موقعیت، قیمت، امکانات و داده‌های مکانی — برتری GIS داتملک.</p>
               </div>
             </div>
-            <div class="assess-map">
-              <span class="ring" style="width: 150px; height: 150px"></span>
-              <span class="ring" style="width: 250px; height: 250px"></span>
-              <span class="prop">⌂</span>
-              <span class="poi" style="top: 30%; right: 30%">Ⓜ</span>
-              <span class="poi" style="top: 64%; right: 32%">✎</span>
-              <span class="poi" style="top: 38%; right: 64%">＋</span>
-              <span class="poi" style="top: 70%; right: 58%">▦</span>
-              <span class="poi" style="top: 24%; right: 52%">☾</span>
+            <div class="score-top">
+              <div class="gauge-wrap">
+                <div class="gauge" id="gauge" style="--p:85;--c:var(--success)"><div class="gauge-num" id="gaugeNum">۸۵<small>/۱۰۰</small></div></div>
+                <div class="gauge-tier" id="gaugeTier" style="color:var(--success-text)">ملک ممتاز</div>
+                <div class="gauge-rec" id="gaugeRec"></div>
+              </div>
+              <div class="dim-grid" id="dimGrid"><!-- dim cards injected --></div>
             </div>
+            <div class="tiers">
+              <span class="tier-chip"><i style="background:var(--success)"></i>ممتاز (۸۵+)</span>
+              <span class="tier-chip"><i style="background:var(--info)"></i>بسیار خوب (۷۰–۸۴)</span>
+              <span class="tier-chip"><i style="background:var(--teal)"></i>خوب (۵۵–۶۹)</span>
+              <span class="tier-chip"><i style="background:var(--warning)"></i>متوسط (۴۰–۵۴)</span>
+              <span class="tier-chip"><i style="background:var(--orange)"></i>ضعیف (۲۵–۳۹)</span>
+              <span class="tier-chip"><i style="background:var(--danger)"></i>پرریسک (زیر ۲۵)</span>
+            </div>
+            <details class="acc" open>
+              <summary><span class="ai">✦</span>تفسیر کلی<span class="chev">▾</span></summary>
+              <div class="ab">این ملک از نظر موقعیت مکانی، دسترسی‌ها و کیفیت ساخت در سطح مطلوبی قرار دارد. قیمت پیشنهادی نسبت به میانگین منطقه منصفانه ارزیابی شده و گزینه‌ی مناسبی برای سکونت و سرمایه‌گذاری است.</div>
+            </details>
+            <details class="acc">
+              <summary><span class="ai">⌂</span>وضعیت کلی ملک<span class="chev">▾</span></summary>
+              <div class="ab">وضعیت فیزیکی ساختمان نوساز و فاقد استهلاک است. اسناد مالکیت تک‌برگ و بدون مشکل حقوقی بررسی شده‌اند. کیفیت مصالح و نازک‌کاری در حد استاندارد منطقه است.</div>
+            </details>
+            <details class="acc">
+              <summary><span class="ai">▤</span>جمع‌بندی کارشناسی<span class="chev">▾</span></summary>
+              <div class="ab">بر اساس داده‌ها و شاخص‌های ارزیابی داتملک، این ملک در سطح «ممتاز» قرار گرفته و خرید آن با ریسک پایین توصیه می‌شود. توصیه می‌شود پیش از معامله، بازدید حضوری و استعلام نهایی اسناد انجام شود.</div>
+            </details>
+            <div class="sw-grid">
+              <div class="sw-col">
+                <h4>✓ نقاط قوت</h4>
+                <div class="sw-item sw-pos"><span class="mk">✓</span>موقعیت مکانی مطلوب و دسترسی عالی به مترو و بزرگراه</div>
+                <div class="sw-item sw-pos"><span class="mk">✓</span>ساخت نوساز با نورگیری مناسب از سه جهت</div>
+                <div class="sw-item sw-pos"><span class="mk">✓</span>سند تک‌برگ شش‌دانگ و بدون مشکل حقوقی</div>
+                <div class="sw-item sw-pos"><span class="mk">✓</span>قیمت منصفانه نسبت به میانگین محله</div>
+              </div>
+              <div class="sw-col">
+                <h4 style="color:var(--danger-text)">⚠ نقاط ضعف</h4>
+                <div class="sw-item sw-neg"><span class="mk">!</span>نزدیکی نسبی به بزرگراه و احتمال آلودگی صوتی</div>
+                <div class="sw-item sw-neg"><span class="mk">!</span>عدم وجود روف‌گاردن و استخر در ساختمان</div>
+                <div class="sw-item sw-neg"><span class="mk">!</span>پارکینگ محدود (یک واحد) برای متراژ بالا</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== specs (field groups) ===== -->
+          <div class="panel pad">
+            <div class="sec-title"><span class="bar"></span>مشخصات کامل ملک</div>
+            <details class="group" open>
+              <summary>اطلاعات عرصه و کلی <span class="chev">▾</span></summary>
+              <div class="grid2">
+                <div class="attr"><div class="k">متراژ زمین</div><div class="v">۱۳۵ متر</div></div>
+                <div class="attr"><div class="k">متراژ بنا</div><div class="v">۸۴ متر</div></div>
+                <div class="attr"><div class="k">نوع ملک</div><div class="v">آپارتمان مسکونی</div></div>
+                <div class="attr"><div class="k">استان</div><div class="v">تهران</div></div>
+                <div class="attr"><div class="k">شهر</div><div class="v">تهران</div></div>
+                <div class="attr"><div class="k">محله</div><div class="v">سعادت‌آباد — کاج</div></div>
+                <div class="attr"><div class="k">نوع کاربری</div><div class="v">مسکونی</div></div>
+                <div class="attr"><div class="k">نوع سند</div><div class="v">تک‌برگ شش‌دانگ</div></div>
+                <div class="attr"><div class="k">جهت ساختمان</div><div class="v">جنوبی</div></div>
+              </div>
+            </details>
+            <details class="group" open>
+              <summary>مشخصات ساختمان <span class="chev">▾</span></summary>
+              <div class="grid2">
+                <div class="attr"><div class="k">سال ساخت</div><div class="v">۱۴۰۱</div></div>
+                <div class="attr"><div class="k">تعداد طبقات</div><div class="v">۷</div></div>
+                <div class="attr"><div class="k">واحد در طبقه</div><div class="v">۲</div></div>
+                <div class="attr"><div class="k">تعداد کل واحدها</div><div class="v">۱۴</div></div>
+                <div class="attr"><div class="k">تعداد اتاق</div><div class="v">۳</div></div>
+                <div class="attr"><div class="k">تعداد پارکینگ</div><div class="v">۱</div></div>
+                <div class="attr"><div class="k">سیستم گرمایش</div><div class="v">پکیج</div></div>
+                <div class="attr"><div class="k">سیستم سرمایش</div><div class="v">کولر گازی / اسپلیت</div></div>
+                <div class="attr"><div class="k">کف‌پوش</div><div class="v">سرامیک و پارکت</div></div>
+              </div>
+            </details>
+            <details class="group" open>
+              <summary>اطلاعات فروش <span class="chev">▾</span></summary>
+              <div class="grid2">
+                <div class="attr"><div class="k">قیمت کل</div><div class="v" style="color:var(--primary)">۱۲٫۸ میلیارد تومان</div></div>
+                <div class="attr"><div class="k">قیمت هر متر</div><div class="v">۹۴٫۸ میلیون تومان</div></div>
+                <div class="attr"><div class="k">قابل تبدیل به رهن</div><div class="v no">خیر</div></div>
+                <div class="attr"><div class="k">وام / تسهیلات</div><div class="v">قابل انتقال</div></div>
+                <div class="attr"><div class="k">شرایط پرداخت</div><div class="v">نقد / قابل مذاکره</div></div>
+                <div class="attr"><div class="k">وضعیت تخلیه</div><div class="v">تحویل فوری</div></div>
+              </div>
+            </details>
+          </div>
+
+          <!-- ===== amenities ===== -->
+          <div class="panel pad">
+            <div class="sec-title"><span class="bar"></span>امکانات و مشخصات</div>
+            <details class="group" open>
+              <summary>امکانات داخل واحد <span class="chev">▾</span></summary>
+              <div class="amen-head"><span class="pct">۹۰٪</span><span class="track"><span class="fill" style="width:90%"></span></span><span style="font-size:11px;color:var(--muted);font-weight:700">تکمیل اطلاعات</span></div>
+              <div class="amen-grid">
+                <div class="amen has"><span class="ck">✓</span>آیفون تصویری</div>
+                <div class="amen has"><span class="ck">✓</span>درب ضد سرقت</div>
+                <div class="amen has"><span class="ck">✓</span>پنجره دوجداره</div>
+                <div class="amen has"><span class="ck">✓</span>کابینت ام‌دی‌اف</div>
+                <div class="amen has"><span class="ck">✓</span>کفپوش سرامیک</div>
+                <div class="amen has"><span class="ck">✓</span>بالکن</div>
+                <div class="amen has"><span class="ck">✓</span>انباری</div>
+                <div class="amen no"><span class="ck">✕</span>روف‌گاردن</div>
+                <div class="amen no"><span class="ck">✕</span>استخر داخل واحد</div>
+              </div>
+            </details>
+            <details class="group">
+              <summary>مشاعات ساختمان <span class="chev">▾</span></summary>
+              <div class="amen-head"><span class="pct">۹۵٪</span><span class="track"><span class="fill" style="width:95%"></span></span><span style="font-size:11px;color:var(--muted);font-weight:700">تکمیل اطلاعات</span></div>
+              <div class="amen-grid">
+                <div class="amen has"><span class="ck">✓</span>آسانسور</div>
+                <div class="amen has"><span class="ck">✓</span>دوربین مداربسته</div>
+                <div class="amen has"><span class="ck">✓</span>آنتن مرکزی</div>
+                <div class="amen has"><span class="ck">✓</span>درب برقی پارکینگ</div>
+                <div class="amen has"><span class="ck">✓</span>لابی</div>
+                <div class="amen has"><span class="ck">✓</span>نگهبانی</div>
+                <div class="amen no"><span class="ck">✕</span>سالن اجتماعات</div>
+                <div class="amen no"><span class="ck">✕</span>سالن ورزش</div>
+              </div>
+            </details>
+            <details class="group">
+              <summary>امکانات و مشخصات حیاط <span class="chev">▾</span></summary>
+              <div class="amen-head"><span class="pct">۸۰٪</span><span class="track"><span class="fill" style="width:80%"></span></span><span style="font-size:11px;color:var(--muted);font-weight:700">تکمیل اطلاعات</span></div>
+              <div class="yard-grid">
+                <div class="attr"><div class="k">جنس کف حیاط</div><div class="v">سنگ‌فرش</div></div>
+                <div class="attr"><div class="k">نوع درختان</div><div class="v">آلبالو، گردو، توت</div></div>
+                <div class="attr"><div class="k">میانگین سن درختان</div><div class="v">۵ سال</div></div>
+                <div class="attr"><div class="k">نوع گل و گیاه</div><div class="v">فصلی</div></div>
+                <div class="attr"><div class="k">روش آبیاری</div><div class="v">قطره‌ای</div></div>
+                <div class="attr"><div class="k">روشنایی و نورپردازی</div><div class="v">دارد</div></div>
+                <div class="attr"><div class="k">استخر / ذخیره آب</div><div class="v">دارد</div></div>
+                <div class="attr"><div class="k">آلاچیق</div><div class="v">دارد</div></div>
+              </div>
+            </details>
+          </div>
+
+          <!-- description -->
+          <div class="panel pad">
+            <div class="sec-title"><span class="bar"></span>توضیحات آگهی‌دهنده</div>
+            <p style="font-size:14px;line-height:28px;color:var(--text-2);margin:0">آپارتمان نوساز در موقعیت مکانی مطلوب از منطقه ۱۱، نزدیک بلوار فرهنگ. بالاترین کیفیت ساخت و نورگیری فوق‌العاده از سه جهت، تمام فضاها بهره‌مند از نور طبیعی. کیفیت ساخت عالی و قیمت بی‌رقیب در منطقه. اطلاعات بیشتر هنگام بازدید. پلاک: ۱۱ — مشاوره و خدمات تخصصی بازآفرینی مسکن ✅</p>
+          </div>
+
+          <!-- ===== location & maps ===== -->
+          <div class="panel pad">
+            <div class="sec-title"><span class="bar"></span>موقعیت و دسترسی <span class="hint">⚲ موقعیت تقریبی برای حفظ حریم خصوصی</span></div>
+            <div class="mini-map">
+              <span class="road" style="right:-5%;top:40%;width:110%;height:14px;transform:rotate(-6deg)"></span>
+              <span class="road" style="right:55%;top:-5%;width:12px;height:110%;transform:rotate(5deg)"></span>
+              <span class="prop"><span>⌂</span></span>
+              <span class="poi" style="top:28%;right:30%">Ⓜ</span>
+              <span class="poi" style="top:64%;right:34%">✎</span>
+              <span class="poi" style="top:36%;right:64%">＋</span>
+              <span class="poi" style="top:70%;right:60%">▦</span>
+              <span class="privacy">⚲ موقعیت تقریبی</span>
+            </div>
+            <div class="map-actions">
+              <a class="btn btn-soft" href="map.html">⌖ مشاهده روی نقشه‌ی کامل</a>
+              <button class="btn btn-outline">↗ مسیریابی</button>
+            </div>
+
+            <div class="sec-title" style="margin-top:20px"><span class="bar"></span>موقعیت کلی ملک (کاداستر)</div>
+            <div class="cadastre" id="cadastre">
+              <span class="road-line" style="right:0;top:42%;width:100%;height:10px"></span>
+              <span class="road-line" style="right:38%;top:0;width:8px;height:100%"></span>
+            </div>
+
+            <div class="sec-title" style="margin-top:20px"><span class="bar"></span>پلان داخلی واحد</div>
+            <div class="floorplan">
+              <div class="room living">پذیرایی<small>۳۲ متر</small></div>
+              <div class="room kitchen">آشپزخانه<small>۱۴ متر</small></div>
+              <div class="room bed">اتاق خواب ۱<small>۱۶ متر</small></div>
+              <div class="room bed">اتاق خواب ۲<small>۱۲ متر</small></div>
+            </div>
+
+            <div class="sec-title" style="margin-top:20px"><span class="bar"></span>اطلاعات معبر و تأسیسات شهری</div>
+            <div class="road-info">
+              <div class="ri"><div class="k">نوع معبر</div><div class="v">دو طرفه</div></div>
+              <div class="ri"><div class="k">عرض معبر</div><div class="v">۱۸ متر</div></div>
+              <div class="ri"><div class="k">پوشش معبر</div><div class="v">آسفالت</div></div>
+            </div>
+            <div class="utils">
+              <div class="util"><div class="ui">🚰</div><div class="un">لوله آب</div><div class="ud">۲۰ متر</div></div>
+              <div class="util"><div class="ui">🔥</div><div class="un">علمک گاز</div><div class="ud">درب ملک</div></div>
+              <div class="util"><div class="ui">☎</div><div class="un">تیر تلفن</div><div class="ud">۳۵ متر</div></div>
+              <div class="util"><div class="ui">⚡</div><div class="un">برق</div><div class="ud">درب ملک</div></div>
+            </div>
+          </div>
+
+          <!-- ===== environmental access ===== -->
+          <div class="panel pad">
+            <div class="sec-title"><span class="bar"></span>ارزیابی محیطی و دسترسی‌ها</div>
             <div class="cat-tabs">
               <span class="cat active">همه</span>
               <span class="cat">حمل‌ونقل</span>
@@ -275,55 +529,135 @@
               <span class="cat">اصناف داتملک</span>
             </div>
             <div class="access-grid">
-              <div class="access"><div class="ah"><span class="ai">Ⓜ</span><span class="at">ایستگاه مترو سعادت‌آباد</span></div><div class="dist">۴۵۰ متر</div><div class="times"><span>🚶 ۶ دقیقه</span><span>🚗 کمتر از ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">✎</span><span class="at">مدرسه‌ی غیرانتفاعی نور</span></div><div class="dist">۳۲۰ متر</div><div class="times"><span>🚶 ۴ دقیقه</span><span>🚗 کمتر از ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">＋</span><span class="at">درمانگاه شبانه‌روزی کاج</span></div><div class="dist">۶۸۰ متر</div><div class="times"><span>🚶 ۹ دقیقه</span><span>🚗 ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">▦</span><span class="at">مرکز خرید تیراژه</span></div><div class="dist">۵۲۰ متر</div><div class="times"><span>🚶 ۷ دقیقه</span><span>🚗 ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">☾</span><span class="at">مسجد جامع سعادت‌آباد</span></div><div class="dist">۲۱۰ متر</div><div class="times"><span>🚶 ۳ دقیقه</span><span>🚗 کمتر از ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">❧</span><span class="at">بوستان جوانمردان</span></div><div class="dist">۸۹۰ متر</div><div class="times"><span>🚶 ۱۲ دقیقه</span><span>🚗 ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">▤</span><span class="at">نانوایی بربری (صنف داتملک)</span></div><div class="dist">۱۵۰ متر</div><div class="times"><span>🚶 ۲ دقیقه</span><span>🚗 کمتر از ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">$</span><span class="at">بانک ملت شعبه کاج</span></div><div class="dist">۳۸۰ متر</div><div class="times"><span>🚶 ۵ دقیقه</span><span>🚗 کمتر از ۱ دقیقه</span></div></div>
-              <div class="access"><div class="ah"><span class="ai">⌗</span><span class="at">سوپرمارکت رفاه</span></div><div class="dist">۲۶۰ متر</div><div class="times"><span>🚶 ۳ دقیقه</span><span>🚗 کمتر از ۱ دقیقه</span></div></div>
+              <div class="access"><span class="ai">Ⓜ</span><div class="info"><div class="at">ایستگاه مترو سعادت‌آباد</div><div class="times"><span>🚶 ۶ دقیقه</span><span>🚗 ‹۱ دقیقه</span></div></div><span class="dist">۴۵۰م</span></div>
+              <div class="access"><span class="ai">✎</span><div class="info"><div class="at">مدرسه‌ی غیرانتفاعی نور</div><div class="times"><span>🚶 ۴ دقیقه</span><span>🚗 ‹۱ دقیقه</span></div></div><span class="dist">۳۲۰م</span></div>
+              <div class="access"><span class="ai">＋</span><div class="info"><div class="at">درمانگاه شبانه‌روزی کاج</div><div class="times"><span>🚶 ۹ دقیقه</span><span>🚗 ۱ دقیقه</span></div></div><span class="dist">۶۸۰م</span></div>
+              <div class="access"><span class="ai">▦</span><div class="info"><div class="at">مرکز خرید تیراژه</div><div class="times"><span>🚶 ۷ دقیقه</span><span>🚗 ۱ دقیقه</span></div></div><span class="dist">۵۲۰م</span></div>
+              <div class="access"><span class="ai">☾</span><div class="info"><div class="at">مسجد جامع سعادت‌آباد</div><div class="times"><span>🚶 ۳ دقیقه</span><span>🚗 ‹۱ دقیقه</span></div></div><span class="dist">۲۱۰م</span></div>
+              <div class="access"><span class="ai">▤</span><div class="info"><div class="at">نانوایی بربری (صنف داتملک)</div><div class="times"><span>🚶 ۲ دقیقه</span><span>🚗 ‹۱ دقیقه</span></div></div><span class="dist">۱۵۰م</span></div>
             </div>
+          </div>
+
+          <!-- ===== similar ===== -->
+          <div class="panel pad">
+            <div class="sec-title"><span class="bar"></span>آگهی‌های مشابه در این محدوده</div>
+            <div class="sim-grid" id="simGrid"><!-- injected --></div>
           </div>
         </div>
 
-        <!-- SIDE -->
+        <!-- ===== SIDEBAR ===== -->
         <aside class="side">
-          <div class="panel price-cta">
+          <div class="panel pad price-cta">
             <div class="pk">مبلغ کل (فروش)</div>
-            <div class="pv">۱۲٫۸ میلیارد <small>تومان</small></div>
+            <div class="pv" id="sPrice">۱۲٫۸ میلیارد <small>تومان</small></div>
+            <div class="pmeter">قیمت هر متر: ۹۴٫۸ میلیون تومان</div>
+            <div class="mini-score">
+              <div class="ms-num" id="sScoreNum" style="background:var(--success)">۸۵</div>
+              <div><div class="ms-t" id="sScoreTier">ارزیابی: ملک ممتاز</div><div class="ms-s">گزارش کارشناسی داتملک</div></div>
+            </div>
             <div class="act-list">
               <button class="act primary"><span class="ic">◌</span>شروع گفتگو با آگهی‌دهنده<span class="arr">‹</span></button>
               <button class="act"><span class="ic">☎</span>تماس با آگهی‌دهنده<span class="arr">‹</span></button>
-              <button class="act"><span class="ic">✉</span>ارسال پیامک<span class="arr">‹</span></button>
-              <button class="act danger"><span class="ic">⚠</span>ثبت تخلف<span class="arr">‹</span></button>
+              <button class="act"><span class="ic">▤</span>درخواست زمان بازدید<span class="arr">‹</span></button>
+              <button class="act danger"><span class="ic">⚠</span>گزارش تخلف<span class="arr">‹</span></button>
             </div>
           </div>
 
+          <!-- advertiser -->
           <div class="panel pad">
-            <div class="agency-row">
-              <div class="agency-logo">آ</div>
-              <div style="flex: 1">
-                <div class="nm">آژانس املاک آسمان</div>
-                <div class="lnk">مشاهده‌ی سایر آگهی‌های این آژانس ‹</div>
+            <h3 class="card-h">آگهی‌دهنده</h3>
+            <div class="agent">
+              <div class="agent-photo">ر</div>
+              <div style="flex:1">
+                <div class="nm">آرمین رمضانی <span class="vrf" title="تأییدشده">✔</span></div>
+                <div class="role">مشاور · آژانس املاک آسمان</div>
+                <div class="stars">★★★★★ <span class="cnt">۵ از ۳۵ آگهی</span></div>
               </div>
             </div>
+            <div class="agent-contact">
+              <button class="ac-btn primary" title="گفتگو">◌</button>
+              <button class="ac-btn" title="تماس">☎</button>
+              <button class="ac-btn" title="پیامک">✉</button>
+            </div>
+            <a href="#" style="display:block;text-align:center;margin-top:12px;font-size:12px;font-weight:800;color:var(--primary)">مشاهده‌ی سایر آگهی‌های این مشاور ‹</a>
           </div>
 
+          <!-- summary -->
           <div class="panel pad">
             <h3 class="card-h">خلاصه‌ی آگهی</h3>
             <div class="info-rows">
-              <div class="info-row"><span>نوع آگهی</span><b style="color: var(--t-sale)">فروش</b></div>
-              <div class="info-row"><span>وضعیت</span><b style="color: var(--success-text)">منتشر شده عمومی</b></div>
-              <div class="info-row"><span>کد آگهی</span><b>۵۴۲۱</b></div>
+              <div class="info-row"><span>نوع آگهی</span><b id="iType" style="color:var(--t-sale)">فروش</b></div>
+              <div class="info-row"><span>وضعیت</span><b id="iStatus" style="color:var(--success-text)">منتشر شده عمومی</b></div>
+              <div class="info-row"><span>کد آگهی</span><b id="iCode">۵۴۲۱</b></div>
               <div class="info-row"><span>متراژ</span><b>۱۳۵ متر</b></div>
-              <div class="info-row"><span>تاریخ ثبت</span><b>امروز</b></div>
+              <div class="info-row"><span>ارزیابی داتملک</span><b id="iScore" style="color:var(--success-text)">۸۵ · ممتاز</b></div>
+              <div class="info-row"><span>تاریخ ثبت</span><b id="iTime">امروز</b></div>
             </div>
           </div>
         </aside>
       </main>
     </div>
     <div class="ribbon">Dotmelk · جزئیات آگهی (دسکتاپ)</div>
+
+    <script src="../assets/dotmelk-ads-data.js?v=2"></script>
+    <script>
+      const DIM_ICONS = { "امکانات": "⌂", "ویژگی‌ها": "✦", "قیمت": "﷼", "دسترسی‌ها": "⌖", "توسعه": "↗", "محدودیت‌ها": "⚠" };
+      const params = new URLSearchParams(location.search);
+      const ad = DM_ADS.find(a => a.key === params.get("key")) || DM_ADS[0];
+      const t = DM_tier(ad.score); // single source of truth (shared data file)
+
+      // header
+      document.getElementById("tTitle").textContent = ad.title;
+      document.getElementById("hTitle").textContent = ad.title;
+      document.getElementById("hSpecs").textContent = ad.specs;
+      document.getElementById("hType").innerHTML = "● " + ad.typeLabel;
+      document.getElementById("hType").className = "type-tag " + ad.type;
+      document.getElementById("hStatus").textContent = ad.statusLabel;
+      document.getElementById("hMeta").textContent = ad.time + " · " + ad.agency;
+      document.getElementById("hUrgent").style.display = ad.urgent ? "" : "none";
+      document.getElementById("hPrice").innerHTML = ad.price.replace(/<span class="label">[^<]*<\/span>\s*/g, "");
+      document.getElementById("gType").textContent = ad.typeLabel;
+      document.getElementById("gType").style.background = "var(--t-" + ad.type + ")";
+      document.getElementById("gCode").textContent = "کد " + ad.code;
+      document.getElementById("sPrice").innerHTML = ad.price.replace(/<span class="label">[^<]*<\/span>\s*/g, "");
+      // summary
+      document.getElementById("iType").textContent = ad.typeLabel;
+      document.getElementById("iType").style.color = "var(--t-" + ad.type + ")";
+      document.getElementById("iStatus").textContent = ad.statusLabel;
+      document.getElementById("iCode").textContent = ad.code;
+      document.getElementById("iTime").textContent = ad.time;
+      document.getElementById("iScore").textContent = DM_fa(ad.score) + " · " + t.l;
+
+      // gauge
+      const g = document.getElementById("gauge");
+      g.style.setProperty("--p", ad.score);
+      g.style.setProperty("--c", t.color);
+      document.getElementById("gaugeNum").innerHTML = DM_fa(ad.score) + "<small>/۱۰۰</small>";
+      const gt = document.getElementById("gaugeTier"); gt.textContent = t.l; gt.style.color = t.text;
+      document.getElementById("gaugeRec").innerHTML =
+        '<span class="b" style="background:var(--success-soft);color:var(--success-text)">✓ ' + t.rec + '</span>' +
+        '<span class="b" style="background:var(--primary-soft);color:var(--primary)">' + t.risk + '</span>';
+      document.getElementById("sScoreNum").textContent = DM_fa(ad.score);
+      document.getElementById("sScoreNum").style.background = t.color;
+      document.getElementById("sScoreTier").textContent = "ارزیابی: " + t.l;
+      document.getElementById("iScore").style.color = t.text;
+
+      // dimension cards
+      document.getElementById("dimGrid").innerHTML = DM_DIMS.map((d, i) => {
+        const v = ad.a[i], col = d[1] === "g" ? "var(--teal)" : "var(--primary)";
+        return `<div class="dim-card"><div class="dh"><span class="di" style="${d[1] === "g" ? "background:var(--teal-soft);color:var(--teal)" : ""}">${DIM_ICONS[d[0]] || "•"}</span><span class="dl">${d[0]}</span><span class="dv">${DM_fa(v)}</span></div><div class="track"><span class="fill" style="width:${v}%;background:${col}"></span></div></div>`;
+      }).join("");
+
+      // similar (other ads, first 3 with a pin)
+      document.getElementById("simGrid").innerHTML = DM_ADS.filter(a => a.key !== ad.key && a.pin).slice(0, 3).map(a =>
+        `<div class="sim" onclick="location.href='property-detail.html?key=${a.key}'"><div class="st" style="background:linear-gradient(135deg,#dbeafe,#ede9fe)"></div><div class="sb"><div class="stt">${a.title}</div><div class="sp">${a.price.replace(/<[^>]+>/g, "").replace(/مبلغ:|ودیعه:|اجاره:|حداقل سرمایه:|پیش‌پرداخت:|اجاره شبانه:/g, "").trim()}</div></div></div>`
+      ).join("");
+
+      function addCompare() {
+        const set = new Set(JSON.parse(localStorage.getItem("dm_compare") || "[]"));
+        set.add(ad.key); localStorage.setItem("dm_compare", JSON.stringify([...set].slice(0, 4)));
+        alert("به لیست مقایسه اضافه شد (" + set.size + " ملک)");
+      }
+    </script>
   </body>
 </html>

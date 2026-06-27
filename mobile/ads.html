@@ -7,40 +7,21 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
       :root {
-        --primary: #6d28d9;
-        --primary-hover: #5b21b6;
-        --primary-soft: #f5f3ff;
-        --primary-border: #c4b5fd;
-        --bg: #f8fafc;
-        --surface: #ffffff;
-        --card: #ffffff;
-        --surface-muted: #f1f5f9;
-        --text: #0f172a;
-        --text-2: #475569;
-        --muted: #64748b;
-        --subtle: #94a3b8;
-        --border: #e2e8f0;
-        --border-strong: #cbd5e1;
-        --success-soft: #dcfce7;
-        --success-text: #166534;
-        --warning-soft: #fef3c7;
-        --warning-text: #92400e;
-        --danger: #dc2626;
-        --danger-soft: #fee2e2;
-        --danger-text: #991b1b;
-        --info-soft: #dbeafe;
-        --info-text: #1e40af;
-        --pink-soft: #fce7f3;
-        --t-sale: #2563eb;
-        --t-rent: #16a34a;
-        --t-participation: #ea580c;
-        --t-presell: #dc2626;
-        --t-short: #0d9488;
-        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+        --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-subtle: #ede9fe; --primary-border: #c4b5fd;
+        --bg: #f8fafc; --surface: #ffffff; --card: #ffffff; --surface-muted: #f1f5f9;
+        --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
+        --border: #e2e8f0; --border-strong: #cbd5e1;
+        --success-soft: #dcfce7; --success-text: #166534; --success: #16a34a;
+        --warning-soft: #fef3c7; --warning-text: #92400e; --warning: #d97706;
+        --danger: #dc2626; --danger-soft: #fee2e2; --danger-text: #991b1b;
+        --info: #2563eb; --info-soft: #dbeafe; --info-text: #1e40af; --pink-soft: #fce7f3;
+        --t-sale: #2563eb; --t-rent: #16a34a; --t-participation: #ea580c; --t-presell: #dc2626; --t-short: #0d9488;
+        --teal: #0f766e; --teal-soft: #ccfbf1; --orange: #ea580c; --orange-soft: #ffedd5; --map-user: #2563eb;
+        --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06); --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.08); --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.14);
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; overflow-x: hidden; }
-      body { margin: 0; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); direction: rtl; min-height: 100vh; }
+      body { margin: 0; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); direction: rtl; min-height: 100vh; overflow-x: hidden; }
       button, input { font: inherit; }
       button { border: 0; cursor: pointer; background: none; color: inherit; }
       a { text-decoration: none; color: inherit; }
@@ -51,6 +32,14 @@
       .topbar h1 { margin: 0; font-size: 18px; font-weight: 900; line-height: 26px; }
       .topbar p { margin: 0; font-size: 12px; color: var(--muted); }
       .icon-btn { width: 42px; height: 42px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.92); display: grid; place-items: center; color: var(--text-2); font-size: 20px; flex: 0 0 auto; }
+      .loc-pill { height: 36px; padding: 0 11px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.92); color: var(--text); font-size: 12px; font-weight: 900; display: inline-flex; align-items: center; gap: 5px; flex: 0 0 auto; white-space: nowrap; }
+      /* کارشناسی ملک banner (mobile, slim) */
+      .expert-banner-m { display: flex; align-items: center; gap: 12px; background: linear-gradient(120deg, #6d28d9, #5b21b6); border-radius: 18px; padding: 12px 14px; margin-top: 12px; color: #fff; box-shadow: 0 12px 26px rgba(109, 40, 217, 0.22); }
+      .bem-icon { width: 40px; height: 40px; border-radius: 13px; background: rgba(255, 255, 255, 0.2); display: grid; place-items: center; font-size: 20px; flex: 0 0 auto; }
+      .bem-text { flex: 1; min-width: 0; }
+      .bem-text b { display: block; font-size: 14px; font-weight: 900; }
+      .bem-text span { font-size: 11px; opacity: 0.9; line-height: 16px; }
+      .bem-cta { flex: 0 0 auto; background: #fff; color: var(--primary); height: 38px; padding: 0 15px; border-radius: 12px; font-size: 13px; font-weight: 900; display: inline-flex; align-items: center; }
 
       .content { padding: 14px 16px 0; }
       .search-card { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 12px; box-shadow: var(--shadow-sm); }
@@ -60,6 +49,22 @@
       .quick-btn { height: 42px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; font-weight: 800; }
       .quick-btn.primary { background: var(--primary); color: #fff; }
       .quick-btn.soft { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
+
+      /* map preview */
+      .map-preview { position: relative; height: 156px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); background: #e9f1ef; box-shadow: var(--shadow-sm); margin-top: 12px; cursor: pointer; }
+      .map-preview .pv-grid { position: absolute; inset: -10%; background: linear-gradient(90deg, rgba(15, 118, 110, 0.1) 1px, transparent 1px), linear-gradient(0deg, rgba(15, 118, 110, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
+      .map-preview .pv-road { position: absolute; background: #fff; border: 1px solid rgba(203, 213, 225, 0.7); border-radius: 999px; }
+      .map-preview .pv-road.major { background: #fffdf5; border-color: #fde68a; height: 16px; }
+      .map-preview .pv-park { position: absolute; border-radius: 18px; background: rgba(22, 163, 74, 0.16); }
+      .map-preview .pv-pin { position: absolute; transform: translate(50%, -50%); display: inline-flex; align-items: center; gap: 5px; background: #fff; border: 1.5px solid var(--border); border-radius: 999px; padding: 4px 9px; font-size: 11px; font-weight: 900; color: var(--text); box-shadow: 0 5px 12px rgba(15, 23, 42, 0.18); white-space: nowrap; }
+      .map-preview .pv-pin i { width: 7px; height: 7px; border-radius: 50%; }
+      .map-preview .pv-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.55), transparent 55%); display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; padding: 12px 14px; }
+      .map-preview .pv-label { color: #fff; }
+      .map-preview .pv-label b { display: block; font-size: 14px; font-weight: 900; }
+      .map-preview .pv-label span { font-size: 11px; opacity: 0.9; }
+      .map-preview .pv-cta { flex: 0 0 auto; background: rgba(255, 255, 255, 0.96); color: var(--primary); border-radius: 12px; padding: 9px 13px; font-size: 12px; font-weight: 900; display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm); }
+      .map-preview .pv-area { position: absolute; top: 12px; right: 12px; background: rgba(255, 255, 255, 0.95); border-radius: 11px; padding: 6px 11px; font-size: 11px; font-weight: 800; color: var(--text-2); box-shadow: var(--shadow-sm); }
+      .map-preview .pv-area b { color: var(--text); }
 
       .chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 0 2px; scrollbar-width: none; }
       .chips::-webkit-scrollbar { display: none; }
@@ -82,19 +87,15 @@
       .ad-card { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03); display: grid; grid-template-columns: 5px 1fr; }
       .ad-card:active { transform: scale(0.995); }
       .type-rail { width: 5px; }
-      .type-rail.sale { background: var(--t-sale); }
-      .type-rail.rent { background: var(--t-rent); }
-      .type-rail.participation { background: var(--t-participation); }
-      .type-rail.presell { background: var(--t-presell); }
-      .type-rail.short { background: var(--t-short); }
+      .type-rail.sale { background: var(--t-sale); } .type-rail.rent { background: var(--t-rent); } .type-rail.participation { background: var(--t-participation); } .type-rail.presell { background: var(--t-presell); } .type-rail.short { background: var(--t-short); }
       .ad-inner { padding: 13px 14px; min-width: 0; }
-      .ad-top { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 9px; }
+      .ad-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+      .ad-title { font-size: 15px; line-height: 23px; font-weight: 900; margin: 0; }
+      .ad-head .status { flex: 0 0 auto; margin-top: 2px; }
+      .ad-specs { font-size: 11px; color: var(--muted); font-weight: 700; margin: 5px 0 10px; }
+      .ad-top { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
       .type-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 900; padding: 4px 9px; border-radius: 999px; color: #fff; }
-      .type-tag.sale { background: var(--t-sale); }
-      .type-tag.rent { background: var(--t-rent); }
-      .type-tag.participation { background: var(--t-participation); }
-      .type-tag.presell { background: var(--t-presell); }
-      .type-tag.short { background: var(--t-short); }
+      .type-tag.sale { background: var(--t-sale); } .type-tag.rent { background: var(--t-rent); } .type-tag.participation { background: var(--t-participation); } .type-tag.presell { background: var(--t-presell); } .type-tag.short { background: var(--t-short); }
       .status { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 3px 9px; font-size: 10px; font-weight: 800; }
       .status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
       .status.public { background: var(--success-soft); color: var(--success-text); }
@@ -109,7 +110,6 @@
       .badge-urgent { font-size: 10px; font-weight: 800; color: var(--danger-text); background: var(--danger-soft); padding: 3px 8px; border-radius: 999px; }
       .badge-vip { font-size: 10px; font-weight: 800; color: #7c2d12; background: linear-gradient(135deg, #fde68a, #f59e0b); padding: 3px 8px; border-radius: 999px; }
       .ad-main { display: grid; grid-template-columns: 1fr 84px; gap: 12px; }
-      .ad-title { font-size: 15px; line-height: 24px; font-weight: 900; margin: 0 0 7px; }
       .ad-amount { font-size: 16px; line-height: 24px; font-weight: 900; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
       .ad-amount .label { font-size: 11px; font-weight: 800; color: var(--muted); }
       .ad-amount small { font-size: 12px; color: var(--muted); font-weight: 700; }
@@ -125,17 +125,48 @@
       .thumb .ph { position: absolute; inset: auto 12px 10px 12px; height: 44%; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.5)); }
       .thumb .code { position: absolute; top: 6px; right: 6px; background: rgba(15, 23, 42, 0.72); color: #fff; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 999px; }
       .thumb .media { position: absolute; bottom: 6px; left: 6px; width: 22px; height: 22px; border-radius: 7px; background: rgba(15, 23, 42, 0.6); color: #fff; display: grid; place-items: center; font-size: 11px; }
-      .ad-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--border); }
-      .ad-time { font-size: 11px; color: var(--muted); font-weight: 600; }
+      .thumb .vip { position: absolute; top: 6px; left: 6px; font-size: 9px; font-weight: 800; color: #7c2d12; background: linear-gradient(135deg, #fde68a, #f59e0b); padding: 2px 6px; border-radius: 999px; }
+
+      /* assessment */
+      .assess { margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--border); }
+      .as-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+      .as-item { display: flex; align-items: center; gap: 6px; }
+      .as-l { font-size: 10px; font-weight: 800; color: var(--text-2); width: 44px; flex: 0 0 auto; }
+      .as-track { flex: 1; height: 5px; border-radius: 999px; background: var(--surface-muted); overflow: hidden; }
+      .as-fill { display: block; height: 100%; border-radius: 999px; }
+      .as-fill.p { background: var(--primary); } .as-fill.g { background: var(--teal); }
+      .as-overall { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-top: 9px; border-top: 1px dashed var(--border); }
+      .as-ov-l { font-size: 11px; font-weight: 900; flex: 0 0 auto; }
+      .as-overall .as-track { height: 7px; }
+      .as-fill.tier-exc { background: var(--success); } .as-fill.tier-good { background: var(--info); } .as-fill.tier-fair { background: var(--warning); } .as-fill.tier-risk { background: var(--danger); }
+      .as-tier { font-size: 10px; font-weight: 900; flex: 0 0 auto; padding: 3px 8px; border-radius: 999px; }
+      .as-tier.tier-exc { background: var(--success-soft); color: var(--success-text); }
+      .as-tier.tier-good { background: var(--info-soft); color: var(--info-text); }
+      .as-tier.tier-fair { background: var(--warning-soft); color: var(--warning-text); }
+      .as-tier.tier-risk { background: var(--danger-soft); color: var(--danger-text); }
+
+      .ad-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 11px; }
+      .compare-btn { height: 34px; padding: 0 12px; border-radius: 11px; border: 1px solid var(--primary-border); background: var(--primary-soft); color: var(--primary); font-size: 12px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; }
+      .compare-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
       .ad-actions { display: flex; gap: 6px; }
       .mini { width: 34px; height: 34px; border-radius: 11px; border: 1px solid var(--border); background: #fff; display: grid; place-items: center; color: var(--text-2); font-size: 15px; }
       .mini.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+      .ad-meta { font-size: 11px; color: var(--muted); font-weight: 600; margin-top: 8px; }
 
       .fab { position: fixed; left: 16px; bottom: 88px; z-index: 35; width: 54px; height: 54px; border-radius: 999px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #7c3aed, #5b21b6); box-shadow: 0 18px 40px rgba(109, 40, 217, 0.3); font-size: 26px; font-weight: 900; }
       .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; height: 72px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(5, 1fr); padding-bottom: env(safe-area-inset-bottom); }
       .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 10px; font-weight: 900; color: var(--muted); }
       .nav-item .nav-icon { font-size: 19px; }
       .nav-item.active { color: var(--primary); }
+
+      /* ===== COMPARE TRAY (mobile, above bottom-nav) ===== */
+      .compare-tray { position: fixed; left: 12px; right: 12px; bottom: 80px; z-index: 36; background: #fff; border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow-lg); padding: 10px 12px; display: flex; align-items: center; gap: 10px; transform: translateY(160%); transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+      .compare-tray.show { transform: translateY(0); }
+      .ct-info { font-size: 12px; font-weight: 800; color: var(--text-2); white-space: nowrap; flex: 0 0 auto; }
+      .ct-info b { color: var(--primary); font-size: 15px; }
+      .ct-spacer { flex: 1; }
+      .ct-clear { font-size: 12px; font-weight: 800; color: var(--muted); flex: 0 0 auto; }
+      .ct-go { height: 40px; padding: 0 16px; border-radius: 13px; background: var(--primary); color: #fff; font-size: 13px; font-weight: 900; flex: 0 0 auto; }
 
       /* filter bottom sheet */
       .sheet-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); z-index: 120; opacity: 0; pointer-events: none; transition: 0.2s; }
@@ -164,6 +195,55 @@
       .apply-btn.primary { background: var(--primary); color: #fff; }
       .apply-btn.soft { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
 
+      /* ===== FULLSCREEN MAP OVERLAY ===== */
+      .map-full { position: fixed; inset: 0; z-index: 200; background: #e9f1ef; transform: translateY(100%); transition: 0.32s cubic-bezier(0.16, 1, 0.3, 1); visibility: hidden; }
+      .map-full.open { transform: translateY(0); visibility: visible; }
+      .mf-viewport { position: absolute; inset: 0; overflow: hidden; touch-action: none; }
+      .mf-world { position: absolute; top: 50%; right: 50%; width: 1500px; height: 1300px; transform: translate(50%, -50%) scale(1); transform-origin: center; will-change: transform; }
+      .mf-world:before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15, 118, 110, 0.09) 1px, transparent 1px), linear-gradient(0deg, rgba(15, 118, 110, 0.09) 1px, transparent 1px); background-size: 42px 42px; }
+      .mf-world .road { position: absolute; background: #fff; border: 1px solid rgba(203, 213, 225, 0.7); border-radius: 999px; }
+      .mf-world .road.major { background: #fffdf5; border-color: #fde68a; height: 30px; }
+      .mf-world .park { position: absolute; border-radius: 30px; background: rgba(22, 163, 74, 0.16); border: 1px solid rgba(22, 163, 74, 0.2); }
+      .mf-world .water { position: absolute; border-radius: 50%; background: rgba(37, 99, 235, 0.14); border: 1px solid rgba(37, 99, 235, 0.2); }
+      .mf-world .district { position: absolute; border-radius: 22px; border: 1.5px dashed rgba(109, 40, 217, 0.3); background: rgba(109, 40, 217, 0.04); }
+      .mf-world .district b { position: absolute; top: 8px; right: 12px; font-size: 12px; font-weight: 900; color: rgba(109, 40, 217, 0.6); }
+      .mf-pin { position: absolute; transform: translate(50%, -50%); display: inline-flex; align-items: center; gap: 5px; background: #fff; border: 1.5px solid var(--border); border-radius: 999px; padding: 6px 11px; font-size: 12px; font-weight: 900; color: var(--text); white-space: nowrap; box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18); z-index: 3; }
+      .mf-pin i { width: 8px; height: 8px; border-radius: 50%; }
+      .mf-pin.active { background: var(--primary); color: #fff; border-color: var(--primary); z-index: 6; transform: translate(50%, -50%) scale(1.07); }
+      .mf-pin.active i { background: #fff !important; }
+      .mf-user { position: absolute; transform: translate(50%, -50%); z-index: 5; }
+      .mf-user .dot { width: 16px; height: 16px; border-radius: 999px; background: var(--map-user); border: 3px solid #fff; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5); }
+      .mf-user .pulse { position: absolute; inset: -14px; border-radius: 999px; background: rgba(37, 99, 235, 0.18); animation: pulse 2s infinite; }
+      @keyframes pulse { 0% { transform: scale(0.6); opacity: 0.8; } 100% { transform: scale(1.5); opacity: 0; } }
+      .mf-top { position: absolute; top: 0; right: 0; left: 0; z-index: 12; padding: 12px 14px calc(env(safe-area-inset-top)); }
+      .mf-bar { height: 50px; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(14px); border: 1px solid var(--border); border-radius: 15px; box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 8px; padding: 0 8px 0 12px; }
+      .mf-bar .back { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; color: var(--text-2); font-size: 20px; flex: 0 0 auto; }
+      .mf-bar .area { flex: 1; font-size: 13px; font-weight: 800; color: var(--text-2); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .mf-bar .area b { color: var(--text); }
+      .mf-bar .flt { width: 38px; height: 38px; border-radius: 11px; background: var(--primary); color: #fff; display: grid; place-items: center; flex: 0 0 auto; }
+      .mf-fabs { position: absolute; left: 14px; bottom: 96px; z-index: 12; display: grid; gap: 9px; }
+      .mf-fab { width: 46px; height: 46px; border-radius: 14px; background: rgba(255, 255, 255, 0.97); border: 1px solid var(--border); box-shadow: var(--shadow-md); display: grid; place-items: center; color: var(--text-2); font-size: 18px; }
+      .mf-fab.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+      .mf-zoom { display: grid; background: rgba(255, 255, 255, 0.97); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-md); overflow: hidden; }
+      .mf-zoom button { width: 46px; height: 40px; display: grid; place-items: center; font-size: 19px; color: var(--text-2); }
+      .mf-zoom .sep { height: 1px; background: var(--border); }
+      .mf-list-btn { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 12; height: 50px; padding: 0 22px; border-radius: 999px; background: var(--primary); color: #fff; font-size: 14px; font-weight: 900; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 16px 36px rgba(109, 40, 217, 0.4); }
+      .mf-sheet-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.35); z-index: 18; opacity: 0; pointer-events: none; transition: 0.2s; }
+      .mf-sheet-backdrop.show { opacity: 1; pointer-events: auto; }
+      .mf-sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 19; background: #fff; border-radius: 26px 26px 0 0; box-shadow: 0 -20px 50px rgba(15, 23, 42, 0.22); transform: translateY(105%); transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1); padding: 0 18px calc(20px + env(safe-area-inset-bottom)); }
+      .mf-sheet.show { transform: translateY(0); }
+      .mf-sheet .handle { width: 44px; height: 5px; border-radius: 999px; background: var(--border-strong); margin: 10px auto 12px; }
+      .mf-photo { height: 130px; position: relative; border-radius: 16px; background: linear-gradient(135deg, #ddd6fe, #bfdbfe 60%, #f8fafc); margin-bottom: 12px; }
+      .mf-photo .tag { position: absolute; top: 10px; right: 10px; font-size: 11px; font-weight: 800; color: #fff; padding: 3px 9px; border-radius: 999px; background: var(--primary); }
+      .mf-photo .code { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 800; color: #fff; padding: 3px 8px; border-radius: 999px; background: rgba(15, 23, 42, 0.7); }
+      #mfTitle { font-size: 16px; font-weight: 900; margin: 0 0 6px; }
+      #mfPrice { font-size: 16px; font-weight: 900; }
+      #mfDesc { font-size: 13px; color: var(--muted); margin: 6px 0 0; line-height: 21px; }
+      .mf-acts { display: flex; gap: 10px; margin-top: 14px; }
+      .mf-acts .btn { flex: 1; height: 48px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; }
+      .mf-acts .btn-primary { background: var(--primary); color: #fff; }
+      .mf-acts .btn-soft { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
+
       /* drawer */
       .small { font-size: 13px; line-height: 22px; color: var(--muted); }
       .drawer-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.38); z-index: 100; opacity: 0; pointer-events: none; transition: 0.2s ease-out; }
@@ -187,21 +267,20 @@
         <button class="icon-btn" data-drawer-toggle aria-label="منو">☰</button>
         <div class="title">
           <h1>آگهی‌های ملکی</h1>
-          <p>بازار ملک، همراه با نقشه و ارزیابی محیطی</p>
+          <p>بازار ملک · نقشه و ارزیابی</p>
         </div>
+        <button class="loc-pill" title="انتخاب شهر">📍 مشهد ▾</button>
         <button class="icon-btn" aria-label="اعلان‌ها">◷</button>
       </header>
 
       <div class="drawer-backdrop" data-drawer-close></div>
       <aside class="mobile-drawer">
         <div class="drawer-head">
-          <div class="drawer-user">
-            <div class="avatar">م</div>
-            <div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div>
-          </div>
+          <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">کاربر فعال داتملک</div></div></div>
           <button class="icon-btn" data-drawer-close aria-label="بستن">×</button>
         </div>
         <div class="drawer-scroll">
+          <a href="#"><span>📄</span>تنظیم قرارداد</a>
           <a href="account.html"><span>◫</span>حساب کاربری من</a>
           <a href="guides.html"><span>؟</span>راهنمای استفاده از نرم افزار</a>
           <a href="rules.html"><span>§</span>قوانین و مقررات</a>
@@ -220,27 +299,40 @@
           <label class="search-field"><span aria-hidden="true">⌕</span><input value="آپارتمان سعادت‌آباد" aria-label="جستجو در آگهی‌ها" /></label>
           <div class="quick-row">
             <button class="quick-btn soft" onclick="document.body.classList.add('sheet-open')">☷ فیلترها · ۴ فعال</button>
-            <button class="quick-btn primary">⌖ نمایش روی نقشه</button>
+            <button class="quick-btn primary" onclick="openMap()">⌖ نمایش روی نقشه</button>
           </div>
         </section>
 
+        <!-- کارشناسی ملک -->
+        <div class="expert-banner-m">
+          <div class="bem-icon">⚖</div>
+          <div class="bem-text"><b>کارشناسی ملک</b><span>خرید مطمئن با کارشناسی تخصصی داتملک</span></div>
+          <a class="bem-cta" href="#">درخواست</a>
+        </div>
+
+        <!-- MAP PREVIEW -->
+        <div class="map-preview" onclick="openMap()" role="button" aria-label="باز کردن نقشه‌ی آگهی‌ها">
+          <div class="pv-grid"></div>
+          <span class="pv-park" style="right: 18%; top: 22%; width: 80px; height: 50px"></span>
+          <span class="pv-road major" style="right: -5%; top: 38%; width: 110%; transform: rotate(-7deg)"></span>
+          <span class="pv-road" style="right: 40%; top: -5%; width: 10px; height: 110%; transform: rotate(4deg)"></span>
+          <span class="pv-pin" style="right: 30%; top: 36%"><i style="background:var(--t-sale)"></i>۱۲٫۸ م</span>
+          <span class="pv-pin" style="right: 58%; top: 58%"><i style="background:var(--t-rent)"></i>۷۰۰م</span>
+          <span class="pv-pin" style="right: 46%; top: 30%"><i style="background:var(--t-presell)"></i>۳٫۲ م</span>
+          <span class="pv-area">⌖ <b>تهران، سعادت‌آباد</b></span>
+          <div class="pv-overlay">
+            <div class="pv-label"><b>۲۴۸ آگهی روی نقشه</b><span>برای دیدن موقعیت‌ها روی نقشه ضربه بزنید</span></div>
+            <span class="pv-cta">⛶ تمام‌صفحه</span>
+          </div>
+        </div>
+
         <nav class="chips" aria-label="نوع آگهی">
-          <span class="chip active">همه</span>
-          <span class="chip">فروش</span>
-          <span class="chip">رهن و اجاره</span>
-          <span class="chip">مشارکت</span>
-          <span class="chip">پیش‌فروش</span>
-          <span class="chip">اجاره کوتاه‌مدت</span>
+          <span class="chip active">همه</span><span class="chip">فروش</span><span class="chip">رهن و اجاره</span><span class="chip">مشارکت</span><span class="chip">پیش‌فروش</span><span class="chip">اجاره کوتاه‌مدت</span>
         </nav>
 
         <section class="active-filters">
           <div class="af-head"><h2>فیلترهای فعال</h2><button>پاک کردن</button></div>
-          <div class="af-scroll">
-            <span class="chip active">تهران</span>
-            <span class="chip active">سعادت‌آباد</span>
-            <span class="chip active">۲ تا ۳ خواب</span>
-            <span class="chip active">تور مجازی</span>
-          </div>
+          <div class="af-scroll"><span class="chip active">تهران</span><span class="chip active">سعادت‌آباد</span><span class="chip active">۲ تا ۳ خواب</span><span class="chip active">تور مجازی</span></div>
         </section>
 
         <div class="section-head">
@@ -248,242 +340,18 @@
           <button class="sort-pill">جدیدترین ▾</button>
         </div>
 
-        <section class="ad-list">
-          <!-- 1) فروش · عمومی · فوری · تور -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail sale"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag sale">فروش</span>
-                <span class="status public"><span class="dot"></span>منتشر شده عمومی</span>
-                <span class="badge-urgent">فوری</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد</h3>
-                  <div class="ad-amount"><span class="label">مبلغ:</span> ۱۲٫۸ میلیارد <small>تومان</small></div>
-                  <div class="ad-range">⌖ <b>تهران، سعادت‌آباد</b> — محله کاج</div>
-                </div>
-                <div class="thumb"><span class="ph"></span><span class="code">۵۴۲۱</span><span class="media" title="تور مجازی">↻</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">امروز · آژانس آسمان</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2) رهن و اجاره · املاک · VIP -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail rent"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag rent">رهن و اجاره</span>
-                <span class="status agency"><span class="dot"></span>منتشر شده املاک</span>
-                <span class="badge-vip">★ ویژه</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">واحد ۹۰ متری بازسازی‌شده در مرزداران</h3>
-                  <div class="ad-amount"><span class="label">ودیعه:</span> ۷۰۰م <span class="sep"></span> <span class="label">اجاره:</span> ۲۵م</div>
-                  <div class="ad-range">⌖ <b>تهران، مرزداران</b> — محله آریافر</div>
-                </div>
-                <div class="thumb rent"><span class="ph"></span><span class="code">۶۳۱۸</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">امروز · املاک خانه نو</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3) رهن کامل · منقضی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail rent"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag rent">رهن و اجاره</span>
-                <span class="status expired"><span class="dot"></span>منقضی شده</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">آپارتمان ۸۰ متری رهن کامل در ولنجک</h3>
-                  <div class="ad-amount"><span class="agreed">رهن کامل</span> <span class="sep"></span> ۱٫۲ میلیارد <small>ودیعه</small></div>
-                  <div class="ad-range">⌖ <b>تهران، ولنجک</b> — محله یمن</div>
-                </div>
-                <div class="thumb rent"><span class="ph"></span><span class="code">۶۹۰۲</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">۵ روز پیش · شخصی</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">☎</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 4) مشارکت · مردمی · توافقی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail participation"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag participation">مشارکت</span>
-                <span class="status folk"><span class="dot"></span>منتشر شده مردمی</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">زمین ۴۲۰ متری مشارکت در ساخت — نیاوران</h3>
-                  <div class="ad-amount"><span class="label">حداقل سرمایه:</span> <span class="agreed">توافقی</span></div>
-                  <div class="ad-range">⌖ <b>تهران، نیاوران</b> — محله جماران</div>
-                </div>
-                <div class="thumb participation"><span class="ph"></span><span class="code">۴۸۸۹</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">۲ روز پیش · دفتر شمال شهر</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 5) پیش‌فروش · در انتظار · ویدئو -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail presell"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag presell">پیش‌فروش</span>
-                <span class="status waiting"><span class="dot"></span>در انتظار انتشار</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">پیش‌فروش واحد ۱۱۰ متری در چیتگر</h3>
-                  <div class="ad-amount"><span class="label">پیش‌پرداخت:</span> ۳٫۲ میلیارد <small>تومان</small></div>
-                  <div class="ad-range">⌖ <b>تهران، چیتگر</b> — منطقه ۲۲</div>
-                </div>
-                <div class="thumb presell"><span class="ph"></span><span class="code">۷۰۳۴</span><span class="media" title="ویدئو">▷</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">دیروز · گروه آرتا</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6) اجاره کوتاه‌مدت · عمومی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail short"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag short">اجاره کوتاه‌مدت</span>
-                <span class="status public"><span class="dot"></span>منتشر شده عمومی</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">سوئیت مبله‌ی روزانه نزدیک برج میلاد</h3>
-                  <div class="ad-amount"><span class="label">اجاره شبانه:</span> از ۲٫۵ میلیون <small>تومان</small></div>
-                  <div class="ad-range">⌖ <b>تهران، گیشا</b> — محله نصر</div>
-                </div>
-                <div class="thumb short"><span class="ph"></span><span class="code">۸۱۱۵</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">امروز · شخصی</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">☎</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 7) فروش · نیاز به ویرایش · توافقی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail sale"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag sale">فروش</span>
-                <span class="status edit"><span class="dot"></span>نیاز به ویرایش</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">کلنگی ۲۲۰ متری مناسب بازسازی در امانیه</h3>
-                  <div class="ad-amount"><span class="label">مبلغ:</span> <span class="agreed">توافقی</span></div>
-                  <div class="ad-range">⌖ <b>تهران، امانیه</b> — محله دروس</div>
-                </div>
-                <div class="thumb"><span class="ph"></span><span class="code">۵۲۷۰</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">۳ روز پیش · آژانس آسمان</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">✎</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 8) مشارکت · بایگانی -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail participation"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag participation">مشارکت</span>
-                <span class="status archived"><span class="dot"></span>بایگانی شده</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">کلنگی ۳۰۰ متری برای مشارکت در لواسان</h3>
-                  <div class="ad-amount"><span class="label">حداقل سرمایه:</span> از ۴۵ میلیارد <small>تومان</small></div>
-                  <div class="ad-range">⌖ <b>لواسان</b> — محله ایگل</div>
-                </div>
-                <div class="thumb participation"><span class="ph"></span><span class="code">۴۱۰۲</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">هفته پیش · شخصی</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 9) پیش‌فروش · رد شده -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail presell"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag presell">پیش‌فروش</span>
-                <span class="status rejected"><span class="dot"></span>رد شده</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">پیش‌فروش برج مسکونی در زعفرانیه</h3>
-                  <div class="ad-amount"><span class="label">پیش‌پرداخت:</span> ۵ میلیارد <small>تومان</small></div>
-                  <div class="ad-range">⌖ <b>تهران، منطقه ۱</b> — زعفرانیه</div>
-                </div>
-                <div class="thumb presell"><span class="ph"></span><span class="code">۷۷۸۱</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">۴ روز پیش · گروه آرتا</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">✎</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 10) فروش · حذف شده -->
-          <article class="ad-card" onclick="location.href='property-detail.html'">
-            <span class="type-rail sale"></span>
-            <div class="ad-inner">
-              <div class="ad-top">
-                <span class="type-tag sale">فروش</span>
-                <span class="status deleted"><span class="dot"></span>حذف شده</span>
-              </div>
-              <div class="ad-main">
-                <div>
-                  <h3 class="ad-title">واحد ۶۰ متری سرمایه‌ای در نازی‌آباد</h3>
-                  <div class="ad-amount"><span class="label">مبلغ:</span> ۴ میلیارد <small>تومان</small></div>
-                  <div class="ad-range">⌖ <b>تهران، نازی‌آباد</b> — بازار دوم</div>
-                </div>
-                <div class="thumb"><span class="ph"></span><span class="code">۳۳۵۰</span></div>
-              </div>
-              <div class="ad-foot">
-                <span class="ad-time">هفته پیش · شخصی</span>
-                <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">↺</button></div>
-              </div>
-            </div>
-          </article>
-        </section>
+        <section class="ad-list" id="adList"><!-- cards injected by JS --></section>
       </div>
 
       <a class="fab" href="add-advertise.html" aria-label="ثبت آگهی جدید">＋</a>
+
+      <!-- compare tray -->
+      <div class="compare-tray" id="compareTray">
+        <div class="ct-info"><b id="ctCount">۰</b> ملک</div>
+        <div class="ct-spacer"></div>
+        <button class="ct-clear" onclick="clearCompare()">پاک کردن</button>
+        <button class="ct-go" onclick="goCompare()">مقایسه ←</button>
+      </div>
 
       <nav class="bottom-nav" aria-label="ناوبری اصلی">
         <a class="nav-item" href="map.html"><span class="nav-icon">⌖</span><span>نقشه</span></a>
@@ -493,75 +361,199 @@
         <a class="nav-item" href="my-dotmelk.html"><span class="nav-icon">◫</span><span>داتملک من</span></a>
       </nav>
 
-      <!-- filter bottom sheet (synced to AdvertiseFilter) -->
+      <!-- filter bottom sheet -->
       <div class="sheet-backdrop" onclick="document.body.classList.remove('sheet-open')"></div>
       <div class="sheet" role="dialog" aria-label="فیلتر آگهی‌ها">
         <div class="sheet-handle"></div>
         <div class="sheet-head"><h3>فیلتر آگهی‌ها</h3><button onclick="document.body.classList.remove('sheet-open')">حذف فیلترها</button></div>
         <div class="sheet-body">
-          <div class="fgroup">
-            <div class="flabel">محدوده‌ی آگهی <span class="req-flag">الزامی</span></div>
-            <div class="fvals"><span class="chip active">تهران</span><span class="chip active">سعادت‌آباد</span><span class="chip">مرزداران</span><span class="chip">+ افزودن</span></div>
+          <div class="fgroup"><div class="flabel">محدوده‌ی آگهی <span class="req-flag">الزامی</span></div><div class="fvals"><span class="chip active">تهران</span><span class="chip active">سعادت‌آباد</span><span class="chip">مرزداران</span><span class="chip">+ افزودن</span></div></div>
+          <div class="fgroup"><div class="flabel">نوع آگهی</div><div class="fvals"><span class="chip active">همه</span><span class="chip">فروش</span><span class="chip">رهن و اجاره</span><span class="chip">مشارکت</span><span class="chip">پیش‌فروش</span><span class="chip">اجاره کوتاه‌مدت</span></div></div>
+          <div class="fgroup"><div class="flabel">قیمت</div>
+            <div class="sublabel">مبلغ فروش و مشارکت (تومان)</div><div class="range-row"><div class="input-fake">از ۵ میلیارد</div><div class="input-fake">تا ۲۰ میلیارد</div></div>
+            <div class="sublabel">مبلغ رهن (تومان)</div><div class="range-row"><div class="input-fake">از ۴۰۰ م</div><div class="input-fake">تا ۲ میلیارد</div></div>
+            <div class="sublabel">مبلغ اجاره (تومان)</div><div class="range-row"><div class="input-fake">از ۵ م</div><div class="input-fake">تا ۵۰ م</div></div>
           </div>
-          <div class="fgroup">
-            <div class="flabel">نوع آگهی</div>
-            <div class="fvals"><span class="chip active">همه</span><span class="chip">فروش</span><span class="chip">رهن و اجاره</span><span class="chip">مشارکت</span><span class="chip">پیش‌فروش</span><span class="chip">اجاره کوتاه‌مدت</span></div>
+          <div class="fgroup"><div class="flabel">متراژ و سال ساخت</div>
+            <div class="sublabel">مساحت زمین (متر)</div><div class="range-row"><div class="input-fake">از ۸۰</div><div class="input-fake">تا ۵۰۰</div></div>
+            <div class="sublabel">مساحت زیربنا (متر)</div><div class="range-row"><div class="input-fake">از ۷۰</div><div class="input-fake">تا ۲۵۰</div></div>
           </div>
-          <div class="fgroup">
-            <div class="flabel">قیمت</div>
-            <div class="sublabel">مبلغ فروش و مشارکت (تومان)</div>
-            <div class="range-row"><div class="input-fake">از ۵ میلیارد</div><div class="input-fake">تا ۲۰ میلیارد</div></div>
-            <div class="sublabel">مبلغ رهن (تومان)</div>
-            <div class="range-row"><div class="input-fake">از ۴۰۰ م</div><div class="input-fake">تا ۲ میلیارد</div></div>
-            <div class="sublabel">مبلغ اجاره (تومان)</div>
-            <div class="range-row"><div class="input-fake">از ۵ م</div><div class="input-fake">تا ۵۰ م</div></div>
+          <div class="fgroup"><div class="flabel">مشخصات ملک</div>
+            <div class="sublabel">تعداد اتاق</div><div class="fvals"><span class="chip">۱</span><span class="chip active">۲</span><span class="chip active">۳</span><span class="chip">۴</span><span class="chip">۵+</span></div>
+            <div class="sublabel">نوع سند</div><div class="fvals"><span class="chip">تک‌برگ</span><span class="chip">منگوله‌دار</span><span class="chip">قولنامه‌ای</span></div>
           </div>
-          <div class="fgroup">
-            <div class="flabel">متراژ و سال ساخت</div>
-            <div class="sublabel">مساحت زمین (متر)</div>
-            <div class="range-row"><div class="input-fake">از ۸۰</div><div class="input-fake">تا ۵۰۰</div></div>
-            <div class="sublabel">مساحت زیربنا (متر)</div>
-            <div class="range-row"><div class="input-fake">از ۷۰</div><div class="input-fake">تا ۲۵۰</div></div>
-            <div class="sublabel">سال ساخت</div>
-            <div class="range-row"><div class="input-fake">از ۱۳۹۰</div><div class="input-fake">تا ۱۴۰۳</div></div>
-          </div>
-          <div class="fgroup">
-            <div class="flabel">مشخصات ملک</div>
-            <div class="sublabel">تعداد اتاق</div>
-            <div class="fvals"><span class="chip">۱</span><span class="chip active">۲</span><span class="chip active">۳</span><span class="chip">۴</span><span class="chip">۵+</span></div>
-            <div class="sublabel">طبقه</div>
-            <div class="fvals"><span class="chip">همکف</span><span class="chip">۱ تا ۳</span><span class="chip">۴ تا ۷</span><span class="chip">۸ به بالا</span></div>
-            <div class="sublabel">نوع سند</div>
-            <div class="fvals"><span class="chip">تک‌برگ</span><span class="chip">منگوله‌دار</span><span class="chip">قولنامه‌ای</span></div>
-            <div class="sublabel">جهت ساختمان</div>
-            <div class="fvals"><span class="chip">شمالی</span><span class="chip">جنوبی</span><span class="chip">شرقی</span><span class="chip">غربی</span></div>
-          </div>
-          <div class="fgroup">
-            <div class="flabel">تأسیسات و پوشش</div>
-            <div class="sublabel">گرمایش</div>
-            <div class="fvals"><span class="chip">پکیج</span><span class="chip">شوفاژ</span><span class="chip">از کف</span></div>
-            <div class="sublabel">سرمایش</div>
-            <div class="fvals"><span class="chip">کولر گازی</span><span class="chip">اسپلیت</span><span class="chip">چیلر</span></div>
-            <div class="sublabel">کف‌پوش / دیوارپوش</div>
-            <div class="fvals"><span class="chip">سرامیک</span><span class="chip">پارکت</span><span class="chip">کاغذ دیواری</span></div>
-          </div>
-          <div class="fgroup">
-            <div class="flabel">رسانه</div>
+          <div class="fgroup"><div class="flabel">رسانه</div>
             <div class="switch-row"><span>فقط عکس‌دار</span><span class="switch on"></span></div>
             <div class="switch-row"><span>دارای ویدئو</span><span class="switch"></span></div>
             <div class="switch-row"><span>تور مجازی ۳۶۰</span><span class="switch on"></span></div>
           </div>
-          <div class="fgroup" style="border-bottom: 0">
-            <div class="flabel">دسترسی‌های من</div>
+          <div class="fgroup" style="border-bottom: 0"><div class="flabel">دسترسی‌های من</div>
             <div class="switch-row"><span>فقط نشان‌شده‌ها</span><span class="switch"></span></div>
             <div class="switch-row"><span>فقط آگهی‌های آژانس من</span><span class="switch on"></span></div>
           </div>
         </div>
         <div class="sheet-foot">
-          <button class="apply-btn soft" onclick="document.body.classList.remove('sheet-open')">⌖ روی نقشه</button>
+          <button class="apply-btn soft" onclick="document.body.classList.remove('sheet-open');openMap()">⌖ روی نقشه</button>
           <button class="apply-btn primary" onclick="document.body.classList.remove('sheet-open')">اعمال فیلتر</button>
         </div>
       </div>
     </main>
+
+    <!-- FULLSCREEN MAP OVERLAY -->
+    <div class="map-full" id="mapFull" aria-hidden="true">
+      <div class="mf-viewport" id="mfViewport">
+        <div class="mf-world" id="mfWorld">
+          <span class="district" style="right: 120px; top: 140px; width: 420px; height: 300px"><b>سعادت‌آباد</b></span>
+          <span class="district" style="right: 560px; top: 420px; width: 380px; height: 280px"><b>شهرک غرب</b></span>
+          <span class="park" style="right: 220px; top: 220px; width: 150px; height: 100px"></span>
+          <span class="water" style="right: 420px; top: 720px; width: 200px; height: 130px"></span>
+          <span class="road major" style="right: -5%; top: 260px; width: 110%; transform: rotate(-7deg)"></span>
+          <span class="road major" style="right: -5%; top: 660px; width: 110%; transform: rotate(5deg)"></span>
+          <span class="road" style="right: 460px; top: -5%; width: 22px; height: 110%; transform: rotate(4deg)"></span>
+          <!-- mf-pins injected by JS -->
+          <span class="mf-user" style="right: 440px; top: 460px"><span class="pulse"></span><span class="dot"></span></span>
+        </div>
+      </div>
+      <div class="mf-top">
+        <div class="mf-bar">
+          <button class="back" onclick="closeMap()" aria-label="بازگشت به لیست">›</button>
+          <span class="area">⌖ <b>تهران، سعادت‌آباد</b> · ۲۴۸ آگهی</span>
+          <button class="flt" onclick="closeMap();document.body.classList.add('sheet-open')" aria-label="فیلتر">☷</button>
+        </div>
+      </div>
+      <div class="mf-fabs">
+        <button class="mf-fab primary" onclick="mfGoUser()" title="موقعیت من">◎</button>
+        <div class="mf-zoom"><button onclick="mfZoom(1.25)">＋</button><span class="sep"></span><button onclick="mfZoom(0.8)">－</button></div>
+      </div>
+      <button class="mf-list-btn" onclick="closeMap()">☰ نمایش لیست (۲۴۸)</button>
+      <div class="mf-sheet-backdrop" id="mfBackdrop" onclick="closeMfPop()"></div>
+      <div class="mf-sheet" id="mfSheet">
+        <div class="handle"></div>
+        <div class="mf-photo"><span class="tag" id="mfTag">فروش</span><span class="code" id="mfCode">کد ۵۴۲۱</span></div>
+        <h3 id="mfTitle">عنوان</h3>
+        <div id="mfPrice">قیمت</div>
+        <p id="mfDesc">توضیحات</p>
+        <div class="mf-acts">
+          <a class="btn btn-primary" id="mfDetail" href="property-detail.html">مشاهده جزئیات</a>
+          <button class="btn btn-soft" id="mfCompare" onclick="toggleCompareFromMap()">⇄ مقایسه</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/dotmelk-ads-data.js?v=2"></script>
+    <script>
+      /* ===== render ad cards ===== */
+      function cardHTML(ad) {
+        const t = DM_tier(ad.score);
+        const bars = DM_DIMS.map((d, i) => `<div class="as-item"><span class="as-l">${d[0]}</span><span class="as-track"><span class="as-fill ${d[1]}" style="width:${ad.a[i]}%"></span></span></div>`).join("");
+        const media = ad.media.length ? `<span class="media">${ad.media[0]}</span>` : "";
+        const vip = ad.vip ? `<span class="vip">★ ویژه</span>` : "";
+        const urgent = ad.urgent ? `<span class="badge-urgent">فوری</span>` : "";
+        return `
+        <article class="ad-card" onclick="location.href='property-detail.html?key=${ad.key}'">
+          <span class="type-rail ${ad.type}"></span>
+          <div class="ad-inner">
+            <div class="ad-head"><h3 class="ad-title">${ad.title}</h3><span class="status ${ad.status}"><span class="dot"></span>${ad.statusLabel}</span></div>
+            <div class="ad-specs">${ad.specs}</div>
+            <div class="ad-top"><span class="type-tag ${ad.type}">${ad.typeLabel}</span>${urgent}</div>
+            <div class="ad-main">
+              <div>
+                <div class="ad-amount">${ad.price}</div>
+                <div class="ad-range">⌖ <b>${ad.area}</b></div>
+              </div>
+              <div class="thumb ${ad.type}">${vip}<span class="ph"></span><span class="code">${ad.code}</span>${media}</div>
+            </div>
+            <div class="assess">
+              <div class="as-grid">${bars}</div>
+              <div class="as-overall"><span class="as-ov-l">ارزیابی کلی</span><span class="as-track"><span class="as-fill" style="width:${ad.score}%;background:${t.color}"></span></span><span class="as-tier" style="background:${t.soft};color:${t.text}">${t.l} · ${DM_fa(ad.score)}</span></div>
+            </div>
+            <div class="ad-foot">
+              <button class="compare-btn" data-key="${ad.key}" onclick="event.stopPropagation();toggleCompare('${ad.key}')">⇄ افزودن به مقایسه</button>
+              <div class="ad-actions"><button class="mini" onclick="event.stopPropagation()">♡</button><button class="mini primary" onclick="event.stopPropagation()">◌</button></div>
+            </div>
+            <div class="ad-meta">${ad.time} · ${ad.agency}</div>
+          </div>
+        </article>`;
+      }
+      document.getElementById("adList").innerHTML = DM_ADS.map(cardHTML).join("");
+
+      /* inject fullscreen map pins */
+      const mfWorld = document.getElementById("mfWorld");
+      mfWorld.insertAdjacentHTML("afterbegin", DM_ADS.filter(a => a.pinM).map(ad =>
+        `<span class="mf-pin" data-key="${ad.key}" style="right:${ad.pinM.right}px;top:${ad.pinM.top}px" onclick="event.stopPropagation();openMfPop('${ad.key}',this)"><i style="background:var(--t-${ad.type})"></i>${ad.pinM.label}</span>`
+      ).join(""));
+
+      /* ===== fullscreen map open/close ===== */
+      const mapFull = document.getElementById("mapFull");
+      function openMap() { mapFull.classList.add("open"); mapFull.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+      function closeMap() { mapFull.classList.remove("open"); mapFull.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; closeMfPop(); }
+
+      /* ===== pan / pinch zoom ===== */
+      const mvp = document.getElementById("mfViewport"), mworld = document.getElementById("mfWorld");
+      let tx = 0, ty = 0, scale = 1, dragging = false, sx = 0, sy = 0, moved = false, lastDist = 0;
+      function mfApply() { mworld.style.transform = `translate(calc(50% + ${tx}px), calc(-50% + ${ty}px)) scale(${scale})`; }
+      mvp.addEventListener("pointerdown", e => { dragging = true; moved = false; sx = e.clientX - tx; sy = e.clientY - ty; });
+      window.addEventListener("pointermove", e => { if (!dragging) return; tx = e.clientX - sx; ty = e.clientY - sy; moved = true; mfApply(); });
+      window.addEventListener("pointerup", () => { dragging = false; });
+      mvp.addEventListener("touchmove", e => {
+        if (e.touches.length === 2) { e.preventDefault();
+          const dx = e.touches[0].clientX - e.touches[1].clientX, dy = e.touches[0].clientY - e.touches[1].clientY, d = Math.hypot(dx, dy);
+          if (lastDist) mfZoom(d / lastDist); lastDist = d; dragging = false;
+        }
+      }, { passive: false });
+      mvp.addEventListener("touchend", () => lastDist = 0);
+      function mfZoom(f) { scale = Math.min(2.6, Math.max(0.5, scale * f)); mfApply(); }
+      function mfGoUser() { tx = 0; ty = 0; scale = 1.2; mfApply(); }
+
+      /* ===== marker popup ===== */
+      let popKey = null;
+      function openMfPop(key, pinEl) {
+        if (moved) return;
+        const d = DM_ADS.find(a => a.key === key); if (!d) return;
+        popKey = key;
+        document.querySelectorAll(".mf-pin.active").forEach(p => p.classList.remove("active"));
+        pinEl.classList.add("active");
+        document.getElementById("mfTitle").textContent = d.title;
+        document.getElementById("mfPrice").innerHTML = d.price;
+        document.getElementById("mfDesc").textContent = d.specs + " · " + d.area;
+        document.getElementById("mfTag").textContent = d.typeLabel;
+        document.getElementById("mfTag").style.background = "var(--t-" + d.type + ")";
+        document.getElementById("mfCode").textContent = "کد " + d.code;
+        document.getElementById("mfDetail").href = "property-detail.html?key=" + key;
+        const mc = document.getElementById("mfCompare");
+        mc.innerHTML = compareSet.has(key) ? "✓ در مقایسه" : "⇄ مقایسه";
+        document.getElementById("mfBackdrop").classList.add("show");
+        document.getElementById("mfSheet").classList.add("show");
+      }
+      function closeMfPop() {
+        document.getElementById("mfBackdrop").classList.remove("show");
+        document.getElementById("mfSheet").classList.remove("show");
+        document.querySelectorAll(".mf-pin.active").forEach(p => p.classList.remove("active"));
+      }
+      function toggleCompareFromMap() { if (popKey) { toggleCompare(popKey); const mc = document.getElementById("mfCompare"); mc.innerHTML = compareSet.has(popKey) ? "✓ در مقایسه" : "⇄ مقایسه"; } }
+
+      /* ===== compare list ===== */
+      const compareSet = new Set(JSON.parse(localStorage.getItem("dm_compare") || "[]"));
+      function persist() { localStorage.setItem("dm_compare", JSON.stringify([...compareSet])); }
+      function toggleCompare(key) {
+        if (compareSet.has(key)) compareSet.delete(key);
+        else { if (compareSet.size >= 4) return; compareSet.add(key); }
+        persist(); syncCompare();
+      }
+      function clearCompare() { compareSet.clear(); persist(); syncCompare(); }
+      function goCompare() { if (!compareSet.size) return; persist(); location.href = "compare.html"; }
+      function syncCompare() {
+        document.querySelectorAll(".compare-btn").forEach(b => {
+          const on = compareSet.has(b.dataset.key);
+          b.classList.toggle("active", on);
+          b.innerHTML = on ? "✓ در لیست مقایسه" : "⇄ افزودن به مقایسه";
+        });
+        document.getElementById("ctCount").textContent = DM_fa(compareSet.size);
+        document.getElementById("compareTray").classList.toggle("show", compareSet.size > 0);
+      }
+
+      document.addEventListener("keydown", e => { if (e.key === "Escape") { if (document.getElementById("mfSheet").classList.contains("show")) closeMfPop(); else if (mapFull.classList.contains("open")) closeMap(); } });
+      mfApply(); syncCompare();
+    </script>
   </body>
 </html>
