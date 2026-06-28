@@ -67,6 +67,15 @@
       .col-head { position: relative; }
       .detail-btn { display: block; margin-top: 8px; height: 32px; border-radius: 10px; background: var(--primary); color: #fff; font-size: 11px; font-weight: 800; text-align: center; line-height: 32px; }
 
+      .cmp tr.grp th { background: linear-gradient(120deg, var(--primary), var(--primary-hover)); color: #fff; text-align: right; padding: 9px 11px; cursor: pointer; border-left: 0; }
+      .cmp tr.grp .gc { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 900; }
+      .cmp tr.grp .gchev { margin-inline-start: auto; transition: 0.2s; }
+      .cmp tr.grp.collapsed .gchev { transform: rotate(-90deg); }
+      .ck { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 999px; font-size: 11px; font-weight: 900; }
+      .ck.yes { background: var(--success-soft); color: var(--success-text); }
+      .ck.no { background: var(--surface-muted); color: var(--subtle); }
+      .muted-cell { color: var(--subtle); }
+      .row-hidden { display: none; }
       .empty { padding: 70px 24px; text-align: center; }
       .empty .ic { width: 64px; height: 64px; border-radius: 20px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 28px; margin: 0 auto 16px; }
       .empty h2 { font-size: 18px; font-weight: 900; margin: 0 0 8px; }
@@ -85,7 +94,7 @@
       <div id="cmpWrap"></div>
     </div>
 
-    <script src="../assets/dotmelk-ads-data.js?v=2"></script>
+    <script src="../assets/dotmelk-ads-data.js?v=3"></script>
     <script>
       let keys = JSON.parse(localStorage.getItem("dm_compare") || "[]");
       if (!keys.length) keys = ["a1", "a2", "a4"];
@@ -104,22 +113,39 @@
             <h3 class="ch-title">${a.title}</h3>
             <a class="detail-btn" href="property-detail.html?key=${a.key}">جزئیات</a>
           </th>`).join("");
-        const dimRows = DM_DIMS.map((d, di) => {
-          let bv = Math.max(...items.map(a => a.a[di]));
-          const cells = items.map(a => `<td><div class="bar-cell"><span class="track"><span class="fill ${d[1]}" style="width:${a.a[di]}%"></span></span><span class="val" style="${a.a[di] === bv ? "color:var(--success-text)" : ""}">${DM_fa(a.a[di])}</span></div></td>`).join("");
-          return `<tr><th class="row-label">${d[0]}</th>${cells}</tr>`;
-        }).join("");
-        wrap.innerHTML = `<div class="cmp-scroll"><table class="cmp">
-          <tr><th class="row-label">ملک</th>${colHead}</tr>
-          <tr><th class="row-label">قیمت</th>${items.map(a => `<td class="price-cell">${a.price}</td>`).join("")}</tr>
-          <tr><th class="row-label">مشخصات</th>${items.map(a => `<td style="font-size:11px;color:var(--text-2);font-weight:700;line-height:18px">${a.specs}</td>`).join("")}</tr>
-          <tr><th class="row-label">محدوده</th>${items.map(a => `<td style="font-size:11px;font-weight:800;line-height:18px">${a.area}</td>`).join("")}</tr>
-          <tr><th class="row-label" style="background:var(--primary-soft);color:var(--primary)">ارزیابی</th>${items.map(() => `<td style="background:var(--primary-soft)"></td>`).join("")}</tr>
-          ${dimRows}
-          <tr><th class="row-label">ارزیابی کلی</th>${items.map(a => { const t = DM_tier(a.score); return `<td><span class="tierbadge" style="background:${t.soft};color:${t.text}">${t.l} · ${DM_fa(a.score)}</span></td>`; }).join("")}</tr>
-          <tr><th class="row-label">آژانس</th>${items.map(a => `<td style="font-size:11px;font-weight:700;color:var(--text-2)">${a.agency}</td>`).join("")}</tr>
-        </table></div>`;
+        function cell(a, row) {
+          const kind = row[2];
+          if (kind === "dim") {
+            const v = a.a[row[1]], grp = DM_DIMS[row[1]][1], bv = Math.max(...items.map(x => x.a[row[1]]));
+            return `<div class="bar-cell"><span class="track"><span class="fill ${grp}" style="width:${v}%"></span></span><span class="val" style="${v === bv ? "color:var(--success-text)" : ""}">${DM_fa(v)}</span></div>`;
+          }
+          if (kind === "tier") {
+            const t = DM_tier(a.score);
+            return `<span class="tierbadge" style="background:${t.soft};color:${t.text}">${t.l} · ${DM_fa(a.score)}</span>`;
+          }
+          let v = row[1][0] === "@" ? a[row[1].slice(1)] : (a.cmp ? a.cmp[row[1]] : undefined);
+          if (kind === "bool") return v ? '<span class="ck yes">✓</span>' : '<span class="ck no">✕</span>';
+          if (v == null || v === "" || v === "—") return '<span class="muted-cell">—</span>';
+          if (kind === "m") v = v + " متر";
+          return v;
+        }
+
+        let rows = `<tr><th class="row-label">ملک</th>${colHead}</tr>`;
+        DM_CMP_GROUPS.forEach((g, gi) => {
+          rows += `<tr class="grp" onclick="toggleGroup(${gi})"><th colspan="${items.length + 1}"><div class="gc"><span>${g.ic} ${g.t}</span><span class="gchev">▾</span></div></th></tr>`;
+          g.rows.forEach(row => {
+            rows += `<tr class="r r-g${gi}"><th class="row-label">${row[0]}</th>${items.map(a => `<td>${cell(a, row)}</td>`).join("")}</tr>`;
+          });
+        });
+        wrap.innerHTML = `<div class="cmp-scroll"><table class="cmp">${rows}</table></div>`;
       }
+      window.toggleGroup = function (gi) {
+        const hdr = document.querySelectorAll(".cmp tr.grp")[gi];
+        if (!hdr) return;
+        hdr.classList.toggle("collapsed");
+        const on = hdr.classList.contains("collapsed");
+        document.querySelectorAll(".r-g" + gi).forEach(r => r.classList.toggle("row-hidden", on));
+      };
       render();
     </script>
   </body>
