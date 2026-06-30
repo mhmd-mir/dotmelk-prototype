@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dotmelk — کد تأیید / دسکتاپ</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
+      :root {
+        --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-subtle: #ede9fe; --primary-border: #c4b5fd;
+        --bg: #f8fafc; --surface: #ffffff; --surface-muted: #f1f5f9; --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
+        --border: #e2e8f0; --border-strong: #cbd5e1;
+        --shadow-lg: 0 26px 60px rgba(15, 23, 42, 0.16);
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body { margin: 0; height: 100vh; overflow: hidden; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--text); direction: rtl;
+        background: radial-gradient(1100px 560px at 82% -10%, rgba(109, 40, 217, 0.1), transparent 60%), linear-gradient(180deg, #f5f3ff, #f8fafc 45%);
+        display: grid; place-items: center; padding: 20px; }
+      a { text-decoration: none; color: inherit; }
+      button, input { font: inherit; }
+      button { border: 0; cursor: pointer; background: none; color: inherit; }
+
+      .auth-shell { width: min(940px, 95vw); height: min(560px, calc(100vh - 40px)); background: var(--surface); border: 1px solid var(--border); border-radius: 28px; box-shadow: var(--shadow-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+
+      .form-side { position: relative; padding: 44px 56px; display: flex; flex-direction: column; justify-content: center; }
+      .back-link { position: absolute; top: 28px; right: 28px; height: 36px; padding: 0 13px; border-radius: 11px; border: 1px solid var(--border); background: #fff; font-size: 12px; font-weight: 800; color: var(--text-2); display: inline-flex; align-items: center; gap: 6px; }
+      .back-link:hover { border-color: var(--primary-border); color: var(--primary); }
+      .form-body { max-width: 380px; width: 100%; margin: 0 auto; }
+      .otp-icon { width: 54px; height: 54px; border-radius: 16px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 25px; margin-bottom: 16px; border: 1px solid var(--primary-border); }
+      .form-body h1 { font-size: 23px; line-height: 34px; font-weight: 900; margin: 0 0 6px; }
+      .form-body .sub { font-size: 14px; line-height: 24px; color: var(--text-2); margin: 0; }
+      .phone-line { font-size: 14px; font-weight: 900; color: var(--text); direction: ltr; display: inline-block; }
+      .change { font-size: 13px; font-weight: 800; color: var(--primary); display: inline-flex; align-items: center; gap: 5px; margin: 10px 0 24px; }
+
+      .otp-row { display: flex; gap: 12px; direction: ltr; justify-content: center; }
+      .otp-box { width: 58px; height: 64px; border: 1.5px solid var(--border); border-radius: 15px; text-align: center; font-size: 27px; font-weight: 900; outline: 0; background: #fff; color: var(--text); transition: 0.15s; }
+      .otp-box:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.14); }
+      .otp-box.filled { border-color: var(--primary-border); background: var(--primary-soft); }
+
+      .resend { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; color: var(--muted); margin: 20px 0 0; }
+      .resend b { color: var(--text); font-weight: 900; direction: ltr; }
+      .resend .link { color: var(--primary); font-weight: 900; cursor: pointer; }
+      .resend .link[aria-disabled="true"] { color: var(--subtle); cursor: default; }
+
+      .btn { width: 100%; height: 52px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 900; transition: 0.15s; }
+      .btn:active { transform: scale(0.99); }
+      .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 14px 30px rgba(109, 40, 217, 0.26); margin-top: 18px; }
+      .btn-primary:hover { background: var(--primary-hover); }
+      .btn-primary[aria-disabled="true"] { opacity: 0.5; box-shadow: none; pointer-events: none; }
+      .support { margin-top: 16px; text-align: center; font-size: 13px; color: var(--muted); }
+      .support a { color: var(--primary); font-weight: 800; }
+
+      /* brand side (shared, calm) */
+      .brand-side { position: relative; overflow: hidden; color: #fff; padding: 44px; display: flex; flex-direction: column; background: linear-gradient(150deg, #4c1d95 0%, #6d28d9 60%, #5b21b6 100%); }
+      .brand-side .grid-motif { position: absolute; inset: -10%; opacity: 0.4; background: linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px), linear-gradient(0deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px); background-size: 46px 46px; transform: rotate(-6deg); }
+      .brand-side .glow { position: absolute; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 70%); top: -110px; left: -70px; }
+      .brand-logo { display: flex; align-items: center; gap: 11px; position: relative; }
+      .brand-logo .lm { width: 44px; height: 44px; border-radius: 14px; background: rgba(255, 255, 255, 0.16); display: grid; place-items: center; font-size: 23px; font-weight: 800; }
+      .brand-logo .lm:before { content: "⌖"; }
+      .brand-logo b { font-size: 20px; font-weight: 900; }
+      .brand-logo span { font-size: 12px; opacity: 0.82; display: block; margin-top: 1px; }
+      .brand-hero { margin: auto 0; position: relative; }
+      .brand-hero h2 { font-size: 25px; line-height: 42px; font-weight: 900; margin: 0 0 22px; max-width: 320px; }
+      .feat { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 14px; font-weight: 700; }
+      .feat .fi { width: 38px; height: 38px; border-radius: 12px; background: rgba(255, 255, 255, 0.16); display: grid; place-items: center; font-size: 18px; flex: 0 0 auto; }
+      .brand-foot { position: relative; font-size: 12px; opacity: 0.75; }
+      .pin { position: absolute; display: inline-flex; align-items: center; gap: 5px; background: rgba(255, 255, 255, 0.95); color: var(--primary); border-radius: 999px; padding: 5px 10px; font-size: 11px; font-weight: 900; box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22); }
+      .pin i { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); }
+      .pin.p1 { top: 84px; left: 56px; } .pin.p2 { top: 150px; left: 230px; }
+
+      @media (max-width: 860px) { .brand-side { display: none; } .auth-shell { grid-template-columns: 1fr; width: min(440px, 95vw); height: auto; } body { overflow: auto; } }
+    </style>
+  </head>
+  <body>
+    <div class="auth-shell">
+      <!-- FORM -->
+      <section class="form-side">
+        <a class="back-link" href="login.html">→ بازگشت</a>
+        <div class="form-body">
+          <div class="otp-icon">✉</div>
+          <h1>کد تأیید را وارد کنید</h1>
+          <p class="sub">کد ۵ رقمی به شماره <span class="phone-line">۰۹۱۲ ۳۴۵ ۶۷۸۹</span> پیامک شد.</p>
+          <a class="change" href="login.html">✎ تغییر شماره موبایل</a>
+
+          <div class="otp-row" id="otp">
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۱" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۲" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۳" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۴" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۵" />
+          </div>
+
+          <div class="resend">
+            <span id="timerWrap">ارسال مجدد کد تا <b id="timer">۰۱:۵۹</b></span>
+            <span class="link" id="resend" aria-disabled="true" onclick="doResend()">ارسال مجدد کد</span>
+          </div>
+
+          <a class="btn btn-primary" id="verifyBtn" aria-disabled="true" href="ads.html">ورود به داتملک</a>
+          <p class="support">کد را دریافت نکردید؟ <a href="contact.html">ارتباط با پشتیبانی</a></p>
+        </div>
+      </section>
+
+      <!-- BRAND -->
+      <aside class="brand-side">
+        <span class="grid-motif"></span>
+        <span class="glow"></span>
+        <span class="pin p1"><i></i>۱۲٫۸ میلیارد</span>
+        <span class="pin p2"><i></i>ارزیابی ۸۵</span>
+
+        <div class="brand-logo">
+          <span class="lm"></span>
+          <div><b>داتملک</b><span>پلتفرم ملکی مبتنی بر نقشه</span></div>
+        </div>
+        <div class="brand-hero">
+          <h2>یک قدم تا ورود به داتملک.</h2>
+          <div class="feat"><span class="fi">⌂</span>مدیریت آگهی‌ها و درخواست‌ها</div>
+          <div class="feat"><span class="fi">◫</span>داشبورد شخصی داتملک من</div>
+          <div class="feat"><span class="fi">◌</span>گفتگو و هماهنگی بازدید</div>
+        </div>
+        <div class="brand-foot">© داتملک — نسخه‌ی وب</div>
+      </aside>
+    </div>
+
+    <script>
+      const FA = "۰۱۲۳۴۵۶۷۸۹";
+      const fa = (n) => String(n).replace(/\d/g, (d) => FA[d]);
+      const boxes = [...document.querySelectorAll(".otp-box")];
+      const verifyBtn = document.getElementById("verifyBtn");
+      function refresh() {
+        boxes.forEach((b) => b.classList.toggle("filled", b.value !== ""));
+        verifyBtn.setAttribute("aria-disabled", boxes.every((b) => b.value !== "") ? "false" : "true");
+      }
+      boxes.forEach((box, i) => {
+        box.addEventListener("input", () => {
+          box.value = box.value.replace(/[^0-9۰-۹]/g, "").slice(-1);
+          if (box.value && i < boxes.length - 1) boxes[i + 1].focus();
+          refresh();
+        });
+        box.addEventListener("keydown", (e) => { if (e.key === "Backspace" && !box.value && i > 0) boxes[i - 1].focus(); });
+        box.addEventListener("paste", (e) => {
+          e.preventDefault();
+          const t = (e.clipboardData.getData("text") || "").replace(/[^0-9۰-۹]/g, "").slice(0, boxes.length);
+          [...t].forEach((ch, k) => { if (boxes[k]) boxes[k].value = ch; });
+          (boxes[t.length] || boxes[boxes.length - 1]).focus(); refresh();
+        });
+      });
+      boxes[0].focus();
+
+      let left = 119;
+      const timer = document.getElementById("timer"), timerWrap = document.getElementById("timerWrap"), resend = document.getElementById("resend");
+      resend.style.display = "none";
+      function tick(ref) {
+        left--;
+        const m = String(Math.floor(left / 60)).padStart(2, "0"), s = String(left % 60).padStart(2, "0");
+        timer.textContent = fa(`${m}:${s}`);
+        if (left <= 0) { clearInterval(ref.id); timerWrap.style.display = "none"; resend.style.display = "inline"; resend.setAttribute("aria-disabled", "false"); }
+      }
+      const ref = {}; ref.id = setInterval(() => tick(ref), 1000);
+      function doResend() {
+        if (resend.getAttribute("aria-disabled") === "true") return;
+        left = 119; timerWrap.style.display = "inline"; resend.style.display = "none"; resend.setAttribute("aria-disabled", "true");
+        const r2 = {}; r2.id = setInterval(() => tick(r2), 1000);
+      }
+    </script>
+  </body>
+</html>

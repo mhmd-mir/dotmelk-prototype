@@ -276,6 +276,72 @@
 
       .mini-toast { position: fixed; left: 50%; bottom: 92px; transform: translate(-50%, 20px); background: rgba(15, 23, 42, 0.9); color: #fff; padding: 9px 16px; border-radius: 999px; font-size: 12px; font-weight: 800; z-index: 70; opacity: 0; pointer-events: none; transition: 0.2s; }
       .mini-toast.show { opacity: 1; transform: translate(-50%, 0); }
+      /* ===== ref badge (مرجع آگهی) ===== */
+      .ref-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 999px; border: 1px solid transparent; }
+      .ref-badge .rd { width: 6px; height: 6px; border-radius: 50%; }
+      .ref-dotmelk { background: var(--primary-soft); color: var(--primary); border-color: var(--primary-border); }
+      .ref-divar { background: #fee2e2; color: #b91c1c; border-color: #fecaca; }
+      .ref-sheypoor { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+      .ref-personal { background: var(--surface-muted); color: var(--text-2); border-color: var(--border); }
+      .ad-head .type-tag { flex: 0 0 auto; margin-top: 1px; }
+
+      /* ===== friendly multi-select (نوع آگهی) ===== */
+      .opt-list { display: grid; gap: 6px; }
+      .opt { display: flex; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid var(--border); border-radius: 12px; background: #fff; cursor: pointer; font-size: 13px; font-weight: 800; color: var(--text-2); transition: 0.12s; }
+      .opt:hover { border-color: var(--primary-border); }
+      .opt .cbox { width: 20px; height: 20px; border-radius: 7px; border: 1.5px solid var(--border-strong); display: grid; place-items: center; flex: 0 0 auto; color: #fff; font-size: 12px; transition: 0.12s; }
+      .opt .odot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+      .opt .ocount { margin-inline-start: auto; font-size: 11px; font-weight: 700; color: var(--subtle); }
+      .opt.on { border-color: var(--primary-border); background: var(--primary-soft); color: var(--primary); }
+      .opt.on .cbox { background: var(--primary); border-color: var(--primary); }
+
+      /* ===== more filters toggle ===== */
+      .more-toggle { width: 100%; height: 44px; margin-top: 6px; border: 1px dashed var(--primary-border); border-radius: 13px; background: var(--primary-soft); color: var(--primary); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; }
+      .more-toggle:hover { background: var(--primary-subtle); }
+      .more-toggle .chev { transition: 0.2s; }
+      .more-toggle.open .chev { transform: rotate(180deg); }
+      .more-filters { display: none; }
+      .more-filters.open { display: block; }
+
+      /* ===== ad slider (above map) ===== */
+      .map-col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+      .ad-slider { position: relative; height: 150px; border-radius: 22px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm); flex: 0 0 auto; }
+      .ad-slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 22px 26px; color: #fff; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+      .ad-slide.on { opacity: 1; pointer-events: auto; }
+      .ad-slide h3 { margin: 0; font-size: 20px; font-weight: 900; }
+      .ad-slide p { margin: 0; font-size: 13px; opacity: 0.92; max-width: 70%; line-height: 22px; }
+      .ad-slide .s-cta { margin-top: 8px; align-self: flex-start; background: rgba(255, 255, 255, 0.95); color: var(--primary); border-radius: 11px; padding: 7px 14px; font-size: 12px; font-weight: 900; }
+      .slide-dots { position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; z-index: 3; }
+      .slide-dots i { width: 7px; height: 7px; border-radius: 999px; background: rgba(255, 255, 255, 0.55); cursor: pointer; transition: 0.2s; }
+      .slide-dots i.on { width: 20px; background: #fff; }
+      .slide-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 999px; background: rgba(255, 255, 255, 0.9); display: grid; place-items: center; color: var(--text); font-size: 16px; z-index: 3; box-shadow: var(--shadow-sm); }
+      .slide-nav.r { right: 12px; } .slide-nav.l { left: 12px; }
+
+      /* ===== region picker modal ===== */
+      .region-modal { position: fixed; inset: 0; z-index: 120; background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; padding: 20px; }
+      .region-modal.show { display: flex; }
+      .rm-card { width: min(520px, 95vw); height: min(600px, 92vh); background: #fff; border-radius: 22px; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; overflow: hidden; }
+      .rm-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--border); }
+      .rm-head h3 { margin: 0; font-size: 16px; font-weight: 900; }
+      .rm-head button { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; color: var(--text-2); font-size: 16px; }
+      .rm-head button:hover { background: var(--surface-muted); }
+      .rm-steps { display: flex; align-items: center; gap: 6px; padding: 12px 18px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--border); }
+      .rm-steps::-webkit-scrollbar { display: none; }
+      .rm-step { font-size: 12px; font-weight: 800; color: var(--subtle); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+      .rm-step.done { color: var(--primary); } .rm-step.active { color: var(--text); }
+      .rm-step .sep { color: var(--subtle); margin: 0 2px; }
+      .rm-search { padding: 14px 18px 6px; }
+      .rm-list { flex: 1; overflow: auto; padding: 6px 12px 12px; }
+      .rm-opt { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; cursor: pointer; font-size: 14px; font-weight: 700; color: var(--text); }
+      .rm-opt:hover { background: var(--primary-soft); color: var(--primary); }
+      .rm-opt .chev { color: var(--subtle); }
+      .rm-opt .cbox { width: 20px; height: 20px; border-radius: 7px; border: 1.5px solid var(--border-strong); display: grid; place-items: center; color: #fff; font-size: 12px; flex: 0 0 auto; }
+      .rm-opt.on { background: var(--primary-soft); color: var(--primary); }
+      .rm-opt.on .cbox { background: var(--primary); border-color: var(--primary); }
+      .rm-empty { padding: 36px 18px; text-align: center; color: var(--muted); font-size: 13px; }
+      .rm-foot { padding: 12px 18px; border-top: 1px solid var(--border); display: flex; gap: 10px; }
+      .rm-foot .btn { flex: 1; height: 46px; }
+
       .float-add { position: fixed; right: 32px; bottom: 28px; height: 52px; border-radius: 999px; padding: 0 20px; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7c3aed, #5b21b6); color: #fff; font-weight: 800; box-shadow: 0 22px 50px rgba(109, 40, 217, 0.28); z-index: 50; }
       .ribbon { position: fixed; left: 24px; bottom: 24px; background: rgba(15, 23, 42, 0.82); color: #fff; border-radius: 999px; padding: 9px 13px; font-size: 12px; z-index: 50; }
     </style>
@@ -330,11 +396,19 @@
 
           <details class="fsec" open style="border-top: 0">
             <summary>محدوده‌ی آگهی <span style="display:flex;gap:6px;align-items:center"><span class="req-flag">الزامی</span><span class="chev">▾</span></span></summary>
-            <div class="fbody"><div class="filter-values"><span class="chip active">تهران</span><span class="chip active">سعادت‌آباد</span><span class="chip">مرزداران</span><span class="chip">+ افزودن محدوده</span></div></div>
+            <div class="fbody"><div class="filter-values" id="regionChips"><span class="chip active">تهران</span><span class="chip active">سعادت‌آباد</span><span class="chip">مرزداران</span><span class="chip" style="border-style:dashed;color:var(--primary);border-color:var(--primary-border)" onclick="openRegion()">＋ افزودن محدوده</span></div></div>
           </details>
           <details class="fsec" open>
             <summary>نوع آگهی <span class="chev">▾</span></summary>
-            <div class="fbody"><div class="filter-values"><span class="chip active">همه</span><span class="chip">فروش</span><span class="chip">رهن و اجاره</span><span class="chip">مشارکت</span><span class="chip">پیش‌فروش</span><span class="chip">اجاره کوتاه‌مدت</span></div></div>
+            <div class="fbody">
+              <div class="opt-list">
+                <label class="opt on" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-sale)"></span>فروش<span class="ocount">۱۲۴</span></label>
+                <label class="opt on" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-rent)"></span>رهن و اجاره<span class="ocount">۸۶</span></label>
+                <label class="opt" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-participation)"></span>مشارکت<span class="ocount">۲۱</span></label>
+                <label class="opt" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-presell)"></span>پیش‌فروش<span class="ocount">۱۷</span></label>
+                <label class="opt" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-short)"></span>اجاره کوتاه‌مدت<span class="ocount">۹</span></label>
+              </div>
+            </div>
           </details>
           <details class="fsec" open>
             <summary>قیمت <span class="chev">▾</span></summary>
@@ -347,6 +421,12 @@
               <div class="range-row"><div class="input-fake">از ۵ م</div><div class="input-fake">تا ۵۰ م</div></div>
             </div>
           </details>
+
+          <button class="more-toggle" id="moreToggle" onclick="toggleMore()">
+            <span id="moreLabel">فیلترهای بیشتر (۵ مورد)</span><span class="chev">▾</span>
+          </button>
+
+          <div class="more-filters" id="moreFilters">
           <details class="fsec">
             <summary>متراژ و سال ساخت <span class="chev">▾</span></summary>
             <div class="fbody">
@@ -397,6 +477,7 @@
               <div class="switch-row"><span>فقط آگهی‌های آژانس من</span><span class="switch on"></span></div>
             </div>
           </details>
+          </div><!-- /more-filters -->
 
           <div class="apply-row">
             <button class="btn btn-primary" style="width: 100%">اعمال فیلتر</button>
@@ -427,7 +508,30 @@
           <section class="results" id="results"><!-- cards injected by JS --></section>
         </section>
 
-        <!-- ===== STICKY MAP PANEL ===== -->
+        <!-- ===== MAP COLUMN (slider + sticky map) ===== -->
+        <div class="map-col">
+        <!-- ad slider -->
+        <div class="ad-slider" id="adSlider">
+          <div class="ad-slide on" style="background:linear-gradient(135deg,#6d28d9,#4c1d95)">
+            <h3>کارشناسی ملک داتملک</h3>
+            <p>قبل از خرید با یک ارزیابی تخصصی، ریسک را به صفر برسانید.</p>
+            <a class="s-cta" href="#">ثبت درخواست</a>
+          </div>
+          <div class="ad-slide" style="background:linear-gradient(135deg,#0f766e,#0d9488)">
+            <h3>ثبت آگهی رایگان</h3>
+            <p>آگهی ملک خود را با تصویر و موقعیت دقیق روی نقشه ثبت کنید.</p>
+            <a class="s-cta" href="add-advertise.html">ثبت آگهی</a>
+          </div>
+          <div class="ad-slide" style="background:linear-gradient(135deg,#1e40af,#2563eb)">
+            <h3>قرارداد هوشمند داتملک</h3>
+            <p>با همراهی وکیل و کارشناس، قراردادتان را امن تنظیم کنید.</p>
+            <a class="s-cta" href="#">بیشتر بدانید</a>
+          </div>
+          <div class="slide-dots" id="slideDots"></div>
+          <button class="slide-nav r" onclick="slideStep(-1)">‹</button>
+          <button class="slide-nav l" onclick="slideStep(1)">›</button>
+        </div>
+        <!-- sticky map -->
         <aside class="map-panel">
           <div class="map-viewport" id="viewport">
             <div class="map-world" id="world">
@@ -470,7 +574,27 @@
             </div>
           </div>
         </aside>
+        </div><!-- /map-col -->
       </main>
+    </div>
+
+    <!-- region picker modal -->
+    <div class="region-modal" id="regionModal" onclick="if(event.target===this)closeRegion()">
+      <div class="rm-card">
+        <div class="rm-head">
+          <h3 id="rmTitle">انتخاب استان</h3>
+          <button onclick="closeRegion()" aria-label="بستن">×</button>
+        </div>
+        <div class="rm-steps" id="rmSteps"></div>
+        <div class="rm-search">
+          <label class="field" style="height:40px"><span>⌕</span><input id="rmSearch" placeholder="جستجو…" oninput="rmSearch(this.value)" /></label>
+        </div>
+        <div class="rm-list" id="rmList"></div>
+        <div class="rm-foot">
+          <button class="btn btn-outline rm-foot" onclick="rmBack()">← مرحله قبل</button>
+          <button class="btn btn-primary" onclick="closeRegion()">تأیید و بستن</button>
+        </div>
+      </div>
     </div>
 
     <!-- compare tray -->
@@ -485,9 +609,14 @@
     <div class="mini-toast" id="toast"></div>
     <div class="ribbon">Dotmelk · آگهی‌ها (دسکتاپ)</div>
 
-    <script src="../assets/dotmelk-ads-data.js?v=3"></script>
+    <script src="../assets/dotmelk-ads-data.js?v=4"></script>
     <script>
       /* ===== render ad cards + map pins from shared data ===== */
+      const REF_MAP = { "داتملک": "ref-dotmelk", "دیوار": "ref-divar", "شیپور": "ref-sheypoor", "شخصی": "ref-personal" };
+      function refBadge(ad) {
+        const cls = REF_MAP[ad.ref] || "ref-personal";
+        return `<span class="ref-badge ${cls}"><span class="rd"></span>${ad.ref || "داتملک"}</span>`;
+      }
       function cardHTML(ad) {
         const t = DM_tier(ad.score);
         const bars = DM_DIMS.map((d, i) =>
@@ -502,12 +631,12 @@
           <div class="ad-body">
             <div class="ad-head">
               <h3 class="ad-title">${ad.title}</h3>
-              <span class="status ${ad.status}"><span class="dot"></span>${ad.statusLabel}</span>
+              <span class="type-tag ${ad.type}"><span class="dot" style="background:#fff"></span>${ad.typeLabel}</span>
             </div>
             <div class="ad-specs">${ad.specs}</div>
             <div class="ad-mid">
               <div class="ad-mid-info">
-                <div class="ad-top"><span class="type-tag ${ad.type}"><span class="dot" style="background:#fff"></span>${ad.typeLabel}</span>${urgent}</div>
+                <div class="ad-top">${refBadge(ad)}${urgent}</div>
                 <div class="ad-amount">${ad.price}</div>
                 <div class="ad-range">⌖ <b>${ad.area}</b></div>
               </div>
@@ -608,8 +737,93 @@
       }
       let toastT; function flash(m) { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1800); }
 
-      document.addEventListener("keydown", e => { if (e.key === "Escape") closePopup(); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") { closePopup(); closeRegion(); } });
       apply(); syncCompare();
+
+      /* ===== more filters toggle ===== */
+      function toggleMore() {
+        const btn = document.getElementById("moreToggle");
+        const panel = document.getElementById("moreFilters");
+        const open = panel.classList.toggle("open");
+        btn.classList.toggle("open", open);
+        document.getElementById("moreLabel").textContent = open ? "بستن فیلترهای بیشتر" : "فیلترهای بیشتر (۵ مورد)";
+      }
+
+      /* ===== ad slider ===== */
+      (function () {
+        const slides = document.querySelectorAll(".ad-slide");
+        const dotsEl = document.getElementById("slideDots");
+        let cur = 0;
+        dotsEl.innerHTML = [...slides].map((_, i) => `<i class="${i === 0 ? "on" : ""}"></i>`).join("");
+        const dots = dotsEl.querySelectorAll("i");
+        function goSlide(n) {
+          slides[cur].classList.remove("on"); dots[cur].classList.remove("on");
+          cur = ((n % slides.length) + slides.length) % slides.length;
+          slides[cur].classList.add("on"); dots[cur].classList.add("on");
+        }
+        let timer = setInterval(() => goSlide(cur + 1), 4500);
+        window.slideStep = function (d) { goSlide(cur + d); clearInterval(timer); timer = setInterval(() => goSlide(cur + 1), 4500); };
+        dots.forEach((dot, i) => dot.addEventListener("click", () => window.slideStep(i - cur)));
+      })();
+
+      /* ===== region picker ===== */
+      const RM = [
+        { label: "استان", items: ["تهران", "اصفهان", "خراسان رضوی", "فارس", "گیلان", "مازندران", "آذربایجان شرقی", "کرمان"] },
+        { label: "شهرستان", items: { "تهران": ["شهرستان تهران", "شمیرانات", "ری", "شهریار", "ملارد"], "اصفهان": ["شهرستان اصفهان", "نجف‌آباد", "کاشان"], "خراسان رضوی": ["مشهد", "سبزوار", "نیشابور"], "فارس": ["شیراز", "مرودشت"], "گیلان": ["رشت", "لنگرود"], "مازندران": ["ساری", "آمل", "بابل"], "آذربایجان شرقی": ["تبریز", "مراغه"], "کرمان": ["شهرستان کرمان", "بم"] } },
+        { label: "شهر", items: { "شهرستان تهران": ["تهران"], "شمیرانات": ["تجریش", "لواسان", "رودهن"], "ری": ["شهر ری", "ورامین"], "شهریار": ["شهریار", "اندیشه", "صفادشت"], "ملارد": ["ملارد", "قدس"], "شهرستان اصفهان": ["اصفهان"], "نجف‌آباد": ["نجف‌آباد"], "کاشان": ["کاشان"], "مشهد": ["مشهد"], "سبزوار": ["سبزوار"], "نیشابور": ["نیشابور"], "شیراز": ["شیراز"], "مرودشت": ["مرودشت"], "رشت": ["رشت"], "لنگرود": ["لنگرود"], "ساری": ["ساری"], "آمل": ["آمل"], "بابل": ["بابل"], "تبریز": ["تبریز"], "مراغه": ["مراغه"], "شهرستان کرمان": ["کرمان"], "بم": ["بم"] } },
+        { label: "منطقه / ناحیه", items: { "تهران": ["منطقه ۱", "منطقه ۲", "منطقه ۳", "منطقه ۴", "منطقه ۵", "منطقه ۶", "منطقه ۷", "منطقه ۸", "منطقه ۹", "منطقه ۱۰", "منطقه ۱۱", "منطقه ۱۲", "منطقه ۱۳", "منطقه ۱۴", "منطقه ۱۵", "منطقه ۱۶", "منطقه ۱۷", "منطقه ۱۸", "منطقه ۱۹", "منطقه ۲۰", "منطقه ۲۱", "منطقه ۲۲"], "اصفهان": ["منطقه ۱", "منطقه ۲", "منطقه ۳", "منطقه ۴", "منطقه ۵"], "مشهد": ["منطقه ۱", "منطقه ۲", "منطقه ۳", "منطقه ۴", "منطقه ۵", "منطقه ۶", "منطقه ۷", "منطقه ۸", "منطقه ۹", "منطقه ۱۰", "منطقه ۱۱", "منطقه ۱۲", "منطقه ۱۳"], "شیراز": ["منطقه ۱", "منطقه ۲", "منطقه ۳", "منطقه ۴"], "رشت": ["ناحیه مرکزی", "ناحیه شمالی", "ناحیه جنوبی"], "تجریش": ["—"], "لواسان": ["—"] } },
+        { label: "محله", items: { "منطقه ۱": ["نیاوران", "زعفرانیه", "جماران", "ولنجک", "شمیران", "کاشانک", "درکه"], "منطقه ۲": ["سعادت‌آباد", "شهرک غرب", "اکباتان", "مرزداران", "کوهسار", "سازمان برنامه"], "منطقه ۳": ["یوسف‌آباد", "دروس", "قلهک", "میرداماد", "پاسداران", "محمودیه"], "منطقه ۴": ["تهرانپارس", "نارمک", "رسالت", "سرسبز"], "منطقه ۵": ["پونک", "بلوار فردوس", "جنت‌آباد", "شهران"], "منطقه ۶": ["ونک", "آرژانتین", "کریم‌خان", "بهجت‌آباد"], "منطقه ۷": ["ظفر", "پاسداران شمالی", "قبا", "منیریه"], "منطقه ۸": ["فرمانیه", "لویزان", "امانیه", "هروی"], "منطقه ۱۲": ["بازار", "ناصرخسرو", "پانزده خرداد"], "منطقه ۲۲": ["چیتگر", "دریاچه شهدا", "ویلاشهر"], "—": ["(کل منطقه)"] } },
+      ];
+      let rmStep = 0, rmSels = [];
+      function openRegion() {
+        rmStep = 0; rmSels = [];
+        document.getElementById("regionModal").classList.add("show");
+        document.getElementById("rmSearch").value = "";
+        rmRender();
+      }
+      function closeRegion() { document.getElementById("regionModal").classList.remove("show"); }
+      function rmBack() { if (rmStep > 0) { rmStep--; rmSels.splice(rmStep); document.getElementById("rmSearch").value = ""; rmRender(); } }
+      function rmRender() {
+        const s = RM[rmStep];
+        document.getElementById("rmTitle").textContent = "انتخاب " + s.label;
+        document.getElementById("rmSteps").innerHTML = RM.slice(0, rmStep + 1).map((step, i) => {
+          const cls = i < rmStep ? "done" : i === rmStep ? "active" : "";
+          return `<span class="rm-step ${cls}">${i > 0 ? '<span class="sep">›</span>' : ""}${i < rmStep ? rmSels[i] : step.label}</span>`;
+        }).join("");
+        rmRenderList("");
+      }
+      function rmRenderList(q) {
+        const s = RM[rmStep];
+        let items = rmStep === 0 ? s.items : (s.items[rmSels[rmStep - 1]] || []);
+        if (!Array.isArray(items)) items = [];
+        const filtered = q ? items.filter(x => x.includes(q)) : items;
+        const isLast = rmStep === RM.length - 1;
+        const el = document.getElementById("rmList");
+        if (!filtered.length) { el.innerHTML = '<div class="rm-empty">موردی یافت نشد</div>'; return; }
+        el.innerHTML = filtered.map(item => `<div class="rm-opt${isLast ? " last" : ""}" onclick="rmSelect('${item.replace(/'/g, "&#39;")}')">
+          ${isLast ? '<span class="cbox"></span>' : ""}
+          <span>${item}</span>
+          ${!isLast ? '<span class="chev">‹</span>' : ""}
+        </div>`).join("");
+      }
+      function rmSearch(q) { rmRenderList(q); }
+      function rmSelect(item) {
+        rmSels[rmStep] = item;
+        if (rmStep < RM.length - 1) {
+          rmStep++;
+          document.getElementById("rmSearch").value = "";
+          rmRender();
+        } else {
+          const label = rmSels.filter(Boolean).join(" › ");
+          const rc = document.getElementById("regionChips");
+          const addBtn = rc.querySelector('[onclick="openRegion()"]');
+          const sp = document.createElement("span");
+          sp.className = "chip active";
+          sp.textContent = label;
+          rc.insertBefore(sp, addBtn);
+          closeRegion();
+        }
+      }
     </script>
   </body>
 </html>

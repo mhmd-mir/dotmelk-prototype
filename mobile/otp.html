@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Dotmelk — کد تأیید / موبایل</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap");
+      :root {
+        --primary: #6d28d9; --primary-hover: #5b21b6; --primary-soft: #f5f3ff; --primary-subtle: #ede9fe; --primary-border: #c4b5fd;
+        --bg: #f8fafc; --surface: #ffffff; --surface-muted: #f1f5f9; --text: #0f172a; --text-2: #475569; --muted: #64748b; --subtle: #94a3b8;
+        --border: #e2e8f0; --border-strong: #cbd5e1;
+      }
+      * { box-sizing: border-box; }
+      html, body { overflow-x: hidden; }
+      body { margin: 0; min-height: 100dvh; font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--text); direction: rtl; background: var(--surface); display: flex; flex-direction: column; }
+      a { text-decoration: none; color: inherit; }
+      button, input { font: inherit; }
+      button { border: 0; cursor: pointer; background: none; color: inherit; }
+
+      /* hero — identical language to login for a coherent flow */
+      .hero { position: relative; overflow: hidden; color: #fff; padding: 30px 22px 34px; background: linear-gradient(150deg, #4c1d95, #6d28d9 62%, #5b21b6); border-radius: 0 0 30px 30px; flex: 0 0 auto; }
+      .hero .grid-motif { position: absolute; inset: -10%; opacity: 0.38; background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px); background-size: 36px 36px; transform: rotate(-6deg); }
+      .hero .glow { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%); top: -80px; left: -50px; }
+      .hero-back { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 13px; background: rgba(255, 255, 255, 0.18); display: grid; place-items: center; color: #fff; font-size: 19px; z-index: 2; }
+      .hero-logo { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+      .hero-logo .lm { width: 58px; height: 58px; border-radius: 19px; background: rgba(255, 255, 255, 0.18); display: grid; place-items: center; font-size: 29px; font-weight: 800; }
+      .hero-logo .lm:before { content: "⌖"; }
+      .hero-logo b { font-size: 22px; font-weight: 900; }
+      .hero-logo span { font-size: 12px; opacity: 0.9; }
+
+      .content { flex: 1; padding: 26px 22px 0; display: flex; flex-direction: column; }
+      .otp-icon { width: 56px; height: 56px; border-radius: 17px; background: var(--primary-soft); color: var(--primary); display: grid; place-items: center; font-size: 26px; border: 1px solid var(--primary-border); margin-bottom: 16px; }
+      h1 { font-size: 21px; line-height: 32px; font-weight: 900; margin: 0 0 6px; }
+      .sub { font-size: 14px; line-height: 23px; color: var(--text-2); margin: 0; }
+      .sub b { color: var(--text); font-weight: 900; direction: ltr; display: inline-block; }
+      .change { font-size: 13px; font-weight: 800; color: var(--primary); display: inline-flex; align-items: center; gap: 5px; margin: 12px 0 22px; align-self: flex-start; }
+
+      .otp-row { display: flex; gap: 10px; direction: ltr; }
+      .otp-box { flex: 1; min-width: 0; height: 62px; border: 1.5px solid var(--border); border-radius: 15px; text-align: center; font-size: 25px; font-weight: 900; outline: 0; background: #fff; color: var(--text); transition: 0.15s; }
+      .otp-box:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.14); }
+      .otp-box.filled { border-color: var(--primary-border); background: var(--primary-soft); }
+
+      .resend { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; color: var(--muted); margin: 20px 0 0; }
+      .resend b { color: var(--text); font-weight: 900; direction: ltr; }
+      .resend .link { color: var(--primary); font-weight: 900; cursor: pointer; }
+      .resend .link[aria-disabled="true"] { color: var(--subtle); }
+
+      .btn { width: 100%; height: 52px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 900; margin-top: 22px; }
+      .btn:active { transform: scale(0.99); }
+      .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 14px 30px rgba(109, 40, 217, 0.26); }
+      .btn-primary[aria-disabled="true"] { opacity: 0.5; box-shadow: none; pointer-events: none; }
+
+      .foot { margin-top: auto; padding: 20px 0 calc(18px + env(safe-area-inset-bottom)); text-align: center; font-size: 13px; color: var(--muted); }
+      .foot a { color: var(--primary); font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <span class="grid-motif"></span>
+      <span class="glow"></span>
+      <a class="hero-back" href="login.html" aria-label="بازگشت">→</a>
+      <div class="hero-logo">
+        <span class="lm"></span>
+        <b>داتملک</b>
+        <span>تأیید شماره موبایل</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="otp-icon">✉</div>
+      <h1>کد تأیید را وارد کنید</h1>
+      <p class="sub">کد ۵ رقمی به شماره <b>۰۹۱۲ ۳۴۵ ۶۷۸۹</b> پیامک شد.</p>
+      <a class="change" href="login.html">✎ تغییر شماره موبایل</a>
+
+      <div class="otp-row" id="otp">
+        <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۱" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۲" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۳" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۴" />
+        <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="رقم ۵" />
+      </div>
+
+      <div class="resend">
+        <span id="timerWrap">ارسال مجدد کد تا <b id="timer">۰۱:۵۹</b></span>
+        <span class="link" id="resend" aria-disabled="true" onclick="doResend()">ارسال مجدد کد</span>
+      </div>
+
+      <a class="btn btn-primary" id="verifyBtn" aria-disabled="true" href="ads.html">ورود به داتملک</a>
+
+      <div class="foot">کد را دریافت نکردید؟ <a href="contact.html">ارتباط با پشتیبانی</a></div>
+    </main>
+
+    <script>
+      const FA = "۰۱۲۳۴۵۶۷۸۹";
+      const fa = (n) => String(n).replace(/\d/g, (d) => FA[d]);
+      const boxes = [...document.querySelectorAll(".otp-box")];
+      const verifyBtn = document.getElementById("verifyBtn");
+      function refresh() {
+        boxes.forEach((b) => b.classList.toggle("filled", b.value !== ""));
+        verifyBtn.setAttribute("aria-disabled", boxes.every((b) => b.value !== "") ? "false" : "true");
+      }
+      boxes.forEach((box, i) => {
+        box.addEventListener("input", () => {
+          box.value = box.value.replace(/[^0-9۰-۹]/g, "").slice(-1);
+          if (box.value && i < boxes.length - 1) boxes[i + 1].focus();
+          refresh();
+        });
+        box.addEventListener("keydown", (e) => { if (e.key === "Backspace" && !box.value && i > 0) boxes[i - 1].focus(); });
+        box.addEventListener("paste", (e) => {
+          e.preventDefault();
+          const t = (e.clipboardData.getData("text") || "").replace(/[^0-9۰-۹]/g, "").slice(0, boxes.length);
+          [...t].forEach((ch, k) => { if (boxes[k]) boxes[k].value = ch; });
+          (boxes[t.length] || boxes[boxes.length - 1]).focus(); refresh();
+        });
+      });
+      boxes[0].focus();
+
+      let left = 119;
+      const timer = document.getElementById("timer"), timerWrap = document.getElementById("timerWrap"), resend = document.getElementById("resend");
+      resend.style.display = "none";
+      function tick(ref) {
+        left--;
+        const m = String(Math.floor(left / 60)).padStart(2, "0"), s = String(left % 60).padStart(2, "0");
+        timer.textContent = fa(`${m}:${s}`);
+        if (left <= 0) { clearInterval(ref.id); timerWrap.style.display = "none"; resend.style.display = "inline"; resend.setAttribute("aria-disabled", "false"); }
+      }
+      const ref = {}; ref.id = setInterval(() => tick(ref), 1000);
+      function doResend() {
+        if (resend.getAttribute("aria-disabled") === "true") return;
+        left = 119; timerWrap.style.display = "inline"; resend.style.display = "none"; resend.setAttribute("aria-disabled", "true");
+        const r2 = {}; r2.id = setInterval(() => tick(r2), 1000);
+      }
+    </script>
+  </body>
+</html>

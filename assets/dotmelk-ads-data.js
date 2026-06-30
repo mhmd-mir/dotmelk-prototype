@@ -68,7 +68,7 @@
   window.DM_ADS = [
     {
       key: "a1", type: "sale", typeLabel: "فروش", status: "public", statusLabel: "عمومی",
-      urgent: true, vip: false, code: "۵۴۲۱",
+      urgent: true, vip: false, code: "۵۴۲۱", ref: "داتملک",
       title: "آپارتمان ۱۳۵ متری نوساز در سعادت‌آباد", specs: "۱۳۵ متری · ۳ خواب · طبقه ۴ · سند تک‌برگ",
       price: '<span class="label">مبلغ:</span> ۱۲٫۸ میلیارد <small>تومان</small>',
       area: "تهران، سعادت‌آباد — محله کاج", time: "امروز", agency: "آژانس آسمان",
@@ -84,7 +84,7 @@
     },
     {
       key: "a2", type: "rent", typeLabel: "رهن و اجاره", status: "agency", statusLabel: "املاک",
-      urgent: false, vip: true, code: "۶۳۱۸",
+      urgent: false, vip: true, code: "۶۳۱۸", ref: "دیوار",
       title: "واحد ۹۰ متری بازسازی‌شده در مرزداران", specs: "۹۰ متری · ۲ خواب · طبقه ۲ · پارکینگ",
       price: '<span class="label">ودیعه:</span> ۷۰۰م <span class="sep"></span> <span class="label">اجاره:</span> ۲۵م',
       area: "تهران، مرزداران — محله آریافر", time: "امروز", agency: "املاک خانه نو",
@@ -100,7 +100,7 @@
     },
     {
       key: "a3", type: "rent", typeLabel: "رهن و اجاره", status: "expired", statusLabel: "منقضی شده",
-      urgent: false, vip: false, code: "۶۹۰۲",
+      urgent: false, vip: false, code: "۶۹۰۲", ref: "شخصی",
       title: "آپارتمان ۸۰ متری رهن کامل در ولنجک", specs: "۸۰ متری · ۲ خواب · طبقه ۳ · بازسازی",
       price: '<span class="agreed">رهن کامل</span> <span class="sep"></span> ۱٫۲ میلیارد <small>ودیعه</small>',
       area: "تهران، ولنجک — محله یمن", time: "۵ روز پیش", agency: "آگهی‌دهنده شخصی",
@@ -116,7 +116,7 @@
     },
     {
       key: "a4", type: "participation", typeLabel: "مشارکت", status: "folk", statusLabel: "مردمی",
-      urgent: false, vip: false, code: "۴۸۸۹",
+      urgent: false, vip: false, code: "۴۸۸۹", ref: "داتملک",
       title: "زمین ۴۲۰ متری مشارکت در ساخت — نیاوران", specs: "۴۲۰ متری · کلنگی · سند تک‌برگ · بر ۱۴",
       price: '<span class="label">حداقل سرمایه:</span> <span class="agreed">توافقی</span>',
       area: "تهران، نیاوران — محله جماران", time: "۲ روز پیش", agency: "دفتر شمال شهر",
@@ -132,7 +132,7 @@
     },
     {
       key: "a5", type: "presell", typeLabel: "پیش‌فروش", status: "waiting", statusLabel: "در انتظار",
-      urgent: false, vip: false, code: "۷۰۳۴",
+      urgent: false, vip: false, code: "۷۰۳۴", ref: "شیپور",
       title: "پیش‌فروش واحد ۱۱۰ متری در پروژه چیتگر", specs: "۱۱۰ متری · ۲ خواب · تحویل ۱۴۰۶ · منطقه ۲۲",
       price: '<span class="label">پیش‌پرداخت:</span> ۳٫۲ میلیارد <small>تومان</small>',
       area: "تهران، چیتگر — منطقه ۲۲", time: "دیروز", agency: "گروه آرتا",
@@ -148,7 +148,7 @@
     },
     {
       key: "a6", type: "short", typeLabel: "اجاره کوتاه‌مدت", status: "public", statusLabel: "عمومی",
-      urgent: false, vip: false, code: "۸۱۱۵",
+      urgent: false, vip: false, code: "۸۱۱۵", ref: "شخصی",
       title: "سوئیت مبله‌ی روزانه نزدیک برج میلاد", specs: "۶۰ متری · ۱ خواب · مبله · روزانه",
       price: '<span class="label">اجاره شبانه:</span> از ۲٫۵ میلیون <small>تومان</small>',
       area: "تهران، گیشا — محله نصر", time: "امروز", agency: "آگهی‌دهنده شخصی",
@@ -164,7 +164,7 @@
     },
     {
       key: "a7", type: "sale", typeLabel: "فروش", status: "edit", statusLabel: "نیاز به ویرایش",
-      urgent: false, vip: false, code: "۵۲۷۰",
+      urgent: false, vip: false, code: "۵۲۷۰", ref: "داتملک",
       title: "کلنگی ۲۲۰ متری مناسب بازسازی در امانیه", specs: "۲۲۰ متری · کلنگی · سند منگوله‌دار",
       price: '<span class="label">مبلغ:</span> <span class="agreed">توافقی</span>',
       area: "تهران، امانیه — محله دروس", time: "۳ روز پیش", agency: "آژانس آسمان",
@@ -179,7 +179,7 @@
     },
     {
       key: "a8", type: "participation", typeLabel: "مشارکت", status: "archived", statusLabel: "بایگانی شده",
-      urgent: false, vip: false, code: "۴۱۰۲",
+      urgent: false, vip: false, code: "۴۱۰۲", ref: "دیوار",
       title: "ملک کلنگی ۳۰۰ متری برای مشارکت در لواسان", specs: "۳۰۰ متری · کلنگی · باغ‌ویلا",
       price: '<span class="label">حداقل سرمایه:</span> از ۴۵ میلیارد <small>تومان</small>',
       area: "لواسان — محله ایگل", time: "هفته پیش", agency: "آگهی‌دهنده شخصی",
@@ -194,7 +194,7 @@
     },
     {
       key: "a9", type: "presell", typeLabel: "پیش‌فروش", status: "rejected", statusLabel: "رد شده",
-      urgent: false, vip: false, code: "۷۷۸۱",
+      urgent: false, vip: false, code: "۷۷۸۱", ref: "شیپور",
       title: "پیش‌فروش برج مسکونی در زعفرانیه", specs: "۱۸۰ متری · ۳ خواب · تحویل ۱۴۰۷",
       price: '<span class="label">پیش‌پرداخت:</span> ۵ میلیارد <small>تومان</small>',
       area: "تهران، منطقه ۱ — زعفرانیه", time: "۴ روز پیش", agency: "گروه آرتا",
@@ -209,7 +209,7 @@
     },
     {
       key: "a10", type: "sale", typeLabel: "فروش", status: "deleted", statusLabel: "حذف شده",
-      urgent: false, vip: false, code: "۳۳۵۰",
+      urgent: false, vip: false, code: "۳۳۵۰", ref: "شخصی",
       title: "واحد ۶۰ متری سرمایه‌ای در نازی‌آباد", specs: "۶۰ متری · ۱ خواب · طبقه ۵",
       price: '<span class="label">مبلغ:</span> ۴ میلیارد <small>تومان</small>',
       area: "تهران، نازی‌آباد — بازار دوم", time: "هفته پیش", agency: "آگهی‌دهنده شخصی",

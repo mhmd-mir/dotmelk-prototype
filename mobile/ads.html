@@ -244,6 +244,62 @@
       .mf-acts .btn-primary { background: var(--primary); color: #fff; }
       .mf-acts .btn-soft { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary-border); }
 
+      /* ref badge */
+      .ref-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px; border: 1px solid transparent; }
+      .ref-badge .rd { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+      .ref-dotmelk { background: var(--primary-soft); color: var(--primary); border-color: var(--primary-border); }
+      .ref-divar { background: #fee2e2; color: #b91c1c; border-color: #fecaca; }
+      .ref-sheypoor { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+      .ref-personal { background: var(--surface-muted); color: var(--muted); border-color: var(--border); }
+
+      /* opt-list (multi-select در شیت فیلتر) */
+      .opt-list { display: grid; gap: 6px; }
+      .opt { display: flex; align-items: center; gap: 9px; padding: 9px 11px; border: 1px solid var(--border); border-radius: 12px; background: #fff; cursor: pointer; font-size: 13px; font-weight: 800; color: var(--text-2); transition: 0.12s; }
+      .opt .cbox { width: 20px; height: 20px; border-radius: 7px; border: 1.5px solid var(--border-strong); display: grid; place-items: center; flex: 0 0 auto; color: #fff; font-size: 12px; }
+      .opt .odot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+      .opt .ocount { margin-inline-start: auto; font-size: 11px; color: var(--subtle); font-weight: 700; }
+      .opt.on { border-color: var(--primary-border); background: var(--primary-soft); color: var(--primary); }
+      .opt.on .cbox { background: var(--primary); border-color: var(--primary); }
+
+      /* more-filters toggle (در شیت) */
+      .more-toggle { width: 100%; height: 44px; margin-top: 4px; border: 1px dashed var(--primary-border); border-radius: 13px; background: var(--primary-soft); color: var(--primary); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; }
+      .more-toggle .chev { transition: 0.2s; }
+      .more-toggle.open .chev { transform: rotate(180deg); }
+      .more-filters-m { display: none; }
+      .more-filters-m.open { display: block; }
+
+      /* ad slider (بالای map preview) */
+      .ad-slider-m { position: relative; height: 120px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-top: 12px; flex: 0 0 auto; }
+      .ad-slide-m { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 18px 20px; color: #fff; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+      .ad-slide-m.on { opacity: 1; pointer-events: auto; }
+      .ad-slide-m h3 { margin: 0; font-size: 16px; font-weight: 900; }
+      .ad-slide-m p { margin: 0; font-size: 11px; opacity: 0.92; line-height: 18px; }
+      .ad-slide-m .s-cta { margin-top: 6px; align-self: flex-start; background: rgba(255,255,255,0.95); color: var(--primary); border-radius: 9px; padding: 5px 11px; font-size: 11px; font-weight: 900; }
+      .slide-dots-m { position: absolute; bottom: 9px; left: 0; right: 0; display: flex; justify-content: center; gap: 5px; z-index: 3; }
+      .slide-dots-m i { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.2s; }
+      .slide-dots-m i.on { width: 16px; background: #fff; }
+
+      /* region bottom sheet */
+      .region-sheet-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.42); z-index: 140; opacity: 0; pointer-events: none; transition: 0.2s; }
+      .region-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; background: #fff; border-radius: 26px 26px 0 0; box-shadow: 0 -20px 50px rgba(15,23,42,0.2); transform: translateY(105%); transition: 0.28s cubic-bezier(0.16,1,0.3,1); max-height: 86vh; display: flex; flex-direction: column; }
+      body.region-open .region-sheet-backdrop { opacity: 1; pointer-events: auto; }
+      body.region-open .region-sheet { transform: translateY(0); }
+      .rs-handle { width: 44px; height: 5px; border-radius: 999px; background: var(--border-strong); margin: 10px auto 4px; }
+      .rs-head { display: flex; align-items: center; justify-content: space-between; padding: 6px 18px 12px; border-bottom: 1px solid var(--border); }
+      .rs-head h3 { margin: 0; font-size: 15px; font-weight: 900; }
+      .rs-steps { display: flex; align-items: center; gap: 6px; padding: 10px 18px 8px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--border); font-size: 12px; }
+      .rs-steps::-webkit-scrollbar { display: none; }
+      .rs-step { font-weight: 800; color: var(--subtle); white-space: nowrap; }
+      .rs-step.done { color: var(--primary); } .rs-step.active { color: var(--text); }
+      .rs-search { padding: 12px 18px 4px; }
+      .rs-list { flex: 1; overflow: auto; padding: 6px 12px 12px; }
+      .rs-opt { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: 12px; cursor: pointer; font-size: 14px; font-weight: 700; }
+      .rs-opt:active { background: var(--primary-soft); color: var(--primary); }
+      .rs-opt .chev { color: var(--subtle); }
+      .rs-empty { padding: 30px; text-align: center; color: var(--muted); font-size: 13px; }
+      .rs-foot { padding: 12px 18px calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: flex; gap: 10px; }
+      .rs-foot .apply-btn { flex: 1; }
+
       /* drawer */
       .small { font-size: 13px; line-height: 22px; color: var(--muted); }
       .drawer-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.38); z-index: 100; opacity: 0; pointer-events: none; transition: 0.2s ease-out; }
@@ -310,6 +366,26 @@
           <a class="bem-cta" href="#">درخواست</a>
         </div>
 
+        <!-- AD SLIDER -->
+        <div class="ad-slider-m" id="adSliderM">
+          <div class="ad-slide-m on" style="background:linear-gradient(135deg,#6d28d9,#4c1d95)">
+            <h3>کارشناسی ملک داتملک</h3>
+            <p>قبل از خرید با ارزیابی تخصصی، ریسک را به صفر برسانید.</p>
+            <a class="s-cta" href="#">ثبت درخواست</a>
+          </div>
+          <div class="ad-slide-m" style="background:linear-gradient(135deg,#0f766e,#0d9488)">
+            <h3>ثبت آگهی رایگان</h3>
+            <p>ملک خود را با موقعیت دقیق روی نقشه ثبت کنید.</p>
+            <a class="s-cta" href="add-advertise.html">ثبت آگهی</a>
+          </div>
+          <div class="ad-slide-m" style="background:linear-gradient(135deg,#1e40af,#2563eb)">
+            <h3>قرارداد هوشمند</h3>
+            <p>با همراهی وکیل، قراردادتان را امن تنظیم کنید.</p>
+            <a class="s-cta" href="#">بیشتر بدانید</a>
+          </div>
+          <div class="slide-dots-m" id="slideDotsM"></div>
+        </div>
+
         <!-- MAP PREVIEW -->
         <div class="map-preview" onclick="openMap()" role="button" aria-label="باز کردن نقشه‌ی آگهی‌ها">
           <div class="pv-grid"></div>
@@ -354,12 +430,31 @@
       </div>
 
       <nav class="bottom-nav" aria-label="ناوبری اصلی">
-        <a class="nav-item" href="map.html"><span class="nav-icon">⌖</span><span>نقشه</span></a>
-        <a class="nav-item" href="requests.html"><span class="nav-icon">□</span><span>درخواست‌ها</span></a>
         <a class="nav-item active" href="ads.html"><span class="nav-icon">⌂</span><span>آگهی‌ها</span></a>
         <a class="nav-item" href="chat.html"><span class="nav-icon">◌</span><span>چت</span></a>
         <a class="nav-item" href="my-dotmelk.html"><span class="nav-icon">◫</span><span>داتملک من</span></a>
+        <a class="nav-item" href="map.html"><span class="nav-icon">⌖</span><span>نقشه</span></a>
+        <a class="nav-item" href="requests.html"><span class="nav-icon">□</span><span>درخواست‌ها</span></a>
       </nav>
+
+      <!-- region bottom sheet -->
+      <div class="region-sheet-backdrop" onclick="closeRegionSheet()"></div>
+      <div class="region-sheet" id="regionSheet">
+        <div class="rs-handle"></div>
+        <div class="rs-head">
+          <h3 id="rsTitle">انتخاب استان</h3>
+          <button onclick="closeRegionSheet()" style="font-size:18px;color:var(--muted)">×</button>
+        </div>
+        <div class="rs-steps" id="rsSteps"></div>
+        <div class="rs-search">
+          <label class="search-field" style="height:42px"><span>⌕</span><input id="rsSearch" placeholder="جستجو…" oninput="rsRenderList(this.value)" /></label>
+        </div>
+        <div class="rs-list" id="rsList"></div>
+        <div class="rs-foot">
+          <button class="apply-btn soft" onclick="rsBack()">← قبلی</button>
+          <button class="apply-btn primary" onclick="closeRegionSheet()">تأیید</button>
+        </div>
+      </div>
 
       <!-- filter bottom sheet -->
       <div class="sheet-backdrop" onclick="document.body.classList.remove('sheet-open')"></div>
@@ -367,13 +462,34 @@
         <div class="sheet-handle"></div>
         <div class="sheet-head"><h3>فیلتر آگهی‌ها</h3><button onclick="document.body.classList.remove('sheet-open')">حذف فیلترها</button></div>
         <div class="sheet-body">
-          <div class="fgroup"><div class="flabel">محدوده‌ی آگهی <span class="req-flag">الزامی</span></div><div class="fvals"><span class="chip active">تهران</span><span class="chip active">سعادت‌آباد</span><span class="chip">مرزداران</span><span class="chip">+ افزودن</span></div></div>
-          <div class="fgroup"><div class="flabel">نوع آگهی</div><div class="fvals"><span class="chip active">همه</span><span class="chip">فروش</span><span class="chip">رهن و اجاره</span><span class="chip">مشارکت</span><span class="chip">پیش‌فروش</span><span class="chip">اجاره کوتاه‌مدت</span></div></div>
+          <div class="fgroup">
+            <div class="flabel">محدوده‌ی آگهی <span class="req-flag">الزامی</span></div>
+            <div class="fvals" id="mRegionChips">
+              <span class="chip active">تهران</span>
+              <span class="chip active">سعادت‌آباد</span>
+              <span class="chip">مرزداران</span>
+              <span class="chip" style="border-style:dashed;color:var(--primary);border-color:var(--primary-border)" onclick="openRegionSheet()">＋ افزودن محدوده</span>
+            </div>
+          </div>
+          <div class="fgroup">
+            <div class="flabel">نوع آگهی</div>
+            <div class="opt-list">
+              <label class="opt on" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-sale)"></span>فروش<span class="ocount">۱۲۴</span></label>
+              <label class="opt on" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-rent)"></span>رهن و اجاره<span class="ocount">۸۶</span></label>
+              <label class="opt" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-participation)"></span>مشارکت<span class="ocount">۲۱</span></label>
+              <label class="opt" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-presell)"></span>پیش‌فروش<span class="ocount">۱۷</span></label>
+              <label class="opt" onclick="this.classList.toggle('on')"><span class="cbox">✓</span><span class="odot" style="background:var(--t-short)"></span>اجاره کوتاه‌مدت<span class="ocount">۹</span></label>
+            </div>
+          </div>
           <div class="fgroup"><div class="flabel">قیمت</div>
             <div class="sublabel">مبلغ فروش و مشارکت (تومان)</div><div class="range-row"><div class="input-fake">از ۵ میلیارد</div><div class="input-fake">تا ۲۰ میلیارد</div></div>
             <div class="sublabel">مبلغ رهن (تومان)</div><div class="range-row"><div class="input-fake">از ۴۰۰ م</div><div class="input-fake">تا ۲ میلیارد</div></div>
             <div class="sublabel">مبلغ اجاره (تومان)</div><div class="range-row"><div class="input-fake">از ۵ م</div><div class="input-fake">تا ۵۰ م</div></div>
           </div>
+          <button class="more-toggle" id="moreToggleM" onclick="toggleMoreM()">
+            <span id="moreLabelM">فیلترهای بیشتر (۳ مورد)</span><span class="chev">▾</span>
+          </button>
+          <div class="more-filters-m" id="moreFiltersM">
           <div class="fgroup"><div class="flabel">متراژ و سال ساخت</div>
             <div class="sublabel">مساحت زمین (متر)</div><div class="range-row"><div class="input-fake">از ۸۰</div><div class="input-fake">تا ۵۰۰</div></div>
             <div class="sublabel">مساحت زیربنا (متر)</div><div class="range-row"><div class="input-fake">از ۷۰</div><div class="input-fake">تا ۲۵۰</div></div>
@@ -391,6 +507,7 @@
             <div class="switch-row"><span>فقط نشان‌شده‌ها</span><span class="switch"></span></div>
             <div class="switch-row"><span>فقط آگهی‌های آژانس من</span><span class="switch on"></span></div>
           </div>
+          </div><!-- /more-filters-m -->
         </div>
         <div class="sheet-foot">
           <button class="apply-btn soft" onclick="document.body.classList.remove('sheet-open');openMap()">⌖ روی نقشه</button>
@@ -440,9 +557,14 @@
       </div>
     </div>
 
-    <script src="../assets/dotmelk-ads-data.js?v=3"></script>
+    <script src="../assets/dotmelk-ads-data.js?v=4"></script>
     <script>
       /* ===== render ad cards ===== */
+      const REF_MAP_M = { "داتملک": "ref-dotmelk", "دیوار": "ref-divar", "شیپور": "ref-sheypoor", "شخصی": "ref-personal" };
+      function refBadgeM(ad) {
+        const cls = REF_MAP_M[ad.ref] || "ref-personal";
+        return `<span class="ref-badge ${cls}"><span class="rd"></span>${ad.ref || "داتملک"}</span>`;
+      }
       function cardHTML(ad) {
         const t = DM_tier(ad.score);
         const bars = DM_DIMS.map((d, i) => `<div class="as-item"><span class="as-l">${d[0]}</span><span class="as-track"><span class="as-fill ${d[1]}" style="width:${ad.a[i]}%"></span></span></div>`).join("");
@@ -453,9 +575,9 @@
         <article class="ad-card" onclick="location.href='property-detail.html?key=${ad.key}'">
           <span class="type-rail ${ad.type}"></span>
           <div class="ad-inner">
-            <div class="ad-head"><h3 class="ad-title">${ad.title}</h3><span class="status ${ad.status}"><span class="dot"></span>${ad.statusLabel}</span></div>
+            <div class="ad-head"><h3 class="ad-title">${ad.title}</h3><span class="type-tag ${ad.type}"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#fff;margin-left:3px"></span>${ad.typeLabel}</span></div>
             <div class="ad-specs">${ad.specs}</div>
-            <div class="ad-top"><span class="type-tag ${ad.type}">${ad.typeLabel}</span>${urgent}</div>
+            <div class="ad-top">${refBadgeM(ad)}${urgent}</div>
             <div class="ad-main">
               <div>
                 <div class="ad-amount">${ad.price}</div>
@@ -552,8 +674,89 @@
         document.getElementById("compareTray").classList.toggle("show", compareSet.size > 0);
       }
 
-      document.addEventListener("keydown", e => { if (e.key === "Escape") { if (document.getElementById("mfSheet").classList.contains("show")) closeMfPop(); else if (mapFull.classList.contains("open")) closeMap(); } });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") { if (document.getElementById("mfSheet").classList.contains("show")) closeMfPop(); else if (mapFull.classList.contains("open")) closeMap(); else closeRegionSheet(); } });
       mfApply(); syncCompare();
+
+      /* ===== more filters toggle ===== */
+      function toggleMoreM() {
+        const btn = document.getElementById("moreToggleM");
+        const panel = document.getElementById("moreFiltersM");
+        const open = panel.classList.toggle("open");
+        btn.classList.toggle("open", open);
+        document.getElementById("moreLabelM").textContent = open ? "بستن فیلترهای بیشتر" : "فیلترهای بیشتر (۳ مورد)";
+      }
+
+      /* ===== mobile ad slider ===== */
+      (function () {
+        const slides = document.querySelectorAll(".ad-slide-m");
+        const dotsEl = document.getElementById("slideDotsM");
+        let cur = 0;
+        dotsEl.innerHTML = [...slides].map((_, i) => `<i class="${i === 0 ? "on" : ""}"></i>`).join("");
+        const dots = dotsEl.querySelectorAll("i");
+        function goSlide(n) {
+          slides[cur].classList.remove("on"); dots[cur].classList.remove("on");
+          cur = ((n % slides.length) + slides.length) % slides.length;
+          slides[cur].classList.add("on"); dots[cur].classList.add("on");
+        }
+        let timer = setInterval(() => goSlide(cur + 1), 4500);
+        dots.forEach((dot, i) => dot.addEventListener("click", e => { e.stopPropagation(); goSlide(i); clearInterval(timer); timer = setInterval(() => goSlide(cur + 1), 4500); }));
+      })();
+
+      /* ===== region bottom sheet ===== */
+      const RS_DATA = [
+        { label: "استان", items: ["تهران", "اصفهان", "خراسان رضوی", "فارس", "گیلان", "مازندران", "آذربایجان شرقی", "کرمان"] },
+        { label: "شهرستان", items: { "تهران": ["شهرستان تهران", "شمیرانات", "ری", "شهریار", "ملارد"], "اصفهان": ["شهرستان اصفهان", "نجف‌آباد", "کاشان"], "خراسان رضوی": ["مشهد", "سبزوار", "نیشابور"], "فارس": ["شیراز", "مرودشت"], "گیلان": ["رشت", "لنگرود"], "مازندران": ["ساری", "آمل", "بابل"], "آذربایجان شرقی": ["تبریز", "مراغه"], "کرمان": ["شهرستان کرمان", "بم"] } },
+        { label: "شهر", items: { "شهرستان تهران": ["تهران"], "شمیرانات": ["تجریش", "لواسان", "رودهن"], "ری": ["شهر ری", "ورامین"], "شهریار": ["شهریار", "اندیشه"], "ملارد": ["ملارد", "قدس"], "شهرستان اصفهان": ["اصفهان"], "نجف‌آباد": ["نجف‌آباد"], "کاشان": ["کاشان"], "مشهد": ["مشهد"], "سبزوار": ["سبزوار"], "نیشابور": ["نیشابور"], "شیراز": ["شیراز"], "مرودشت": ["مرودشت"], "رشت": ["رشت"], "لنگرود": ["لنگرود"], "ساری": ["ساری"], "آمل": ["آمل"], "بابل": ["بابل"], "تبریز": ["تبریز"], "مراغه": ["مراغه"], "شهرستان کرمان": ["کرمان"], "بم": ["بم"] } },
+        { label: "منطقه", items: { "تهران": ["منطقه ۱", "منطقه ۲", "منطقه ۳", "منطقه ۴", "منطقه ۵", "منطقه ۶", "منطقه ۷", "منطقه ۸", "منطقه ۱۲", "منطقه ۲۲"], "اصفهان": ["منطقه ۱", "منطقه ۲", "منطقه ۳"], "مشهد": ["منطقه ۱", "منطقه ۲", "منطقه ۳", "منطقه ۴", "منطقه ۵"], "شیراز": ["منطقه ۱", "منطقه ۲", "منطقه ۳"], "رشت": ["ناحیه مرکزی", "ناحیه شمالی"], "تجریش": ["—"], "لواسان": ["—"] } },
+        { label: "محله", items: { "منطقه ۱": ["نیاوران", "زعفرانیه", "جماران", "ولنجک", "شمیران"], "منطقه ۲": ["سعادت‌آباد", "شهرک غرب", "اکباتان", "مرزداران", "کوهسار"], "منطقه ۳": ["یوسف‌آباد", "دروس", "قلهک", "میرداماد", "پاسداران"], "منطقه ۴": ["تهرانپارس", "نارمک", "رسالت"], "منطقه ۵": ["پونک", "بلوار فردوس", "جنت‌آباد"], "منطقه ۶": ["ونک", "آرژانتین", "کریم‌خان"], "منطقه ۷": ["ظفر", "پاسداران شمالی", "منیریه"], "منطقه ۸": ["فرمانیه", "لویزان", "امانیه"], "منطقه ۱۲": ["بازار", "ناصرخسرو"], "منطقه ۲۲": ["چیتگر", "دریاچه شهدا"], "—": ["(کل منطقه)"] } },
+      ];
+      let rsStep = 0, rsSels = [];
+      function openRegionSheet() {
+        rsStep = 0; rsSels = [];
+        document.body.classList.add("region-open");
+        document.getElementById("rsSearch").value = "";
+        rsRender();
+      }
+      function closeRegionSheet() { document.body.classList.remove("region-open"); }
+      function rsBack() { if (rsStep > 0) { rsStep--; rsSels.splice(rsStep); document.getElementById("rsSearch").value = ""; rsRender(); } }
+      function rsRender() {
+        const s = RS_DATA[rsStep];
+        document.getElementById("rsTitle").textContent = "انتخاب " + s.label;
+        document.getElementById("rsSteps").innerHTML = RS_DATA.slice(0, rsStep + 1).map((step, i) => {
+          const cls = i < rsStep ? "done" : i === rsStep ? "active" : "";
+          return `<span class="rs-step ${cls}">${i > 0 ? '<span style="margin:0 4px;color:var(--subtle)">›</span>' : ""}${i < rsStep ? rsSels[i] : step.label}</span>`;
+        }).join("");
+        rsRenderList("");
+      }
+      function rsRenderList(q) {
+        const s = RS_DATA[rsStep];
+        let items = rsStep === 0 ? s.items : (s.items[rsSels[rsStep - 1]] || []);
+        if (!Array.isArray(items)) items = [];
+        const filtered = q ? items.filter(x => x.includes(q)) : items;
+        const isLast = rsStep === RS_DATA.length - 1;
+        const el = document.getElementById("rsList");
+        if (!filtered.length) { el.innerHTML = '<div class="rs-empty">موردی یافت نشد</div>'; return; }
+        el.innerHTML = filtered.map(item => `<div class="rs-opt" onclick="rsSelect('${item.replace(/'/g, "&#39;")}')">
+          <span>${item}</span>${!isLast ? '<span class="chev">‹</span>' : ""}
+        </div>`).join("");
+      }
+      function rsSelect(item) {
+        rsSels[rsStep] = item;
+        if (rsStep < RS_DATA.length - 1) {
+          rsStep++;
+          document.getElementById("rsSearch").value = "";
+          rsRender();
+        } else {
+          const label = rsSels.filter(Boolean).join(" › ");
+          const rc = document.getElementById("mRegionChips");
+          const addBtn = rc.querySelector('[onclick="openRegionSheet()"]');
+          const sp = document.createElement("span");
+          sp.className = "chip active";
+          sp.textContent = label;
+          rc.insertBefore(sp, addBtn);
+          closeRegionSheet();
+        }
+      }
     </script>
   </body>
 </html>
