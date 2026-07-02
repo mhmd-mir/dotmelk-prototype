@@ -30,20 +30,24 @@ html,body,.mobile-body{overflow-x:hidden}
   <aside class="mobile-drawer">
     <div class="drawer-head">
       <div class="drawer-user"><div class="avatar">م</div><div><strong>مهراد محمدی</strong><div class="small">مشاور · آژانس آسمان</div></div></div>
-      <button class="icon-btn" data-drawer-close>×</button>
+      <button class="drawer-close" data-drawer-close aria-label="بستن">×</button>
     </div>
     <div class="drawer-scroll">
-      <a href="account.html"><span>◫</span>حساب کاربری</a>
-      <a href="guides.html"><span>؟</span>راهنمای استفاده</a>
-      <a href="rules.html"><span>§</span>قوانین و مقررات</a>
-      <a href="faqs.html"><span>FAQ</span>سوالات متداول</a>
-      <a href="feedback.html"><span>✎</span>نظرات و پیشنهادات</a>
-      <a class="active" href="about.html"><span>●</span>درباره داتملک</a>
-      <a href="contact.html"><span>☎</span>ارتباط با ما</a>
-      <a href="tickets.html"><span>◌</span>پشتیبانی و تیکت‌ها</a>
-      <button class="logout" onclick="location.href='logout.html'"><span>⎋</span>خروج</button>
+      <a href="account.html"><span class="di">◎</span>حساب کاربری</a>
+      <div class="drawer-sep">اطلاعات</div>
+      <a href="guides.html"><span class="di">◈</span>راهنمای استفاده</a>
+      <a href="rules.html"><span class="di">§</span>قوانین و مقررات</a>
+      <a href="faqs.html"><span class="di">؟</span>سوالات متداول</a>
+      <a class="active" href="about.html"><span class="di">●</span>درباره داتملک</a>
+      <div class="drawer-sep">پشتیبانی</div>
+      <a href="feedback.html"><span class="di">✎</span>نظرات و پیشنهادات</a>
+      <a href="contact.html"><span class="di">☎</span>ارتباط با ما</a>
+      <a href="tickets.html"><span class="di">◌</span>پشتیبانی و تیکت‌ها</a>
     </div>
-    <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+    <div class="drawer-footer">
+      <button class="logout" onclick="location.href='logout.html'"><span class="di">⎋</span>خروج از حساب</button>
+      <div class="drawer-version"><span>Dotmelk</span><span>v1.0.0</span></div>
+    </div>
   </aside>
 
   <main class="mobile-content">

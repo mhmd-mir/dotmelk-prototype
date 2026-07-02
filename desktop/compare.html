@@ -100,6 +100,23 @@
       .empty h2 { font-size: 20px; font-weight: 900; margin: 0 0 8px; }
       .empty p { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
       .ribbon { position: fixed; left: 24px; bottom: 24px; background: rgba(15, 23, 42, 0.82); color: #fff; border-radius: 999px; padding: 9px 13px; font-size: 12px; z-index: 50; }
+
+      /* ===== overall score in column header ===== */
+      .ch-score { display: flex; align-items: center; gap: 10px; margin: 10px 0 12px; padding: 10px 12px; background: var(--surface-muted); border-radius: 14px; }
+      .ch-gauge { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; position: relative; flex: 0 0 auto; }
+      .ch-gauge::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; background: #fff; }
+      .ch-gauge .gn { position: relative; z-index: 1; font-size: 13px; font-weight: 900; }
+      .ch-score-info .tl { font-size: 13px; font-weight: 900; }
+      .ch-score-info .rl { font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 3px; }
+
+      /* ===== category score row in each group ===== */
+      .cat-score-row td { background: var(--surface-muted); }
+      .cat-score-row .cs-label { color: var(--primary); background: var(--primary-soft) !important; font-size: 12px; }
+      .cat-score-cell { display: flex; align-items: center; gap: 8px; }
+      .cat-score-cell .cst { flex: 1; height: 7px; border-radius: 999px; background: var(--border); overflow: hidden; }
+      .cat-score-cell .csf { display: block; height: 100%; border-radius: 999px; }
+      .cat-score-cell .csn { font-size: 13px; font-weight: 900; flex: 0 0 auto; width: 28px; text-align: left; }
+      .cat-score-cell .csp { font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 999px; flex: 0 0 auto; white-space: nowrap; }
     </style>
   </head>
   <body>
@@ -133,10 +150,9 @@
     </div>
     <div class="ribbon">Dotmelk · مقایسه (دسکتاپ)</div>
 
-    <script src="../assets/dotmelk-ads-data.js?v=3"></script>
+    <script src="../assets/dotmelk-ads-data.js?v=4"></script>
     <script>
       let keys = JSON.parse(localStorage.getItem("dm_compare") || "[]");
-      // demo fallback if nothing selected
       if (!keys.length) keys = ["a1", "a2", "a4"];
       let items = keys.map(k => DM_ADS.find(a => a.key === k)).filter(Boolean);
 
@@ -148,13 +164,25 @@
       }
       function clearAll() { keys = []; localStorage.setItem("dm_compare", "[]"); items = []; render(); }
 
+      function groupScore(g, a) {
+        const n = g.t;
+        if (n === "آگهی‌دهنده") return null;
+        if (n === "ارزیابی محیطی داتملک") return a.score;
+        if (n === "قیمت و پرداخت") return a.a[2];
+        if (n === "دسترسی‌ها") return a.a[3];
+        if (n === "امکانات واحد") return a.a[0];
+        if (n === "مشاعات ساختمان") return Math.round((a.a[0] + a.a[1]) / 2);
+        if (n === "مشخصات ساختمان") return a.a[1];
+        if (n === "حیاط") return Math.round((a.a[1] + a.a[4]) / 2);
+        return Math.round((a.a[0] + a.a[1] + a.a[2]) / 3);
+      }
+
       function render() {
         const wrap = document.getElementById("cmpWrap");
         if (!items.length) {
           wrap.innerHTML = `<div class="empty"><div class="ic">⇄</div><h2>لیست مقایسه خالی است</h2><p>از صفحه‌ی آگهی‌ها، چند ملک را به مقایسه اضافه کنید.</p><a class="btn btn-primary" href="ads.html">رفتن به آگهی‌ها</a></div>`;
           return;
         }
-        // best score index
         let bestIdx = 0; items.forEach((a, i) => { if (a.score > items[bestIdx].score) bestIdx = i; });
 
         const colHead = items.map((a, i) => {
@@ -164,6 +192,15 @@
             <div class="ch-thumb ${a.type}"><span class="ph"></span><button class="rm" onclick="removeItem('${a.key}')" title="حذف">×</button></div>
             ${vip}<span class="type-tag ${a.type}">${a.typeLabel}</span>
             <h3 class="ch-title" style="margin-top:8px">${a.title}</h3>
+            <div class="ch-score">
+              <div class="ch-gauge" style="background:conic-gradient(${t.color} calc(${a.score} * 1%),var(--surface-muted) 0)">
+                <span class="gn" style="color:${t.color}">${DM_fa(a.score)}</span>
+              </div>
+              <div class="ch-score-info">
+                <div class="tl" style="color:${t.text}">${t.l}</div>
+                <div class="rl">${t.risk}</div>
+              </div>
+            </div>
             <div class="ch-actions"><a class="btn btn-primary" href="property-detail.html?key=${a.key}">جزئیات</a><button class="btn btn-outline" onclick="removeItem('${a.key}')">حذف</button></div>
           </th>`;
         }).join("");
@@ -191,6 +228,21 @@
           g.rows.forEach(row => {
             rows += `<tr class="r r-g${gi}"><th class="row-label">${row[0]}</th>${items.map(a => `<td>${cell(a, row)}</td>`).join("")}</tr>`;
           });
+          const hasScore = groupScore(g, items[0]) !== null;
+          if (hasScore) {
+            rows += `<tr class="r r-g${gi} cat-score-row">
+              <th class="row-label cs-label">امتیاز دسته</th>
+              ${items.map(a => {
+                const gs = groupScore(g, a);
+                const gt = DM_tier(gs);
+                return `<td><div class="cat-score-cell">
+                  <span class="cst"><span class="csf" style="width:${gs}%;background:${gt.color}"></span></span>
+                  <span class="csn" style="color:${gt.text}">${DM_fa(gs)}</span>
+                  <span class="csp" style="background:${gt.soft};color:${gt.text}">${gt.l}</span>
+                </div></td>`;
+              }).join("")}
+            </tr>`;
+          }
         });
         wrap.innerHTML = `<div class="cmp-scroll"><table class="cmp">${rows}</table></div>`;
       }

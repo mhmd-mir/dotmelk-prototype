@@ -30,9 +30,10 @@
       .back-btn:hover { border-color: var(--primary-border); color: var(--primary); }
       .topbar h1 { font-size: 16px; font-weight: 900; margin: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
       .crumb { font-size: 12px; color: var(--muted); white-space: nowrap; }
-      .t-act { width: 42px; height: 42px; border-radius: 13px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--text-2); font-size: 17px; background: #fff; }
+      .t-act { width: 38px; height: 38px; border-radius: 12px; border: 1px solid var(--border); display: grid; place-items: center; color: var(--text-2); font-size: 16px; background: #fff; flex: 0 0 auto; }
       .t-act:hover { border-color: var(--primary-border); color: var(--primary); }
       .t-act.on { color: var(--danger); border-color: var(--danger-soft); background: var(--danger-soft); }
+      .t-sep { width: 1px; height: 26px; background: var(--border); flex: 0 0 auto; margin: 0 2px; }
 
       .btn { height: 40px; padding: 0 16px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: 14px; white-space: nowrap; }
       .btn-primary { background: var(--primary); color: #fff; } .btn-primary:hover { background: var(--primary-hover); }
@@ -245,6 +246,22 @@
       .info-row span { color: var(--muted); font-weight: 700; } .info-row b { font-weight: 800; }
       h3.card-h { margin: 0 0 12px; font-size: 15px; font-weight: 900; }
       .ribbon { position: fixed; left: 24px; bottom: 24px; background: rgba(15, 23, 42, 0.82); color: #fff; border-radius: 999px; padding: 9px 13px; font-size: 12px; z-index: 60; }
+
+      /* ===== image placeholder (floor plan / block map) ===== */
+      .img-ph { width: 100%; border-radius: 16px; overflow: hidden; border: 2px dashed var(--border-strong); background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted); }
+      .img-ph .ph-icon { font-size: 38px; opacity: 0.35; }
+      .img-ph .ph-label { font-size: 13px; font-weight: 800; color: var(--text-2); }
+      .img-ph .ph-ratio { font-size: 11px; font-weight: 700; color: var(--subtle); background: var(--surface-muted); padding: 3px 10px; border-radius: 999px; }
+      .floorplan-ph { aspect-ratio: 4/3; }
+      .blockmap-ph { aspect-ratio: 3/2; }
+
+      /* ===== category score (امتیاز کلی دسته) ===== */
+      .cat-score { display: flex; align-items: center; gap: 12px; padding: 12px 16px 14px; border-top: 1px dashed var(--border); margin-top: 2px; }
+      .cat-score .csl { font-size: 12px; font-weight: 900; color: var(--text-2); white-space: nowrap; flex: 0 0 auto; }
+      .cat-score .csbar { flex: 1; height: 8px; border-radius: 999px; background: var(--surface-muted); overflow: hidden; }
+      .cat-score .csfill { display: block; height: 100%; border-radius: 999px; }
+      .cat-score .cschip { flex: 0 0 auto; font-size: 12px; font-weight: 900; padding: 4px 13px; border-radius: 999px; white-space: nowrap; display: flex; align-items: center; gap: 5px; }
+      .cat-score .cschip .csnum { font-size: 16px; font-weight: 900; }
     </style>
   </head>
   <body>
@@ -253,8 +270,14 @@
         <a class="back-btn" href="ads.html" aria-label="بازگشت">→</a>
         <h1 id="tTitle">جزئیات آگهی</h1>
         <span class="crumb">آگهی‌ها / جزئیات آگهی</span>
-        <button class="t-act" aria-label="اشتراک‌گذاری">↗</button>
-        <button class="t-act" onclick="this.classList.toggle('on')" aria-label="نشان کردن">♡</button>
+        <span class="t-sep"></span>
+        <button class="t-act" title="پرینت">⎙</button>
+        <button class="t-act" title="اشتراک‌گذاری">↗</button>
+        <button class="t-act" title="زمان بازدید">▤</button>
+        <button class="t-act" title="یادداشت">✎</button>
+        <button class="t-act" title="افزودن به مقایسه" onclick="addCompare()">⇄</button>
+        <span class="t-sep"></span>
+        <button class="t-act" onclick="this.classList.toggle('on')" title="نشان کردن">♡</button>
       </header>
 
       <main class="layout">
@@ -307,16 +330,7 @@
             </div>
           </div>
 
-          <!-- quick actions -->
-          <div class="panel pad">
-            <div class="quick-actions">
-              <button class="quick"><span class="ic">⎙</span>پرینت</button>
-              <button class="quick"><span class="ic">↗</span>اشتراک‌گذاری</button>
-              <button class="quick"><span class="ic">▤</span>زمان بازدید</button>
-              <button class="quick"><span class="ic">✎</span>یادداشت</button>
-              <button class="quick" onclick="addCompare()"><span class="ic">⇄</span>افزودن به مقایسه</button>
-            </div>
-          </div>
+
 
           <!-- ===== EXPERT ASSESSMENT ===== -->
           <div class="assess" id="assess">
@@ -388,6 +402,11 @@
                 <div class="attr"><div class="k">نوع سند</div><div class="v">تک‌برگ شش‌دانگ</div></div>
                 <div class="attr"><div class="k">جهت ساختمان</div><div class="v">جنوبی</div></div>
               </div>
+              <div class="cat-score">
+                <span class="csl">امتیاز کلی دسته</span>
+                <span class="csbar"><span class="csfill" style="width:78%;background:var(--info-text)"></span></span>
+                <span class="cschip" style="background:var(--info-soft);color:var(--info-text)"><span class="csnum">۷۸</span>/۱۰۰</span>
+              </div>
             </details>
             <details class="group" open>
               <summary>مشخصات ساختمان <span class="chev">▾</span></summary>
@@ -402,6 +421,11 @@
                 <div class="attr"><div class="k">سیستم سرمایش</div><div class="v">کولر گازی / اسپلیت</div></div>
                 <div class="attr"><div class="k">کف‌پوش</div><div class="v">سرامیک و پارکت</div></div>
               </div>
+              <div class="cat-score">
+                <span class="csl">امتیاز کلی دسته</span>
+                <span class="csbar"><span class="csfill" style="width:85%;background:var(--success-text)"></span></span>
+                <span class="cschip" style="background:var(--success-soft);color:var(--success-text)"><span class="csnum">۸۵</span>/۱۰۰</span>
+              </div>
             </details>
             <details class="group" open>
               <summary>اطلاعات فروش <span class="chev">▾</span></summary>
@@ -412,6 +436,11 @@
                 <div class="attr"><div class="k">وام / تسهیلات</div><div class="v">قابل انتقال</div></div>
                 <div class="attr"><div class="k">شرایط پرداخت</div><div class="v">نقد / قابل مذاکره</div></div>
                 <div class="attr"><div class="k">وضعیت تخلیه</div><div class="v">تحویل فوری</div></div>
+              </div>
+              <div class="cat-score">
+                <span class="csl">امتیاز کلی دسته</span>
+                <span class="csbar"><span class="csfill" style="width:72%;background:var(--primary)"></span></span>
+                <span class="cschip" style="background:var(--primary-soft);color:var(--primary)"><span class="csnum">۷۲</span>/۱۰۰</span>
               </div>
             </details>
           </div>
@@ -488,18 +517,18 @@
               <button class="btn btn-outline">↗ مسیریابی</button>
             </div>
 
-            <div class="sec-title" style="margin-top:20px"><span class="bar"></span>موقعیت کلی ملک (کاداستر)</div>
-            <div class="cadastre" id="cadastre">
-              <span class="road-line" style="right:0;top:42%;width:100%;height:10px"></span>
-              <span class="road-line" style="right:38%;top:0;width:8px;height:100%"></span>
+            <div class="sec-title" style="margin-top:20px"><span class="bar"></span>موقعیت ملک در بلوک</div>
+            <div class="img-ph blockmap-ph">
+              <span class="ph-icon">⌖</span>
+              <span class="ph-label">موقعیت ملک در بلوک</span>
+              <span class="ph-ratio">نسبت ۳:۲ — تصویر از سرور بارگذاری می‌شود</span>
             </div>
 
             <div class="sec-title" style="margin-top:20px"><span class="bar"></span>پلان داخلی واحد</div>
-            <div class="floorplan">
-              <div class="room living">پذیرایی<small>۳۲ متر</small></div>
-              <div class="room kitchen">آشپزخانه<small>۱۴ متر</small></div>
-              <div class="room bed">اتاق خواب ۱<small>۱۶ متر</small></div>
-              <div class="room bed">اتاق خواب ۲<small>۱۲ متر</small></div>
+            <div class="img-ph floorplan-ph">
+              <span class="ph-icon">▭</span>
+              <span class="ph-label">پلان داخلی واحد</span>
+              <span class="ph-ratio">نسبت ۴:۳ — تصویر از سرور بارگذاری می‌شود</span>
             </div>
 
             <div class="sec-title" style="margin-top:20px"><span class="bar"></span>اطلاعات معبر و تأسیسات شهری</div>
@@ -599,7 +628,7 @@
     </div>
     <div class="ribbon">Dotmelk · جزئیات آگهی (دسکتاپ)</div>
 
-    <script src="../assets/dotmelk-ads-data.js?v=3"></script>
+    <script src="../assets/dotmelk-ads-data.js?v=4"></script>
     <script>
       const DIM_ICONS = { "امکانات": "⌂", "ویژگی‌ها": "✦", "قیمت": "﷼", "دسترسی‌ها": "⌖", "توسعه": "↗", "محدودیت‌ها": "⚠" };
       const params = new URLSearchParams(location.search);
